@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_12_11_100556) do
+ActiveRecord::Schema.define(version: 2020_12_11_104555) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -19,13 +19,14 @@ ActiveRecord::Schema.define(version: 2020_12_11_100556) do
     t.string "title"
     t.text "content"
     t.string "location"
-    t.datetime "date"
     t.integer "total_price"
     t.string "ticket_type"
     t.string "notice"
     t.string "qr_code"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.datetime "begin_datetime"
+    t.datetime "finish_datetime"
   end
 
 end
