@@ -34,6 +34,7 @@ Devise.setup do |config|
 
   config.omniauth :facebook, ENV['fb_api'], ENV['fb_secret'], :scope => 'public_profile,email', :info_fields => 'email,name', callback_url: "http://localhost:3000/users/auth/facebook/callback"
   
+  config.omniauth :google_oauth2, ENV['google_api'], ENV['google_secret']
   # ==> ORM configuration
   # Load and configure the ORM. Supports :active_record (default) and
   # :mongoid (bson_ext recommended) by default. Other ORMs may be
