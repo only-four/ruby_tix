@@ -34,6 +34,10 @@ group :development, :test do
   gem 'sqlite3', '~> 1.3', '>= 1.3.11'
 end
 
+group :production do
+  gem 'pg', '~> 1.2', '>= 1.2.3'
+end
+
 group :development do
   # Access an interactive console on exception pages or by calling 'console' anywhere in the code.
   gem 'web-console', '>= 3.3.0'
