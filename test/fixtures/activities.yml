@@ -1,0 +1,21 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  title: MyString
+  content: 
+  user: one
+  is_available: false
+  begin_datetime: 2020-12-15 02:49:36
+  finish_datetime: 2020-12-15 02:49:36
+  location: MyString
+  buy: false
+
+two:
+  title: MyString
+  content: 
+  user: two
+  is_available: false
+  begin_datetime: 2020-12-15 02:49:36
+  finish_datetime: 2020-12-15 02:49:36
+  location: MyString
+  buy: false
