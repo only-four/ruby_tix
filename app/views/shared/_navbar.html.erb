@@ -1,6 +1,6 @@
 <% if current_user %>
 
-  <select name="current_user.account_name" id="current_user.account_name">
+  <select name="current_user_account_name" class="current_user_account_name">
     <option value="1"  selected="selected"><%= current_user.account_name %></option>
     <option value="2"><%= link_to('修改密碼', edit_registration_path(:user)) %></option>
     <option value="3">收藏的活動</option>
@@ -15,7 +15,13 @@
         
 <% else %>
 
-  <%= link_to('會員註冊', new_registration_path(:user)) %> |
-  <%= link_to('會員登入', new_session_path(:user)) %>
+  <button>
+    <%= link_to('會員註冊', new_registration_path(:user)) %> 
+  </button>
+
+  <button>
+    <%= link_to('會員登入', new_session_path(:user)) %>
+  </button>
+
 
 <% end %>
