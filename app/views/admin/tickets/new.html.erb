@@ -1,7 +1,51 @@
+<h2>新增活動時間</h2>
+<%= form_for(@ticket) do |f|%>
+  <div>
+    <%= f.label:begin_datetime, '開始時間' %>
+  </div>
+
+  <div>
+    <%= f.date_field:begin_datetime%>
+    <%= f.time_field:begin_datetime%>
+  </div>
+
+  <div>
+    <%= f.label:finish_datetime, '結束時間' %>
+  </div>
+
+  <div>
+    <%= f.date_field:finish_datetime%>
+    <%= f.time_field:finish_datetime%>
+  </div>
+<% end %>
+
+
 <h2>新增活動票券</h2>
 <%= form_for(@ticket) do |f|%>
-  <%= f.label:title %>
-  <%= f.text_field:title%>
-  <%= f.label:price%>
-  <%= f.text_field:price%>
+  <div>
+    <%= f.label:title, '票券名稱' %>
+    <%= f.label:quantity, '數量' %>
+    <%= f.label:price, '票價' %>
+  </div>
+
+  <div>
+    <%= f.text_field:title%>
+    <%= f.number_field:quantity, placeholder: '數量' %>
+    <%= f.number_field:price, placeholder: '票價' %>
+    <%= link_to '#' do %>
+      <i class="far fa-trash-alt new-ticket-delete-btn"></i>
+    <% end %>
+  </div>
+
+  <div>
+    <%= link_to '#' do %>
+      <i class="fas fa-plus-circle">付費票</i>
+    <% end %>
+  </div>
+
+  <div>
+    <%= link_to '#' do %>
+      <i class="fas fa-plus-circle">免費票</i>
+    <% end %>
+  </div>
 <% end %>
