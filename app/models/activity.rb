@@ -1,3 +1,4 @@
 class Activity < ApplicationRecord
-  belongs_to :user
+  has_many :users
+  has_many :activity_users
 end
