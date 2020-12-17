@@ -17,35 +17,47 @@
     <%= f.date_field:finish_datetime%>
     <%= f.time_field:finish_datetime%>
   </div>
+
+
+  <%# ticket_types nested form %>
+
+  <h2>新增活動票券</h2>
+  <%= f.fields_for :ticket_types do |tt|%>
+    <div>
+      <%= tt.label:title, '票券名稱' %>
+      <%= tt.label:quantity, '數量' %>
+      <%= tt.label:price, '票價' %>
+    </div>
+
+    <div class="fieldsetContainer">
+      <fieldset id="0">
+        <%= tt.text_field:title%>
+        <%= tt.number_field:quantity, placeholder: '數量' %>
+        <%= tt.number_field:price, placeholder: '票價' %>
+
+        <%= link_to '#' do %>
+          <i class="far fa-trash-alt new-ticket-delete-btn"></i>
+        <% end %>
+      </div>
+      </fieldset>
+
+    <div class= "addTicket" >
+      <%= link_to '#' do %>
+        <i class="fas fa-plus-circle">付費票</i>
+      <% end %>
+    </div>
+
+    <div>
+      <%= link_to '#' do %>
+        <i class="fas fa-plus-circle">免費票</i>
+      <% end %>
+    </div>
+  <% end %>
+
+  <%# ticket_types form end %>
+
+  <%= f.button :submit %>
+
+
 <% end %>
 
-
-<h2>新增活動票券</h2>
-<%= form_for(@ticket) do |f|%>
-  <div>
-    <%= f.label:title, '票券名稱' %>
-    <%= f.label:quantity, '數量' %>
-    <%= f.label:price, '票價' %>
-  </div>
-
-  <div>
-    <%= f.text_field:title%>
-    <%= f.number_field:quantity, placeholder: '數量' %>
-    <%= f.number_field:price, placeholder: '票價' %>
-    <%= link_to '#' do %>
-      <i class="far fa-trash-alt new-ticket-delete-btn"></i>
-    <% end %>
-  </div>
-
-  <div>
-    <%= link_to '#' do %>
-      <i class="fas fa-plus-circle">付費票</i>
-    <% end %>
-  </div>
-
-  <div>
-    <%= link_to '#' do %>
-      <i class="fas fa-plus-circle">免費票</i>
-    <% end %>
-  </div>
-<% end %>
