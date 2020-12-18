@@ -19,7 +19,7 @@ require("channels")
 import { addTicketType } from 'addTicketType'
 
 document.addEventListener('turbolinks:load', ()=> {
-  if (document.querySelector('#fieldsetContainer')) {
-    addTicketType()
-  }
+  // if (document.querySelector('#fieldsetContainer')) {
+  //   addTicketType()
+  // }
 })
