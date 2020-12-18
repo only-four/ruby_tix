@@ -7,6 +7,13 @@ require("@rails/ujs").start()
 require("turbolinks").start()
 require("@rails/activestorage").start()
 require("channels")
+import 'jquery'
+
+$().ready(function(){
+  console.log("You're so sweet!")
+})
+
+
 require("navbar")
 
 

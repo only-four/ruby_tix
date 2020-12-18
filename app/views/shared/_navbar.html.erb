@@ -2,10 +2,10 @@
 
   <select name="current_user_account_name" class="current_user_account_name">
     <option value="1"  selected="selected"><%= current_user.account_name %></option>
-    <option value="2"><%= link_to('修改密碼', edit_registration_path(:user)) %></option>
+    <option value="2">修改密碼</option>
     <option value="3">收藏的活動</option>
     <option value="4">檢視訂單</option>
-    <option value="5">舉辦活動</option>
+    <option value="5" class="hold_activity">舉辦活動</option>
   </select>
 
   <button>
