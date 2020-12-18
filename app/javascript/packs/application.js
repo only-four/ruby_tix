@@ -15,3 +15,11 @@ require("channels")
 //
 // const images = require.context('../images', true)
 // const imagePath = (name) => images(name, true)
+
+import { addTicketType } from 'addTicketType'
+
+document.addEventListener('turbolinks:load', ()=> {
+  if (document.querySelector('#fieldsetContainer')) {
+    addTicketType()
+  }
+})

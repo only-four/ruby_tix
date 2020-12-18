@@ -29,20 +29,21 @@
       <%= tt.label:price, '票價' %>
     </div>
 
-    <div class="fieldsetContainer">
+    <div id="fieldsetContainer">
       <fieldset id="0">
         <%= tt.text_field:title%>
         <%= tt.number_field:quantity, placeholder: '數量' %>
         <%= tt.number_field:price, placeholder: '票價' %>
 
-        <%= link_to '#' do %>
+        <button id="removeTicketType">
           <i class="far fa-trash-alt new-ticket-delete-btn"></i>
-        <% end %>
+        </button>
+
       </div>
       </fieldset>
 
-    <div class= "addTicket" >
-      <%= link_to '#' do %>
+    <div id= "addTicketType" >
+      <%= link_to '#', id:"addTicketType" do %>
         <i class="fas fa-plus-circle">付費票</i>
       <% end %>
     </div>
