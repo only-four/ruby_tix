@@ -1,27 +1,36 @@
 <% if current_user %>
 
-  <select name="current_user_account_name" class="current_user_account_name">
-    <option value="1"  selected="selected"><%= current_user.account_name %></option>
-    <option value="2">修改密碼</option>
-    <option value="3">收藏的活動</option>
-    <option value="4">檢視訂單</option>
-    <option value="5" class="hold_activity">舉辦活動</option>
-  </select>
+  <section>
+    <select name="current_user_account_name" class="current_user_account_name">
+      <option value="1"  selected="selected"><%= current_user.account_name %></option>
+      <option value="2" class="member_centre">會員中心</option>
+      <option value="3" class="activity_record">活動紀錄</option>
+      <option value="4" class="hold_activity">舉辦活動</option>
+      <option value="5" class="shopping_cart">購物車</option>
 
-  <button>
-    <%= link_to('登出', destroy_user_session_path, :method => :delete) %> 
-  </button>
+    </select>
+
+    <button>
+      <%= link_to('登出', destroy_user_session_path, :method => :delete) %> 
+    </button>
+  </section>
+
+
 
         
 <% else %>
 
-  <button>
-    <%= link_to('會員註冊', new_registration_path(:user)) %> 
-  </button>
+  <section>
+    <button>
+      <%= link_to('會員註冊', new_registration_path(:user)) %> 
+    </button>
 
-  <button>
-    <%= link_to('會員登入', new_session_path(:user)) %>
-  </button>
+    <button>
+      <%= link_to('會員登入', new_session_path(:user)) %>
+    </button>
+  </section>
+
+
 
 
 <% end %>
