@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_12_15_103947) do
+ActiveRecord::Schema.define(version: 2020_12_17_114227) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -29,6 +29,15 @@ ActiveRecord::Schema.define(version: 2020_12_15_103947) do
     t.index ["user_id"], name: "index_activities_on_user_id"
   end
 
+  create_table "activity_users", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "activity_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["activity_id"], name: "index_activity_users_on_activity_id"
+    t.index ["user_id"], name: "index_activity_users_on_user_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -38,7 +47,7 @@ ActiveRecord::Schema.define(version: 2020_12_15_103947) do
     t.string "password"
     t.string "name"
     t.string "account_name"
-    t.string "creator"
+    t.boolean "creator"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "fb_uid"
@@ -49,4 +58,6 @@ ActiveRecord::Schema.define(version: 2020_12_15_103947) do
   end
 
   add_foreign_key "activities", "users"
+  add_foreign_key "activity_users", "activities"
+  add_foreign_key "activity_users", "users"
 end
