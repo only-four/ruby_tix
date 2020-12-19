@@ -61,7 +61,7 @@ ActiveRecord::Schema.define(version: 2020_12_20_053810) do
     t.string "password"
     t.string "name"
     t.string "account_name"
-    t.string "creator"
+    t.boolean "creator"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "fb_uid"
