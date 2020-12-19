@@ -22,43 +22,65 @@
   <%# ticket_types nested form %>
 
   <h2>新增活動票券</h2>
-  <%= f.fields_for :ticket_types do |tt|%>
+
+  <div data-controller="ticket-types-form">
     <div>
-      <%= tt.label:title, '票券名稱' %>
-      <%= tt.label:quantity, '數量' %>
-      <%= tt.label:price, '票價' %>
+      <label>票券名稱</label>
+      <label>數量</label>
+      <label>票價</label>
     </div>
 
-    <div id="fieldsetContainer">
-      <fieldset id="0">
-        <%= tt.text_field:title%>
-        <%= tt.number_field:quantity, placeholder: '數量' %>
-        <%= tt.number_field:price, placeholder: '票價' %>
+    <template data-ticket-types-form-target="form">
+      <%= f.fields_for :ticket_types, TicketType.new, child_index: 'NEW_FORM' do |ticket_types_form|%>  
+        <div>
+          <%= ticket_types_form.text_field:title%>
+          <%= ticket_types_form.number_field:quantity, placeholder: '數量', min: 0 %>
+          <%= ticket_types_form.number_field:price, placeholder: '票價', min:0 %>
 
-        <button id="removeTicketType">
-          <i class="far fa-trash-alt new-ticket-delete-btn"></i>
-        </button>
+          <%= link_to '#' do %>
+            <i class="far fa-trash-alt new-ticket-delete-btn"></i>
+          <% end %>
 
-      </div>
-      </fieldset>
+        </div>
+      <% end %>
+    </template>
 
-    <div id= "addTicketType" >
-      <%= link_to '#', id:"addTicketType" do %>
+
+      <%= f.fields_for :ticket_types do |ticket_types_form|%>  
+        <div>
+          <%= ticket_types_form.text_field:title%>
+          <%= ticket_types_form.number_field:quantity, placeholder: '數量', min: 0 %>
+          <%= ticket_types_form.number_field:price, placeholder: '票價', min:0 %>
+
+          <%= link_to '#' do %>
+            <i class="far fa-trash-alt new-ticket-delete-btn"></i>
+          <% end %>
+
+        </div>
+      <% end %>
+
+
+    <div data-action = "click->ticket-types-form#addTicketType" data-ticket-types-form-target="addBtn" >
+      <%= link_to '#' do %>
         <i class="fas fa-plus-circle">付費票</i>
       <% end %>
     </div>
 
-    <div>
+    <div >
       <%= link_to '#' do %>
         <i class="fas fa-plus-circle">免費票</i>
       <% end %>
     </div>
+
+
+    <%# ticket_types form end %>
+
+    <%= f.button :submit %>
+
+
   <% end %>
 
-  <%# ticket_types form end %>
 
-  <%= f.button :submit %>
+  </div>
 
-
-<% end %>
 
