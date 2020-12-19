@@ -8,8 +8,17 @@ export default class extends Controller {
     
     let form = this.formTarget.innerHTML.replace(/NEW_FORM/g, new Date().getTime());
     this.addBtnTarget.insertAdjacentHTML('beforebegin', form);
-    
-    // console.log(form);
+  }
+
+  removeTicketType(event){
+    event.preventDefault();
+    let ticket_type = event.target.closest(".ticketType-form");
+    if (ticket_type.dataset.newRecord === 'true') {
+      ticket_type.remove();
+    } else {
+      ticket_type.querySelector("input[name*='_destroy]").value = 1;
+      ticket_type.style.display = 'none';
+    }
   }
 
 

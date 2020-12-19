@@ -32,7 +32,7 @@
 
     <template data-ticket-types-form-target="form">
       <%= f.fields_for :ticket_types, TicketType.new, child_index: 'NEW_FORM' do |ticket_types_form|%>  
-        <div>
+        <div class="ticketType-form" new-ticket_types ="<%= ticket_types_form.object.new_record? %>" >
           <%= ticket_types_form.text_field:title%>
           <%= ticket_types_form.number_field:quantity, placeholder: '數量', min: 0 %>
           <%= ticket_types_form.number_field:price, placeholder: '票價', min:0 %>
@@ -47,14 +47,16 @@
 
 
       <%= f.fields_for :ticket_types do |ticket_types_form|%>  
-        <div>
+        <div class="ticketType-form" new-ticket_types ="<%= ticket_types_form.object.new_record? %>" >
           <%= ticket_types_form.text_field:title%>
           <%= ticket_types_form.number_field:quantity, placeholder: '數量', min: 0 %>
           <%= ticket_types_form.number_field:price, placeholder: '票價', min:0 %>
 
-          <%= link_to '#' do %>
+          <%= link_to '#', data: { action: 'ticket-types-form#removeTicketType' } do %>
             <i class="far fa-trash-alt new-ticket-delete-btn"></i>
           <% end %>
+
+          <%= ticket_types_form.hidden_field :_destroy %>
 
         </div>
       <% end %>

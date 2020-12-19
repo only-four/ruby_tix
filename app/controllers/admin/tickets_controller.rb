@@ -16,7 +16,7 @@ class Admin::TicketsController < ApplicationController
 
   private
   def ticket_params
-    params.require(:ticket).permit(:begin_datetime, :finish_datetime, ticket_types_attributes: [:title, :quantity, :price,:_destroy])
+    params.require(:ticket).permit(:begin_datetime, :finish_datetime, ticket_types_attributes: [:id, :title, :quantity, :price,:_destroy])
   end
 
 
