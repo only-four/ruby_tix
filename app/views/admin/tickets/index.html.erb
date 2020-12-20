@@ -1,30 +1,33 @@
-<%= button_to '新增票券', new_admin_ticket_path, method: 'get' %>
+<h1 class="title">票券列表</h1>
 
-
-<br>
-<h1 class="title">票券</h1>
-
-<table class="table is-fullwidth">
-  <thead>
-    <tr class="t1">
+<table class="table table-hover">
+  <thead class="table-dark">
+    <tr>
       <th>活動名稱</th>
       <th>票券id</th>
+      <th>票券種類</th>
       <th>數量</th>
       <th>票價</th>
+      <th></th>
     </tr>
   </thead>
+
   <tbody>
-    <% @tickets.each do |ticket| %>
+    <% @ticket_types.each do |ticket_type| %>
       <tr>
         <td><%= link_to '五倍電影節ex'%></td>
-        <td><%= ticket.id%></td>
+        <td><%= ticket_type.ticket_id %></td>
+        <td><%= ticket_type.title %></td>
+        <td><%= ticket_type.quantity %></td>
+        <td>＄<%= ticket_type.price %></td>
         <td>
-          <%= link_to "編輯", edit_admin_ticket_path(ticket), class: 'button is-light is-small' %>
-          <%= link_to "刪除", admin_ticket_path(ticket), method: 'delete', data: { confirm: '確認刪除?!' } %>
-        </td>
-      </tr>
+          <%= link_to "編輯", edit_admin_ticket_path(ticket_type.ticket), class: 'button is-light is-small' %>
+          <%= link_to "刪除", admin_ticket_path(ticket_type.ticket), method: 'delete', data: { confirm: '確認刪除?!' } %>
+        </td>     
+      </tr> 
     <% end %>
   </tbody>
 </table>
 
+<%= button_to '新增票券', new_admin_ticket_path, method: 'get' %>
 
