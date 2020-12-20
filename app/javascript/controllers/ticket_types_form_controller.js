@@ -12,8 +12,8 @@ export default class extends Controller {
 
   removeTicketType(event){
     event.preventDefault();
-    let ticket_type = event.target.closest(".ticketType-form");
-    if (ticket_type.dataset.newRecord === 'true') {
+    let ticket_type = event.target.closest('.ticketType-form');
+    if (ticket_type.dataset.newRecord == 'true') {
       ticket_type.remove();
     } else {
       ticket_type.querySelector("input[name*='_destroy]").value = 1;
