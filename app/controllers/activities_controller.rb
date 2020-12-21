@@ -31,6 +31,7 @@ class ActivitiesController < ApplicationController
       render :edit
     end
       
+    
   end
 
   private
@@ -40,6 +41,6 @@ class ActivitiesController < ApplicationController
        :limit, ticket_types_attributes: [:id, :title, :content, :quantity, :price, :_destroy],
        :free_ticket, :vip_ticket, :pr_ticket )
   end
-  
+
 end
 
