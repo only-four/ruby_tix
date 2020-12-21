@@ -23,12 +23,14 @@ class ActivitiesController < ApplicationController
 
   def update
     @activity= Activity.find(params[:id])
+    # @activity = Activity.find_by(id: params[:id])  
     
     if @activity.update(activity_params)
       redirect_to activity_ticket_types_path(@activity)      
     else
       render :edit
     end
+      
   end
 
   private
@@ -39,6 +41,3 @@ class ActivitiesController < ApplicationController
   end
 end
 
-
-
-end
