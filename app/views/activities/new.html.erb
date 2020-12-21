@@ -1,69 +1,7 @@
 <h1>新增活動</h1>
-<%= form_for(@candidate) do |f| %>
-<h3>基本資訊</h3>
-  <%= f.label :user, "主辦單位" %>
-  <%= f.text_field :user %> <br />
-  <%= f.label :title, "活動名稱" %>
-  <%= f.text_field :title %> <br />
 
-<h3>時間地點</h3>
-  <%= f.label :begin_datetime, "開始時間" %>
-  <%= f.datetime_select :begin_datetime %> <br />
-  <%= f.label :finish_datetime, "結束時間" %>
-  <%= f.datetime_field :finish_datetime %> <br />
-  <%= f.label :location, "結束時間" %>
-  <%= f.text_field :location %> <br />
+<%= render "form", activity: @activity %>
 
-<h3>活動內容</h3>
-  <%= f.label :content, "活動說明" %>
-  <%= 請完整說明你的活動內容  %>
-  <%= f.text_area :content %> <br />
-
-  <%= f.label :brief, "活動摘要" %>   <%# model還沒建  %>
-  <%= 此處的內容將作為活動欄位上的簡要介紹，以及Google搜尋的簡介說明  %>
-  <%= f.text_area :brief %> <br />
-  <%= f.label :tag, "活動標籤" %>   
-  <%= f.text_field :tag %><br />  <%# model還沒建  %>
-  <%= f.label :link, "參考連結" %>  
-  <%= "加上相關資訊，如 Facebook 或 Instagram，讓使用者能更瞭解此活動" %>    
-  <%= f.text_field :link %><br />  <%# model還沒建  %>
-  <%= f.label :form, "活動形式" %>          <%# 線上/線下（戶外）/線下（室內）/其他 %>
-  <%= f.collection_select :form %><br />  <%# model還沒建  %>
-  <%= f.label :notice, "注意事項" %>         
-  <%= f.text_area :notice %><br />  <%# model還沒建  %>
-
-
-<h3>聯絡方式</h3>
-  <%= f.label :phone, "電話" %>   
-  <%= f.phone_field :phone %><br />  <%# model還沒建  %>
-  <%= f.label :email, "信箱" %>   
-  <%= f.email_field :email %><br />  <%# model還沒建  %>
-  <%= f.label :other_contect, "其他聯絡方式" %>
-  <%= f.text_field :other_contect %> <br /> <%# model還沒建  %>
-
-<h3>相關限制</h3>
-  <%= f.label :limit, "人數限制" %>   
-  <%= f.number_field :limit %><br />  <%# model還沒建  %>
-
-
-<h3>活動票券</h3>
-  <%= f.label :free_ticket, "免費票" %>   
-  <%= f.number_field :free_ticket %><br />  <%# model還沒建  %>
-  <%= 單價 %>
-  <%= 總價 %>
-  <%= f.label :vip_ticket, "貴賓票" %>   
-  <%= f.number_field :vip_ticket %><br />  <%# model還沒建  %>
-  <%= 單價 %>
-  <%= 總價 %>
-  <%= f.label :pr_ticket, "公關票" %>   
-  <%= f.number_field :pr_ticket %><br />  <%# model還沒建  %>
-  <%= 單價 %>
-  <%= 總價 %>
-
-  <%= f.submit %>
-
-<% end  %>
 <br />
 
 <%= link_to '回到活動列表', activities_path %>
-<%  %>
