@@ -16,7 +16,7 @@ class ActivitiesController < ApplicationController
   end
   
   def edit
-    @activities = Activity.edit    
+    @activity = Activity.find_by(id: params[:id])    
   end
 
   private
@@ -27,6 +27,3 @@ class ActivitiesController < ApplicationController
   end
 end
 
-
-
-end
