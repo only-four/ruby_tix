@@ -52,6 +52,28 @@ ActiveRecord::Schema.define(version: 2020_12_20_053810) do
     t.string "state"
   end
 
+  create_table "ticket_types", force: :cascade do |t|
+    t.string "title"
+    t.text "content"
+    t.integer "quantity"
+    t.integer "price"
+    t.bigint "ticket_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["ticket_id"], name: "index_ticket_types_on_ticket_id"
+  end
+
+  create_table "tickets", force: :cascade do |t|
+    t.string "location"
+    t.integer "total_price"
+    t.string "notice"
+    t.string "qr_code"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "begin_datetime"
+    t.datetime "finish_datetime"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -61,7 +83,7 @@ ActiveRecord::Schema.define(version: 2020_12_20_053810) do
     t.string "password"
     t.string "name"
     t.string "account_name"
-    t.string "creator"
+    t.boolean "creator"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "fb_uid"
@@ -74,4 +96,5 @@ ActiveRecord::Schema.define(version: 2020_12_20_053810) do
   add_foreign_key "activities", "users"
   add_foreign_key "activity_users", "activities"
   add_foreign_key "activity_users", "users"
+  add_foreign_key "ticket_types", "tickets"
 end
