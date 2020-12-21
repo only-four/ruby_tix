@@ -1,15 +1,9 @@
-<h2>新增活動</h2>
+<h1>新增活動</h1>
 <%= render "form", activity: @activity %>
-
+<br />
+<%= "=====上面form，下面activity_form=====" %>
+<br />
 <%= render 'activity_form', activity: @activity %>
-<%= form_for(@activity) do |f| %>
-
-<h3>基本資訊</h3>
-  <%= f.label :user, "主辦單位" %>
-  <%= f.text_field :user %> <br />
-  <%= f.label :title, "活動名稱" %>
-  <%= f.text_field :title %> <br />
-
 
 
 <br />
