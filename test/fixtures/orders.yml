@@ -1,0 +1,21 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  activity_id: 1
+  user_id: 1
+  transaction_id: 1
+  ticket_id: 1
+  num: 1
+  price: 1
+  tel: MyString
+  address: MyString
+
+two:
+  activity_id: 1
+  user_id: 1
+  transaction_id: 1
+  ticket_id: 1
+  num: 1
+  price: 1
+  tel: MyString
+  address: MyString
