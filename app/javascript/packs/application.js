@@ -18,9 +18,8 @@ require("channels")
 
 // stimulus
 import "controllers"
-
-// bootstrap
-
-//= require jquery3
-//= require popper
-//= require bootstrap-sprockets
+import 'bootstrap'
+import 'bootstrap/dist/css/bootstrap.css'
+import 'jquery'
+import $ from 'jquery';
+window.$ = $
