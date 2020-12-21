@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_12_15_103947) do
+ActiveRecord::Schema.define(version: 2020_12_20_053810) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -27,6 +27,29 @@ ActiveRecord::Schema.define(version: 2020_12_15_103947) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["user_id"], name: "index_activities_on_user_id"
+  end
+
+  create_table "activity_users", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "activity_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["activity_id"], name: "index_activity_users_on_activity_id"
+    t.index ["user_id"], name: "index_activity_users_on_user_id"
+  end
+
+  create_table "orders", force: :cascade do |t|
+    t.integer "activity_id"
+    t.integer "user_id"
+    t.integer "transaction_id"
+    t.integer "ticket_id"
+    t.integer "num"
+    t.integer "price"
+    t.string "tel"
+    t.string "address"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.string "state"
   end
 
   create_table "users", force: :cascade do |t|
@@ -49,4 +72,6 @@ ActiveRecord::Schema.define(version: 2020_12_15_103947) do
   end
 
   add_foreign_key "activities", "users"
+  add_foreign_key "activity_users", "activities"
+  add_foreign_key "activity_users", "users"
 end

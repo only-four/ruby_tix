@@ -9,4 +9,12 @@ Rails.application.routes.draw do
   resources :pages
   root to: 'pages#index'
 
+  resources :orders, only:[:index, :show, :create, :destroy]
+
+  resource :cart, only:[:index, :destroy] do
+    collection do
+      post :add, path:'add/:id'
+    end
+  end
+
 end
