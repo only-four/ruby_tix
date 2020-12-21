@@ -1,11 +1,12 @@
 <h1>活動列表</h1>
-請選擇想參與的活動
+請選擇想參與的活動<br />
 
 <%= link_to "新增活動", new_activity_path %>
 
 <table>
   <thead>
     <tr>
+      <td>參加*</td>
       <td>活動名稱</td>
       <td>活動內容</td>
       <td>主辦單位</td>
@@ -14,13 +15,14 @@
       <td>結束時間</td>
       <td>活動地點</td>
       <td>購買狀態</td>    <%# 我想參加！/可參加時告訴我 %>
-      <td></td>
+      <td>調整**</td>
     </tr>
   </thead>
   
   <tbody>
     <% @activities.each do |activity| %>
     <tr>
+      <td><%= link_to "我要參加這個活動", "#" %></td>
       <td> <%= activity.title %> </td>
       <td> <%= activity.content  %> </td>
       <td> <%= activity.user_id  %> </td>
@@ -30,6 +32,10 @@
       <td> <%= activity.location  %> </td>
       <td> <%= activity.buy  %> </td>
       <td><%= link_to '票券種類', activity_ticket_types_path(activity)%></td>
+      <td>
+        <%= link_to "編輯", edit_activity_path(activity) %>
+        <%= link_to "刪除", activity_path(activity), method: "delete", data: {confirm: "確認刪除"} %>
+      </td>
     </tr>   
     <%end %>
   </tbody>
