@@ -72,6 +72,23 @@
 
                 <%= form.label:content, '票券說明'%>
                 <%= form.text_area:content, rows: "5" %>
+                <div>
+                  <%= form.label:begin_date, '售票開始' %>
+                </div>
+
+                <div>
+                  <%= form.date_field:begin_date%>
+                  <%= form.time_field:begin_date%>
+                </div>
+
+                <div>
+                  <%= form.label:finish_date, '售票截止' %>
+                </div>
+
+                <div>
+                  <%= form.date_field:finish_date%>
+                  <%= form.time_field:finish_date%>
+                </div>
               </div>
             </div>
             <% end %>
