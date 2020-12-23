@@ -1,0 +1,104 @@
+<%= form_for @activity do |f|%>
+  <div>
+    <%= f.label:begin_datetime, '開始時間' %>
+  </div>
+
+  <div>
+    <%= f.date_field:begin_datetime%>
+    <%= f.time_field:begin_datetime%>
+  </div>
+
+  <div>
+    <%= f.label:finish_datetime, '結束時間' %>
+  </div>
+
+  <div>
+    <%= f.date_field:finish_datetime%>
+    <%= f.time_field:finish_datetime%>
+  </div>
+
+
+    <%# ticket_types nested form %>
+
+  <h2>新增活動票券</h2>
+
+    <div>
+      <label>票券名稱</label>
+      <label>數量</label>
+      <label>票價</label>
+    </div>
+
+    <%# add form %>
+    <div data-controller="ticket-types-form">
+      <template data-ticket-types-form-target="form">
+        <%= f.fields_for :ticket_types, TicketType.new, child_index: 'NEW_FORM' do |new_form|%>  
+          <div class="ticketType-form" new-ticket_types ="<%= new_form.object.new_record? %>" >
+            <%= new_form.text_field:title%>
+            <%= new_form.number_field:quantity, placeholder: '數量', min: 0 %>
+            <%= new_form.number_field:price, placeholder: '票價', min:0 %>
+
+            <%= link_to '#' do %>
+              <i class="fas fa-chevron-circle-down"></i>
+            <% end %>            
+
+            <%= link_to '#', data: { action: 'ticket-types-form#removeTicketType' } do %>
+              <i class="far fa-trash-alt new-ticket-delete-btn"></i>
+            <% end %>
+            <%= new_form.hidden_field :_destroy %>
+
+          </div>
+        <% end %>
+      </template>
+
+        <%# current form %>
+        <%= f.fields_for :ticket_types do |form|%>  
+          <div class="ticketType-form" new-ticket_types ="<%= form.object.new_record? %>" >
+            <%= form.text_field:title%>
+            <%= form.number_field:quantity, placeholder: '數量', min: 0 %>
+            <%= form.number_field:price, placeholder: '票價', min:0 %>
+
+
+
+            <%= link_to '#', class:"card-link", data:{toggle:"collapse"}, role:"button", aria:{expanded:"false"}, data:{target:"#e"}, aria:{controls:"collapseExample"} do %>
+              <i class="fas fa-chevron-circle-down"></i>
+            <% end %>
+
+            <%= link_to '#', data: { action: 'ticket-types-form#removeTicketType' } do %>
+              <i class="far fa-trash-alt new-ticket-delete-btn"></i>
+
+
+            <div class="collapse" id="e" style="width: 37rem;">
+              <div class="card card-body">
+
+                <%= form.label:content, '票券說明'%>
+                <%= form.text_area:content, rows: "5" %>
+              </div>
+            </div>
+            <% end %>
+
+            <%= form.hidden_field :_destroy %>
+
+          </div>
+        <% end %>
+
+
+
+        <div data-action = "click->ticket-types-form#addTicketType" data-ticket-types-form-target="addBtn" >
+          <%= link_to '#' do %>
+            <i class="fas fa-plus-circle">付費票</i>
+          <% end %>
+        </div>
+
+        <div >
+          <%= link_to '#' do %>
+            <i class="fas fa-plus-circle">免費票</i>
+          <% end %>
+        </div>
+    </div>
+
+
+    <%# ticket_types form end %>
+  <%= render 'ticket_types_form' %>
+
+  <%= f.submit '送出' %>
+  <% end %>
