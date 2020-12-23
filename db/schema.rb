@@ -26,6 +26,20 @@ ActiveRecord::Schema.define(version: 2020_12_25_120348) do
     t.boolean "buy"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "hostname"
+    t.text "brief"
+    t.string "tag"
+    t.text "link"
+    t.string "form"
+    t.text "notice"
+    t.string "phone"
+    t.string "email"
+    t.string "other_contact"
+    t.integer "limit"
+    t.string "ticket_type"
+    t.integer "quantity"
+    t.integer "price"
+    t.integer "total_price"
     t.index ["user_id"], name: "index_activities_on_user_id"
   end
 
