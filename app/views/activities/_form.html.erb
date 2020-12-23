@@ -1,10 +1,13 @@
-<%= form_for(@activity) do |f| %>
+<%= form_for(@activities) do |f| %>
+<div class="activities">
 <h3>基本資訊</h3>
-  <%= f.label :users, "主辦單位" %>
-  <%= f.text_field :users %> <br />
+  <%= f.label :hostname, "主辦單位" %>   <%# model還沒建  %>
+  <%= f.text_field :hostname %> <br />
   <%= f.label :title, "活動名稱" %>
   <%= f.text_field :title %> <br />
+</div>
 
+<div class="activities">
 <h3>時間地點</h3>
   <%= f.label :begin_datetime, "開始時間" %>
   <%= f.datetime_select :begin_datetime %> <br />
@@ -12,14 +15,16 @@
   <%= f.datetime_field :finish_datetime %> <br />
   <%= f.label :location, "結束時間" %>
   <%= f.text_field :location %> <br />
+</div>
 
+<div class="activities">
 <h3>活動內容</h3>
   <%= f.label :content, "活動說明" %>
-  <%= 請完整說明你的活動內容  %>
+  <%= "請完整說明你的活動內容"  %>
   <%= f.text_area :content %> <br />
 
   <%= f.label :brief, "活動摘要" %>   <%# model還沒建  %>
-  <%= 此處的內容將作為活動欄位上的簡要介紹，以及Google搜尋的簡介說明  %>
+  <%= "此處的內容將作為活動欄位上的簡要介紹，以及Google搜尋的簡介說明"  %>
   <%= f.text_area :brief %> <br />
   <%= f.label :tag, "活動標籤" %>   
   <%= f.text_field :tag %><br />  <%# model還沒建  %>
@@ -30,35 +35,58 @@
   <%= f.collection_select :form %><br />  <%# model還沒建  %>
   <%= f.label :notice, "注意事項" %>         
   <%= f.text_area :notice %><br />  <%# model還沒建  %>
+</div>
 
-
+<div class="activities">
 <h3>聯絡方式</h3>
   <%= f.label :phone, "電話" %>   
   <%= f.phone_field :phone %><br />  <%# model還沒建  %>
   <%= f.label :email, "信箱" %>   
   <%= f.email_field :email %><br />  <%# model還沒建  %>
-  <%= f.label :other_contect, "其他聯絡方式" %>
-  <%= f.text_field :other_contect %> <br /> <%# model還沒建  %>
+  <%= f.label :other_contact, "其他聯絡方式" %>
+  <%= f.text_field :other_contact %> <br /> <%# model還沒建  %>
+</div>
 
+<div class="activities">
 <h3>相關限制</h3>
   <%= f.label :limit, "人數限制" %>   
   <%= f.number_field :limit %><br />  <%# model還沒建  %>
+</div>
 
-
-<h3>活動票券</h3>
-  <%= f.label :free_ticket, "免費票" %>   
-  <%= f.number_field :free_ticket %><br />  <%# model還沒建  %>
-  <%= 單價 %>
-  <%= 總價 %>
-  <%= f.label :vip_ticket, "貴賓票" %>   
-  <%= f.number_field :vip_ticket %><br />  <%# model還沒建  %>
-  <%= 單價 %>
-  <%= 總價 %>
-  <%= f.label :pr_ticket, "公關票" %>   
-  <%= f.number_field :pr_ticket %><br />  <%# model還沒建  %>
-  <%= 單價 %>
-  <%= 總價 %>
+<div class="activities">
+<h3>設定活動票券</h3>
+  <%= f.label :ticket_type, "票種名稱" %>   
+  <%= f.text_field :ticket_type %><br />  <%# model還沒建  %>
+  <%= f.labal :quantity ,"票券數量" %>   <%# model還沒建  各票種數量加總等於活動的人數限制 %> 
+  <%= f.number_field :quantity %><br />  <%# model還沒建  %>
+  <%= f.labal :price ,"單價" %>
+  <%= f.number_field :price %><br />  <%# model還沒建  %>
+  <%= f.labal :total_price ,"總價" %>
+  <%= f.number_field :total_price %><br />  <%# model還沒建  %>
+  <%= "============================" %>
+  <%= f.label :ticket_type, "票種名稱" %>   
+  <%= f.text_field :ticket_type %><br />  <%# model還沒建  %>
+  <%= f.labal :quantity ,"票券數量" %>   <%# model還沒建  各票種數量加總等於活動的人數限制 %> 
+  <%= f.number_field :quantity %><br />  <%# model還沒建  %>
+  <%= f.labal :price ,"單價" %>
+  <%= f.number_field :price %><br />  <%# model還沒建  %>
+  <%= f.labal :total_price ,"總價" %>
+  <%= f.number_field :total_price %><br />  <%# model還沒建  %>
+</div>
 
   <%= f.submit %>
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 <% end  %>
