@@ -1,0 +1,37 @@
+<h2>訂單列表</h2>
+
+# 待解決
+<% form_for(Order.new) do |form| %>
+<%= form.label:num %>
+<%= form.text_field:num %>
+
+<%= form.label:address %>
+<%= form.text_field:address %>
+<%end%>
+
+
+
+<table>
+  <thead>
+    <tr>
+      <td>訂單編號</td>
+      <td>活動名稱</td>
+      <td>活動日期</td>
+      <td>訂單金額</td>
+      <td>檢視完整訂單</td>
+    </tr>
+  </thead>
+
+  <tbody>
+  <% @orders.each do |item| %>
+    <tr>
+      <td><%= item.num %></td>
+      <td>活動名稱</td>
+      <td>活動日期</td>
+      <td><%= item.price %></td>
+      <td><%= link_to '檢視個別訂單', order_path(item.id) %></td>
+    </tr>
+  <%end%>
+  </tbody>
+
+</table>
