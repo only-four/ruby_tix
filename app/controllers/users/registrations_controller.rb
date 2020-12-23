@@ -12,9 +12,12 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # end
 
   # POST /resource
-  # def create
-  #   super
-  # end
+  def create
+    super
+    if params[:email] == nil
+      root_path 
+    end
+  end
 
   # GET /resource/edit
   # def edit
