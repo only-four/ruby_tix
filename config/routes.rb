@@ -18,4 +18,11 @@ Rails.application.routes.draw do
     end
   end
 
+  # 主辦方設定票券  
+  resources :activities, only:[] do
+    resources :ticket_types, except: [:show]
+  end
+
+  #使用者選則票券頁面
+  resources :ticket_types, only: [:choose_ticket]
 end
