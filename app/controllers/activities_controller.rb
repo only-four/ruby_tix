@@ -4,7 +4,7 @@ class ActivitiesController < ApplicationController
   end
 
   def new
-    @activity = Activity.new    
+    @activities = Activity.new    
   end
   def create
     @activity = Activity.new(activity_params)
