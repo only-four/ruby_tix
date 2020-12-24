@@ -47,16 +47,33 @@
 
           <%= link_to '#', data: { action: 'ticket-types-form#removeTicketType' } do %>
             <i class="far fa-trash-alt new-ticket-delete-btn"></i>
+          <% end %>
 
 
-          <div class="collapse" id="e" style="width: 37rem;">
+           <div class="collapse" id="e" style="width: 37rem;">
             <div class="card card-body">
+              <div>
+                <%= form.label:sell_start, '售票開始日'%>
+              </div>
+
+              <div>
+                <%= form.date_field:sell_start %>
+                <%= form.time_field:sell_start %>
+              </div>
+
+              <div>
+                <%= form.label:finish_datetime, '結束時間' %>
+              </div>
+
+              <div>
+                <%= form.date_field:sell_deadline %>
+                <%= form.time_field:sell_deadline %>
+              </div>
 
               <%= form.label:content, '票券說明'%>
               <%= form.text_area:content, rows: "5" %>
             </div>
           </div>
-          <% end %>
 
           <%= form.hidden_field :_destroy %>
 
