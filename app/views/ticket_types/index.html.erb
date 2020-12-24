@@ -1,2 +1,33 @@
-<h1>建立票券</h1>
-<%= button_to '新增票券種類', new_activity_ticket_type(activity_id)  %>
+<h1>請選擇票券</h1>
+
+  <% @ticket_types.each do |ticket| %>  
+    <div class="card" style="width: 38rem;">
+      <div class="card-body">
+        <h5 class="card-title"><%= ticket.title %></h5>
+        <h6 class="card-subtitle mb-2 text-muted">NT$<%= ticket.price %></h6>
+
+        <a class="card-link" data-toggle="collapse" href="#" role="button" aria-expanded="false" data-target="#e" aria-controls="collapseExample">更多資訊</a>
+
+        <%= link_to do %><i class="fas fa-plus-circle"></i><% end %>
+        <%= link_to do %><i class="fas fa-minus-circle"></i><% end %>
+               
+      </div>
+
+      <div class="collapse" id="e">
+        <div class="card card-body">
+          Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident.
+        </div>
+      </div>
+
+    </div>
+  <% end %>
+
+<script>
+  $('.collapse').collapse('toggle')
+</script>  
+  
+
+
+  
+
+
