@@ -3,7 +3,7 @@ class Order < ApplicationRecord
   
   aasm column: :state do
     state :pending, initial: true
-    state :paid, :refund, :completed
+    state :paid, :refunded, :completed
 
     event :pay do
       transitions from: :pending, to: :paid

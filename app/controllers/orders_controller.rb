@@ -19,8 +19,6 @@ class OrdersController < ApplicationController
     @order = Order.find_by(id:params[:id])
   end
 
-  private
-  clean_params = params.require(:order).permit(:address)
-  end
+  
 
 end

@@ -36,8 +36,11 @@ gem 'figaro', '~> 1.2'
 gem 'omniauth-facebook', '~> 8.0'
 # user/google api
 gem 'omniauth-google-oauth2', '~> 0.8.0'
-# order/aasm
+# order/state
 gem 'aasm', '~> 5.1', '>= 5.1.1'
+# shoppingcart/cash-flow/braintree
+gem 'braintree', '~> 3.1'
+gem 'hirb-unicode', '~> 0.0.5'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

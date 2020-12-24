@@ -15,6 +15,7 @@ Rails.application.routes.draw do
     collection do
       post :add, path:'add/:id'
     end
+    get :checkout
   end
 
 end
