@@ -14,6 +14,7 @@
       <td>結束時間</td>
       <td>活動地點</td>
       <td>購買狀態</td>    <%# 我想參加！/可參加時告訴我 %>
+      <td></td>
     </tr>
   </thead>
   
@@ -28,6 +29,7 @@
       <td> <%= activity.finish_datetime  %> </td>
       <td> <%= activity.location  %> </td>
       <td> <%= activity.buy  %> </td>
+      <td><%= link_to '票券種類', activity_ticket_types_path(activity)%></td>
     </tr>   
     <%end %>
   </tbody>

@@ -1,33 +1,33 @@
-<h1>請選擇票券</h1>
+<h1 class="title">票券列表</h1>
 
-  <% @ticket_types.each do |ticket| %>  
-    <div class="card" style="width: 38rem;">
-      <div class="card-body">
-        <h5 class="card-title"><%= ticket.title %></h5>
-        <h6 class="card-subtitle mb-2 text-muted">NT$<%= ticket.price %></h6>
+<table class="table table-hover">
+  <thead class="table-dark">
+    <tr>
+      <th>活動名稱</th>
+      <th>活動票券id</th>
+      <th>票券種類</th>
+      <th>數量</th>
+      <th>票價</th>
+      <th></th>
+    </tr>
+  </thead>
 
-        <a class="card-link" data-toggle="collapse" href="#" role="button" aria-expanded="false" data-target="#e" aria-controls="collapseExample">更多資訊</a>
-
-        <%= link_to do %><i class="fas fa-plus-circle"></i><% end %>
-        <%= link_to do %><i class="fas fa-minus-circle"></i><% end %>
-               
-      </div>
-
-      <div class="collapse" id="e">
-        <div class="card card-body">
-          Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident.
-        </div>
-      </div>
-
-    </div>
-  <% end %>
-
-<script>
-  $('.collapse').collapse('toggle')
-</script>  
-  
-
-
-  
+  <tbody>
+    <% @ticket_types.each do |ticket_type| %>
+      <tr>
+        <td><%= ticket_type.activity.title %></td>
+        <td><%= ticket_type.id %></td>
+        <td><%= ticket_type.title %></td>
+        <td><%= ticket_type.quantity %></td>
+        <td>＄<%= ticket_type.price %></td>
+        <td>
+          <%= link_to "編輯", edit_activity_path(ticket_type.activity_id), class: 'button is-light is-small' %>
+          <%= link_to "刪除", activity_ticket_type_path(id: ticket_type), method: 'delete', data: { confirm: '確認刪除?!' } %>
+          <%# <% byebug %>
+        </td>     
+      </tr> 
+    <% end %>
+  </tbody>
+</table>
 
 

@@ -19,7 +19,11 @@ Rails.application.routes.draw do
   end
 
   # 主辦方設定票券寫在activity new 頁面 暫定
+  resources :activities, only:[] do
+    resources :ticket_types
+  end
 
+  resources :ticket_types, only:[ :choose_ticket]
   #使用者選則票券頁面
-  resources :ticket_types, only: [:choose_ticket]
+  # get "/ticket_types/choose_ticket", to: "ticket_types#choose_ticket"
 end
