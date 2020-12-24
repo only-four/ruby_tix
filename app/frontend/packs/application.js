@@ -9,6 +9,12 @@ require("@rails/activestorage").start()
 require("channels")
 require("navbar")
 import 'jquery'
+require("styles")
+import "tailwindcss/tailwind.css"
+
+import "./assets/stylesheets/application.scss"
+
+
 
 
 // Uncomment to copy all static images under ../images to the output folder and reference

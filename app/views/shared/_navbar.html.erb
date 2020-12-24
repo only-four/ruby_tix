@@ -20,17 +20,54 @@
         
 <% else %>
 
-  <section>
-    <button>
-      <%= link_to('會員註冊', new_registration_path(:user)) %> 
-    </button>
+  <section class="nav-bar">
 
-    <button>
-      <%= link_to('會員登入', new_session_path(:user)) %>
-    </button>
+    <div class="search-bar">
+      <input type="text" class="search-input">
+      <button class="submit search-btn">搜尋</button>
+    </div>
+
+    <div>
+      <button>
+        <%= link_to('會員註冊', new_registration_path(:user)) %> 
+      </button>
+
+      <button>
+        <%= link_to('會員登入', new_session_path(:user)) %>
+      </button>
+    </div>
   </section>
 
 
 
 
 <% end %>
+
+<style>
+  .nav-bar {
+    display: flex;
+  }
+</style>
+
+
+
+<script>
+  document.addEventListener('DOMContentLoaded', function(){
+
+    const searchBtn = document.querySelector('.search-btn')
+
+    searchBtn.addEventListener('click', function() {
+      const searchInput = document.querySelector('.search-input').value
+      console.log(searchInput);
+      const searchAPI = window.location.origin
+      fetch(`${searchAPI}/pages/search.json?search=${searchInput}`)
+      // response.json可將得到的結果轉換成json格式
+      .then(response => response.json())
+      .then(result => console.log(result))
+      
+      ;
+    })
+  })
+
+
+</script>

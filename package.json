@@ -8,6 +8,7 @@
     "@rails/webpacker": "4.3.0",
     "autoprefixer": "^10.1.0",
     "postcss": "^8.2.1",
+    "postcss-import": "^14.0.0",
     "tailwindcss": "^2.0.2",
     "turbolinks": "^5.2.0"
   },
