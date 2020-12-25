@@ -25,16 +25,18 @@
     <%= "請完整說明你的活動內容"  %><br />
     <%= f.text_area :content %> <br />
 
-    <%= f.label :brief, "活動摘要" %>   <br />
-    <%= "此處的內容將作為活動欄位上的簡要介紹，以及Google搜尋的簡介說明"  %><br />
-    <%= f.text_area :brief %> <br />
-    <%= f.label :tag, "活動標籤" %>   
-    <%= f.text_field :tag %><br />  
-    <%= f.label :link, "參考連結" %>  <br />
-    <%= "加上相關資訊，如 Facebook 或 Instagram，讓使用者能更瞭解此活動"  %><br />
-    <%= f.text_field :link %><br />  
-    <%= f.label :form, "活動形式" %> 
-    <%= f.collection_select(:title, Activity.all, :id, :user_id)  %><br /> <br /> 
+  <%= f.label :brief, "活動摘要" %>   <br />
+  <%= "此處的內容將作為活動欄位上的簡要介紹，以及Google搜尋的簡介說明"  %><br />
+  <%= f.text_area :brief %> <br />
+  <%= f.label :tag, "活動標籤" %>   
+  <%= f.text_field :tag %><br />  
+  <%= f.label :link, "參考連結" %>  <br />
+  <%= "加上相關資訊，如 Facebook 或 Instagram，讓使用者能更瞭解此活動"  %><br />
+  <%= f.text_field :link %><br />  
+  <%= f.label :form, "活動形式" %> 
+  <%# <%= f.input :post_status, :collection => ["online", "offline", "other"]%>  %>
+  <%= f.collection_select(:title, Activity.all, :id, :user_id)  %>
+  <br /> <br /> 
 
     <%= f.label :notice, "注意事項" %> <br />        
     <%= f.text_area :notice %><br />  
@@ -60,24 +62,25 @@
 
 <div class="activities_ticket">  
   <h3>設定活動票券</h3>
-  <p>((這邊改從ticket_type那邊render))</p> <br />
-  <% if false %>
-  <%= f.label :title, "票種名稱" %>   
-  <%= f.text_field :title %><br />  
-  <%= f.label :content, "票種內容" %>   
-  <%= f.text_field :content %><br />  
-  <%= f.label :quantity ,"票券數量" %>  <br /> 
-  <%= ((各票種數量加總等於活動的人數限制)) %> <br />
-  <%= f.number_field :quantity %><br />  
-  <%= f.label :price ,"單價" %>
-  <%= f.number_field :price %><br />  
-  <%= f.label :sell_start ,"售票時間" %>
-  <%= f.number_field :sell_start %><br />  
-  <%= f.label :sell_deadline ,"售票截止時間" %>
-  <%= f.number_field :sell_deadline %><br />
-  <% end %>  
-</div>
-
+  <%= fields_for :tickets do |tickets_fields| %>
+      <p>((這邊改從ticket_type那邊render))</p> <br />
+      <% if false %>
+      <%= f.label :title, "票種名稱" %>   
+      <%= f.text_field :title %><br />  
+      <%= f.label :content, "票種內容" %>   
+      <%= f.text_field :content %><br />  
+      <%= f.label :quantity ,"票券數量" %>  <br /> 
+      <%= ((各票種數量加總等於活動的人數限制)) %> <br />
+      <%= f.number_field :quantity %><br />  
+      <%= f.label :price ,"單價" %>
+      <%= f.number_field :price %><br />  
+      <%= f.label :sell_start ,"售票時間" %>
+      <%= f.number_field :sell_start %><br />  
+      <%= f.label :sell_deadline ,"售票截止時間" %>
+      <%= f.number_field :sell_deadline %><br />
+      <% end %>  
+  <% end  %>
+</div>  
   <%= f.submit "建立活動！" %>
 
 <% end  %>

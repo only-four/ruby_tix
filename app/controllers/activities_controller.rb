@@ -33,12 +33,15 @@ class ActivitiesController < ApplicationController
       
     
   end
-
+  def destroy
+    @activity = Activity.destroy  
+  end
   private
   def activity_params
     params.require(:activity).permit(:user, :title, :begin_datetime, :finish_datetime,
        :location, :content, :brief, :tag, :link, :form, :notice,  :phone, :email, :other_contect, 
        :limit, ticket_types_attributes: [:id, :title, :content, :quantity, :price, :_destroy],
+       :address_attributes: [:location, :id, :_destroy], 
        :free_ticket, :vip_ticket, :pr_ticket )
   end
 
