@@ -29,7 +29,13 @@
       <td> <%= activity.finish_datetime  %> </td>
       <td> <%= activity.location  %> </td>
       <td> <%= activity.buy  %> </td>
-      <td><%= link_to '票券種類', activity_ticket_types_path(activity)%></td>
+      <td>
+        <% if activity.ticket_types != [] %>
+          <%= link_to '票券種類', activity_ticket_types_path(activity) %>
+        <% else %>
+          <%= link_to '新增票券', edit_activity_path(activity)%>
+        <% end %>
+      </td>
     </tr>   
     <%end %>
   </tbody>

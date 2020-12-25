@@ -6,7 +6,7 @@ class TicketTypesController < ApplicationController
   end
 
   def index
-    @activity = Activity.find(1)
+    @activity = Activity.find(params[:activity_id])
     @ticket_types = @activity.ticket_types
   end
 
