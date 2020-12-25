@@ -24,6 +24,8 @@ Rails.application.routes.draw do
   end
 
   resources :ticket_types, only:[ :choose_ticket]
+
+  resources :tickets
   #使用者選則票券頁面
   # get "/ticket_types/choose_ticket", to: "ticket_types#choose_ticket"
 end
