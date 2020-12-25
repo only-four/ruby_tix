@@ -20,7 +20,5 @@ class TicketTypesController < ApplicationController
 
 
 
-  private 
-
 
 end
