@@ -7,13 +7,12 @@ require("@rails/ujs").start()
 require("turbolinks").start()
 require("@rails/activestorage").start()
 require("channels")
-require("navbar")
 import 'jquery'
+require("javascript")
 require("styles")
-import "tailwindcss/tailwind.css"
 
-import "./assets/stylesheets/application.scss"
 
+// import "tailwindcss/dist/tailwindcss.css"
 
 
 
