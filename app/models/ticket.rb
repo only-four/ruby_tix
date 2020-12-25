@@ -1,5 +1,4 @@
 class Ticket < ApplicationRecord
-  belongs_to :ticket_types
-  belongs_to :orders
-  has_many :tickets
+  belongs_to :ticket_type
+  belongs_to :order
 end
