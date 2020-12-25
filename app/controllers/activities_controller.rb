@@ -23,9 +23,9 @@ class ActivitiesController < ApplicationController
   end
   private
   def activity_params
-    params.require(:activity).permit(:user, :title, :begin_datetime, :finish_datetime,
+    params.require(:activity).permit(:user, :user_id, :title, :begin_datetime, :finish_datetime,
        :location, :content, :brief, :tag, :link, :form, :notice,  :phone, :email, :other_contect, 
-       :limit, :free_ticket, :vip_ticket, :pr_ticket, address_attributes: [:location, :id, :_destroy]  )
+       :limit, address_attributes: [:location, :id, :_destroy]  )
   end
 end
 
