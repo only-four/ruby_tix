@@ -1,4 +1,6 @@
 <%= form_for(@activities) do |f| %>
+
+<%= f.hidden_field :user_id, value: current_user.id %>
 <div class="activities_content">
   <div class="activities">
   <h3>基本資訊</h3>
@@ -35,7 +37,7 @@
   <%= f.text_field :link %><br />  
   <%= f.label :form, "活動形式" %> 
   <%# <%= f.input :post_status, :collection => ["online", "offline", "other"]%>  %>
-  <%= f.collection_select(:title, Activity.all, :id, :user_id)  %>
+  <%# <%= f.collection_select(:title, Activity.all, :id, :user_id)  %> %>
   <br /> <br /> 
 
     <%= f.label :notice, "注意事項" %> <br />        
