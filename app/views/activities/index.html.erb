@@ -6,6 +6,7 @@
 <table>
   <thead>
     <tr>
+      <td>活動id</td>
       <td>活動名稱</td>
       <td>活動內容</td>
       <td>主辦單位</td>
@@ -21,6 +22,7 @@
   <tbody>
     <% @activities.each do |activity| %>
     <tr>
+      <td><%= activity.id %></td>
       <td> <%= activity.title %> </td>
       <td> <%= activity.content  %> </td>
       <td> <%= activity.user_id  %> </td>
@@ -40,6 +42,9 @@
     <%end %>
   </tbody>
 </table> 
+
+
+
 
 
 
