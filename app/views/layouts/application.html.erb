@@ -13,11 +13,25 @@
 
   <body>
     <div class="w-full">
-      <section class="max-w-full"><%= render 'shared/navbar' %></section>
-      <section class="max-w-full"><%= render 'shared/mainbar' %></section>
-      <section><%= render 'shared/option' %></section>
-      
-      <%= yield %>
+      <section class="max-w-screen-xl  m-auto">
+        <%= render 'shared/navbar' %>
+      </section>
+
+      <section class="max-w-screen-xl  m-auto">
+        <%= render 'shared/mainbar' %>
+      </section>
+
+      <section class="max-w-screen-xl  m-auto">
+        <%= render 'shared/option' %>
+      </section>
+
+      <section class="max-w-screen-xl  m-auto">
+        <%= yield %>
+      </section>
+
+      <section class="max-w-screen-xl  m-auto">
+        <%= render 'shared/footer' %>
+      </section>
     </div>
   </body>
 </html>
