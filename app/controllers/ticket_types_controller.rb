@@ -12,8 +12,8 @@ class TicketTypesController < ApplicationController
 
   def destroy
     p params
-    @ticket_types = TicketType.find_by(activity_id: params[:activity_id])
-    @ticket_types.destroy
+    @ticket_types = TicketType.find_by(id: params[:id])
+    @ticket_types.destroy, notice: '票種已刪除'
     redirect_to activity_ticket_types_path
   end
 
