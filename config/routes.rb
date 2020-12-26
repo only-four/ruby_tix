@@ -26,6 +26,6 @@ Rails.application.routes.draw do
 
   resources :ticket_types, only:[ :choose_ticket]
 
-  resources :tickets
+  resources :tickets, only: [:show]
   #使用者選則票券頁面
 end

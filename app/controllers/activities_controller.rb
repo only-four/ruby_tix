@@ -22,6 +22,15 @@ class ActivitiesController < ApplicationController
     end
   end
 
+  def create
+    @activity = Activity.new(activity_params)
+    if @activity.save
+      redirect_to activity_ticket_types_path(@activity.id)
+    else
+      
+    end
+  end
+
 
   private
   def activity_params

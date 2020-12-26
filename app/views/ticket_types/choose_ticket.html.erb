@@ -1,20 +1,20 @@
 <h1>請選擇票券</h1>
 
 <% @ticket_types.each do |ticket| %>  
-  <div class="card" style="width: 38rem;">
-    <div class="card-body">
+  <div class="card choose-ticket-card">
+    <div class="card-body price" >
       <h5 class="card-title"><%= ticket.title %></h5>
       <h6 class="card-subtitle mb-2 text-muted">NT$<%= ticket.price %></h6>
 
       <a class="card-link" data-toggle="collapse" href="#" role="button" aria-expanded="false" data-target="#e" aria-controls="collapseExample">更多資訊</a>
+      <a href="#"><i class="fas fa-plus-circle"></i></a>
+      <a href="#"><i class="fas fa-minus-circle"></i></a>
 
-      <%= link_to do %><i class="fas fa-plus-circle"></i><% end %>
-      <%= link_to do %><i class="fas fa-minus-circle"></i><% end %>
               
     </div>
 
-    <div class="collapse" id="e">
-      <div class="card card-body">
+    <div class="collapse " id="e" >
+      <div class="card card-body info" >
         <h2>活動資訊：</h2>
         <%= ticket.content %>
       </div>
@@ -27,6 +27,8 @@
   $('.collapse').collapse('toggle')
 </script>  
   
+
+
 
 
   

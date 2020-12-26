@@ -1,8 +1,8 @@
 class TicketTypesController < ApplicationController
   
   def choose_ticket
-    @ticket_types = TicketType.all
-    @activity = Activity.all
+    @activity = Activity.find(params[:activity_id])
+    @ticket_types = @activity.ticket_types
   end
 
   def index
@@ -11,9 +11,8 @@ class TicketTypesController < ApplicationController
   end
 
   def destroy
-    p params
     @ticket_types = TicketType.find_by(id: params[:id])
-    @ticket_types.destroy, notice: '票種已刪除'
+    @ticket_types.destroy
     redirect_to activity_ticket_types_path
   end
 
