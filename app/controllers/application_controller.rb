@@ -1,6 +1,7 @@
 class ApplicationController < ActionController::Base
 
   before_action :activity_location
+  rescue_from ActiveRecord::RecordNotFound, with: :no_record_found
 
   def activity_location
     if(request.path != "/users/sign_in" &&
@@ -21,4 +22,10 @@ class ApplicationController < ActionController::Base
     previous_path || root_path
   end
 
+
+
+  private
+  def no_record_found
+    render plain: "sorry, the record you're looking for doesn't exist.", status: 404
+  end
 end

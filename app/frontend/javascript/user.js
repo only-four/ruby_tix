@@ -36,6 +36,7 @@ document.addEventListener('DOMContentLoaded', function(){
       $(`#shopping_cart`).on('click', function(){
         $(`.cart`).show();
       })
+
     }
 
 

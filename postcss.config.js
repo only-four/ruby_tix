@@ -1,4 +1,4 @@
-module.exports = {
+let environment = {
   plugins: [
     require('tailwindcss'),
     require('autoprefixer'),
@@ -11,4 +11,6 @@ module.exports = {
       stage: 3
     })
   ]
-}
+};
+
+module.exports = environment;
