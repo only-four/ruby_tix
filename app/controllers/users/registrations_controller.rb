@@ -49,6 +49,10 @@ class Users::RegistrationsController < Devise::RegistrationsController
   #   require.params(:users).permit(:name, :account_name, :email, :password)
   # end
 
+  def trip_params
+    params.require(:trip).permit(:content)
+  end
+
   private
   # def user_params
   #   params.require(:user).permit(:email, :password, :password_confirmation, :account_name)
@@ -72,4 +76,6 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # def after_inactive_sign_up_path_for(resource)
   #   super(resource)
   # end
+
+
 end
