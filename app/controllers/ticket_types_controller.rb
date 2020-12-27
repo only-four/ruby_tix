@@ -7,7 +7,7 @@ class TicketTypesController < ApplicationController
 
   def index
     @activity = Activity.find(params[:activity_id])
-    @ticket_types = @activity.ticket_types
+    @ticket_types = @activity.ticket_types.order(updated_at: :desc)
   end
 
   def destroy
