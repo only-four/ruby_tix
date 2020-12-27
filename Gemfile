@@ -40,6 +40,9 @@ gem 'omniauth-facebook', '~> 8.0'
 gem 'omniauth-google-oauth2', '~> 0.8.0'
 # order/aasm
 gem 'aasm', '~> 5.1', '>= 5.1.1'
+# security
+gem 'omniauth-rails_csrf_protection', '~> 0.1'
+
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
