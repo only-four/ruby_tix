@@ -1,4 +1,5 @@
 class TicketTypesController < ApplicationController
+  
   def choose_ticket
     @ticket_types = TicketType.all
     @activity = Activity.all
@@ -15,6 +16,8 @@ class TicketTypesController < ApplicationController
     @ticket_types.destroy
     redirect_to activity_ticket_types_path
   end
+
+
 
 
   private 

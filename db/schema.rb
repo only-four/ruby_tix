@@ -70,10 +70,7 @@ ActiveRecord::Schema.define(version: 2020_12_26_095751) do
   end
 
   create_table "orders", force: :cascade do |t|
-    t.integer "activity_id"
-    t.integer "user_id"
     t.integer "transaction_id"
-    t.integer "ticket_id"
     t.integer "num"
     t.integer "price"
     t.string "tel"
@@ -81,6 +78,8 @@ ActiveRecord::Schema.define(version: 2020_12_26_095751) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "state"
+    t.bigint "user_id"
+    t.index ["user_id"], name: "index_orders_on_user_id"
   end
 
   create_table "ticket_types", force: :cascade do |t|
@@ -130,6 +129,8 @@ ActiveRecord::Schema.define(version: 2020_12_26_095751) do
   add_foreign_key "activities", "users"
   add_foreign_key "activity_users", "activities"
   add_foreign_key "activity_users", "users"
+  add_foreign_key "orders", "users"
+  add_foreign_key "ticket_types", "activities"
   add_foreign_key "tickets", "orders"
   add_foreign_key "tickets", "ticket_types"
 end
