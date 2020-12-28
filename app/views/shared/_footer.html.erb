@@ -1,0 +1,55 @@
+<section class="flex bg-red-200 justify-between px-3 text-center bg-yellow-600">
+  <div class="flex-wrap  justify-center text-left">
+    <li class="list-none justify-center">
+      <%= link_to root_path do%>
+        <%= image_tag '/images/newlogo.png' ,class:"h-20" %>
+      <% end%>
+    </li>
+    <li  class="list-none justify-center ml-3"> 
+      <i class="far fa-envelope"></i> contact@rubytix.fun
+    </li>
+    <li class="list-none justify-center ml-3">
+      <i class="far fa-clock"></i>週一至週五(10:00~17:00)
+    </li>
+  </div>
+
+  <div class="flex-wrap  justify-center py-3">
+    <li class="list-none text-xl font-bold">參加活動</li>
+    <li class="list-none justify-center mt-2">
+      <%= link_to '購票須知', footer_page_pages_path  , class: "hover:no-underline hover:text-gray-100" %>
+    </li>
+    <li class="list-none justify-center">
+      <%= link_to '常見問題', "/footer_page/_questions.html.erb", class: "hover:no-underline hover:text-gray-100" %>     
+    </li>
+  </div>
+
+  <div class="flex-wrap  justify-center py-3">
+    <li class="list-none text-xl font-bold">辦理活動</li>
+    <li class="list-none justify-center mt-2">
+      <%= link_to '辦理流程', "/footer_page/_process.html.erb", class: "hover:no-underline hover:text-gray-100" %>     
+    </li>
+    <li class="list-none justify-center">
+      <%= link_to '售票須知', "/footer_page/_sell_purchase.html.erb", class: "hover:no-underline hover:text-gray-100" %>     
+    </li>
+    <li class="list-none justify-center">
+      <%= link_to '常見問題', "/footer_page/_questions.html.erb", class: "hover:no-underline hover:text-gray-100" %>     
+    </li>
+  </div>
+  
+  <div class="flex-wrap  justify-center py-3">
+    <li class="list-none text-xl font-bold">聯絡我們</li>
+    <li class="list-none justify-center  mt-2">
+      <%= link_to '認識我們', "/footer_page/_about_us.html.erb", class: "hover:no-underline hover:text-gray-100" %>     
+    </li>
+    <li class="list-none justify-center">
+      <%= link_to '客服中心', "/footer_page/_service_centre.html.erb", class: "hover:no-underline hover:text-gray-100" %>     
+    </li>
+    <li class="list-none justify-center">
+      <%= link_to '服務條款', "/footer_page/_service_terms.html.erb", class: "hover:no-underline hover:text-gray-100" %>     
+    </li>
+  </div>
+</section>
+
+<section class="text-center bg-black text-gray-500 py-2">
+  <p>&copy; 2020 rubytix.fun<p>
+</section>

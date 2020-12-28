@@ -13,4 +13,9 @@
  *= require_tree .
  *= require_self
  */
- @import '@fortawesome/fontawesome-free/scss/fontawesome'
+
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
+@import "@fortawesome/fontawesome-free/scss/fontawesome"
+
