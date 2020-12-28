@@ -36,6 +36,13 @@
     <%= f.text_field :account_name %>
   </div>
 
+  <div class="field">
+    <%= f.label :content %>
+    <%= f.rich_text_area :content %>
+    <%= @user.content  %>
+  </div>
+
+
   <div class="actions">
     <%= f.submit "更新" %>
   </div>

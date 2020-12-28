@@ -1,8 +1,20 @@
-<div class=" w-full h-20">
+
+<div class=" w-full h-20 class="fixed">
+
 
 
   <% if current_user %>
 
+
+
+  <section class="bg-red-700 flex justify-between px-3 items-center">
+    <section>
+      <%= link_to root_path do%>
+        <%= image_tag '/images/newlogo.png' ,class:"h-20" %>
+      <% end%>
+    </section>
+
+    <div class="search-bar flex">
 
   <section class="bg-red-400 flex justify-between items-center">
     <section class=" w-2/5">
@@ -12,11 +24,14 @@
     </section>
 
     <div class="search-bar flex w-2/5 h-10 ">
+
       <input type="text" class="search-input bg-red-100 rounded-md h-10 mx-3" placeholder="11">
       <button class="submit search-btn flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-red-600 hover:bg-green-200 hover:text-black h-10">搜尋</button>
     </div>
 
-    <section class="  flex h-10 w-10% mr-5">
+
+    <section class="flex">
+
       <select name="current_user_account_name" class="current_user_account_name rounded-md mx-3 px-96">
         <option value="1"  selected="selected"><%= current_user.account_name %></option>
         <option value="2" class="member_centre">會員中心</option>

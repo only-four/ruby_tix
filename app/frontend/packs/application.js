@@ -13,7 +13,7 @@ require("styles")
 
 
 // import "tailwindcss/dist/tailwindcss.css"
-require("navbar")
+
 import "controllers"
 // import "stimulus"
 import 'bootstrap'
@@ -26,6 +26,10 @@ window.$ = $
 // tailwind
 import "stylesheets/application" // ADD THIS LINE
 
+
+
+require("trix")
+require("@rails/actiontext")
 
 
 
