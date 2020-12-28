@@ -94,12 +94,18 @@ ActiveRecord::Schema.define(version: 2020_12_26_095751) do
   end
 
   create_table "tickets", force: :cascade do |t|
+    t.string "title"
+    t.text "content"
     t.string "location"
+    t.datetime "date"
     t.integer "total_price"
+    t.string "ticket_type"
     t.string "notice"
     t.string "qr_code"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.datetime "begin_datetime"
+    t.datetime "finish_datetime"
     t.bigint "ticket_type_id"
     t.bigint "order_id"
     t.index ["order_id"], name: "index_tickets_on_order_id"
@@ -115,7 +121,7 @@ ActiveRecord::Schema.define(version: 2020_12_26_095751) do
     t.string "password"
     t.string "name"
     t.string "account_name"
-    t.boolean "creator"
+    t.string "creator"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "fb_uid"
@@ -130,7 +136,6 @@ ActiveRecord::Schema.define(version: 2020_12_26_095751) do
   add_foreign_key "activity_users", "activities"
   add_foreign_key "activity_users", "users"
   add_foreign_key "orders", "users"
-  add_foreign_key "ticket_types", "activities"
   add_foreign_key "tickets", "orders"
   add_foreign_key "tickets", "ticket_types"
 end
