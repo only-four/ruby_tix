@@ -27,11 +27,9 @@ window.$ = $
 import "stylesheets/application" // ADD THIS LINE
 
 
-// action_text
+
 require("trix")
 require("@rails/actiontext")
-
-
 
 
 
