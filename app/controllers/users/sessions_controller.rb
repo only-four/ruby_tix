@@ -9,9 +9,10 @@ class Users::SessionsController < Devise::SessionsController
   # end
 
   # POST /resource/sign_in
-  # def create
-  #   super
-  # end
+  def create
+    super
+    redirect_to after_sign_in_path_for
+  end
 
   # DELETE /resource/sign_out
   # def destroy

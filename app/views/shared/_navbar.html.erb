@@ -1,36 +1,94 @@
-<% if current_user %>
-
-  <section>
-    <select name="current_user_account_name" class="current_user_account_name">
-      <option value="1"  selected="selected"><%= current_user.account_name %></option>
-      <option value="2" class="member_centre">會員中心</option>
-      <option value="3" class="activity_record">活動紀錄</option>
-      <option value="4" class="hold_activity">舉辦活動</option>
-      <option value="5" class="shopping_cart">購物車</option>
-
-    </select>
-
-    <button>
-      <%= link_to('登出', destroy_user_session_path, :method => :delete) %> 
-    </button>
-  </section>
+<div class=" w-full h-20">
 
 
+  <% if current_user %>
 
+
+  <section class="bg-red-400 flex justify-between items-center">
+    <section class=" w-2/5">
+      <%# <h2 class="text-5xl font-bold">RUBYTIX</h2> %>
+      <%# <%= image_pack_tag 'newlogo.png' %> 
+      <img src="/images/newlogo.png" alt="logo" class="h-20">
+    </section>
+
+    <div class="search-bar flex w-2/5 h-10 ">
+      <input type="text" class="search-input bg-red-100 rounded-md h-10 mx-3" placeholder="11">
+      <button class="submit search-btn flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-red-600 hover:bg-green-200 hover:text-black h-10">搜尋</button>
+    </div>
+
+    <section class="  flex h-10 w-10% mr-5">
+      <select name="current_user_account_name" class="current_user_account_name rounded-md mx-3 px-96">
+        <option value="1"  selected="selected"><%= current_user.account_name %></option>
+        <option value="2" class="member_centre">會員中心</option>
+        <option value="3" class="activitv y_record">活動紀錄</option>
+        <option value="4" class="hold_activity">舉辦活動</option>
+        <option value="5" class="shopping_cart">購物車</option>
+
+      </select>
+
+      <button class=" flex items-center jflex items-center justify-center px-6 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-red-600 hover:bg-indigo-700">
+        <%= link_to('登出', destroy_user_session_path, :method => :delete) %> 
         
-<% else %>
+      </button>
 
-  <section>
-    <button>
-      <%= link_to('會員註冊', new_registration_path(:user)) %> 
-    </button>
+      
+    </section>
 
-    <button>
-      <%= link_to('會員登入', new_session_path(:user)) %>
-    </button>
+
+  </section>
+
+          
+  <% else %>
+
+  <section class="bg-yello-300 flex justify-between">
+
+    <div class="search-bar flex">
+      <input type="text" class="search-input">
+      <button class="submit search-btn flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-indigo-600 hover:bg-indigo-700">搜尋</button>
+    </div>
+
+    <div>
+      <button>
+        <%= link_to('會員註冊', new_registration_path(:user)) %> 
+      </button>
+
+      <button>
+        <%= link_to('會員登入', new_session_path(:user))%>
+      </button>
+    </div>
   </section>
 
 
 
 
-<% end %>
+  <% end %>
+</div>
+
+
+
+
+
+
+
+
+<script>
+  document.addEventListener('DOMContentLoaded', function(){
+
+    const searchBtn = document.querySelector('.search-btn')
+
+    searchBtn.addEventListener('click', function() {
+      const searchInput = document.querySelector('.search-input').value
+      console.log(searchInput);
+      const searchAPI = window.location.origin
+      fetch(`${searchAPI}/pages/search.json?search=${searchInput}`)
+      // response.json可將得到的結果轉換成json格式
+      .then(response => response.json())
+      .then(result => console.log(result))
+      
+      ;
+    })
+  })
+
+
+</script>
+

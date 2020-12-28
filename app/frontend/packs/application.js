@@ -7,15 +7,21 @@ require("@rails/ujs").start()
 require("turbolinks").start()
 require("@rails/activestorage").start()
 require("channels")
+
+require("javascript")
+require("styles")
+
+
+// import "tailwindcss/dist/tailwindcss.css"
 require("navbar")
+import "controllers"
 // import "stimulus"
-import 'jquery'
 import 'bootstrap'
 import 'bootstrap/dist/css/bootstrap.css'
 import "@fortawesome/fontawesome-free/js/all"
+import 'jquery'
 import $ from 'jquery';
 window.$ = $
-import "controllers"
 
 // tailwind
 import "stylesheets/application" // ADD THIS LINE
