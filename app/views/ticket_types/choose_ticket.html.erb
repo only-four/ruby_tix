@@ -7,8 +7,13 @@
       <h6 class="card-subtitle mb-2 text-muted">NT$<%= ticket.price %></h6>
 
       <a class="card-link" data-toggle="collapse" data-parent="#accordion" href="#collapse`${ticket_types.id}`"  data-target="#e" >更多資訊</a>
-      <a href="#"><i class="fas fa-plus-circle"></i></a>
-      <a href="#"><i class="fas fa-minus-circle"></i></a>
+      <div class="qty " style="display:inline; margin-left:250px;">
+        <span class="minus"style="margin-right:20px;"> <a href="#"><i class="fas fa-minus-circle"></i></a></span>
+        <input type="number" class="count" name="qty" value="1" style="width: 30px;">
+        <span class="plus "> <a href="#"><i class="fas fa-plus-circle"></i></a></span>
+      </div>
+     
+      
 
               
     </div>

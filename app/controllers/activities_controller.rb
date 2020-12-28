@@ -34,6 +34,6 @@ class ActivitiesController < ApplicationController
 
   private
   def activity_params
-    params.require(:activity).permit(:begin_datetime, :finish_datetime, ticket_types_attributes: [:id, :title, :content, :quantity, :price, :_destroy])
+    params.require(:activity).permit(:begin_datetime, :finish_datetime, ticket_types_attributes: [:id, :title, :content, :quantity, :sell_start, :sell_deadline,:price, :_destroy])
   end
 end

@@ -5,9 +5,9 @@
               <%= form.number_field:price, placeholder: '票價', min:0 %>
 
 
-              <%= link_to '#', class:"card-link", data:{toggle:"collapse"},cdata:{parent:"#accordion"} do %>
-                <i class="fas fa-chevron-circle-down"></i>
-              <% end %>
+              <%#= link_to '#', class:"card-link", data:{toggle:"collapse"},cdata:{parent:"#accordion"} do %>
+                <%# <i class="fas fa-chevron-circle-down"></i> %>
+              <%# end %>
 
               <%= link_to '#', data: { action: 'ticket-types-form#removeTicketType' } do %>
                 <i class="far fa-trash-alt new-ticket-delete-btn"></i>
