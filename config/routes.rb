@@ -2,17 +2,12 @@ Rails.application.routes.draw do
   root to: 'pages#index'
 
   resources :pages
-  resources :activities
        
   devise_for :users, 
              :controllers => {
-               :registrations => "users/registrations", 
-               :omniauth_callbacks => "users/omniauth_callbacks" 
+                :registrations => "users/registrations", 
+                :omniauth_callbacks => "users/omniauth_callbacks" 
              }
-
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
-  resources :pages
-  root to: 'pages#index'
 
   resources :orders, only:[:index, :show, :create, :destroy]
 
@@ -29,7 +24,6 @@ Rails.application.routes.draw do
   end
 
   resources :ticket_types, only:[ :choose_ticket]
-
   resources :tickets
   #使用者選則票券頁面
 end
