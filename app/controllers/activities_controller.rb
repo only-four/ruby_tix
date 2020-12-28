@@ -22,9 +22,23 @@ class ActivitiesController < ApplicationController
     end
   end
 
+  def create
+    @activity = Activity.new(activity_params)
+    if @activity.save
+      redirect_to activity_ticket_types_path(@activity.id)
+    else
+      
+    end
+  end
+
+  def show
+    @activity = Activity.find(params[:id])
+    @comment= @activity.comments.new
+  end
+
 
   private
   def activity_params
-    params.require(:activity).permit(:begin_datetime, :finish_datetime, ticket_types_attributes: [:id, :title, :content, :quantity, :price, :_destroy])
+    params.require(:activity).permit(:begin_datetime, :finish_datetime, ticket_types_attributes: [:id, :title, :content, :quantity, :sell_start, :sell_deadline,:price, :_destroy])
   end
 end

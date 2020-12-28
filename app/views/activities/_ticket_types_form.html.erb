@@ -1,1 +1,45 @@
-  
+          <div class="ticketType-form" id="accordion" new-ticket_types ="<%= form.object.new_record? %>" >
+            <div class="nested-basic-info">
+              <%= form.text_field:title%>
+              <%= form.number_field:quantity, placeholder: '數量', min: 0 %>
+              <%= form.number_field:price, placeholder: '票價', min:0 %>
+
+
+              <%#= link_to '#', class:"card-link", data:{toggle:"collapse"},cdata:{parent:"#accordion"} do %>
+                <%# <i class="fas fa-chevron-circle-down"></i> %>
+              <%# end %>
+
+              <%= link_to '#', data: { action: 'ticket-types-form#removeTicketType' } do %>
+                <i class="far fa-trash-alt new-ticket-delete-btn"></i>
+              <% end %>
+            </div>
+
+
+            <div class=" nested-hidden-info"  >
+              <div class="card card-body collapse.show" id="e">
+                <div>
+                  <%= form.label:sell_start, '售票開始日'%>
+                </div>
+
+                <div>
+                  <%= form.date_field:sell_start %>
+                  <%= form.time_field:sell_start %>
+                </div>
+
+                <div>
+                  <%= form.label:finish_datetime, '結束時間' %>
+                </div>
+
+                <div>
+                  <%= form.date_field:sell_deadline %>
+                  <%= form.time_field:sell_deadline %>
+                </div>
+
+                <%= form.label:content, '票券說明'%>
+                <%= form.text_area:content, rows: "5" %>
+              </div>
+            </div>
+
+            <%= form.hidden_field :_destroy %>
+
+          </div>
