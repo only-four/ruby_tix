@@ -35,6 +35,7 @@ document.addEventListener('DOMContentLoaded', function(){
       $(`.hold`).hide();
       $(`#shopping_cart`).on('click', function(){
         $(`.cart`).show();
+        
       })
 
     }

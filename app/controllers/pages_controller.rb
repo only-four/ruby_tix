@@ -3,6 +3,9 @@ class PagesController < ApplicationController
   def index
   end
 
+  def footer_page
+  end
+
   def search
     p params[:search]
     # ILIKE & LIKE

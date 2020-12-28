@@ -1,44 +1,48 @@
-<h2>註冊新會員</h2>
+<div class="max-w-screen-xl pt-40 pb-10 z-20">
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= render "devise/shared/error_messages", resource: resource %>
-
-  <div class="field">
-    <%= f.label :信箱 %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :密碼%>
-    <% if @minimum_password_length %>
-    <em>(請輸入至少 <%= @minimum_password_length %> 個英文字母)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :確認密碼 %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :姓名 %> <i>(註冊後將無法修改。)</i> <br />
-    <%= f.text_field :name %>
-  </div>
-
-  <div class="field">
-    <%= f.label :帳戶名稱 %><br />
-    <%= f.text_field :account_name %>
-  </div>
+  <h2 class="text-2xl px-2 font-extrabold bg-gray-50">註冊新會員</h2>
 
 
-  <div class="actions">
-    <%= f.submit "註冊" %>
-  </div>
-<% end %>
+  <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+    <%= render "devise/shared/error_messages", resource: resource %>
 
-<%- if controller_name != 'sessions' %>
-  <%= link_to "登入", new_session_path(resource_name) %><br />
-<% end %>
+    <div class="field">
+      <%= f.label :信箱 %><br />
+      <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+    </div>
+
+    <div class="field">
+      <%= f.label :密碼%>
+      <% if @minimum_password_length %>
+      <em>(請輸入至少 <%= @minimum_password_length %> 個英文字母)</em>
+      <% end %><br />
+      <%= f.password_field :password, autocomplete: "new-password" %>
+    </div>
+
+    <div class="field">
+      <%= f.label :確認密碼 %><br />
+      <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+    </div>
+
+    <div class="field">
+      <%= f.label :姓名 %> <i>(註冊後將無法修改。)</i> <br />
+      <%= f.text_field :name %>
+    </div>
+
+    <div class="field">
+      <%= f.label :帳戶名稱 %><br />
+      <%= f.text_field :account_name %>
+    </div>
 
 
+    <div class="actions">
+      <%= f.submit "註冊" %>
+    </div>
+  <% end %>
+
+  <%- if controller_name != 'sessions' %>
+    <%= link_to "登入", new_session_path(resource_name) %><br />
+  <% end %>
+
+
+</div>

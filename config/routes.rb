@@ -10,6 +10,7 @@ Rails.application.routes.draw do
     # 沒id
     collection do
       get :search
+      get :footer_page
     end
   end 
 
