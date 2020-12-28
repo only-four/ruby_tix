@@ -7,13 +7,13 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= stylesheet_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
-    <div class="w-full relative">
+    <div class="w-full relative min-h-full	">
       <section class="max-w-screen-xl  m-auto">
         <%= render 'shared/navbar' %>
       </section>
@@ -30,11 +30,11 @@
         <%= yield %>
       </section>
 
-      <section class="max-w-screen-xl  m-auto">
+      <section class="max-w-screen-xl  m-auto bottom-0">
         <%= render 'shared/footer' %>
       </section>
 
-      <section class="max-w-screen-xl  m-auto">
+      <section class="max-w-screen-xl  m-auto ">
         <%= render 'shared/float' %>
       </section>
     </div>

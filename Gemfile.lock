@@ -331,7 +331,7 @@ DEPENDENCIES
   omniauth-google-oauth2 (~> 0.8.0)
   omniauth-rails_csrf_protection (~> 0.1)
   pg (>= 0.18, < 2.0)
-  puma (~> 4.1)
+  puma (~> 4.3.7)
   rails (~> 6.0.3, >= 6.0.3.4)
   rspec-rails
   sass-rails (>= 6)
