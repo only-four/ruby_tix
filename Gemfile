@@ -42,6 +42,8 @@ gem 'omniauth-google-oauth2', '~> 0.8.0'
 gem 'aasm', '~> 5.1', '>= 5.1.1'
 # security
 gem 'omniauth-rails_csrf_protection', '~> 0.1'
+#soft-delete
+gem 'paranoia', '~> 2.4', '>= 2.4.3'
 
 
 group :development, :test do
