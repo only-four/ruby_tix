@@ -10,8 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_12_28_030402) do
-
+ActiveRecord::Schema.define(version: 2020_12_28_173858) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -76,7 +75,9 @@ ActiveRecord::Schema.define(version: 2020_12_28_030402) do
     t.bigint "activity_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.datetime "deleted_at"
     t.index ["activity_id"], name: "index_comments_on_activity_id"
+    t.index ["deleted_at"], name: "index_comments_on_deleted_at"
     t.index ["user_id"], name: "index_comments_on_user_id"
   end
 
@@ -100,23 +101,19 @@ ActiveRecord::Schema.define(version: 2020_12_28_030402) do
     t.integer "price"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.bigint "activity_id"
     t.datetime "sell_start"
     t.datetime "sell_deadline"
+    t.index ["activity_id"], name: "index_ticket_types_on_activity_id"
   end
 
   create_table "tickets", force: :cascade do |t|
-    t.string "title"
-    t.text "content"
     t.string "location"
-    t.datetime "date"
     t.integer "total_price"
-    t.string "ticket_type"
     t.string "notice"
     t.string "qr_code"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.datetime "begin_datetime"
-    t.datetime "finish_datetime"
     t.bigint "ticket_type_id"
     t.bigint "order_id"
     t.string "ticket_number"
@@ -133,7 +130,7 @@ ActiveRecord::Schema.define(version: 2020_12_28_030402) do
     t.string "password"
     t.string "name"
     t.string "account_name"
-    t.string "creator"
+    t.boolean "creator"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "fb_uid"
@@ -150,6 +147,7 @@ ActiveRecord::Schema.define(version: 2020_12_28_030402) do
   add_foreign_key "comments", "activities"
   add_foreign_key "comments", "users"
   add_foreign_key "orders", "users"
+  add_foreign_key "ticket_types", "activities"
   add_foreign_key "tickets", "orders"
   add_foreign_key "tickets", "ticket_types"
 end
