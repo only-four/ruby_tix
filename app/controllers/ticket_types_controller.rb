@@ -16,8 +16,4 @@ class TicketTypesController < ApplicationController
     redirect_to activity_ticket_types_path
   end
 
-
-
-
-
 end

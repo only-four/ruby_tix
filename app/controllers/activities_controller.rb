@@ -8,13 +8,22 @@ class ActivitiesController < ApplicationController
     2.times { @activity.ticket_types.build }
   end
 
+  def create
+    @activity = Activity.new(activity_params)
+    if @activity.save
+      redirect_to activity_ticket_types_path(@activity.id), notice: "新增活動成功！", "請繼續新增活動票種"
+      # redirect_to activities_path, notice: "新增活動成功！", "請繼續新增活動票種"
+     else
+      render :new
+    end
+  end
   def edit
     @activity= Activity.find(params[:id])
   end
 
   def update
-    @activity= Activity.find(params[:id])
-    
+    @activity = Activity.find_by(id: params[:id])  
+    # @activity= Activity.find(params[:id]) 
     if @activity.update(activity_params)
       redirect_to activity_ticket_types_path(@activity)      
     else
@@ -22,23 +31,23 @@ class ActivitiesController < ApplicationController
     end
   end
 
-  def create
-    @activity = Activity.new(activity_params)
-    if @activity.save
-      redirect_to activity_ticket_types_path(@activity.id)
-    else
-      
-    end
-  end
+
 
   def show
     @activity = Activity.find(params[:id])
     @comment= @activity.comments.new
   end
 
+  def destroy
+    @activity = Activity.destroy  
+  end
+
 
   private
   def activity_params
-    params.require(:activity).permit(:begin_datetime, :finish_datetime, ticket_types_attributes: [:id, :title, :content, :quantity, :sell_start, :sell_deadline,:price, :_destroy])
+    params.require(:activity).permit(:user, :user_id, :title, :begin_datetime, :finish_datetime,
+      :location, :content, :brief, :tag, :link, :form, :notice,  :phone, :email, :other_contect, 
+      :limit, ticket_types_attributes: [:id, :title, :content, :quantity, :sell_start, :sell_deadline, :price, :_destroy],
+      :address_attributes: [:location, :id, :_destroy],  :free_ticket, :vip_ticket, :pr_ticket )
   end
 end

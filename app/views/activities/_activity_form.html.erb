@@ -1,13 +1,5 @@
 <%= form_for @activity do |f|%>
-
-
-
-
-
-
-
-    
-    
+ 
     <%# ticket_types nested form %>
     <div class="nested-container">
       <div class="nested-foorm-header">
@@ -29,24 +21,19 @@
           <%= render 'ticket_types_form', form: form %>
         <% end %>
 
-
-
         <div data-action = "click->ticket-types-form#addTicketType" data-ticket-types-form-target="addBtn" class="nested-add-btn">
           <%= link_to '#' do %>
-            <i class="fas fa-plus-circle"></i>新增票種
+            <i class="fas fa-plus-circle">新增票種</i>
           <% end %>
         </div>
-
         <%# <div >
           <a href="＃"><i class="fas fa-plus-circle"></i>免費票</a>
         </div> %>
       </div>
     </div>
 
-
     <%# ticket_types form end %>
   
-
   <%= f.submit '送出' %>
   <% end %>
 

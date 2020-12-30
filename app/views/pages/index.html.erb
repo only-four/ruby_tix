@@ -4,7 +4,14 @@
     <div class="bg-gray-50 flex justify-center py-3 ">
       <h2 class="text-2xl px-2 font-extrabold bg-gray-50">熱門活動</h2>
     </div>
+    <% if false %>
+    <br />
+    <%= link_to '前往活動列表', activities_path %> <br />
     
+    <br />  
+    <% end %>
+    <%= link_to "我要辦活動!!", new_activity_path %>
+
     <div class="px-3">
       <div class="activity_item grid grid-cols-3 gap-4">
     

@@ -1,8 +1,6 @@
 <div class=" w-full h-20 fixed max-w-screen-xl z-20">
 
-
   <% if current_user %>
-
 
   <section class="bg-red-700 flex justify-between px-3 items-center">
     <section>
@@ -23,25 +21,16 @@
         <option value="3" class="activitv y_record">活動紀錄</option>
         <option value="4" class="hold_activity">舉辦活動</option>
         <option value="5" class="shopping_cart">購物車</option>
-
       </select>
-
       <button class="submit search-btn flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-gray-100 bg-red-600 hover:bg-gray-900 hover:text-yellow-600 hover:no-underline h-10">
         <%= link_to('登出', destroy_user_session_path, :method => :delete) %> 
-        
       </button>
-
-      
     </section>
-
-
   </section>
-
-          
+      
   <% else %>
 
   <section class="bg-red-700 flex justify-between px-3 items-center">
-
     <section>
       <%= link_to root_path do%>
         <%= image_tag '/images/newlogo.png' ,class:"h-20" %>
@@ -64,17 +53,8 @@
     </div>
   </section>
 
-
-
-
   <% end %>
 </div>
-
-
-
-
-
-
 
 
 <script>
@@ -90,11 +70,8 @@
       // response.json可將得到的結果轉換成json格式
       .then(response => response.json())
       .then(result => console.log(result))
-      
       ;
     })
   })
-
-
 </script>
 
