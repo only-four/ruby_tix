@@ -20,10 +20,11 @@ Rails.application.routes.draw do
 
   resources :orders, only:[:index, :show, :create, :destroy]
 
-  resource :cart, only:[:index, :destroy] do
+  resource :cart, only:[:show, :destroy] do
     collection do
       post :add, path:'add/:id'
     end
+    get :checkout
   end
 
   resources :activities, only:[] do

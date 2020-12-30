@@ -1,1 +1,44 @@
-<h2>個別訂單檢視</h2>
+<h2>各別訂單檢視</h2>
+
+<% if @order %>
+  <table>
+    <thead>
+      <tr>
+        <td>訂單編號</td>
+        <td>活動名稱</td>
+        <td>活動日期</td>
+        <td>訂單金額</td>
+        <td>訂單場地</td>
+        <td>檢視完整訂單</td>
+      </tr>
+    </thead>
+
+    <tbody>
+        <tr>
+          <td><%= @order.num %></td>
+          <td>活動名稱</td>
+          <td>活動日期</td>
+          <td><%= @order.price %></td>
+          <td><%= @order.address %></td>
+          <td><%= link_to '返回訂單列表', orders_path %></td>
+        </tr>
+    </tbody>
+  </table>
+
+<% else %>
+  <h2>查無此訂單</h2>
+  <form id="checkout" method="post" action="/checkout">
+  <div id="payment-form"></div>
+  <input type="submit" value="Pay $100">
+  </form>
+
+  <script src="https://js.braintreegateway.com/js/braintree-2.32.1.min.js"></script>
+  
+  <script>
+  var clientToken = "CLIENT_TOKEN_FROM_SERVER";
+
+  braintree.setup(clientToken, "dropin", {
+    container: "payment-form"
+  });
+  </script>
+<%end%>
