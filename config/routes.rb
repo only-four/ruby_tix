@@ -32,7 +32,7 @@ Rails.application.routes.draw do
     get "/ticket_types/choose_ticket", to: "ticket_types#choose_ticket"
 
     # 單一活動底下 comment
-    resources :comments, only:[:new, :create, :delete]
+    resources :comments, only:[ :create, :delete]
   end
 
   #使用者選則票券頁面

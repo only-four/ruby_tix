@@ -34,6 +34,15 @@ class ActivitiesController < ApplicationController
   def show
     @activity = Activity.find(params[:id])
     @comment= @activity.comments.new
+    
+    # show comments
+    activity = Activity.find(params[:id])
+    @comments= activity.comments.order(updated_at: :desc)
+    
+    respond_to do |format|
+      format.html
+      format.js
+    end
   end
 
 

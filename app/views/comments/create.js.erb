@@ -1,0 +1,4 @@
+let commentBox = document.createElement(".commentBox");
+commentBox.id = "commentBox-<%= @comment.id %>";
+commentBox.innerHTML = "<%= j render(:partial =>"comments/show_comments", :locals =>{:comment =>@comment}) %>";
+$("#commentBoxx").append(commentBox);
