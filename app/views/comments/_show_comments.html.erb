@@ -1,7 +1,7 @@
 <!-- component -->
 
 <% comments.each do |comment| %>
-  <div class=" commentBox p-3 flex items-center justify-center" id="commentBoxx">
+  <div class=" commentBox p-3 flex items-center justify-center" id="js-commentBoxx">
     <div class="bg-white border shadow-sm px-4 py-3 rounded-lg max-w-lg">
       <div class="flex items-center">
         <img class="h-12 w-12 rounded-full" src="https://picsum.photos/1024/450?random=1"/>
@@ -26,7 +26,7 @@
         <img class="mr-0.5" src="https://static-exp1.licdn.com/sc/h/5thsbmikm6a8uov24ygwd914f"/>
         <img class="mr-0.5" src="https://static-exp1.licdn.com/sc/h/7fx9nkd7mx8avdpqm5hqcbi97"/>
         <span class="ml-1">47 • 26 comments</span>
-        <%= link_to '刪除', activity_comment_path(@activity, comment), remote: true, method: :delete, class: "removeBtn" if current_user == comment.user %>
+        <%= link_to '刪除', activity_comment_path(@activity, comment), remote: true, method: :delete, class: "js-removeBtn" if current_user == comment.user %>
       </div>
     </div>
   </div>
