@@ -42,7 +42,6 @@ gem 'omniauth-google-oauth2', '~> 0.8.0'
 gem 'aasm', '~> 5.1', '>= 5.1.1'
 # security
 gem 'omniauth-rails_csrf_protection', '~> 0.1'
-gem 'foreman', '~> 0.87.2'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
@@ -60,6 +59,8 @@ group :development do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
+  gem 'foreman', '~> 0.87.2'
+
 end
 
 group :test do
