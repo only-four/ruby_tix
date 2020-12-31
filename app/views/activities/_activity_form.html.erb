@@ -1,4 +1,86 @@
 <%= form_for @activity do |f|%>
+  <%= f.hidden_field :user_id, value: current_user.id %>
+  <div class="activities_content">
+    <div class="activities">
+    <h3>基本資訊</h3>
+      <%= f.label :hostname, "主辦單位" %>   
+      <%= f.text_field :hostname %> <br />
+      <%= f.label :title, "活動名稱" %>
+      <%= f.text_field :title %> <br />
+    </div>
+
+    <div class="activities">
+    <h3>時間地點</h3>
+      <%= f.label :begin_datetime, "開始時間" %>
+      <%= f.datetime_field :begin_datetime %> <br />
+      <%= f.label :finish_datetime, "結束時間" %>
+      <%= f.datetime_field :finish_datetime %> <br />
+      <%= f.label :location, "活動地點" %>
+      <%= f.text_field :location %> <br />
+      <%= "((這裡放google map api 抓上面的地點 顯示出地圖))" %>
+    </div>
+  
+    <div class="activities">
+    <h3>活動內容</h3>
+      <%= f.label :content, "活動說明" %><br />
+      <%= "請完整說明你的活動內容"  %><br />
+      <%= f.text_area :content %> <br />
+  
+      <%= f.label :brief, "活動摘要" %>   <br />
+      <%= "此處的內容將作為活動欄位上的簡要介紹，以及Google搜尋的簡介說明"  %><br />
+      <%= f.text_area :brief %> <br />
+      <%= f.label :tag, "活動標籤" %>   
+      <%= f.text_field :tag %><br />  
+      <%= f.label :link, "參考連結" %>  <br />
+      <%= "加上相關資訊，如 Facebook 或 Instagram，讓使用者能更瞭解此活動"  %><br />
+      <%= f.text_field :link %><br />  
+      <%= f.label :form, "活動形式" %> 
+      <%# <%= f.input :post_status, :collection => ["online", "offline", "other"]%>  
+      <%# <%= f.collection_select(:title, Activity.all, :id, :user_id)  %> 
+      <br /> <br /> 
+  
+      <%= f.label :notice, "注意事項" %> <br />        
+      <%= f.text_area :notice %><br />  
+    </div>
+  
+    <div class="activities">
+    <h3>聯絡方式</h3>
+      <%= f.label :phone, "電話" %>   
+      <%= f.phone_field :phone %><br />  
+      <%= f.label :email, "信箱" %>   
+      <%= f.email_field :email %><br />  
+      <%= f.label :other_contact, "其他聯絡方式" %>
+      <%= f.text_field :other_contact %> <br /> 
+    </div>
+  
+    <div class="activities">
+    <h3>相關限制</h3>
+      <%= f.label :limit, "人數限制" %>   
+      <%= f.number_field :limit %><br />  
+    </div>
+
+
+
+  <div class="activities_ticket">  
+
+      <%= fields_for :tickets do |tickets_fields| %>
+        <% if false %>
+        <%= f.label :title, "票種名稱" %>   
+        <%= f.text_field :title %><br />  
+        <%= f.label :content, "票種內容" %>   
+        <%= f.text_field :content %><br />  
+        <%= f.label :quantity ,"票券數量" %>  <br /> 
+        <%= ((各票種數量加總等於活動的人數限制)) %> <br />
+        <%= f.number_field :quantity %><br />  
+        <%= f.label :price ,"單價" %>
+        <%= f.number_field :price %><br />  
+        <%= f.label :sell_start ,"售票時間" %>
+        <%= f.number_field :sell_start %><br />  
+        <%= f.label :sell_deadline ,"售票截止時間" %>
+        <%= f.number_field :sell_deadline %><br />
+        <% end %>  
+      <% end  %>
+  </div>  
  
     <%# ticket_types nested form %>
     <div class="nested-container">
@@ -38,8 +120,7 @@
       </div>
     </div>
     <%# ticket_types form end %>
-  
-  <%= f.submit '送出' %>
+  <%= f.submit '送出-建立活動與票券' %>
   <% end %>
 
 

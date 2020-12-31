@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   root to: 'pages#index'
 
-  resources :pages, only:[] do
+  resources :pages do
     # 沒id
     collection do
       get :search
@@ -26,9 +26,9 @@ Rails.application.routes.draw do
   end
 
   #使用者選則票券頁面
-  resources :ticket_types, only:[ :choose_ticket, :new, :edit, :update, :delete]
+  resources :ticket_types, only:[ :choose_ticket]
   # 訂單成立後顯示個人票券
-  resources :tickets, only: [:show, :new, :edit, :update, :delete]
+  resources :tickets, only: [:show]
 
   resources :orders, only:[:index, :show, :create, :destroy]
 

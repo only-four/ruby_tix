@@ -1,6 +1,6 @@
 <h1 class="title">票券列表</h1>
 <table>
-  <%= link_to '新增票券', new_ticket_type_path(@activity.id)%>
+  <%# <%= link_to '新增票券', edit_activity_path(@activity)%> %>
 </table>
 
 <table class="table table-hover">
@@ -26,7 +26,7 @@
         <td><%= ticket_type.quantity %></td>
         <td>＄<%= ticket_type.price %></td>
         <td>
-          <%= link_to "編輯", edit_ticket_type_path(ticket_type.activity.id, ticket_type.id), class: 'button is-light is-small' %>
+          <%= link_to "編輯", edit_activity_ticket_type_path(ticket_type.activity_id), class: 'button is-light is-small' %>
           <%= link_to "刪除", activity_ticket_type_path(id: ticket_type), method: 'delete', data: { confirm: '確認刪除?!' } %>
         </td>     
       </tr> 
