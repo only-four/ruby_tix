@@ -1,4 +1,4 @@
-<%= form_for(@activities) do |f| %>
+<%= form_for(activity) do |f| %>
 
   <%= f.hidden_field :user_id, value: current_user.id %>
   <div class="activities_content">
@@ -9,7 +9,7 @@
       <%= f.label :title, "活動名稱" %>
       <%= f.text_field :title %> <br />
     </div>
-  
+
     <div class="activities">
     <h3>時間地點</h3>
       <%= f.label :begin_datetime, "開始時間" %>
@@ -36,8 +36,8 @@
       <%= "加上相關資訊，如 Facebook 或 Instagram，讓使用者能更瞭解此活動"  %><br />
       <%= f.text_field :link %><br />  
       <%= f.label :form, "活動形式" %> 
-      <%# <%= f.input :post_status, :collection => ["online", "offline", "other"]%>  %>
-      <%# <%= f.collection_select(:title, Activity.all, :id, :user_id)  %> %>
+      <%# <%= f.input :post_status, :collection => ["online", "offline", "other"]%>  
+      <%# <%= f.collection_select(:title, Activity.all, :id, :user_id)  %> 
       <br /> <br /> 
   
       <%= f.label :notice, "注意事項" %> <br />        
@@ -59,13 +59,12 @@
       <%= f.label :limit, "人數限制" %>   
       <%= f.number_field :limit %><br />  
     </div>
-  </div>
-  </div>
-  
+
+
+
   <div class="activities_ticket">  
-    <h3>設定活動票券</h3>
-    <%= fields_for :tickets do |tickets_fields| %>
-        <p>((這邊改從ticket_type那邊render))</p> <br />
+
+      <%= fields_for :tickets do |tickets_fields| %>
         <% if false %>
         <%= f.label :title, "票種名稱" %>   
         <%= f.text_field :title %><br />  
@@ -81,8 +80,10 @@
         <%= f.label :sell_deadline ,"售票截止時間" %>
         <%= f.number_field :sell_deadline %><br />
         <% end %>  
-    <% end  %>
+      <% end  %>
   </div>  
     <%= f.submit "建立活動！" %>
-  
+    <br />  
+    <br />  
+    <h4>設定活動票券</h4>
   <% end  %>

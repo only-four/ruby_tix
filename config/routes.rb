@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   root to: 'pages#index'
-    resources :pages do
+
+  resources :pages do
     # 沒id
     collection do
       get :search
@@ -16,7 +17,7 @@ Rails.application.routes.draw do
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 
-  resources :activities, do
+  resources :activities do
     # 主辦方設定票券寫在activity new 頁面 暫定
     resources :ticket_types, :except => [ :show]
     get "/ticket_types/choose_ticket", to: "ticket_types#choose_ticket"
