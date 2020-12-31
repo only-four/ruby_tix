@@ -6,4 +6,7 @@ class TicketsController < ApplicationController
     owner_id = @ticket.order.user_id
     @ticket_owner= User.find(owner_id)
   end
+  def edit
+    @ticket = Ticket.find(params[:id])
+  end
 end
