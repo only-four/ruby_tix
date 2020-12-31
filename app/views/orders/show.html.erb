@@ -27,18 +27,5 @@
 
 <% else %>
   <h2>查無此訂單</h2>
-  <form id="checkout" method="post" action="/checkout">
-  <div id="payment-form"></div>
-  <input type="submit" value="Pay $100">
-  </form>
 
-  <script src="https://js.braintreegateway.com/js/braintree-2.32.1.min.js"></script>
-  
-  <script>
-  var clientToken = "CLIENT_TOKEN_FROM_SERVER";
-
-  braintree.setup(clientToken, "dropin", {
-    container: "payment-form"
-  });
-  </script>
 <%end%>

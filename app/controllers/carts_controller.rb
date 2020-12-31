@@ -1,8 +1,11 @@
 class CartsController < ApplicationController
   def add
-    current_cart.add_item(params[:id])
+    ticket_types = TicketType.find_by(id: params[:id])
+
+    current_cart.add_item(ticket_types.id)
     session[:cart7749] = current_cart.serialize
 
+    p params
     redirect_to activity_ticket_types_path(params[:id]), notice: "已加入購物車"
   end
 
@@ -16,6 +19,17 @@ class CartsController < ApplicationController
 
   def checkout
     @order = Order.new
+    @token = gateway.client_token.generate
+  end
+
+  private 
+  def gateway
+    Braintree::Gateway.new(
+      :environment => :sandbox,
+      :merchant_id => '66rm3qq3n5pznyds',
+      :public_key => 'fmqskbv7hbt2vqmb',
+      :private_key => '5a0cfcdc31ac7fae902c35aac763de32',
+    )
   end
 
 end

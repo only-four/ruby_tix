@@ -27,11 +27,7 @@
 </tr>
 </table>
 
-<%= form_for(@order) do |form| %>
-<div>
-<%= form.label:user_name %>
-<%= form.text_field:user_name %>
-</div>
+<%= form_for(@order, id: 'payment-form') do |form| %>
 
 <div>
 <%= form.label:tel %>
@@ -44,14 +40,28 @@
 </div>
 
 <div id="dropin-container"></div>
+<input type="hidden" id="nonce" name="payment_method_nonce"/>
 
 <%= form.submit '確認付款'%>
 <% end %>
 
 <script type="text/javascript">
+const form = document.getElementById('payment-form');
+
 braintree.dropin.create({
-  authorization: CLIENT_TOKEN_FROM_SERVER,
+  authorization: "<% @token %>",
   container: '#dropin-container'
 }).then((dropinInstance) => {
-}).catch((error) => {});
+  form.addEventListener('submit', (event) => {
+    event.preventDefault();
+
+    dropinInstance.requestPaymentMethod().then((payload) => {
+      document.getElementById('nonce').value = payload.nonce;
+      form.submit();
+    }).catch((error) => { throw error; });
+  });
+}).catch((error) => {
+  // handle errors
+});
+
 </script>
