@@ -3,10 +3,16 @@
     <%# ticket_types nested form %>
     <div class="nested-container">
       <div class="nested-foorm-header">
-        <div>票券名稱</div>
+      <tr>
+        <td>票券名稱</td>
+        <td>數量</td>
+        <td>價格</td>
+        <td>操作</td>
+      </tr>
+        <%# <div>票券名稱</div>
         <div>數量</div>
         <div>價格</div>
-        <div>操作</div>
+        <div>操作</div> %>
       </div>
 
       <div data-controller="ticket-types-form" class="nested-form">
@@ -33,7 +39,7 @@
     </div>
     <%# ticket_types form end %>
   
-  <%= f.submit '進行票券設定' %>
+  <%= f.submit '送出' %>
   <% end %>
 
 
