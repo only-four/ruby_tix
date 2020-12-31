@@ -61,40 +61,14 @@
 
 
 
-  <div class="activities_ticket">  
 
-      <%= fields_for :tickets do |tickets_fields| %>
-        <% if false %>
-        <%= f.label :title, "票種名稱" %>   
-        <%= f.text_field :title %><br />  
-        <%= f.label :content, "票種內容" %>   
-        <%= f.text_field :content %><br />  
-        <%= f.label :quantity ,"票券數量" %>  <br /> 
-        <%= ((各票種數量加總等於活動的人數限制)) %> <br />
-        <%= f.number_field :quantity %><br />  
-        <%= f.label :price ,"單價" %>
-        <%= f.number_field :price %><br />  
-        <%= f.label :sell_start ,"售票時間" %>
-        <%= f.number_field :sell_start %><br />  
-        <%= f.label :sell_deadline ,"售票截止時間" %>
-        <%= f.number_field :sell_deadline %><br />
-        <% end %>  
-      <% end  %>
-  </div>  
- 
     <%# ticket_types nested form %>
     <div class="nested-container">
       <div class="nested-foorm-header">
-      <tr>
-        <td>票券名稱</td>
-        <td>數量</td>
-        <td>價格</td>
-        <td>操作</td>
-      </tr>
-        <%# <div>票券名稱</div>
+        <div>票券名稱</div>
         <div>數量</div>
         <div>價格</div>
-        <div>操作</div> %>
+        <div>操作</div>
       </div>
 
       <div data-controller="ticket-types-form" class="nested-form">
@@ -109,17 +83,22 @@
           <%= render 'ticket_types_form', form: form %>
         <% end %>
 
+
+
         <div data-action = "click->ticket-types-form#addTicketType" data-ticket-types-form-target="addBtn" class="nested-add-btn">
           <%= link_to '#' do %>
-            <i class="fas fa-plus-circle">新增票種</i>
+            <i class="fas fa-plus-circle"></i>新增票種
           <% end %>
         </div>
+
         <%# <div >
           <a href="＃"><i class="fas fa-plus-circle"></i>免費票</a>
         </div> %>
       </div>
     </div>
     <%# ticket_types form end %>
+ 
+
   <%= f.submit '送出-建立活動與票券' %>
   <% end %>
 
