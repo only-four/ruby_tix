@@ -1,61 +1,63 @@
-<div class=" w-full h-20 fixed max-w-screen-xl z-20">
+<div class=" w-full h-20 fixed z-20">
 
   <% if current_user %>
 
-  <section class="bg-red-700 flex justify-between px-3 items-center">
-    <section>
-      <%= link_to root_path do%>
-        <%= image_tag '/images/newlogo.png' ,class:"h-20" %>
-      <% end%>
-    </section>
+    <section class="bg-red-700 flex justify-between px-3 items-center">
+      <section>
+        <%= link_to root_path do%>
+          <%= image_tag '/images/newlogo.png' ,class:"h-20" %>
+        <% end%>
+      </section>
 
-    <div class="search-bar flex">
-      <input type="text" class="search-input bg-red-100 rounded-md h-10 mx-3" placeholder="11">
-      <button class="submit search-btn flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-gray-100 bg-red-600 hover:bg-gray-900 hover:text-yellow-600 h-10">搜尋</button>
-    </div>
+      <div class="search-bar flex">
+        <input type="text" class="search-input bg-red-100 rounded-md h-10 mx-3" placeholder="請輸入關鍵字">
+        <button class="submit search-btn flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-gray-100 bg-red-600 hover:bg-gray-100 hover:text-red-600 h-10">搜尋</button>
+      </div>
 
-    <section class="flex">
-      <select name="current_user_account_name" class="current_user_account_name rounded-md mx-3 px-96">
-        <option value="1"  selected="selected"><%= current_user.account_name %></option>
-        <option value="2" class="member_centre">會員中心</option>
-        <option value="3" class="activitv y_record">活動紀錄</option>
-        <option value="4" class="hold_activity">舉辦活動</option>
-        <option value="5" class="shopping_cart">購物車</option>
-      </select>
-      <button class="submit search-btn flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-gray-100 bg-red-600 hover:bg-gray-900 hover:text-yellow-600 hover:no-underline h-10">
-        <%= link_to('登出', destroy_user_session_path, :method => :delete) %> 
-      </button>
+      <section class="flex">
+        <select name="current_user_account_name" class="current_user_account_name rounded-md mx-3 px-96">
+          <option value="1"  selected="selected" class="py-1"><i class="far fa-user-circle"></i><%= current_user.account_name %></option>
+          <option value="2" class="member_centre py-1">會員中心</option>
+          <option value="3" class="activitv y_record py-1">活動紀錄</option>
+          <option value="4" class="hold_activity py-1">舉辦活動</option>
+          <option value="5" class="shopping_cart py-1">購物車</option>
+        </select>
+
+        <button>
+          <%= link_to '登出', destroy_user_session_path, :method => :delete , class: "submit search-btn flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-gray-100 bg-red-600 hover:bg-gray-100 hover:text-red-600 hover:no-underline h-10" %> 
+        </button>    
+      </section>
+
     </section>
-  </section>
-      
+ 
   <% else %>
 
-  <section class="bg-red-700 flex justify-between px-3 items-center">
-    <section>
-      <%= link_to root_path do%>
-        <%= image_tag '/images/newlogo.png' ,class:"h-20" %>
-      <% end%>
+    <section class="bg-red-700 flex justify-between px-3 items-center">
+
+      <section>
+        <%= link_to root_path do%>
+          <%= image_tag '/images/newlogo.png' ,class:"h-20" %>
+        <% end%>
+      </section>
+
+      <div class="search-bar flex">
+        <input type="text" class="search-input bg-red-100 rounded-md h-10 mr-3" placeholder="請輸入關鍵字">
+        <button class="submit search-btn flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-gray-100 bg-red-600 hover:bg-gray-100 hover:text-red-600 h-10">搜尋</button>
+      </div>
+
+      <div class="flex">
+        <button>
+          <%= link_to '註冊', new_registration_path(:user) , class: "submit search-btn flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium  text-gray-100 bg-red-600 hover:bg-gray-100 hover:text-red-600 hover:no-underline h-10 mr-3" %> 
+        </button>
+
+        <button>
+          <%= link_to '登入', new_session_path(:user) , class: "submit search-btn flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium  text-gray-100 bg-red-600 hover:bg-gray-100 hover:text-red-600 hover:no-underline h-10" %>
+        </button>
+      </div>
     </section>
-
-    <div class="search-bar flex">
-      <input type="text" class="search-input bg-red-100 rounded-md h-10 mx-3" placeholder="11">
-      <button class="submit search-btn flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-gray-100 bg-red-600 hover:bg-gray-900 hover:text-yellow-600 h-10">搜尋</button>
-    </div>
-
-    <div class="flex">
-      <button class="submit search-btn flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-gray-100 bg-red-600 hover:bg-gray-900 hover:text-yellow-600 hover:no-underline h-10 mx-3">
-        <%= link_to('會員註冊', new_registration_path(:user)) %> 
-      </button>
-
-      <button class="submit search-btn flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-gray-100 bg-red-600 hover:bg-gray-900 hover:text-yellow-600 hover:no-underline h-10">
-        <%= link_to('會員登入', new_session_path(:user))%>
-      </button>
-    </div>
-  </section>
 
   <% end %>
 </div>
-
 
 <script>
   document.addEventListener('DOMContentLoaded', function(){

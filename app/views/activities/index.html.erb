@@ -48,9 +48,90 @@
     <%end %>
   </tbody>
 </table> 
+<div class="items-center justify-center px-4 sm:px-6 lg:px-8">
+
+
+  <h2 class="mt-6 text-center text-4xl font-extrabold text-gray-900 mb-5 extrabold ">活動列表</h2>
 
 
 
+  <div class="flex mb-3">
+    
+
+    <%= link_to "新增活動", new_activity_path, class: "submit search-btn flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-gray-100 bg-red-600 hover:border-red-600 hover:bg-gray-100 hover:text-red-600 hover:no-underline h-10" %>
+  </div>
 
 
+<div class="flex flex-col">
+  <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
+    <div class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
+      <div class="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
+        <table class="min-w-full divide-y divide-gray-200">
+          <thead class="bg-red-200">
+            <tr>
+              <th scope="col" class="px-6 py-3 text-left text-md font-normal text-gray-900 uppercase tracking-wider">
+                活動id
+              </th>
+              <th scope="col" class="px-6 py-3 text-left text-md font-normal text-gray-900 uppercase tracking-wider">
+                活動名稱
+              </th>
+              <th scope="col" class="px-6 py-3 text-left text-md font-normal text-gray-900 uppercase tracking-wider">
+                活動內容
+              </th>
+              <th scope="col" class="px-6 py-3 text-left text-md font-normal text-gray-900 uppercase tracking-wider">
+                主辦單位
+              </th>
+              <th scope="col" class="px-6 py-3 text-left text-md font-normal text-gray-900 uppercase tracking-wider">
+                活動狀態
+              </th>
+              <th scope="col" class="px-6 py-3 text-left text-md font-normal text-gray-900 uppercase tracking-wider">
+                開始時間
+              </th>
+              <th scope="col" class="px-6 py-3 text-left text-md font-normal text-gray-900 uppercase tracking-wider">
+                結束時間
+              </th>
+              <th scope="col" class="px-6 py-3 text-left text-md font-normal text-gray-900 uppercase tracking-wider">
+                活動地點
+              </th>
+              <th scope="col" class="px-6 py-3 text-left text-md font-normal text-gray-900 uppercase tracking-wider">
+                購買狀態
+              </th>
+              <th scope="col" class="relative px-6 py-3">
+                <span class="sr-only">Edit</span>
+              </th>
+            </tr>
+          </thead>
 
+            <tbody>
+              <% @activities.each do |activity| %>
+              <tr>
+                <td><%= activity.id %></td>
+                <td> <%= activity.title %> </td>
+                <td> <%= activity.content  %> </td>
+                <td> <%= activity.user_id  %> </td>
+                <td> <%= activity.is_available  %> </td>
+                <td> <%= activity.begin_datetime  %> </td>
+                <td> <%= activity.finish_datetime  %> </td>
+                <td> <%= activity.location  %> </td>
+                <td> <%= activity.buy  %> </td>
+                <td>
+                  <% if activity.ticket_types != [] %>
+                    <%= link_to '票券種類', activity_ticket_types_path(activity) %>
+                  <% else %>
+                    <%= link_to '新增票券', edit_activity_path(activity)%>
+                  <% end %>
+                </td>
+              </tr>   
+              <%end %>
+            </tbody>
+
+
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+</div>
+</div>

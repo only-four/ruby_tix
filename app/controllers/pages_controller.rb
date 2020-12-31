@@ -3,8 +3,26 @@ class PagesController < ApplicationController
   def index
   end
 
-  def footer_page
+  def footer_notice
   end
+
+  def questions
+  end
+
+  def sell_purchase
+  end
+
+  def service_centre
+  end
+
+  def dervice_terms
+  end
+
+  def abouts_us
+  end
+
+
+
 
   def search
     p params[:search]

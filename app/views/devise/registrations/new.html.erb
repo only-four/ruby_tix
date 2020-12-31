@@ -1,48 +1,55 @@
-<div class="max-w-screen-xl pt-40 pb-10 z-20">
+<div class="flex items-center justify-center px-4 sm:px-6 lg:px-8">
 
-  <h2 class="text-2xl px-2 font-extrabold bg-gray-50">註冊新會員</h2>
-
+  <div class="max-w-lg w-full space-y-8">
+    <h2 class="mt-6 text-center text-4xl font-extrabold text-gray-900 mb-5 extrabold ">註冊新會員</h2>
 
   <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
     <%= render "devise/shared/error_messages", resource: resource %>
 
-    <div class="field">
-      <%= f.label :信箱 %><br />
-      <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+    <div class="field mb-2">
+      <%= f.label :信箱 %>
+      <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "信箱", class: "appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-md bg-gray-200 focus:bg-white focus:z-10 sm:text-sm" %>
     </div>
 
-    <div class="field">
+    <div class="field mb-2">
       <%= f.label :密碼%>
-      <% if @minimum_password_length %>
-      <em>(請輸入至少 <%= @minimum_password_length %> 個英文字母)</em>
-      <% end %><br />
-      <%= f.password_field :password, autocomplete: "new-password" %>
+      <%# if @minimum_password_length %>
+      <%# <em>(請輸入至少 <%= @minimum_password_length個英文字母)</em> %> 
+      <%# end %>
+      <%= f.password_field :password, autocomplete: "new-password", placeholder: "請輸入至少6個英文字母或數字", class: "appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-md bg-gray-200 focus:bg-white0 focus:z-10 sm:text-sm" %>
     </div>
 
-    <div class="field">
-      <%= f.label :確認密碼 %><br />
-      <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+    <div class="field mb-2">
+      <%= f.label :確認密碼 %>
+      <%= f.password_field :password_confirmation, autocomplete: "new-password", placeholder: "請再輸入一次您的密碼", class: "appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-md bg-gray-200 focus:bg-white focus:z-10 sm:text-sm" %>
     </div>
 
-    <div class="field">
-      <%= f.label :姓名 %> <i>(註冊後將無法修改。)</i> <br />
-      <%= f.text_field :name %>
+    <div class="field mb-2">
+      <%= f.label :姓名 %>
+      <%= f.text_field :name, placeholder: "真實姓名（註冊後將無法修改）", class: "appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-md bg-gray-200 focus:bg-white focus:z-10 sm:text-sm" %>
     </div>
 
-    <div class="field">
-      <%= f.label :帳戶名稱 %><br />
-      <%= f.text_field :account_name %>
+    <div class="field mb-2">
+      <%= f.label :帳戶名稱 %> 
+      <%= f.text_field :account_name, placeholder: "暱稱", class: "appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-md bg-gray-200 focus:bg-white focus:z-10 sm:text-sm" %>
+    </div>
+    
+
+    <div class="mb-2 justify-between  grid gap-4 grid-cols-2">
+      <div class="actions">
+        <%= f.submit "註冊", class: "actions group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-gray-100 bg-red-600 hover:border-red-600 hover:bg-gray-100 hover:text-red-600 hover:no-underline	hover:shadow-lg hover:border-transparent" %>
+      </div>
+      <% end %>
+
+      <%- if controller_name != 'sessions' %>
+        <div>
+          <%= link_to "登入", new_session_path(resource_name), class: "actions group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md  text-gray-100 bg-red-600 hover:border-red-600 hover:bg-gray-100 hover:text-red-600 hover:no-underline hover:shadow-lg hover:border-transparent" %>
+        </div>
+      <% end %>
+
     </div>
 
 
-    <div class="actions">
-      <%= f.submit "註冊" %>
-    </div>
-  <% end %>
-
-  <%- if controller_name != 'sessions' %>
-    <%= link_to "登入", new_session_path(resource_name) %><br />
-  <% end %>
 
 
 </div>
