@@ -13,7 +13,8 @@
     "stimulus": "^2.0.0",
     "tailwindcss": "1.7.6",
     "trix": "^1.2.0",
-    "turbolinks": "^5.2.0"
+    "turbolinks": "^5.2.0",
+    "webpack-manifest-plugin": "^3.0.0"
   },
   "version": "0.1.0",
   "devDependencies": {

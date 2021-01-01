@@ -1,4 +1,5 @@
-<%= form_for @activity do |f|%>
+<%= form_for(activity) do |f| %>
+
   <%= f.hidden_field :user_id, value: current_user.id %>
   <div class="activities_content">
     <div class="activities">
@@ -61,49 +62,9 @@
 
 
 
-
-    <%# ticket_types nested form %>
-    <div class="nested-container">
-      <div class="nested-foorm-header">
-        <div>票券名稱</div>
-        <div>數量</div>
-        <div>價格</div>
-        <div>操作</div>
-      </div>
-
-      <div data-controller="ticket-types-form" class="nested-form">
-        <template data-ticket-types-form-target="form">
-          <%= f.fields_for :ticket_types, TicketType.new, child_index: 'NEW_FORM' do |new_form|%>  
-            <%= render 'ticket_types_form', form: new_form %>
-          <% end %>
-        </template>
-
-          <%# current form %>
-        <%= f.fields_for :ticket_types do |form|%>  
-          <%= render 'ticket_types_form', form: form %>
-        <% end %>
-
-
-
-        <div data-action = "click->ticket-types-form#addTicketType" data-ticket-types-form-target="addBtn" class="nested-add-btn">
-          <%= link_to '#' do %>
-            <i class="fas fa-plus-circle"></i>新增票種
-          <% end %>
-        </div>
-
-        <%# <div >
-          <a href="＃"><i class="fas fa-plus-circle"></i>免費票</a>
-        </div> %>
-      </div>
-    </div>
-    <%# ticket_types form end %>
  
-
-  <%= f.submit '送出-建立活動與票券' %>
-  <% end %>
-
-
-
-
-
-
+    <%= f.submit "建立活動！" %>
+    <br />  
+    <br />  
+    <h4>設定活動票券</h4>
+  <% end  %>

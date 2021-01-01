@@ -1,8 +1,10 @@
 <h1>活動列表</h1>
+<table>
 請選擇想參與的活動
-
-<%= link_to "新增活動", new_activity_path %>
-
+<br />
+<%= link_to "新增活動", new_activity_path %><br />
+<br />
+</table>
 <table>
   <thead>
     <tr>
@@ -37,6 +39,10 @@
         <% else %>
           <%= link_to '新增票券', edit_activity_path(activity)%>
         <% end %>
+      </td>
+      <td> 
+        <%= link_to '編輯活動', edit_activity_path(activity)%>
+        <%= link_to '刪除活動', activity_path(activity), method: "delete", data: { confirm: "確認刪除" }%>
       </td>
     </tr>   
     <%end %>
