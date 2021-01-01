@@ -9,4 +9,6 @@ class Activity < ApplicationRecord
   has_many :ticket_types, dependent: :destroy
   accepts_nested_attributes_for :ticket_types, allow_destroy: true, reject_if: :all_blank
 
+
+  has_rich_text :content
 end

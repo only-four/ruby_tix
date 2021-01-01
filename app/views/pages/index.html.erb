@@ -1,28 +1,28 @@
 <div class="w-full z-20 ">
-  <div>
-      <%= link_to '前往活動列表', activities_path %> <br />
-      <%= link_to "我要辦活動!!", new_activity_path %><br />
-  </div>
 
 
-  <section class="hot-activity ">
+
+  <section class="hot-activity">
     <div class=" flex justify-center py-3 my-3">
       <h2 class="text-2xl px-2 font-extrabold bg-gray-50">熱門活動</h2>
     </div>
     <div class="px-3">
       <div class="activity_item grid grid-cols-3 gap-4">
     
-        <div class="bg-red-200 p-3 group border-indigo-500 hover:bg-white hover:shadow-lg hover:border-transparent">
-          <div class="relative">
-            <a href="#">
-              <div class="w-full">
-                <img src="https://picsum.photos/400/300/?random=1">  
-              </div>
-              <div class="absolute bottom-0 left-0 bg-red-300 bg-opacity-75 ">
-                <h5 class="text-xl group-hover:text-gray-900">以為故事，那些要是。</h5>
-              </div>
-            </a>
-          </div>
+          <% @activities.each do |activity| %>
+        <div class="bg-gray-200 p-3 group border-gray-500 hover:bg-white hover:shadow-lg hover:border-transparent">
+
+            <div class="relative">
+                      
+              <%= link_to  activities_path do %>
+                <div class="w-full">
+                  <img src="https://picsum.photos/400/300/?random=1">  
+                </div>
+                <div class="absolute bottom-0 left-0 bg-gray-100 bg-opacity-75 ">
+                  <h5 class="text-xl group-hover:text-gray-900"><%= activity.title %></h5>
+                </div>
+              <% end%>
+            </div>
     
           <div class="flex justify-between">
             <div class="flex">
@@ -30,7 +30,7 @@
                 <i class="far fa-calendar-alt"></i>
               </div>
               <div class="pl-2">
-                <p>2020/12/27</p>
+                <p><%= activity.begin_datetime  %></p>
               </div>
     
             </div>
@@ -47,81 +47,11 @@
               </a>
             </div>
           </div>
+
         </div>
+                  <% end %>
     
-        <div class="bg-red-200 p-3 group border-indigo-500 hover:bg-white hover:shadow-lg hover:border-transparent">
-          <div class="relative">
-            <a href="#">
-              <div class="w-full">
-                <img src="https://picsum.photos/400/300/?random=1">
-              </div>
-              <div class="absolute bottom-0 left-0 bg-red-300 bg-opacity-75 ">
-                <h5 class="text-xl group-hover:text-gray-900">以為故事，那些要是。</h5>
-              </div>
-            </a>
-          </div>
-        
-          <div class="flex justify-between">
-            <div class="flex">
-              <div>
-                <i class="far fa-calendar-alt"></i>
-              </div>
-              <div class="pl-2">
-                <p>2020/12/27</p>
-              </div>
-        
-            </div>
-            <div class="flex">
-              <a href="#">
-                <div class="flex">
-                  <div class="pl-2">
-                    <p>more</p>
-                  </div>
-                  <div>
-                    <i class="fas fa-angle-double-right"></i>
-                  </div>
-                </div>
-              </a>
-            </div>
-          </div>
-        </div>
-    
-        <div class="bg-red-200 p-3 group border-indigo-500 hover:bg-white hover:shadow-lg hover:border-transparent">
-          <div class="relative">
-            <a href="#">
-              <div class="w-full">
-                <img src="https://picsum.photos/400/300/?random=1">
-              </div>
-              <div class="absolute bottom-0 left-0 bg-red-300 bg-opacity-75 ">
-                <h5 class="text-xl group-hover:text-gray-900">以為故事，那些要是。</h5>
-              </div>
-            </a>
-          </div>
-        
-          <div class="flex justify-between">
-            <div class="flex">
-              <div>
-                <i class="far fa-calendar-alt"></i>
-              </div>
-              <div class="pl-2">
-                <p>2020/12/27</p>
-              </div>
-        
-            </div>
-            <div class="flex">
-              <a href="#">
-                <div class="flex">
-                  <div class="pl-2">
-                    <p>more</p>
-                  </div>
-                  <div>
-                    <i class="fas fa-angle-double-right"></i>
-                  </div>
-                </div>
-              </a>
-            </div>
-          </div>
-        </div>
+
     
       </div>
     </div>

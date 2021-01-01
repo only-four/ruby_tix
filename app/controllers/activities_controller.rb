@@ -50,6 +50,7 @@ class ActivitiesController < ApplicationController
   private
   def activity_params
     params.require(:activity).permit(
+      :content,
       :user,
       :user_id,
       :title,

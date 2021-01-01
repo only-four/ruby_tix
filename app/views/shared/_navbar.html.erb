@@ -17,12 +17,13 @@
       <section class="flex">
         <select name="current_user_account_name" class="current_user_account_name rounded-md mx-3 px-96">
           <option value="1"  selected="selected" class="py-1"><i class="far fa-user-circle"></i><%= current_user.account_name %></option>
-          <option value="2" class="member_centre py-1">會員中心</option>
-          <option value="3" class="activitv y_record py-1">活動紀錄</option>
-          <option value="4" class="hold_activity py-1">舉辦活動</option>
+          <option value="2" class="member_centre py-1"><%= link_to '編輯會員資料', edit_user_registration_path %></option>
+          <option value="3" class="activity_record py-1">活動紀錄</option>
+          <option value="4" class="hold_activity py-1"><%= link_to '舉辦活動', activities_path %></option>
           <option value="5" class="shopping_cart py-1">購物車</option>
         </select>
 
+      
         <button>
           <%= link_to '登出', destroy_user_session_path, :method => :delete , class: "submit search-btn flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-gray-100 bg-red-600 hover:bg-gray-100 hover:text-red-600 hover:no-underline h-10" %> 
         </button>    

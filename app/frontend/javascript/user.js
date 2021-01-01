@@ -5,12 +5,16 @@ document.addEventListener('DOMContentLoaded', function(){
   select.addEventListener('change',function(){
     if(select.value === "2"){
       console.log('2');
-      $(`.centre`).show();
-      $(`.hold`).hide();
-      $(`.record`).hide();
-      $(`#member_centre`).on('click', function(){
-        $(`.centre`).show();
-      })
+      // windows.location.href= '/users/edit';
+      window.location.href = '/users/edit';
+      // window.location.href = "<%= recipe_path(@recipe) %>"
+      // $(`.centre`).show();
+      // $(`.hold`).hide();
+      // $(`.record`).hide();
+      // $(`#member_centre`).on('click', function(){
+      //   $(`.centre`).show();
+        
+      // })
     }else if(select.value === "3"){
       console.log('3');
       $(`.record`).show();

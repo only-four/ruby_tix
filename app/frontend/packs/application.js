@@ -28,8 +28,13 @@ import "stylesheets/application" // ADD THIS LINE
 
 
 
+
 require("trix")
 require("@rails/actiontext")
+require("stylesheets/application.scss")
+
+import "stylesheets/application"
+import "controllers"
 
 
 

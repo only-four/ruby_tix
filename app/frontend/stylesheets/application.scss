@@ -4,3 +4,8 @@
 // You can add your own custom components/styles here
 
 @import "tailwindcss/utilities";
+@import "./actiontext.scss";
+@import "trix/dist/trix";
+
+@import "trix/dist/trix.css";
+@import "components/actiontext";
