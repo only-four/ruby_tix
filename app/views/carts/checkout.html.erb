@@ -1,43 +1,23 @@
 <h1>結帳</h1>
-<script src="https://js.braintreegateway.com/web/dropin/1.25.0/js/dropin.min.js"></script>
 
 <%= render "cart"%>
 
-<%= form_for(@order, id: 'payment-form') do |form| %>
+<%= form_with(model: @order) do |form| %>
 
 <div>
-<%= form.label:tel %>
+<%= form.label:姓名 %>
+<%= form.text_field:participant %>
+</div>
+
+<div>
+<%= form.label:電話 %>
 <%= form.text_field:tel %>
 </div>
 
 <div>
-<%= form.label:address %>
+<%= form.label:地址 %>
 <%= form.text_field:address %>
 </div>
 
-<div id="dropin-container"></div>
-<input type="hidden" id="nonce" name="payment_method_nonce"/>
-
 <%= form.submit '確認付款'%>
 <% end %>
-
-<script type="text/javascript">
-const form = document.getElementById('payment-form');
-
-braintree.dropin.create({
-  authorization: "<% @token %>",
-  container: '#dropin-container'
-}).then((dropinInstance) => {
-  form.addEventListener('submit', (event) => {
-    event.preventDefault();
-
-    dropinInstance.requestPaymentMethod().then((payload) => {
-      document.getElementById('nonce').value = payload.nonce;
-      form.submit();
-    }).catch((error) => { throw error; });
-  });
-}).catch((error) => {
-  // handle errors
-});
-
-</script>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_12_29_111032) do
+ActiveRecord::Schema.define(version: 2021_01_01_082733) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -95,6 +95,16 @@ ActiveRecord::Schema.define(version: 2020_12_29_111032) do
     t.index ["user_id"], name: "index_comments_on_user_id"
   end
 
+  create_table "order_items", force: :cascade do |t|
+    t.bigint "order_id", null: false
+    t.string "activities_title"
+    t.string "ticket_types_title"
+    t.integer "quantity"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["order_id"], name: "index_order_items_on_order_id"
+  end
+
   create_table "orders", force: :cascade do |t|
     t.integer "transaction_id"
     t.integer "num"
@@ -105,6 +115,9 @@ ActiveRecord::Schema.define(version: 2020_12_29_111032) do
     t.datetime "updated_at", precision: 6, null: false
     t.string "state"
     t.bigint "user_id"
+    t.string "participant"
+    t.datetime "paid_at"
+    t.integer "quantity"
     t.index ["user_id"], name: "index_orders_on_user_id"
   end
 
@@ -161,6 +174,7 @@ ActiveRecord::Schema.define(version: 2020_12_29_111032) do
   add_foreign_key "activity_users", "users"
   add_foreign_key "comments", "activities"
   add_foreign_key "comments", "users"
+  add_foreign_key "order_items", "orders"
   add_foreign_key "orders", "users"
   add_foreign_key "ticket_types", "activities"
   add_foreign_key "tickets", "orders"
