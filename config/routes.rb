@@ -15,10 +15,6 @@ Rails.application.routes.draw do
                :omniauth_callbacks => "users/omniauth_callbacks"
              }
 
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
-  resources :activities
-  root to: 'pages#index'
-
   resources :orders, only:[:index, :show, :create, :destroy]
 
   resource :cart, only:[:show, :destroy] do
