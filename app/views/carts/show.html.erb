@@ -1,0 +1,32 @@
+<h1>檢視購物車</h1>
+
+<%= link_to '清空購物車', cart_path, method: :'delete'%>
+
+<table>
+<thead>
+  <tr>
+    <td>活動票券名稱</td>
+    <td>數量</td>
+    <td>單價</td>
+    <td>小計</td>
+  </tr>
+</thead>
+
+<tbody>
+  <% current_cart.items.each do |item| %>
+    <tr>
+      <td><%= item.ticket_type.title %></td>
+      <td><%= item.quantity %></td>
+      <td><%= item.ticket_type.price %></td>
+      <td><%= item.price %></td>
+    </tr>
+  <% end %>
+</tbody>
+<tr>
+  <td colspan="3">總計</td>
+  <td><%= current_cart.total_price %></td>
+</tr>
+</table>
+
+<%= link_to '繼續選購', activities_path %>
+<%= link_to '結帳', checkout_cart_path if not current_cart.empty? %>

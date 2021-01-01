@@ -1,0 +1,32 @@
+<h2>訂單列表</h2>
+
+<button>已完成</button>
+<button>已取消</button>
+<button>退費紀錄</button>
+
+<table>
+  <thead>
+    <tr>
+      <td>訂單編號</td>
+      <td>活動名稱</td>
+      <td>活動日期</td>
+      <td>訂單金額</td>
+      <td>訂單狀態</td>
+      <td>訂單詳情</td>
+    </tr>
+  </thead>
+
+  <tbody>
+  <% @orders.each do |item| %>
+    <tr>
+      <td><%= item.num %></td>
+      <td>活動名稱</td>
+      <td>活動日期</td>
+      <td><%= item.price %></td>
+      <td><%= item.state %></td>
+      <td><%= link_to '檢視個別訂單', order_path(item.id) %></td>
+    </tr>
+  <%end%>
+  </tbody>
+
+</table>

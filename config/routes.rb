@@ -16,6 +16,17 @@ Rails.application.routes.draw do
              }
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+  resources :activities
+  root to: 'pages#index'
+
+  resources :orders, only:[:index, :show, :create, :destroy]
+
+  resource :cart, only:[:show, :destroy] do
+    collection do
+      post :add, path:'add/:id'
+    end
+    get :checkout
+  end
 
   resources :activities do
     # 主辦方設定票券寫在activity new 頁面 暫定
