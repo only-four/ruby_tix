@@ -15,7 +15,11 @@ Rails.application.routes.draw do
                :omniauth_callbacks => "users/omniauth_callbacks"
              }
 
-  resources :orders, only:[:index, :show, :create, :destroy]
+  resources :orders, only:[:index, :show, :create, :destroy] do
+    collection do
+      get :confirm
+    end
+  end
 
   resource :cart, only:[:show, :destroy] do
     collection do

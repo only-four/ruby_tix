@@ -326,6 +326,7 @@ DEPENDENCIES
   devise (~> 4.7, >= 4.7.3)
   factory_bot_rails
   faker
+  faraday (~> 1.1.0)
   figaro (~> 1.2)
   foreman (~> 0.87.2)
   hirb (~> 0.7.3)

@@ -46,6 +46,8 @@ gem 'omniauth-google-oauth2', '~> 0.8.0'
 gem 'aasm', '~> 5.1', '>= 5.1.1'
 # security
 gem 'omniauth-rails_csrf_protection', '~> 0.1'
+# cart/checkout for linepay
+gem 'faraday', '~> 1.1.0'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
