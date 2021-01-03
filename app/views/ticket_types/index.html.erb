@@ -1,35 +1,80 @@
-<h2 class="text-xl mb-2 ml-2">票券列表</h2>
+<div class="items-center justify-center px-2 sm:px-6 lg:px-8">
 
-<table class="table table-hover">
-  <thead class="table-dark">
-    <tr>
-      <th>活動id</th>
-      <th>活動名稱</th>
-      <th>活動票券id</th>
-      <th>票券種類</th>
-      <th>數量</th>
-      <th>票價</th>
-      <th></th>
-    </tr>
-  </thead>
 
-  <tbody>
-    <% @ticket_types.each do |ticket_type| %>
-      <tr>
-        <td><%= ticket_type.activity.id %></td>
-        <td><%= ticket_type.activity.title %></td>
-        <td><%= ticket_type.id %></td>
-        <td><%= ticket_type.title %></td>
-        <td><%= ticket_type.quantity %></td>
-        <td>＄<%= ticket_type.price %></td>
-        <td>
-          <%= link_to "編輯", edit_activity_path(ticket_type.activity_id), class: 'button is-light is-small' %>
-          <%= link_to "刪除", activity_ticket_type_path(id: ticket_type), method: 'delete', data: { confirm: '確認刪除?!' } %>
-          <%# <% byebug %>
-        </td>     
-      </tr> 
-    <% end %>
-  </tbody>
-</table>
+  <h2 class="mt-6 text-center text-4xl font-extrabold text-gray-900 mb-5 extrabold ">票卷列表</h2>
 
+
+
+  <div class="flex mb-3">
+    
+
+    <%= link_to "新增票卷", activity_ticket_types_path, class: "submit search-btn flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-gray-100 bg-red-600 hover:border-red-600 hover:bg-gray-100 hover:text-red-600 hover:no-underline h-10" %>
+  </div>
+
+
+<div class="flex flex-col">
+  <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
+    <div class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
+      <div class="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
+        <table class="min-w-full divide-y divide-gray-200">
+          <thead class="bg-red-200">
+            <tr>
+              <th scope="col" class="px-6 py-3 text-left text-md font-normal text-gray-900 uppercase tracking-wider">
+                活動id
+              </th>
+              <th scope="col" class="px-6 py-3 text-left text-md font-normal text-gray-900 uppercase tracking-wider">
+                活動名稱
+              </th>
+              <th scope="col" class="px-6 py-3 text-left text-md font-normal text-gray-900 uppercase tracking-wider">
+                活動票券id
+              </th>
+              <th scope="col" class="px-6 py-3 text-left text-md font-normal text-gray-900 uppercase tracking-wider">
+                票券種類
+              </th>
+              <th scope="col" class="px-6 py-3 text-left text-md font-normal text-gray-900 uppercase tracking-wider">
+                數量
+              </th>
+              <th scope="col" class="px-6 py-3 text-left text-md font-normal text-gray-900 uppercase tracking-wider">
+                票價
+              </th>
+              <th scope="col" class="px-6 py-3 text-left text-md font-normal text-gray-900 uppercase tracking-wider">
+                票卷編輯
+              </th>
+
+
+            </tr>
+          </thead>
+
+          <tbody>
+              <% @ticket_types.each do |ticket_type| %>
+              <tr  class= "px-6 py-3 text-center">
+                <td><%= ticket_type.activity.id %></td>
+                <td><%= ticket_type.activity.title %> </td>
+                <td><%= ticket_type.id %> </td>
+                <td><%= ticket_type.title %> </td>
+                <td><%= ticket_type.quantity %> </td>
+                <td><%= ticket_type.price %> </td>
+                
+                
+                <td class="flex">
+                  <%= link_to "編輯", edit_activity_path(ticket_type.activity_id), class: "submit search-btn flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-gray-100 bg-gray-900 hover:border-gray-600 hover:bg-gray-100 hover:text-gray-900 hover:no-underline h-10" %>
+                  <%= link_to "刪除", activity_ticket_type_path(id: ticket_type), method: 'delete', data: { confirm: '確認刪除?!' },class: "submit search-btn flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-gray-100 bg-gray-900 hover:border-gray-600 hover:bg-gray-100 hover:text-gray-900 hover:no-underline h-10" %>
+
+                </td>
+              </tr>   
+              <%end %>
+            </tbody>
+
+
+
+
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+</div>
+</div>
 

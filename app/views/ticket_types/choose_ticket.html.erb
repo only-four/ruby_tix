@@ -1,35 +1,48 @@
-<h1>請選擇票券</h1>
+<div class="items-center justify-center px-2 sm:px-6 lg:px-8">
 
-<% @ticket_types.each do |ticket| %>  
-  <div class="card choose-ticket-card" id="accordion">
-    <div class="card-body price" >
-      <h5 class="card-title"><%= ticket.title %></h5>
-      <h6 class="card-subtitle mb-2 text-muted">NT$<%= ticket.price %></h6>
 
-      <a class="card-link" data-toggle="collapse" data-parent="#accordion" href="#collapse`${ticket_types.id}`"  data-target="#e" >更多資訊</a>
-      <div class="qty " style="display:inline; margin-left:250px;">
-        <span class="minus"style="margin-right:20px;"> <a href="#"><i class="fas fa-minus-circle"></i></a></span>
-        <input type="number" class="count" name="qty" value="1" style="width: 30px;">
-        <span class="plus "> <a href="#"><i class="fas fa-plus-circle"></i></a></span>
-      </div>
-     
-      
+  <h2 class="mt-6 text-center text-4xl font-extrabold text-gray-900 mb-5 extrabold ">請選擇票券</h2>
+  
+      <% @ticket_types.each do |ticket| %>  
+        <div class="card choose-ticket-card px-5 py-3 shadow overflow-hidden border-b border-gray-200 sm:rounded-lg" id="accordion">
+          <div class="items-center grid grid-cols-6 gap-4" >
+            <h5 class="text-2xl"><%= ticket.title %></h5>
+            <h5>單價：NT$<%= ticket.price %></h5>
+            <div class="flex items-center justify-around">
+              <button class="js-minusTicket rounded-full  h-10 w-10 flex items-center justify-center bg-gray-700 text-gray-100" id="minusItem">-</button>
+              <span class="js-ticketQuantity">0</span>
+              <button class="js-addTicket rounded-full  h-10 w-10 flex items-center justify-center bg-gray-700 text-gray-100" id="addItem">+</button>
+              <%# <span class="minus"style="margin-right:20px;"> <a href="#"><i class="fas fa-minus-circle"></i></a></span>
+              <input type="number" class="count" name="qty" value="1">
+              <span class="plus "> <a href="#"><i class="fas fa-plus-circle"></i></a></span> %>
+            </div>
+            <button class="js-cardLink col-end-7 col-span-1 bg-gray-200 px-2 py-2 border border-transparent rounded-md shadow-sm text-center font-medium  hover:border-red-600 hover:bg-gray-100 hover:text-red-600 hover:no-underline h-10" >更多資訊</button> 
+            <%# <a  href="#collapse`${ticket_types.id}`" class="js-cardLink col-end-7 col-span-1 bg-gray-200 px-2 py-2 border border-transparent rounded-md shadow-sm text-center font-medium  hover:border-red-600 hover:bg-gray-100 hover:text-red-600 hover:no-underline h-10" >更多資訊</a> %>
+          </div>
 
-              
-    </div>
+          <div>
+             
+            <div class="bg-gray-100 " id="ticket-detail" style="display: none;">
+              <h2>活動資訊：</h2>
+              <%= ticket.content %>
+            </div>         
+          </div>
 
-    <div class="collapse " id="e" >
-      <div class="card card-body info" >
-        <h2>活動資訊：</h2>
-        <%= ticket.content %>
-      </div>
-    </div>
+          <%# <div class="collapse " id="e" >
+            
+          </div> %>
 
-  </div>
-<% end %>
+        </div>
+      <% end %>
+
+
+</div>
+
 
 <script>
-  $('.collapse').collapse('toggle')
+  // $('.collapse').collapse('toggle')
+
+
 </script>  
   
 
