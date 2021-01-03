@@ -26,7 +26,7 @@
       <td><%= order.price %></td>
       <td><%= order.state %></td>
       <td><%= link_to '檢視個別訂單', order_path(order) %></td>
-      <td><%= link_to '進行付款', '#' if order.may_pay? %></td>
+      <td><%= link_to '進行付款', pay_order_path(order), method:'POST', data: {confirm:'確定付款？'} if order.may_pay? %></td>
       <td><%= link_to '取消訂單', cancel_order_path(order), method:'delete', data: {confirm:'是否取消訂單？'} if order.may_refund? %></td>
     </tr>
   <%end%>

@@ -21,6 +21,5 @@ class CartsController < ApplicationController
     @order = current_user.orders.build
   end
 
-  private 
 
 end
