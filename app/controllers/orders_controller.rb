@@ -1,6 +1,6 @@
 class OrdersController < ApplicationController
   def index
-    @orders = Order.all
+    @orders = current_user.orders.order(id: :desc)
   end
   
   def new
@@ -21,7 +21,7 @@ class OrdersController < ApplicationController
         req.headers['X-LINE-ChannelId'] = "1655423053"
         req.headers['X-LINE-ChannelSecret'] = "85852ff615ac559df286663802382d07"
         req.body = {
-                      productName: "Apple",
+                      productName: "RubyTix",
                       amount: current_cart.total_price.to_i,
                       currency: "TWD",
                       confirmUrl: "http://localhost:3000/orders/confirm",
@@ -65,12 +65,39 @@ class OrdersController < ApplicationController
     else
       redirect_to root_path, notice: '付款發生錯誤'
     end
+  end
 
+  def cancel
+    @order = current_user.orders.find(params[:id])
+
+    if @order.paid?
+      resp = Faraday.post("https://sandbox-api-pay.line.me/v2/payments/#{@order[:transactionId]}/refund") do |req|
+        req.headers['Content-Type'] = 'application/json'
+        req.headers['X-LINE-ChannelId'] = "1655423053"
+        req.headers['X-LINE-ChannelSecret'] = "85852ff615ac559df286663802382d07"
+      end
+
+      result = JSON.parse(resp.body)
+
+      if result["returnCode"] == "0000"
+      @order.refund!
+        redirect_to orders_path, notice: '訂單 #{@order.num}已完成退款'
+      else
+        redirect_to orders_path, notice: '退款失敗'
+      end
+
+    else
+        redirect_to root_path
+    end
   end
 
   def show
     @order = Order.find_by(id:params[:id])
   end
+
+  # def total_price
+  #   order_items.reduce(0) {|sum,item| sum + item.total_price }
+  # end
 
   private
   def order_params

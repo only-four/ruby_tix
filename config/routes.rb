@@ -16,6 +16,10 @@ Rails.application.routes.draw do
              }
 
   resources :orders, only:[:index, :show, :create, :destroy] do
+    member do
+      delete :cancel
+    end
+
     collection do
       get :confirm
     end

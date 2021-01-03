@@ -13,18 +13,21 @@
       <td>訂單金額</td>
       <td>訂單狀態</td>
       <td>訂單詳情</td>
+      <td>操作</td>
     </tr>
   </thead>
 
   <tbody>
-  <% @orders.each do |item| %>
+  <% @orders.each do |order| %>
     <tr>
-      <td><%= item.num %></td>
+      <td><%= order.num %></td>
       <td>活動名稱</td>
       <td>活動日期</td>
-      <td><%= item.price %></td>
-      <td><%= item.state %></td>
-      <td><%= link_to '檢視個別訂單', order_path(item.id) %></td>
+      <td><%= order.price %></td>
+      <td><%= order.state %></td>
+      <td><%= link_to '檢視個別訂單', order_path(order) %></td>
+      <td><%= link_to '進行付款', '#' if order.may_pay? %></td>
+      <td><%= link_to '取消訂單', cancel_order_path(order), method:'delete', data: {confirm:'是否取消訂單？'} if order.may_refund? %></td>
     </tr>
   <%end%>
   </tbody>
