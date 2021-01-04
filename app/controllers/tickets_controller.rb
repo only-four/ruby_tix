@@ -9,11 +9,21 @@ class TicketsController < ApplicationController
   end
 
   def attend_event
-    
+    @ticket= Ticket.find(params[:id])
+    if @ticket.event_attandance.nil?
+      @event_attandance = @ticket.create_event_attandance(ticket_number: @ticket.ticket_number)
+      redirect_to attend_event_result_ticket_path(@ticket)
+    else
+      redirect_to '/', notic: '票券已使用'
+    end
   end
   
   def attend_event_result
-    
+ 
   end
 
+  private
+  def event_attandance_params
+    params.require(:event_attandance).permit(:ticket_number)
+  end
 end

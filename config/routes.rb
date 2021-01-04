@@ -29,9 +29,9 @@ Rails.application.routes.draw do
   # 訂單成立後顯示個人票券
   resources :tickets, only: [ :create] do
     post 'attend_event', on: :member
+    get 'attend_event_result', on: :member
     collection do
       get :my_tickets
-      get :attend_event_result
     end
   end
 

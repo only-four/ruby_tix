@@ -4,7 +4,7 @@
 </div>
 
   <% @tickets.each do |ticket| %>
-<%= link_to '參加活動', attend_event_result_tickets_path(ticket) %>
+<%= link_to '參加活動', attend_event_ticket_path(ticket), method: :post %>
 
 
     <div class=" w-3/4 px-4 py-2 text-gray-800">
