@@ -10,13 +10,14 @@
     <tr>
       <td>活動id</td>
       <td>活動名稱</td>
-      <td>活動內容</td>
-      <td>主辦單位</td>
       <td>活動狀態</td>  <%# <尚未開始/進行中/已結束 %>
       <td>開始時間</td>
       <td>結束時間</td>
       <td>活動地點</td>
-      <td>購買狀態</td>    <%# 我想參加！/可參加時告訴我 %>
+      <td>參加人數</td>
+      <td>活動編輯</td>
+      <td>ＯＯＯＯ</td>
+      <td>票券管理</td>
       <td></td>
     </tr>
   </thead>
@@ -24,25 +25,24 @@
   <tbody>
     <% @activities.each do |activity| %>
     <tr>
-      <td><%= activity.id %></td>
+      <td> <%= activity.id %> </td>
       <td> <%= activity.title %> </td>
-      <td> <%= activity.content  %> </td>
-      <td> <%= activity.user_id  %> </td>
       <td> <%= activity.is_available  %> </td>
-      <td> <%= activity.begin_datetime  %> </td>
-      <td> <%= activity.finish_datetime  %> </td>
+      <td> <%= activity.begin_datetime %> </td>
+      <td> <%= activity.finish_datetime %> </td>
       <td> <%= activity.location  %> </td>
-      <td> <%= activity.buy  %> </td>
+      <td> <%= activity.activity_users.size %> </td>
+      <td> 
+        <%= link_to '編輯', edit_activity_path(activity), method: "get" %>
+        <%= link_to '刪除', activity_path(activity), method: "delete", data: { confirm: "確認刪除" }%>
+      </td>
+      <td>  <%= link_to '參加', join_activity_path(activity), method: "POST"%></td>
       <td>
         <% if activity.ticket_types != [] %>
           <%= link_to '票券種類', activity_ticket_types_path(activity) %>
         <% else %>
           <%= link_to '新增票券', edit_activity_path(activity)%>
         <% end %>
-      </td>
-      <td> 
-        <%= link_to '編輯活動', edit_activity_path(activity)%>
-        <%= link_to '刪除活動', activity_path(activity), method: "delete", data: { confirm: "確認刪除" }%>
       </td>
     </tr>   
     <%end %>

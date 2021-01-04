@@ -1,10 +1,15 @@
 <%= form_for @activity do |f|%>
   <%= f.hidden_field :user_id, value: current_user.id %>
+  <%= f.label :user_name, value: current_user.name %>
+  <%= "：請依照下列欄位填寫資料" %>
+  
   <div class="activities_content">
     <div class="activities">
     <h3>基本資訊</h3>
+      <% if false %>
       <%= f.label :hostname, "主辦單位" %>   
       <%= f.text_field :hostname %> <br />
+      <% end %>
       <%= f.label :title, "活動名稱" %>
       <%= f.text_field :title %> <br />
     </div>
