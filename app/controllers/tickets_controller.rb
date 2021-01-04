@@ -8,4 +8,12 @@ class TicketsController < ApplicationController
     @tickets= Ticket.where(order_id: @my_orders.ids)
   end
 
+  def attend_event
+    
+  end
+  
+  def attend_event_result
+    
+  end
+
 end

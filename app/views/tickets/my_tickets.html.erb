@@ -1,7 +1,12 @@
 <h2>我的票券</h2>
-
+<div>
+  <canvas id="canvas"></canvas>
+</div>
 
   <% @tickets.each do |ticket| %>
+<%= link_to '參加活動', attend_event_result_tickets_path(ticket) %>
+
+
     <div class=" w-3/4 px-4 py-2 text-gray-800">
       <div class="hidden xl:flex flex-row justify-between shadow-md border rounded-md">
         <div
@@ -37,7 +42,7 @@
               class="flex flex-row px-4 py-2 text-xs font-bold text-red-800 bg-white rounded-md "
             >
               <span class="mr-2 font-normal text-gray-500">主辦單位</span>
-              <p class="font-semibold text-red-800">Banua Coder</p>
+              <p class="font-semibold text-red-800"><%= ticket.ticket_type.activity.hostname %></p>
             </div>
           </div>
           <div class="absolute self-end mr-1 mt-1">
@@ -45,7 +50,7 @@
               class="px-4 py-2 text-xs font-bold text-red-800 bg-white rounded-md "
             >
               <span class="font-normal text-gray-500">Ticket Number :</span>
-              <%= ticket.id %>
+              <%= ticket.ticket_number %>
             </p>
           </div>
           <div class="absolute bottom-0 flex flex-col w-full h-24">
@@ -98,35 +103,35 @@
       </div>
       <hr class="border-dashed border-2 border-gray-400"/>
         <img
-            src="https://www.unfe.org/wp-content/uploads/2019/04/SM-placeholder-1024x512.png"
+            src="https://picsum.photos/1024/450?random=1"
           />
       <div class="py-2 px-4 flex flex-col text-sm md:text-2xl">
-        <p class="self-start font-bold text-gray-500">Mulai</p>
+        <p class="self-start font-bold text-gray-500">活動開始：</p>
         <div class="flex text-sm justify-between my-2 md:text-xl">
           <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
-          <p class="font-bold text-red-800">Senin, 29 September 2020</p>
+          <p class="font-bold text-red-800"><%= ticket.ticket_type.activity.begin_datetime%></p>
         </div>
         <div class="flex text-sm justify-between my-2 md:text-xl">
           <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-          <p class="font-bold text-red-800">10:30</p>
+          <%# <p class="font-bold text-red-800">10:30</p> %>
         </div>
       </div>
       <div class="py-2 px-4 flex flex-col text-sm md:text-2xl">
-        <p class="self-start font-bold text-gray-500">Selesai</p>
+        <p class="self-start font-bold text-gray-500">活動結束</p>
         <div class="flex text-sm md:text-xl justify-between my-2">
           <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
-          <p class="font-bold text-red-800">Senin, 29 September 2020</p>
+          <p class="font-bold text-red-800"><%= ticket.ticket_type.activity.finish_datetime%></p>
         </div>
         <div class="flex text-sm md:text-xl justify-between my-2">
           <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-          <p class="font-bold text-red-800">15:30</p>
+          <%# <p class="font-bold text-red-800">15:30</p> %>
         </div>
       </div>
       <div class="py-2 px-4 flex flex-col text-sm md:text-2xl">
-        <p class="self-start font-bold text-gray-500">Lokasi</p>
+        <p class="self-start font-bold text-gray-500">活動地點：</p>
         <div class="flex text-sm md:text-xl justify-between my-2">
           <svg class="w-6 h-6 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
-          <p class="font-bold text-red-800">Banua Coder Coworking Space, Palu, Sulawesi Tengah, Indonesia</p>
+          <p class="font-bold text-red-800"><%= ticket.ticket_type.activity.location %> </p>
         </div>
       </div>
       <hr class="border-gray-400"/>

@@ -5,7 +5,7 @@ class CommentsController < ApplicationController
   
   def create
     p params
-    @comment = @activity.comments.new(comment_params)  
+    @comment = @activity.comments.build(comment_params)  
     @comment.user = current_user
     @comment.save
   end
