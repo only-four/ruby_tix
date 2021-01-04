@@ -17,9 +17,13 @@
     <div class="activities">
     <h3>時間地點</h3>
       <%= f.label :begin_datetime, "開始時間" %>
-      <%= f.datetime_field :begin_datetime %> <br />
+      <%# <%= f.date_field :begin_datetime %>
+      <%= f.date_field :begin_datetime %>
+      <%= f.time_field :begin_datetime %>
       <%= f.label :finish_datetime, "結束時間" %>
-      <%= f.datetime_field :finish_datetime %> <br />
+      <%= f.date_field :finish_datetime %>
+      <%= f.time_field :finish_datetime %>
+      <%# <%= f.datetime_field :finish_datetime %> <br />
       <%= f.label :location, "活動地點" %>
       <%= f.text_field :location %> <br />
       <%= "((這裡放google map api 抓上面的地點 顯示出地圖))" %>

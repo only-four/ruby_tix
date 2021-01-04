@@ -1,5 +1,6 @@
 <h1>活動列表</h1>
 <table>
+
 請選擇想參與的活動
 <br />
 <%= link_to "新增活動", new_activity_path %><br />
@@ -8,7 +9,7 @@
 <table>
   <thead>
     <tr>
-      <td>活動id</td>
+      <td>活動編號</td>
       <td>活動名稱</td>
       <td>活動狀態</td>  <%# <尚未開始/進行中/已結束 %>
       <td>開始時間</td>
@@ -28,8 +29,9 @@
       <td> <%= activity.id %> </td>
       <td> <%= activity.title %> </td>
       <td> <%= activity.is_available  %> </td>
-      <td> <%= activity.begin_datetime %> </td>
-      <td> <%= activity.finish_datetime %> </td>
+      <td> <%= activity.begin_datetime&.strftime("%Y/%m/%d") %> </td>
+
+      <td> <%= activity.finish_datetime&.strftime("%Y/%m/%d") %> </td>
       <td> <%= activity.location  %> </td>
       <td> <%= activity.activity_users.size %> </td>
       <td> 
