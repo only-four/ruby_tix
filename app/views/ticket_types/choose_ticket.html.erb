@@ -11,6 +11,7 @@
         <span class="minus"style="margin-right:20px;"> <a href="#"><i class="fas fa-minus-circle"></i></a></span>
         <input type="number" class="count" name="qty" value="1" style="width: 30px;">
         <span class="plus "> <a href="#"><i class="fas fa-plus-circle"></i></a></span>
+        <%= link_to '放到購物車', add_cart_path(ticket.id), method: "post", remote:true %>
       </div>
      
       
@@ -26,9 +27,11 @@
     </div>
 
   </div>
-<%= link_to '放到購物車', add_cart_path(ticket.id), method: "post" %>
 <% end %>
 
+購物車總數量：<%= current_cart.total_quantity %>
+購物車總價格：<%= current_cart.total_price %>
+<%= link_to '前往結帳頁面', checkout_cart_path %>
 
 <script>
   $('.collapse').collapse('toggle')

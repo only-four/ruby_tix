@@ -9,8 +9,11 @@ class OrdersController < ApplicationController
 
   def create
     @order = current_user.orders.build(order_params)
+    # result = []
     current_cart.items.each do |item|
       @order.order_items.build(ticket_types_title: item.ticket_type_id, quantity: item.quantity)
+      # a1 = item.ticket_type_id
+      # result.push(TicketType.find_by(id:a1).title) 若要藉由result抓產品名稱則用此陣列
     end
 
     if @order.save
@@ -68,24 +71,34 @@ class OrdersController < ApplicationController
   end
 
   def cancel
+    p 'test_1'
     @order = current_user.orders.find(params[:id])
+    p @order
+    p 'test_2'
+    p @order.paid?
 
     if @order.paid?
-      resp = Faraday.post("https://sandbox-api-pay.line.me/v2/payments/#{@order[:transactionId]}/refund") do |req|
+      resp = Faraday.post("https://sandbox-api-pay.line.me/v2/payments/#{@order[:transaction_id]}/refund") do |req|
         req.headers['Content-Type'] = 'application/json'
         req.headers['X-LINE-ChannelId'] = "1655423053"
         req.headers['X-LINE-ChannelSecret'] = "85852ff615ac559df286663802382d07"
       end
 
+    p resp
+
       result = JSON.parse(resp.body)
+
+    p result
 
       if result["returnCode"] == "0000"
       @order.refund!
+      p '訂單退訂成功！'
         redirect_to orders_path, notice: '訂單 #{@order.num}已完成退款'
       else
+      p '訂單退訂失敗！'
         redirect_to orders_path, notice: '退款失敗'
       end
-
+    p 'test_3'
     else
         redirect_to root_path
     end

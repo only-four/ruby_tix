@@ -6,7 +6,7 @@ class CartsController < ApplicationController
     session[:cart7749] = current_cart.serialize
 
     p params
-    redirect_to activity_ticket_types_path(ticket_types.activity_id), notice: "已加入購物車"
+    # redirect_to activity_ticket_types_path(ticket_types.activity_id), notice: "已加入購物車"
   end
 
   def destroy

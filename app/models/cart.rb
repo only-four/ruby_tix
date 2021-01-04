@@ -25,6 +25,10 @@ class Cart
     items.reduce(0) { |sum, item| sum + item.price }
   end
 
+  def total_quantity
+    items.reduce(0) { |sum, item| sum + item.quantity }
+  end
+
   def serialize
     all_items = items.map { |item|
       { "ticket_type_id" => item.ticket_type_id, "quantity" => item.quantity}
