@@ -3,8 +3,6 @@ class Order < ApplicationRecord
   belongs_to :user
   has_many :order_items
 
-  validates :participant, :tel, :address, presence: true
-
   include AASM
   
   aasm column: :state do

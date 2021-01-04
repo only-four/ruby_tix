@@ -1,20 +1,20 @@
 class OrdersController < ApplicationController
   def index
-    @orders = current_user.orders.order(id: :desc)  #從使用者的角度建立訂單，並且排序
-  end
-  
-  def new
-    @order = Order.new
+    if current_user
+      @orders = current_user.orders.order(id: :desc)  #從使用者的角度建立訂單，並且排序
+    else
+      redirect_to '/users/sign_up', notice:'請先註冊或登陸會員'
+    end
   end
 
   def create
     @order = current_user.orders.build(order_params)
-
     current_cart.items.each do |item|
       @order.order_items.build(ticket_types_title: item.ticket_type_id, quantity: item.quantity)
     end
 
     if @order.save
+
       resp = Faraday.post("https://sandbox-api-pay.line.me/v2/payments/request") do |req|
         req.headers['Content-Type'] = 'application/json'
         req.headers['X-LINE-ChannelId'] = "1655423053"
@@ -27,7 +27,7 @@ class OrdersController < ApplicationController
                       orderId: @order.num
                    }.to_json
       end
-
+      p 'test3'
       result = JSON.parse(resp.body)
 
       # returnCode中「0000」表示成功
@@ -61,9 +61,9 @@ class OrdersController < ApplicationController
       order.pay!(transaction_id: transaction_id)
 
       session[:cart7749] = nil
-      redirect_to root_path, notice: '付款完成'
+      redirect_to orders_path, notice: '付款完成'
     else
-      redirect_to root_path, notice: '付款發生錯誤'
+      redirect_to checkout_cart_path, notice: '付款發生錯誤'
     end
   end
 
@@ -144,13 +144,12 @@ class OrdersController < ApplicationController
     end
   end
 
-  def show
-    @order = Order.find_by(id:params[:id])
-  end
-
   # def total_price
   #   order_items.reduce(0) {|sum,item| sum + item.total_price }
   # end
+
+  def show
+  end
 
   private
   def order_params

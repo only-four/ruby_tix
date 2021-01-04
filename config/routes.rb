@@ -15,7 +15,7 @@ Rails.application.routes.draw do
                :omniauth_callbacks => "users/omniauth_callbacks"
              }
 
-  resources :orders, only:[:index, :show, :create, :destroy] do
+  resources :orders, only:[:index, :create, :show, :destroy] do
     member do
       delete :cancel
       post :pay

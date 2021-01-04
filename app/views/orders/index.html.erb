@@ -1,19 +1,14 @@
 <h2>訂單列表</h2>
 
-<button>已完成</button>
-<button>已取消</button>
-<button>退費紀錄</button>
-
 <table>
   <thead>
     <tr>
       <td>訂單編號</td>
-      <td>活動名稱</td>
-      <td>活動日期</td>
-      <td>訂單金額</td>
-      <td>訂單狀態</td>
-      <td>訂單詳情</td>
-      <td>操作</td>
+      <td>建立日期</td>
+      <td>總金額</td>
+      <td>狀態</td>
+      <td>訂單付款</td>
+      <td>訂單取消</td>
     </tr>
   </thead>
 
@@ -21,13 +16,11 @@
   <% @orders.each do |order| %>
     <tr>
       <td><%= order.num %></td>
-      <td>活動名稱</td>
-      <td>活動日期</td>
+      <td><%= order.created_at %></td>
       <td><%= order.price %></td>
       <td><%= order.state %></td>
-      <td><%= link_to '檢視個別訂單', order_path(order) %></td>
-      <td><%= link_to '進行付款', pay_order_path(order), method:'POST', data: {confirm:'確定付款？'} if order.may_pay? %></td>
-      <td><%= link_to '取消訂單', cancel_order_path(order), method:'delete', data: {confirm:'是否取消訂單？'} if order.may_refund? %></td>
+      <td><%= link_to '付款', pay_order_path(order), method:'POST', data: {confirm:'確定付款？'} if order.may_pay? %></td>
+      <td><%= link_to '退款', cancel_order_path(order), method:'delete', data: {confirm:'是否取消訂單？'} if order.may_refund? %></td>
     </tr>
   <%end%>
   </tbody>
