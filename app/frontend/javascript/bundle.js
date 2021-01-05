@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded',function () {
   var canvas = document.getElementById('canvas')
 
   
-  QRCode.toCanvas(canvas, 'https://github.com/soldair/node-qrcode#highlights', function (error) {
+  QRCode.toCanvas(canvas, '20210104v4DJv', function (error) {
     if (error) console.error(error)
     console.log('success!');
   })

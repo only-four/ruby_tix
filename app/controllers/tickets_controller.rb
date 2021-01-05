@@ -12,6 +12,7 @@ class TicketsController < ApplicationController
     @ticket= Ticket.find(params[:id])
     if @ticket.event_attandance.nil?
       @event_attandance = @ticket.create_event_attandance(ticket_number: @ticket.ticket_number)
+      @ticket.use! if params[:use]
       redirect_to attend_event_result_ticket_path(@ticket)
     else
       redirect_to '/', notic: '票券已使用'

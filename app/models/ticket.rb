@@ -1,24 +1,31 @@
 class Ticket < ApplicationRecord
+  include AASM
   belongs_to :ticket_type
   belongs_to :order
   before_create :generate_ticket_number
   has_one :event_attandance
+  
+  aasm column: 'state', no_direct_assignment: true do 
+    state :pending, initial: true
+    state :activated,:used, :expired
 
-#   include AASM
-#   aasm column: :state do
-#     state :activate, initial: true
-#     state :used
-#     state :expired
+    event :activate do
+      transitions from: :pending, to: :activated
+      # after do
+        
+      # end
+    end
 
-#     event :use do
-#       transitions  :from => :activate, :to => :used
-#     end
+    event :use do
+      transitions from: :activated, to: :used
+    end
 
-#     event :expire do
-#       transitions :from => :activate, :to => :expired
-#     end
-#   end
-# end
+    event :expire do
+      transitions from: :activated, to: :expired
+    end
+  end
+
+
 
 
   private
