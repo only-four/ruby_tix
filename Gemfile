@@ -44,6 +44,9 @@ gem 'aasm', '~> 5.1', '>= 5.1.1'
 gem 'faraday', '~> 1.1.0'
 # security
 gem 'omniauth-rails_csrf_protection', '~> 0.1.2'
+# carrierwave/for image-upload
+gem 'carrierwave', '~> 2.1'
+
 gem "nokogiri", ">= 1.11.0.rc4"
 
 gem 'simple_form'

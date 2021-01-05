@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_01_04_184857) do
+ActiveRecord::Schema.define(version: 2021_01_05_084948) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -132,7 +132,7 @@ ActiveRecord::Schema.define(version: 2021_01_04_184857) do
 
   create_table "ticket_types", force: :cascade do |t|
     t.string "title"
-    t.string "content"
+    t.text "content"
     t.integer "quantity"
     t.integer "price"
     t.datetime "created_at", precision: 6, null: false
@@ -174,6 +174,7 @@ ActiveRecord::Schema.define(version: 2021_01_04_184857) do
     t.string "fb_token"
     t.string "provider"
     t.string "uid"
+    t.string "image"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["fb_uid"], name: "index_users_on_fb_uid"
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
