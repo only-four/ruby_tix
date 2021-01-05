@@ -17,9 +17,9 @@
       <section class="flex">
         <select name="current_user_account_name" class="current_user_account_name rounded-md mx-3 px-96">
           <option value="1"  selected="selected" class="py-1"><i class="far fa-user-circle"></i><%= current_user.account_name %></option>
-          <option value="2" class="member_centre py-1"><%= link_to '編輯會員資料', edit_user_registration_path %></option>
+          <option value="2" class="member_centre py-1">編輯會員資料</option>
           <option value="3" class="activity_record py-1">活動紀錄</option>
-          <option value="4" class="hold_activity py-1"><%= link_to '舉辦活動', activities_path %></option>
+          <option value="4" class="hold_activity py-1">活動列表</option>
           <option value="5" class="shopping_cart py-1">購物車</option>
         </select>
 
@@ -59,22 +59,4 @@
 
   <% end %>
 </div>
-
-<script>
-  document.addEventListener('DOMContentLoaded', function(){
-
-    const searchBtn = document.querySelector('.search-btn')
-
-    searchBtn.addEventListener('click', function() {
-      const searchInput = document.querySelector('.search-input').value
-      console.log(searchInput);
-      const searchAPI = window.location.origin
-      fetch(`${searchAPI}/pages/search.json?search=${searchInput}`)
-      // response.json可將得到的結果轉換成json格式
-      .then(response => response.json())
-      .then(result => console.log(result))
-      ;
-    })
-  })
-</script>
 

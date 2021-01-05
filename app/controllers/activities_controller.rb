@@ -23,7 +23,7 @@ class ActivitiesController < ApplicationController
     end
   
     def update
-      @activity = Activity.find_by(id: params[:id])  
+      @activity = Activity.find_by(id: params[:id])
       if @activity.update(activity_params)
         redirect_to activities_path(@activity), notice: "資料更新成功!"      
       else

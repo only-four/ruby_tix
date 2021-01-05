@@ -25,6 +25,7 @@ document.addEventListener('DOMContentLoaded', function(){
       })
     }else if(select.value === "4"){
       console.log('4');
+      window.location.href = '/activities';
       $(`.hold`).show();
       $(`.centre`).hide();
       $(`.record`).hide();

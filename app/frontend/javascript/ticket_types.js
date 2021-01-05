@@ -3,6 +3,9 @@ document.addEventListener('DOMContentLoaded', function(){
   const minusBtn = document.querySelector('.js-minusTicket')
   const addBtn = document.querySelector('.js-addTicket')
   const detailBtn = document.querySelector('.js-cardLink')
+  const ticketDetail = document.querySelector('.js-ticket-detail')
+
+
 
 
 
@@ -20,7 +23,7 @@ document.addEventListener('DOMContentLoaded', function(){
 
   detailBtn.addEventListener('click', function(){
     console.log('add ticket detail info');
-    $(`#ticket-detail`).show();
+    ticketDetail.classList.toggle("hidden");
   })
 
 
@@ -37,4 +40,23 @@ document.addEventListener('DOMContentLoaded', function(){
     quantityField.innerHTML = quantity;
   }
 
+})
+
+
+
+document.addEventListener('DOMContentLoaded', function(){
+
+  const chatBtn = document.querySelector('.js-chat-btn')
+  const chatBox = document.querySelector('.js-chatbox')
+  const closeBtn = document.querySelector('.js-close-btn')
+
+  chatBtn.addEventListener('click', function(){
+    console.log('aaa')
+    chatBox.classList.toggle("hidden");
+  })
+
+  closeBtn.addEventListener('click', function(){
+    console.log('bbb')
+    chatBox.classList.toggle("hidden");
+  })
 })

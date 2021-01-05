@@ -10,11 +10,11 @@
       <div class="activity_item grid grid-cols-3 gap-4">
     
           <% @activities.each do |activity| %>
-        <div class="bg-gray-200 p-3 group border-gray-500 hover:bg-white hover:shadow-lg hover:border-transparent">
+        <div class="js-activity-item bg-gray-200 p-3 group border-gray-500 hover:bg-white hover:shadow-lg hover:border-transparent">
 
             <div class="relative">
                       
-              <%= link_to  activities_path do %>
+              <%= link_to activity_path(activity.id) do %>
                 <div class="w-full">
                   <img src="https://picsum.photos/400/300/?random=1">  
                 </div>

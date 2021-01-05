@@ -5,7 +5,13 @@ Rails.application.routes.draw do
     # 沒id
     collection do
       get :search
-      get :footer_page
+      get :abouts_us , to: "pages#abouts_us"
+      get :footer_notice , to: "pages#footer_notice"
+      get :process , to: "pages#process_method"
+      get :questions , to: "pages#questions"
+      get :sell_purchase , to: "pages#sell_purchase"
+      get :service_centre , to: "pages#service_centre"
+      get :dervice_terms , to: "pages#dervice_terms"
     end
   end 
 
