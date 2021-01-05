@@ -9,6 +9,7 @@ class OrdersController < ApplicationController
 
   def create
     @order = current_user.orders.build(order_params)
+    @order[:price] = current_cart.total_price.to_i
     # result = []
     current_cart.items.each do |item|
       @order.order_items.build(ticket_types_title: item.ticket_type_id, quantity: item.quantity)
@@ -30,7 +31,6 @@ class OrdersController < ApplicationController
                       orderId: @order.num
                    }.to_json
       end
-      p 'test3'
       result = JSON.parse(resp.body)
 
       # returnCode中「0000」表示成功
@@ -71,11 +71,7 @@ class OrdersController < ApplicationController
   end
 
   def cancel
-    p 'test_1'
     @order = current_user.orders.find(params[:id])
-    p @order
-    p 'test_2'
-    p @order.paid?
 
     if @order.paid?
       resp = Faraday.post("https://sandbox-api-pay.line.me/v2/payments/#{@order[:transaction_id]}/refund") do |req|
@@ -84,21 +80,14 @@ class OrdersController < ApplicationController
         req.headers['X-LINE-ChannelSecret'] = "85852ff615ac559df286663802382d07"
       end
 
-    p resp
-
       result = JSON.parse(resp.body)
-
-    p result
 
       if result["returnCode"] == "0000"
       @order.refund!
-      p '訂單退訂成功！'
         redirect_to orders_path, notice: '訂單 #{@order.num}已完成退款'
       else
-      p '訂單退訂失敗！'
         redirect_to orders_path, notice: '退款失敗'
       end
-    p 'test_3'
     else
         redirect_to root_path
     end
@@ -114,7 +103,7 @@ class OrdersController < ApplicationController
       req.headers['X-LINE-ChannelSecret'] = "85852ff615ac559df286663802382d07"
       req.body = {
                     productName: "RubyTix",
-                    amount: @order.total_price.to_i,
+                    amount: @order[:price],
                     currency: "TWD",
                     confirmUrl: "http://localhost:3000/orders/#{@order.id}/pay_confirm",
                     orderId: @order.num
@@ -140,7 +129,7 @@ class OrdersController < ApplicationController
     req.headers['X-LINE-ChannelId'] = "1655423053"
     req.headers['X-LINE-ChannelSecret'] = "85852ff615ac559df286663802382d07"
     req.body = {
-                  amount: @order.total_price.to_i,
+                  amount: @order[:price],
                   currency: "TWD",
                }.to_json
     end
@@ -149,8 +138,8 @@ class OrdersController < ApplicationController
     if result["returnCode"] == "0000"
       transaction_id = result["info"]["transactionId"]
 
-      order.pay!(transaction_id: transaction_id)
-
+      @order.pay!(transaction_id: transaction_id)
+      session[:cart7749] = nil
       redirect_to orders_path, notice: '付款完成'
     else
       redirect_to orders_path, notice: '付款發生錯誤'
