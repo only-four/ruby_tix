@@ -1,6 +1,6 @@
 <h1>活動列表</h1>
 <table>
-
+<%= current_user.name %>
 請選擇想參與的活動
 <br />
 <%= link_to "新增活動", new_activity_path %><br />
@@ -17,20 +17,18 @@
       <td>活動地點</td>
       <td>參加人數</td>
       <td>活動編輯</td>
-      <td>ＯＯＯＯ</td>
       <td>票券管理</td>
       <td></td>
     </tr>
   </thead>
   
   <tbody>
-    <% @activities.each do |activity| %>
+    <% @activities.each_with_index do |activity, index| %>
     <tr>
-      <td> <%= activity.id %> </td>
-      <td> <%= activity.title %> </td>
+      <td> <%= index + 1 %> </td>
+      <td> <%= link_to activity.title, activity_path(activity.id)  %> </td>
       <td> <%= activity.is_available  %> </td>
       <td> <%= activity.begin_datetime&.strftime("%Y/%m/%d") %> </td>
-
       <td> <%= activity.finish_datetime&.strftime("%Y/%m/%d") %> </td>
       <td> <%= activity.location  %> </td>
       <td> <%= activity.activity_users.size %> </td>
@@ -38,7 +36,6 @@
         <%= link_to '編輯', edit_activity_path(activity), method: "get" %>
         <%= link_to '刪除', activity_path(activity), method: "delete", data: { confirm: "確認刪除" }%>
       </td>
-      <td>  <%= link_to '參加', join_activity_path(activity), method: "POST"%></td>
       <td>
         <% if activity.ticket_types != [] %>
           <%= link_to '票券種類', activity_ticket_types_path(activity) %>
