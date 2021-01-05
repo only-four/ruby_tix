@@ -3,6 +3,8 @@
 <%= current_user.name %>
 請選擇想參與的活動
 <br />
+<br />
+<br />
 <%= link_to "新增活動", new_activity_path %><br />
 <br />
 </table>
@@ -44,11 +46,12 @@
         <% end %>
       </td>
     </tr>   
-    <%end %>
+    <% end %>
   </tbody>
 </table> 
-
-
+<br />
+<br />
+<%= link_to '回到首頁', root_path %>
 
 
 

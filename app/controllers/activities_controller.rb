@@ -19,16 +19,13 @@ class ActivitiesController < ApplicationController
     end
 
     def join
-      # @activity = Activity.find_by(id: params[:id])
       @activity.activity_users.create if @activity
       redirect_to activities_path, notice: "報名完成！"
     end
 
     def edit 
-      # @activity = Activity.find_by(id: params[:id])
     end  
     def update
-      # @activity = Activity.find_by(id: params[:id])
       if @activity.update(activity_params)
         redirect_to activities_path(@activity), notice: "資料更新成功!"      
       else
@@ -37,14 +34,12 @@ class ActivitiesController < ApplicationController
     end
   
     def show
-      # @activity = Activity.find_by(id: params[:id])
-      @comment= @activity.comments.new
+      @comment = @activity.comments.new
       # show comments
-      @comments= activity.comments.order(updated_at: :desc)
+      @comments = @activity.comments.order(updated_at: :desc)
     end
 
     def destroy
-      # @activity = Activity.find_by(id: params[:id])
       @activity.destroy if @activity
       redirect_to activities_path, notice: "活動資料已刪除!"
     end
