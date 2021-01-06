@@ -15,7 +15,6 @@ require("styles")
 // import "tailwindcss/dist/tailwindcss.css"
 
 import "controllers"
-// import "stimulus"
 import 'bootstrap'
 import 'bootstrap/dist/css/bootstrap.css'
 import "@fortawesome/fontawesome-free/js/all"
@@ -23,6 +22,7 @@ import 'jquery'
 import $ from 'jquery';
 window.$ = $
 import './qr_code_reader'
+
 
 
 

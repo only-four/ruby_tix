@@ -40,27 +40,26 @@ Rails.application.routes.draw do
     resources :activities
   end
 
-  resources :activities, except: [:update] do
+  resources :activities do
     post :join, on: :member
     post :confirm, on: :member  
     delete :cancel, on: :member
 
     resources :users
-    # 主辦方設定票券寫在activity new 頁面 暫定
-    resources :ticket_types, :except => [ :show]
-    #使用者選則票券頁面
+  
+    resources :ticket_types, only:[:index, :destroy]
     get "/choose", to: "ticket_types#choose_ticket"
-    # 單一活動底下 comment
     resources :comments, only:[:create, :destroy]
   end
 
   resources :activities_user
 
 
-  # 訂單成立後顯示個人票券
   resources :tickets, only: [ :create] do
-    post 'attend_event', on: :member
-    get 'attend_event_result', on: :member
+    member do
+      post :attend_event
+      get :attend_event_result      
+    end
     collection do
       get :my_tickets
     end

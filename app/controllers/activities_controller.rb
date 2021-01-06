@@ -35,7 +35,6 @@ class ActivitiesController < ApplicationController
   
     def show
       @comment = @activity.comments.new
-      # show comments
       @comments = @activity.comments.order(updated_at: :desc)
     end
 

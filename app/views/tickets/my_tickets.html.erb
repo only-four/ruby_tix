@@ -1,8 +1,8 @@
 <div class="container">
-  <h2>我的票券</h2>
-  <div>
+  <h2 class="text-xl mb-4">我的票券</h2>
+  <%# <div>
     <canvas id="canvas">sss</canvas>
-  </div>
+  </div> %>
 
 
   <ul class="nav nav-tabs" id="myTab" role="tablist">
@@ -19,21 +19,19 @@
     <div class="tab-content" id="myTabContent">
       <div class="tab-pane fade show active " id="home" role="tabpanel" aria-labelledby="home-tab">
         <% @tickets.each do |ticket|  %> 
-          <%= link_to '參加活動', attend_event_ticket_path(ticket), method: :post, name: 'use' if ticket.activated?  %>    
+              
           <%= render 'ticket', ticket: ticket if ticket.activated? %>
         <% end %>    
       </div>
 
       <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
         <% @tickets.each do |ticket|  %> 
-          <%= link_to '參加活動', attend_event_ticket_path(ticket), method: :post, name: 'use' if ticket.pending?  %>    
           <%= render 'ticket', ticket: ticket if ticket.pending? %>
         <% end %>
       </div>
 
       <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
         <% @tickets.each do |ticket|  %> 
-          <%= link_to '參加活動', attend_event_ticket_path(ticket), method: :post, name: 'use'  if ticket.used?  %>    
           <%= render 'ticket', ticket: ticket if ticket.used? %>
       <% end %>     
       </div>
