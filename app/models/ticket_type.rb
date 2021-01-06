@@ -4,7 +4,7 @@ class TicketType < ApplicationRecord
   belongs_to :activity
   has_many :tickets
 
-  aasm column: 'state', no_direct_assignment: true do 
+  aasm column: 'state' do 
     state :pending, initial: true
     state :on_sell, :fully_booked, :sell_closed
 

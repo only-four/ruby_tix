@@ -35,6 +35,9 @@ Rails.application.routes.draw do
     end
   end
 
+  # qr_code reader
+  get 'qr_code_reader', to: 'qr_codes#index'
+
   resources :orders, only:[:index, :show, :create, :destroy]
 
   resource :cart, only:[:index, :destroy] do
