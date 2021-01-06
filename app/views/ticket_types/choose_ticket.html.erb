@@ -28,6 +28,7 @@
       <%= ticket.sell_deadline.strftime("%Y/%m/%d") %>
 
       <div>狀態：
+        <%= content_tag :span, '未開售', class: "bg-teal-500" if ticket.pending? %>
         <%= content_tag :span, '銷售中', class: "bg-teal-500" if ticket.on_sell? %>
         <%= content_tag :span, '售完', class: "bg-yellow-400" if ticket.fully_booked? %>
         <%= content_tag :span, '停止販售', class: "bg-red-600" if ticket.sell_closed? %>
