@@ -21,7 +21,6 @@ import 'bootstrap/dist/css/bootstrap.css'
 import "@fortawesome/fontawesome-free/js/all"
 import 'jquery'
 import $ from 'jquery';
-// import "qr_code_reader.js"
 window.$ = $
 import './qr_code_reader'
 
