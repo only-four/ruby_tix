@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_01_05_084948) do
+ActiveRecord::Schema.define(version: 2021_01_06_124931) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -72,6 +72,7 @@ ActiveRecord::Schema.define(version: 2021_01_05_084948) do
     t.integer "price", default: 0
     t.integer "total_price", default: 0
     t.integer "activity_users_count"
+    t.string "image"
     t.index ["user_id"], name: "index_activities_on_user_id"
   end
 
@@ -103,7 +104,7 @@ ActiveRecord::Schema.define(version: 2021_01_05_084948) do
     t.bigint "ticket_id"
     t.index ["ticket_id"], name: "index_event_attandances_on_ticket_id"
   end
-  
+
   create_table "order_items", force: :cascade do |t|
     t.bigint "order_id", null: false
     t.string "activities_title"
@@ -116,7 +117,7 @@ ActiveRecord::Schema.define(version: 2021_01_05_084948) do
 
   create_table "orders", force: :cascade do |t|
     t.string "transaction_id"
-    t.integer "num"
+    t.string "num"
     t.integer "price"
     t.string "tel"
     t.string "address"
@@ -139,8 +140,8 @@ ActiveRecord::Schema.define(version: 2021_01_05_084948) do
     t.datetime "updated_at", precision: 6, null: false
     t.datetime "sell_start"
     t.datetime "sell_deadline"
-    t.string "state"
     t.bigint "activity_id"
+    t.string "state"
     t.index ["activity_id"], name: "index_ticket_types_on_activity_id"
   end
 

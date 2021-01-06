@@ -40,6 +40,9 @@ gem 'omniauth-facebook', '~> 8.0'
 gem 'omniauth-google-oauth2', '~> 0.8.0'
 # order/aasm
 gem 'aasm', '~> 5.1', '>= 5.1.1'
+# carrierwave/for image-upload
+gem 'carrierwave', '~> 2.1'
+gem 'fog-aws', '~> 3.7'
 # cart/checkout for linepay
 gem 'faraday', '~> 1.1.0'
 # security

@@ -24,9 +24,10 @@ class ActivitiesController < ApplicationController
     end
 
     def edit 
-    end  
+    end
+
     def update
-      if @activity.update(activity_params)
+      if @activity.update!(activity_params)
         redirect_to activities_path(@activity), notice: "資料更新成功!"      
       else
         render :edit
@@ -63,6 +64,7 @@ class ActivitiesController < ApplicationController
       :email, 
       :other_contect, 
       :limit,
+      :image,
       ticket_types_attributes: [:id, :title, :content, :quantity, :sell_start, :sell_deadline, :price, :_destroy],
       address_attributes: [:location, :id, :_destroy]  )
   end 

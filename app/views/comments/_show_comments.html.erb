@@ -4,7 +4,9 @@
     <div class="bg-white border shadow-sm px-4 py-3 rounded-lg max-w-lg">
 
       <div class="flex items-center">
-        <img class="h-12 w-12 rounded-full" src="https://picsum.photos/1024/450?random=1"/>
+        <div class="h-12 w-12 rounded-full"><%= image_tag comment.user.image_url if comment.user.image_url.present? %></div>
+        
+          <%# class: "h-12 w-12 rounded-full" %>
 
         <div class="ml-2">
           <div class="text-sm ">
