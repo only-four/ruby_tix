@@ -1,6 +1,6 @@
 class Activity < ApplicationRecord
   has_many :users, through: :activity_users 
-  has_many :activity_users
+  has_many :activity_users, dependent: :destroy
   has_many :comments
   has_many :tickets
   belongs_to :creator, foreign_key: :user_id, class_name: 'User'

@@ -4,7 +4,6 @@
       <%= form.number_field:quantity, placeholder: '數量', min: 0 %>
       <%= form.number_field:price, placeholder: '票價', min:0 %>
 
-
       <%#= link_to '#', class:"card-link", data:{toggle:"collapse"},cdata:{parent:"#accordion"} do %>
         <%# <i class="fas fa-chevron-circle-down"></i> %>
       <%# end %>
@@ -13,7 +12,6 @@
         <i class="far fa-trash-alt new-ticket-delete-btn"></i>
       <% end %>
     </div>
-
 
     <div class=" nested-hidden-info"  >
       <div class="card card-body collapse.show" id="e">
@@ -39,7 +37,5 @@
         <%= form.text_area:content, rows: "5" %>
       </div>
     </div>
-
     <%= form.hidden_field :_destroy %>
-
   </div>
