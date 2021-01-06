@@ -3,18 +3,37 @@
 <% @ticket_types.each do |ticket| %>  
   <div class="card choose-ticket-card" id="accordion">
     <div class="card-body price" >
+      
       <h5 class="card-title"><%= ticket.title %></h5>
-      <h6 class="card-subtitle mb-2 text-muted">NT$<%= ticket.price %></h6>
 
+      <h6 class="card-subtitle mb-2 text-muted">NT$<%= ticket.price %></h6>
+     
       <a class="card-link" data-toggle="collapse" data-parent="#accordion" href="#collapse`${ticket_types.id}`"  data-target="#e" >更多資訊</a>
+      
       <div class="qty " style="display:inline; margin-left:250px;">
         <span class="minus"style="margin-right:20px;"> <a href="#"><i class="fas fa-minus-circle"></i></a></span>
         <input type="number" class="count" name="qty" value="1" style="width: 30px;">
         <span class="plus "> <a href="#"><i class="fas fa-plus-circle"></i></a></span>
         <%= link_to '放到購物車', add_cart_path(ticket.id), method: "post", remote:true %>
       </div>
-     
-      
+
+     <span>數量： </span>
+      <%= ticket.quantity %>
+      <span>目前購買：</span>
+      <%= ticket.tickets.count %>
+
+      <span>開售：</span>
+      <%= ticket.sell_start.strftime("%Y/%m/%d") %>
+      <span>截止販售：</span>
+      <%= ticket.sell_deadline.strftime("%Y/%m/%d") %>
+
+      <div>狀態：
+        <%= content_tag :span, '銷售中', class: "bg-teal-500" if ticket.on_sell? %>
+        <%= content_tag :span, '售完', class: "bg-yellow-400" if ticket.fully_booked? %>
+        <%= content_tag :span, '停止販售', class: "bg-red-600" if ticket.sell_closed? %>
+
+
+      </div>
 
               
     </div>

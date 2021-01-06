@@ -48,17 +48,26 @@ Rails.application.routes.draw do
     resources :users
     # 主辦方設定票券寫在activity new 頁面 暫定
     resources :ticket_types, :except => [ :show]
-    get "/ticket_types/choose_ticket", to: "ticket_types#choose_ticket"
+    #使用者選則票券頁面
+    get "/choose", to: "ticket_types#choose_ticket"
     # 單一活動底下 comment
     resources :comments, only:[:create, :destroy]
   end
 
   resources :activities_user
 
-  #使用者選則票券頁面
-  resources :ticket_types, only:[ :choose_ticket]
+
   # 訂單成立後顯示個人票券
-  resources :tickets, only: [:show]
+  resources :tickets, only: [ :create] do
+    post 'attend_event', on: :member
+    get 'attend_event_result', on: :member
+    collection do
+      get :my_tickets
+    end
+  end
+
+  # qr_code reader
+  get 'qr_code_reader', to: 'qr_codes#index'
 
   resources :orders, only:[:index, :show, :create, :destroy]
 

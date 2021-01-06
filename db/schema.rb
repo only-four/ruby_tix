@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_01_04_031122) do
+ActiveRecord::Schema.define(version: 2021_01_04_184857) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -96,6 +96,14 @@ ActiveRecord::Schema.define(version: 2021_01_04_031122) do
     t.index ["user_id"], name: "index_comments_on_user_id"
   end
 
+  create_table "event_attandances", force: :cascade do |t|
+    t.string "ticket_number"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.bigint "ticket_id"
+    t.index ["ticket_id"], name: "index_event_attandances_on_ticket_id"
+  end
+  
   create_table "order_items", force: :cascade do |t|
     t.bigint "order_id", null: false
     t.string "activities_title"
@@ -131,6 +139,7 @@ ActiveRecord::Schema.define(version: 2021_01_04_031122) do
     t.datetime "updated_at", precision: 6, null: false
     t.datetime "sell_start"
     t.datetime "sell_deadline"
+    t.string "state"
     t.bigint "activity_id"
     t.index ["activity_id"], name: "index_ticket_types_on_activity_id"
   end
@@ -145,6 +154,7 @@ ActiveRecord::Schema.define(version: 2021_01_04_031122) do
     t.bigint "ticket_type_id"
     t.bigint "order_id"
     t.string "ticket_number"
+    t.string "state"
     t.index ["order_id"], name: "index_tickets_on_order_id"
     t.index ["ticket_type_id"], name: "index_tickets_on_ticket_type_id"
   end
@@ -175,6 +185,7 @@ ActiveRecord::Schema.define(version: 2021_01_04_031122) do
   add_foreign_key "activity_users", "users"
   add_foreign_key "comments", "activities"
   add_foreign_key "comments", "users"
+  add_foreign_key "event_attandances", "tickets"
   add_foreign_key "order_items", "orders"
   add_foreign_key "orders", "users"
   add_foreign_key "ticket_types", "activities"

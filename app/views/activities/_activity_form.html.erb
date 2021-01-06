@@ -68,13 +68,13 @@
       <div data-controller="ticket-types-form" class="nested-form">
         <template data-ticket-types-form-target="form">
           <%= f.fields_for :ticket_types, TicketType.new, child_index: 'NEW_FORM' do |new_form|%>  
-            <%= render 'ticket_types_form', form: new_form %>
+            <%= render 'ticket_types/ticket_types_form', form: new_form %>
           <% end %>
         </template>
 
           <%# current form %>
         <%= f.fields_for :ticket_types do |form|%>  
-          <%= render 'ticket_types_form', form: form %>
+          <%= render 'ticket_types/ticket_types_form', form: form %>
         <% end %>
 
         <div data-action = "click->ticket-types-form#addTicketType" data-ticket-types-form-target="addBtn" class="nested-add-btn">
