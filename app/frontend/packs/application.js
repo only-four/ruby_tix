@@ -24,7 +24,7 @@ import $ from 'jquery';
 window.$ = $
 
 // tailwind
-import "stylesheets/application" // ADD THIS LINE
+// import "stylesheets/application" // ADD THIS LINE
 
 
 
