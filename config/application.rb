@@ -10,9 +10,11 @@ module RubyTix
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 6.0
     config.hosts << "www.rubytix.fun"
+    config.hosts << "rubytix.fun"
     config.hosts << "b8fcb5b3c787.ngrok.io"
-    config.hosts << "peaceful-forest-86679.herokuapp.com"
     config.time_zone = "Taipei"
+    config.hosts << "peaceful-forest-86679.herokuapp.com"
+
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration can go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded after loading
