@@ -1,35 +1,42 @@
 document.addEventListener('DOMContentLoaded', function(){
 
-  const minusBtn = document.querySelector('.js-minusTicket')
-  const addBtn = document.querySelector('.js-addTicket')
-  const detailBtn = document.querySelector('.js-cardLink')
+  const minusBtn = document.querySelectorAll('.js-minusTicket')
+  const addBtn = document.querySelectorAll('.js-addTicket')
+  const detailBtn = document.querySelectorAll('.js-cardLink')
   const ticketDetail = document.querySelector('.js-ticket-detail')
 
-
-
-
-
-  minusBtn.addEventListener('click', function(e) {
-    console.log('-1');
-    e.preventDefault();
-    addTicket(-1);
+  minusBtn.forEach(function(evt){
+    evt.addEventListener('click', function(e) {
+      console.log(e.target.nextSibling);
+      e.preventDefault();
+      addTicket(-1);
+    })
   })
 
-  addBtn.addEventListener('click', function(e) {
-    console.log('+1');
-    e.preventDefault();
-    addTicket(1);
+  addBtn.forEach(function(evt){
+    evt.addEventListener('click', function(e) {
+      const quantity = e.target.previousSibling.previousElementSibling.textContent
+      e.preventDefault();
+      addTicket(1);
+    })
   })
 
-  detailBtn.addEventListener('click', function(){
-    console.log('add ticket detail info');
-    ticketDetail.classList.toggle("hidden");
+  detailBtn.forEach(function(e){
+    e.addEventListener('click', function(e){
+
+      // e.target.previousSibling.textContent
+      console.log(e.target.parentNode.nextSibling.firstChild);
+      ticketDetail.classList.toggle("hidden");
+    })
   })
 
 
+
+  
   function addTicket(amount){
     // 抓到數量0
-    var quantityField = document.querySelector('.js-ticketQuantity');    
+    var quantityField = document.querySelector('.js-ticketQuantity');
+
     // 把quantity定義為：改變元素裡的值，並轉化為數字的行為。
     var quantity = parseInt(quantityField.innerHTML); 
     quantity = quantity + amount;
@@ -42,21 +49,3 @@ document.addEventListener('DOMContentLoaded', function(){
 
 })
 
-
-
-document.addEventListener('DOMContentLoaded', function(){
-
-  const chatBtn = document.querySelector('.js-chat-btn')
-  const chatBox = document.querySelector('.js-chatbox')
-  const closeBtn = document.querySelector('.js-close-btn')
-
-  chatBtn.addEventListener('click', function(){
-    console.log('aaa')
-    chatBox.classList.toggle("hidden");
-  })
-
-  closeBtn.addEventListener('click', function(){
-    console.log('bbb')
-    chatBox.classList.toggle("hidden");
-  })
-})

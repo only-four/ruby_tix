@@ -34,8 +34,8 @@ class PagesController < ApplicationController
     # limit(2) -> 搜尋前兩個
     # @search_value = User.where('email ILIKE ?', "%#{params[:search]}%").limit(2)
     @search_value = Activity.where('title ILIKE ?', "%#{params[:search]}%").limit(2)
-    # respond_to do |format|
-    #   format.json {render json: @search_value}
-    # end
+    respond_to do |format|
+      format.json {render json: @search_value}
+    end
   end
 end
