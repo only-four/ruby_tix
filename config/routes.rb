@@ -14,7 +14,27 @@ Rails.application.routes.draw do
                :registrations => "users/registrations", 
                :omniauth_callbacks => "users/omniauth_callbacks"
              }
+
+  resources :orders, only:[:index, :create, :show, :destroy] do
+    member do
+      delete :cancel
+      post :pay
+      get :pay_confirm
+    end
+
+    collection do
+      get :confirm
+    end
+  end
+
+  resource :cart, only:[:show, :destroy] do
+    collection do
+      post :add, path:'add/:id'
+    end
+    get :checkout
+  end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+  
   namespace :admin do
     resources :users
     resources :activities
