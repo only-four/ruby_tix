@@ -10,9 +10,6 @@ class TicketType < ApplicationRecord
 
     event :on_sell do
       transitions from: :pending, to: :on_sell
-      # after do
-        
-      # end
     end
 
     event :fully_book do
@@ -23,4 +20,10 @@ class TicketType < ApplicationRecord
       transitions from: [:fully_booked, :on_sell], to: :sell_closed
     end
   end  
+
+  # def during_selling_period?
+  #   if Time.now > ticket_type.sell_start && Time.now < ticket_type.sell_deadline
+  #     ticket_type.on_sell!
+  #   end  
+  # end
 end
