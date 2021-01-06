@@ -1,11 +1,64 @@
-<h1><%= @activity.title %></h1>  <%# 暫定  for testig comment view only %>
+<%= simple_form_for @activity do |f|%>
+  <% if @activity %>
+    <h1> <%= @activity.title %> </h1>
+    <h4> <%= @activity.hostname %> </h4>
+    <div class="activity-show act-show-content">
+      <ul>
+        <li>活動說明<%= @activity.content %></li>
+        <li>活動摘要<%= @activity.brief %></li>
+        <li>活動標籤<%= @activity.tag %></li>
+        <li>參考連結<%= @activity.link %></li>
+        <li>活動形式<%= @activity.form %></li>
+      </ul>
+    </div>
+    <br /><br /><br />
+    <div class="activity-show act-show-info">
+      <ul>
+        <li>開始時間<%= @activity.begin_datetime&.strftime("%Y/%m/%d/%H:%M") %></li>
+        <li>結束時間<%= @activity.finish_datetime&.strftime("%Y/%m/%d/%H:%M") %></li>
+        <li>活動地點<%= @activity.location %></li>
+        <%= "((這裡放google map api 抓上面的地點 顯示出地圖))" %>
+      </ul>
+    </div>
+    <br /><br /><br />
+    <div class="activity-show act-show-restraint">
+      <ul>
+        <li>人數限制<%= @activity.limit %></li>
+        <li>注意事項<%= @activity.notice %></li>
+      </ul>
+    </div>
+    <br /><br /><br />
+    <div class="activity-show act-show-contact">
+      <ul>
+        <li>聯絡電話<%= @activity.phone %></li>
+        <li>聯絡信箱<%= @activity.email %></li>
+        <li>其他聯絡方式<%= @activity.other_contact %></li>
+      </ul>
+    </div>
+    <br /><br /><br />
+    <div class="activity-show act-show-upload">
+      <ul>
+        <%= "((上傳資料（還沒寫，預留欄位）))" %>
+        <li>上傳資料<%= @activity.limit %></li>
+        <li>上傳資料<%= @activity.limit %></li>
+      </ul>
+    </div>
+  <% else %>
+    <h1>找不到活動喔！請確定你的連結是否正確！</h1>
+  <% end %>
+  <br /><br /><br />
+  <%= f.button :submit, '參加', class:"attendBtn" %>
+   <br />   
+<% end %>
+  <section class="section-comments">
+    <div class="container">
+      <h2><strong><%= @activity.comments.count %> </strong>Comment</h2>
 
+      <%= render 'comments/comments', activity: @activity, comment: @comment %>
+      <%= render 'comments/show_comments', comments: @comments %>
 
+    </div>
+  </section>
+    
 
-<section class="section-comments ">
-  <div class="container">
-    <h2><strong><%= @activity.comments.count %> </strong>Comment</h2>
-    <%= render 'comments/comments', activity: @activity, comment: @comment %>
-    <%= render 'comments/show_comments', comments: @comments %>
-  </div>
-</section>
+<%= link_to '回到活動列表', activities_path %>

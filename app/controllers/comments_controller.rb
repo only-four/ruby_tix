@@ -5,7 +5,8 @@ class CommentsController < ApplicationController
   
   def create
     p params
-    @comment = @activity.comments.build(comment_params)  
+    @activity = Activity.find(params[:activity_id])  
+    @comment = @activity.comments.new(comment_params)
     @comment.user = current_user
     @comment.save
   end
@@ -21,6 +22,6 @@ class CommentsController < ApplicationController
   end
 
   def comment_params
-    params.require(:comment).permit( :content, :activity_id)
+    params.require(:comment).permit(:content)
   end
 end
