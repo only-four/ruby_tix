@@ -74,6 +74,7 @@ ActiveRecord::Schema.define(version: 2021_01_08_084836) do
     t.integer "total_price", default: 0
     t.integer "activity_users_count"
     t.string "image"
+    t.string "state"
     t.index ["user_id"], name: "index_activities_on_user_id"
   end
 

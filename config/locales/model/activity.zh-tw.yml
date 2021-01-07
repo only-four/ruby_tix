@@ -1,0 +1,7 @@
+zh_tw:
+  enums:
+    activity:
+      is_available:
+            prepare: 活動尚未開始
+            ongoing: 活動販售中
+            expired: 活動已過期

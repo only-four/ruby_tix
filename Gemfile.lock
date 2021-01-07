@@ -95,6 +95,8 @@ GEM
       responders
       warden (~> 1.2.3)
     diff-lcs (1.4.4)
+    enum_help (0.0.17)
+      activesupport (>= 3.0.0)
     erubi (1.10.0)
     excon (0.78.1)
     factory_bot (6.1.0)
@@ -363,6 +365,7 @@ DEPENDENCIES
   capybara (>= 2.15)
   carrierwave (~> 2.1)
   devise (~> 4.7, >= 4.7.3)
+  enum_help
   factory_bot_rails (~> 6.1)
   faker (~> 2.15, >= 2.15.1)
   faraday (~> 1.1.0)
