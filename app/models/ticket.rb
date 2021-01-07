@@ -25,12 +25,9 @@ class Ticket < ApplicationRecord
     end
   end
 
-
-
-
   private
   def generate_ticket_number
     self.ticket_number = Time.now.strftime("%Y%m%d")+SecureRandom.alphanumeric(5)
   end
-
+  
 end

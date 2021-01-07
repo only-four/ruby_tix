@@ -56,6 +56,11 @@
 
       <%= render 'comments/comments', activity: @activity, comment: @comment %>
       <%= render 'comments/show_comments', comments: @comments %>
+      <% if @comments.next_page %>
+      <div class="more-comments text-center p-2  bg-gray-500 ">
+        <%= click_for_more_comments(@activity, @comments) %>
+      </div>
+      <% end %>
 
     </div>
   </section>

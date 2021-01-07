@@ -3,8 +3,6 @@
   <%# <div>
     <canvas id="canvas">sss</canvas>
   </div> %>
-
-
   <ul class="nav nav-tabs" id="myTab" role="tablist">
     <li class="nav-item">
       <a class="nav-link active show bg-gray-200" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">可使用</a>
@@ -18,8 +16,7 @@
   </ul>
     <div class="tab-content" id="myTabContent">
       <div class="tab-pane fade show active " id="home" role="tabpanel" aria-labelledby="home-tab">
-        <% @tickets.each do |ticket|  %> 
-              
+        <% @tickets.each do |ticket|  %>              
           <%= render 'ticket', ticket: ticket if ticket.activated? %>
         <% end %>    
       </div>
@@ -35,16 +32,6 @@
           <%= render 'ticket', ticket: ticket if ticket.used? %>
       <% end %>     
       </div>
-    </div>
 
-
-
-
-
-
-
-
-
-
-    
+    </div>   
 </div>

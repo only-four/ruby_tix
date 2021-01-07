@@ -54,7 +54,6 @@ Rails.application.routes.draw do
 
   resources :activities_user
 
-
   resources :tickets, only: [ :create] do
     member do
       post :attend_event
