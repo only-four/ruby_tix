@@ -1,53 +1,14 @@
 document.addEventListener('DOMContentLoaded', function(){
 
-  select = document.querySelector('.current_user_account_name')
+  const avator = document.querySelector('.js-user-avator')
+  const option = document.querySelector('.js-user-option')
 
-  select.addEventListener('change',function(){
-    if(select.value === "2"){
-      console.log('2');
-      // windows.location.href= '/users/edit';
-      window.location.href = '/users/edit';
-      // window.location.href = "<%= recipe_path(@recipe) %>"
-      // $(`.centre`).show();
-      // $(`.hold`).hide();
-      // $(`.record`).hide();
-      // $(`#member_centre`).on('click', function(){
-      //   $(`.centre`).show();
-        
-      // })
-    }else if(select.value === "3"){
-      console.log('3');
-      $(`.record`).show();
-      $(`.centre`).hide();
-      $(`.hold`).hide();
-      $(`#activity_record`).on('click', function(){
-        $(`.record`).show();
-      })
-    }else if(select.value === "4"){
-      console.log('4');
-      window.location.href = '/activities';
-      $(`.hold`).show();
-      $(`.centre`).hide();
-      $(`.record`).hide();
-      $(`#hold_activity`).on('click', function(){
-        $(`.hold`).show();
-      })
-    }else if(select.value === "5"){
-      console.log('4');
-      $(`.cart`).show();
-      $(`.centre`).hide();
-      $(`.record`).hide();
-      $(`.hold`).hide();
-      $(`#shopping_cart`).on('click', function(){
-        $(`.cart`).show();
-        
-      })
-
-    }
-
-
-
+  avator.addEventListener('click', function(){
+    console.log('aaa')
+    option.classList.toggle("hidden");
   })
+
+
 })
 
 
@@ -63,4 +24,28 @@ document.addEventListener('DOMContentLoaded', function(){
 // } 
 // hold.onclick = toggle_hold;
 
+  // const chatBtn = document.querySelector('.js-chat-btn')
+  // const chatBox = document.querySelector('.js-chatbox')
+  // const closeBtn = document.querySelector('.js-close-btn')
 
+  // chatBtn.addEventListener('click', function(){
+  //   console.log('aaa')
+  //   chatBox.classList.toggle("hidden");
+
+  // select = document.querySelector('.current_user_account_name')
+
+  // select.addEventListener('change',function(){
+  //   if(select.value === "2"){
+  //     console.log('2');
+  //     window.location.href = '/users/edit';
+  //   }else if(select.value === "3"){
+  //     console.log('3');
+  //     window.location.href = '/tickets/my_tickets';
+  //   }else if(select.value === "4"){
+  //     console.log('4');
+  //     window.location.href = '/orders';
+  //   }else if(select.value === "5"){
+  //     console.log('4');
+  //     window.location.href = '/activities';
+  //   }
+  // })

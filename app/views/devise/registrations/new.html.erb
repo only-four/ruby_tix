@@ -36,16 +36,17 @@
     
 
     <div class="mb-2 justify-between  grid gap-4 grid-cols-2">
+      <%- if controller_name != 'sessions' %>
+        <div>
+          <%= link_to "已有帳號？至登入頁", new_session_path(resource_name), class: "actions group relative w-full flex justify-center py-2 px-4 border  text-sm font-medium rounded-md  text-gray-900 bg-gray-100 border-red-600 hover:border-red-600 hover:bg-gray-100 hover:text-red-600 hover:no-underline hover:shadow-lg" %>
+        </div>
+      <% end %>
+
       <div class="actions">
         <%= f.submit "註冊", class: "actions group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-gray-100 bg-red-600 hover:border-red-600 hover:bg-gray-100 hover:text-red-600 hover:no-underline	hover:shadow-lg hover:border-transparent" %>
       </div>
       <% end %>
 
-      <%- if controller_name != 'sessions' %>
-        <div>
-          <%= link_to "登入", new_session_path(resource_name), class: "actions group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md  text-gray-100 bg-red-600 hover:border-red-600 hover:bg-gray-100 hover:text-red-600 hover:no-underline hover:shadow-lg hover:border-transparent" %>
-        </div>
-      <% end %>
 
     </div>
 

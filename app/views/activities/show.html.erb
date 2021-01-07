@@ -1,3 +1,4 @@
+<div class="container">
 <%= simple_form_for @activity do |f|%>
       <%= image_tag @activity.image_url if @activity.image_url.present? %>
 
@@ -64,3 +65,5 @@
     
 
 <%= link_to '回到活動列表', activities_path %>
+
+</div>

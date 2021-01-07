@@ -9,24 +9,44 @@
         <% end%>
       </section>
 
-      <div class="search-bar flex">
+      <div class="search-bar flex items-center justify-center">
         <input type="text" class="search-input bg-red-100 rounded-md h-10 mx-3" placeholder="請輸入關鍵字">
-        <button class="submit search-btn flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-gray-100 bg-red-600 hover:bg-gray-100 hover:text-red-600 h-10">搜尋</button>
+        <i class="fas fa-search fa-2x submit search-btn hover:text-gray-100"></i>
+        <%# <button class="submit search-btn flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-gray-100 bg-red-600 hover:bg-gray-100 hover:text-red-600 h-10">搜尋</button> %>
       </div>
 
       <section class="flex">
-        <select name="current_user_account_name" class="current_user_account_name rounded-md mx-3 px-96">
-          <option value="1"  selected="selected" class="py-1"><i class="far fa-user-circle"></i><%= current_user.account_name %></option>
-          <option value="2" class="member_centre py-1">編輯會員資料</option>
-          <option value="3" class="activity_record py-1">活動紀錄</option>
-          <option value="4" class="hold_activity py-1">活動列表</option>
-          <option value="5" class="shopping_cart py-1">購物車</option>
-        </select>
+        <div class=" h-12  flex items-center justify-center ">
+          <p>Hi! <%= current_user.account_name %></p>
+        </div>
+        
+        <div class="js-user-avator h-12 w-12 flex items-center justify-center hover:text-gray-100">
+          <i class="far fa-user-circle fa-2x hover:text-gray-100"></i>
+        </div>       
 
-      
-        <button>
-          <%= link_to '登出', destroy_user_session_path, :method => :delete , class: "submit search-btn flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-gray-100 bg-red-600 hover:bg-gray-100 hover:text-red-600 hover:no-underline h-10" %> 
-        </button>    
+          <%= link_to orders_path do %>
+          <div class="relative">
+            <div class="h-12 w-12 flex items-center justify-center hover:text-gray-100 ">
+              <i class="fas fa-cart-plus fa-2x hover:text-gray-100"></i> 
+            </div>
+          </div>
+          <% end%>
+
+          <div class="rounded-full h-5 w-5 flex items-center justify-center bg-gray-200 mt-1 absolute top-0 right-0">
+            <%= current_cart.total_quantity %>  
+          </div>
+
+        <div class="js-user-option hidden fixed mt-20 mr-100">
+          <div class="border border-gray-900 bg-gray-100 hover:font-semibold px-3 py-2"><%= link_to '編輯會員資料', edit_registration_path(:user), class: "hover:no-underline hover:text-gray-900" %></div>
+          <div class="border border-gray-900 bg-gray-100 hover:font-semibold px-3 py-2"><%= link_to '票卷管理', my_tickets_tickets_path, class: "hover:no-underline hover:text-gray-900" %></div>
+          <div class="border border-gray-900 bg-gray-100 hover:font-semibold px-3 py-2"><%= link_to '訂單管理', orders_path, class: "hover:no-underline hover:text-gray-900" %></div>
+          <div class="border border-gray-900 bg-gray-100 hover:font-semibold px-3 py-2"><%= link_to '活動管理', activities_path, class: "hover:no-underline hover:text-gray-900" %></div>
+          <div class="border border-gray-900 bg-gray-100 hover:font-semibold px-3 py-2"><%= link_to '會員登出', destroy_user_session_path, :method => :delete , class: "hover:no-underline hover:text-gray-900" %></div>
+        </div>
+     
+        <%# <button> %>
+          <%#= link_to '登出', destroy_user_session_path, :method => :delete , class: "submit search-btn flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-gray-100 bg-red-600 hover:bg-gray-100 hover:text-red-600 hover:no-underline h-10" %> 
+        <%# </button>     %>
       </section>
 
     </section>
