@@ -3,9 +3,15 @@
   <h2 class="text-2xl px-2 font-extrabold bg-gray-50">編輯會員資料</h2>
 
 
-
   <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
     <%= render "devise/shared/error_messages", resource: resource %>
+
+    <%= image_tag resource.image_url if resource.image_url.present? %>
+
+    <div class="form-group">
+      <%= f.label :頭像 %>
+      <%= f.file_field :image, id: :user_image, class: "form-control" %>
+    </div> 
 
     <div class="field">
       <%= f.label :信箱 %><br />
@@ -40,11 +46,8 @@
       <%= f.text_field :account_name %>
     </div>
 
-    <div class="field">
-      <%= f.label :content %>
-      <%= f.rich_text_area :content %>
-      <%= @user.content  %>
-    </div>
+
+
 
 
     <div class="actions">

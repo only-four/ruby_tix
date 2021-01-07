@@ -1,4 +1,6 @@
 <%= simple_form_for @activity do |f|%>
+      <%= image_tag @activity.image_url if @activity.image_url.present? %>
+
   <% if @activity %>
     <h1> <%= @activity.title %> </h1>
     <h4> <%= @activity.hostname %> </h4>

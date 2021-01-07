@@ -40,7 +40,7 @@ Rails.application.routes.draw do
     resources :activities
   end
 
-  resources :activities, except: [:update] do
+  resources :activities do
     post :join, on: :member
     post :confirm, on: :member  
     delete :cancel, on: :member
