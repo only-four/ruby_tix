@@ -1,58 +1,87 @@
 <div class="container">
-<%= simple_form_for @activity do |f|%>
-      <%= image_tag @activity.image_url if @activity.image_url.present? %>
 
-  <% if @activity %>
-    <h1> <%= @activity.title %> </h1>
-    <h4> <%= @activity.hostname %> </h4>
-    <div class="activity-show act-show-content">
+<%# 活動內容 %>
+  <%= simple_form_for @activity do |f|%>
+    <%= image_tag @activity.image_url if @activity.image_url.present? %>
+
+    <% if @activity %>
+      <h1 class="mt-6 text-left text-4xl font-extrabold text-gray-900 mb-5">
+        【 <%= @activity.title %>】
+      </h1>
+
       <ul>
-        <li>活動說明<%= @activity.content %></li>
-        <li>活動摘要<%= @activity.brief %></li>
-        <li>活動標籤<%= @activity.tag %></li>
-        <li>參考連結<%= @activity.link %></li>
-        <li>活動形式<%= @activity.form %></li>
+        <li class="flex items-center ">
+          <i class="far fa-clock fa-lg text-red-800"></i>
+          <p class="text-left text-xl font-extrabold text-red-800 pl-2">開始與結束時間</p>
+          <p class="text-left text-xl pl-2"><%= @activity.begin_datetime&.strftime("%Y/%m/%d/%H:%M") %>～<%= @activity.finish_datetime&.strftime("%Y/%m/%d/%H:%M") %></p>
+        </li>
+
+        <li class="flex items-center">
+          <i class="fas fa-map-marker-alt fa-lg text-red-800"></i>
+          <p class="text-left text-xl font-extrabold text-red-800 pl-2">活動地點</p>
+          <p class="text-left text-xl pl-2"><%= @activity.location %>
+        </li>
+
+        <li class="flex items-center">
+          <i class="fas fa-tag fa-lg text-red-800"></i>
+          <p class="text-left text-xl font-extrabold text-red-800 pl-2">活動標籤</p>
+          <p class="text-left text-xl pl-2"><%= @activity.tag %>
+        </li>
+
+        <li class="flex items-center">
+          <i class="fas fa-link fa-lg text-red-800"></i>
+          <p class="text-left text-xl font-extrabold text-red-800 pl-2">活動連結</p>
+          <p class="text-left text-xl pl-2"><%= @activity.link %>
+        </li>
+
+        <li class="flex items-center">
+          <i class="fas fa-clipboard fa-lg text-red-800"></i>
+          <p class="text-left text-xl font-extrabold text-red-800 pl-2">活動形式</p>
+          <p class="text-left text-xl pl-2"><%= @activity.form %>
+        </li>
+
+        <li class="flex items-center">
+          <i class="fas fa-people-arrows fa-lg text-red-800"></i>
+          <p class="text-left text-xl font-extrabold text-red-800 pl-2">人數限制</p>
+          <p class="text-left text-xl pl-2"><%= @activity.limit %>
+        </li>
       </ul>
-    </div>
-    <br /><br /><br />
-    <div class="activity-show act-show-info">
-      <ul>
-        <li>開始時間<%= @activity.begin_datetime&.strftime("%Y/%m/%d/%H:%M") %></li>
-        <li>結束時間<%= @activity.finish_datetime&.strftime("%Y/%m/%d/%H:%M") %></li>
-        <li>活動地點<%= @activity.location %></li>
-        <%= "((這裡放google map api 抓上面的地點 顯示出地圖))" %>
+
+      <ul class="divide-y-4 divide-red-800 divide-solid">
+        <li class="text-left text-xl font-extrabold text-red-800 pl-2">活動摘要</li>
+        <%= @activity.brief %>
+        <li class="text-left text-xl font-extrabold text-red-800 pl-2">活動說明</li>
+        <%= @activity.content %>
+        <li class="text-left text-xl font-extrabold text-red-800 pl-2">注意事項</li>
+        <%= @activity.notice %>
       </ul>
+
+
+
+
+
+      <%= @activity.hostname %>
+      聯絡電話<%= @activity.phone %>
+      聯絡信箱<%= @activity.email %>
+      其他聯絡方式<%= @activity.other_contact %>
+
+      <%#= "((上傳資料（還沒寫，預留欄位）))" %>
+      上傳資料<%= @activity.limit %>
+      上傳資料<%= @activity.limit %>
+
+    <% else %>
+      <h1>找不到活動喔！請確定你的連結是否正確！</h1>
+    <% end %>
+
+    <div class="flex justify-between mt-10">
+      <%= link_to '回到活動列表', activities_path, class: "submit search-btn flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium bg-gray-100 text-gray-800 hover:border-red-600 hover:bg-gray-100 hover:text-red-600 hover:no-underline h-10" %>
+
+      <%= f.button :submit, '參加活動' ,class: "flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-gray-100 bg-red-600 hover:border-red-600 hover:bg-gray-100 hover:text-red-600 hover:no-underline h-10" %>
     </div>
-    <br /><br /><br />
-    <div class="activity-show act-show-restraint">
-      <ul>
-        <li>人數限制<%= @activity.limit %></li>
-        <li>注意事項<%= @activity.notice %></li>
-      </ul>
-    </div>
-    <br /><br /><br />
-    <div class="activity-show act-show-contact">
-      <ul>
-        <li>聯絡電話<%= @activity.phone %></li>
-        <li>聯絡信箱<%= @activity.email %></li>
-        <li>其他聯絡方式<%= @activity.other_contact %></li>
-      </ul>
-    </div>
-    <br /><br /><br />
-    <div class="activity-show act-show-upload">
-      <ul>
-        <%= "((上傳資料（還沒寫，預留欄位）))" %>
-        <li>上傳資料<%= @activity.limit %></li>
-        <li>上傳資料<%= @activity.limit %></li>
-      </ul>
-    </div>
-  <% else %>
-    <h1>找不到活動喔！請確定你的連結是否正確！</h1>
+    
   <% end %>
-  <br /><br /><br />
-  <%= f.button :submit, '參加', class:"attendBtn" %>
-   <br />   
-<% end %>
+
+<%# 活動之評論內容 %>
   <section class="section-comments">
     <div class="container">
       <h2><strong><%= @activity.comments.count %> </strong>Comment</h2>
@@ -63,7 +92,5 @@
     </div>
   </section>
     
-
-<%= link_to '回到活動列表', activities_path %>
 
 </div>
