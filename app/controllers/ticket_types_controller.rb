@@ -9,6 +9,13 @@ class TicketTypesController < ApplicationController
     @ticket_types = @activity.ticket_types.order(updated_at: :desc)
   end
 
+  # def update
+  #   update_ticket_type = TicketType.find_by(title: parmas[:title])
+
+  #   params[:some].each do |x|
+  #     update_ticket_type.
+  #   end
+  # end
   def destroy
     @ticket_types = TicketType.find_by(id: params[:id])
     @ticket_types.destroy
