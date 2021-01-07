@@ -14,9 +14,12 @@ import "@fortawesome/fontawesome-free/js/all"
 import 'jquery'
 import $ from 'jquery';
 window.$ = $
+import './qr_code_reader'
+
+
 
 // tailwind
-import "stylesheets/application" // ADD THIS LINE
+// import "stylesheets/application" // ADD THIS LINE
 
 require("trix")
 require("@rails/actiontext")

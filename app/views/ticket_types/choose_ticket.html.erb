@@ -12,12 +12,21 @@
               <button class="js-minusTicket rounded-full  h-10 w-10 flex items-center justify-center bg-gray-700 text-gray-100" id="minusItem">-</button>
               <span class="js-ticketQuantity">0</span>
               <button class="js-addTicket rounded-full  h-10 w-10 flex items-center justify-center bg-gray-700 text-gray-100" id="addItem">+</button>
-              <%# <span class="minus"style="margin-right:20px;"> <a href="#"><i class="fas fa-minus-circle"></i></a></span>
-              <input type="number" class="count" name="qty" value="1">
-              <span class="plus "> <a href="#"><i class="fas fa-plus-circle"></i></a></span> %>
+
+              <%= link_to '放到購物車', add_cart_path(ticket.id), method: "post", remote:true %>
             </div>
             <button class="js-cardLink col-end-7 col-span-1 bg-gray-200 px-2 py-2 border border-transparent rounded-md shadow-sm text-center font-medium  hover:border-red-600 hover:bg-gray-100 hover:text-red-600 hover:no-underline h-10" >更多資訊</button> 
-            <%# <a  href="#collapse`${ticket_types.id}`" class="js-cardLink col-end-7 col-span-1 bg-gray-200 px-2 py-2 border border-transparent rounded-md shadow-sm text-center font-medium  hover:border-red-600 hover:bg-gray-100 hover:text-red-600 hover:no-underline h-10" >更多資訊</a> %>
+
+            <span>開售：</span>
+            <%= ticket.sell_start.strftime("%Y/%m/%d") %>
+            <span>截止販售：</span>
+            <%= ticket.sell_deadline.strftime("%Y/%m/%d") %>
+
+            <div>狀態：
+              <%= content_tag :span, '銷售中', class: "bg-teal-500" if ticket.on_sell? %>
+              <%= content_tag :span, '售完', class: "bg-yellow-400" if ticket.fully_booked? %>
+              <%= content_tag :span, '停止販售', class: "bg-red-600" if ticket.sell_closed? %>
+            </div>
           </div>
 
           <div>
@@ -27,28 +36,11 @@
               <%= ticket.content %>
             </div>         
           </div>
-
-          <%# <div class="collapse " id="e" >
-            
-          </div> %>
-
         </div>
       <% end %>
-
-
 </div>
 
 
-<script>
-  // $('.collapse').collapse('toggle')
-
-
-</script>  
-  
-
-
-
-
-  
-
-
+購物車總數量：<%= current_cart.total_quantity %>
+購物車總價格：<%= current_cart.total_price %>
+<%= link_to '前往結帳頁面', cart_path %>

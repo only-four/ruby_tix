@@ -2,7 +2,8 @@ class ApplicationController < ActionController::Base
 
   before_action :activity_location
   rescue_from ActiveRecord::RecordNotFound, with: :no_record_found
-
+  include CartsHelper
+  
   def activity_location
     if(request.path != "/users/sign_in" &&
       request.path != "/users/sign_up" &&

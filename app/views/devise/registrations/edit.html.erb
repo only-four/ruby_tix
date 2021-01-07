@@ -4,10 +4,16 @@
     <h2 class="mt-6 text-center text-4xl font-extrabold text-gray-900 mb-5 extrabold ">編輯會員資料</h2>
 
 
-
   <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
     <%= render "devise/shared/error_messages", resource: resource %>
 
+
+    <%= image_tag resource.image_url if resource.image_url.present? %>
+
+    <div class="form-group">
+      <%= f.label :頭像 %>
+      <%= f.file_field :image, id: :user_image, class: "form-control" %>
+    </div> 
 
     <div class="field  mb-2">
       <%#= f.label :帳戶名稱 %>
@@ -40,8 +46,6 @@
       <%#= f.label :原密碼 %> 
       <%= f.password_field :current_password, autocomplete: "current-password", placeholder: "請輸入您現在的密碼，以確認此次變更內容。", class: "appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm" %>
     </div>
-
-
 
     <div class="mb-2 justify-between grid gap-4 grid-cols-2">
       <div class="actions">

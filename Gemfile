@@ -40,15 +40,26 @@ gem 'omniauth-facebook', '~> 8.0'
 gem 'omniauth-google-oauth2', '~> 0.8.0'
 # order/aasm
 gem 'aasm', '~> 5.1', '>= 5.1.1'
+# carrierwave/for image-upload
+gem 'carrierwave', '~> 2.1'
+gem 'fog-aws', '~> 3.7'
+# cart/checkout for linepay
+gem 'faraday', '~> 1.1.0'
 # security
-gem 'omniauth-rails_csrf_protection', '~> 0.1'
+gem 'omniauth-rails_csrf_protection', '~> 0.1.2'
+# carrierwave/for image-upload
+gem 'carrierwave', '~> 2.1'
+
+gem "nokogiri", ">= 1.11.0.rc4"
+
+gem 'simple_form'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
-  gem 'rspec-rails'
-  gem 'factory_bot_rails'
-  gem 'faker'
+  gem 'rspec-rails', '~> 4.0', '>= 4.0.1'
+  gem 'factory_bot_rails', '~> 6.1'
+  gem 'faker', '~> 2.15', '>= 2.15.1'
   gem 'hirb', '~> 0.7.3'
 end
 

@@ -38,6 +38,9 @@
                 票價
               </th>
               <th scope="col" class="px-6 py-3 text-left text-md font-normal text-gray-900 uppercase tracking-wider">
+                狀態
+              </th>
+              <th scope="col" class="px-6 py-3 text-left text-md font-normal text-gray-900 uppercase tracking-wider">
                 票卷編輯
               </th>
 
@@ -54,6 +57,11 @@
                 <td><%= ticket_type.title %> </td>
                 <td><%= ticket_type.quantity %> </td>
                 <td><%= ticket_type.price %> </td>
+                <td>
+                  <%= content_tag :span, '銷售中', class: "bg-teal-500" if ticket_type.on_sell? %>
+                  <%= content_tag :span, '售完', class: "bg-yellow-400" if ticket_type.fully_booked? %>
+                  <%= content_tag :span, '停止販售', class: "bg-red-600" if ticket_type.sell_closed? %>
+                </td>
                 
                 
                 <td class="flex">
@@ -78,3 +86,4 @@
 </div>
 </div>
 
+<%= link_to '回到活動列表', activities_path %>

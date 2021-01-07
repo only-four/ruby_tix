@@ -1,0 +1,52 @@
+<div class="container">
+  <h2>我的票券</h2>
+  <div>
+    <canvas id="canvas">sss</canvas>
+  </div>
+
+
+  <ul class="nav nav-tabs" id="myTab" role="tablist">
+    <li class="nav-item">
+      <a class="nav-link active show bg-gray-200" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">可使用</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link bg-gray-200" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">處理中</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link bg-gray-200" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">已過期</a>
+    </li>
+  </ul>
+    <div class="tab-content" id="myTabContent">
+      <div class="tab-pane fade show active " id="home" role="tabpanel" aria-labelledby="home-tab">
+        <% @tickets.each do |ticket|  %> 
+          <%= link_to '參加活動', attend_event_ticket_path(ticket), method: :post, name: 'use' if ticket.activated?  %>    
+          <%= render 'ticket', ticket: ticket if ticket.activated? %>
+        <% end %>    
+      </div>
+
+      <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+        <% @tickets.each do |ticket|  %> 
+          <%= link_to '參加活動', attend_event_ticket_path(ticket), method: :post, name: 'use' if ticket.pending?  %>    
+          <%= render 'ticket', ticket: ticket if ticket.pending? %>
+        <% end %>
+      </div>
+
+      <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
+        <% @tickets.each do |ticket|  %> 
+          <%= link_to '參加活動', attend_event_ticket_path(ticket), method: :post, name: 'use'  if ticket.used?  %>    
+          <%= render 'ticket', ticket: ticket if ticket.used? %>
+      <% end %>     
+      </div>
+    </div>
+
+
+
+
+
+
+
+
+
+
+    
+</div>
