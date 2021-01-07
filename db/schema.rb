@@ -150,7 +150,7 @@ ActiveRecord::Schema.define(version: 2021_01_08_084836) do
 
   create_table "ticket_types", force: :cascade do |t|
     t.string "title"
-    t.text "content"
+    t.string "content"
     t.integer "quantity"
     t.integer "price"
     t.datetime "created_at", precision: 6, null: false
