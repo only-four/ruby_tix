@@ -24,7 +24,6 @@ class OrdersController < ApplicationController
 
 
     if @order.save && @ticket.save
-
       resp = Faraday.post("https://sandbox-api-pay.line.me/v2/payments/request") do |req|
         req.headers['Content-Type'] = 'application/json'
         req.headers['X-LINE-ChannelId'] = "1655423053"
@@ -41,6 +40,7 @@ class OrdersController < ApplicationController
 
       # returnCode中「0000」表示成功
       if result["returnCode"] == "0000"
+        @ticket.activate!
         payment_url = result["info"]["paymentUrl"]["web"]
         redirect_to payment_url
       else

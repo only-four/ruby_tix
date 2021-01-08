@@ -20,7 +20,10 @@ import 'bootstrap/dist/css/bootstrap.css'
 import 'jquery'
 import $ from 'jquery';
 window.$ = $
-import './qr_code_reader'
+import './qr_code_reader';
+import Swal from 'sweetalert2';
+window.Swal= Swal
+
 
 
 

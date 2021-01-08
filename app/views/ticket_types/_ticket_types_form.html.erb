@@ -32,6 +32,22 @@
           <%= form.date_field:sell_deadline %>
           <%= form.time_field:sell_deadline %>
         </div>
+        <div>
+          <%= form.label:valid_at, '票券有效時間' %>
+        </div>
+
+        <div>
+          <%= form.date_field:valid_at %>
+          <%= form.time_field:valid_at%>
+        </div>
+        <div>
+          <%= form.label:expire_at, '票券過期時間' %>
+        </div>
+
+        <div>
+          <%= form.date_field:expire_at %>
+          <%= form.time_field:expire_at %>
+        </div>
 
         <%= form.label:content, '票券說明'%>
         <%= form.text_area:content, rows: "5" %>

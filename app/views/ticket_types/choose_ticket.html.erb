@@ -2,12 +2,10 @@
 
 <% @ticket_types.each do |ticket| %>  
   <div class="card choose-ticket-card" id="accordion">
-    <div class="card-body price" >
-      
+    <div class="card-body price" >      
+      <h5 class="card-title"><%= ticket.valid_at.strftime("%Y/%m/%d") %></h5>
       <h5 class="card-title"><%= ticket.title %></h5>
-
-      <h6 class="card-subtitle mb-2 text-muted">NT$<%= ticket.price %></h6>
-     
+      <h6 class="card-subtitle mb-2 text-muted">NT$<%= ticket.price %></h6>    
       <a class="card-link" data-toggle="collapse" data-parent="#accordion" href="#collapse`${ticket_types.id}`"  data-target="#e" >更多資訊</a>
       
       <div class="qty " style="display:inline; margin-left:250px;">

@@ -32,6 +32,8 @@ gem 'jquery-ui-rails', '~> 6.0', '>= 6.0.1'
 
 # user/devise
 gem 'devise', '~> 4.7', '>= 4.7.3'
+gem 'rolify', '~> 5.3'
+gem 'cancancan', '~> 3.2', '>= 3.2.1'
 # figaro -> for secret manage
 gem 'figaro', '~> 1.2' 
 # user/facebook api

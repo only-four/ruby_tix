@@ -1,6 +1,6 @@
 class TicketType < ApplicationRecord
   include AASM  
-  validates :price, :title, :quantity, :sell_start, :sell_deadline, presence: true 
+  validates :price, :title, :quantity, :sell_start, :sell_deadline, :valid_at, :expired_at, presence: true 
   belongs_to :activity
   has_many :tickets
 

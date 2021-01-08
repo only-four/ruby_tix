@@ -65,7 +65,16 @@ Rails.application.routes.draw do
   end
 
   # qr_code reader
-  get 'qr_code_reader', to: 'qr_codes#index'
+  get 'qr_code_reader', to: 'qr_codes#reader'
+  resources :qr_codes, only: [:create] do
+    collection do
+      get :scan
+      get :attand_list
+    end
+    member do
+      get :participated      
+    end
+  end
 
   resources :orders, only:[:index, :show, :create, :destroy]
 
