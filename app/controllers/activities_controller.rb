@@ -37,7 +37,7 @@ class ActivitiesController < ApplicationController
           sell_start:params[:activity][:ticket_types_attributes][:"0"][:sell_start], 
           sell_deadline:params[:activity][:ticket_types_attributes][:"0"][:sell_deadline])
         if b.save!
-          redirect_to activities_path(@activity), notice: "資料更新成功!" 
+        redirect_to activities_path(@activity), notice: "資料更新成功!" 
         else        
           root_path
         end
@@ -64,6 +64,7 @@ class ActivitiesController < ApplicationController
     params.require(:activity).permit(
       :content,
       :title,
+      :is_available,
       :begin_datetime,
       :finish_datetime,
       :location,
@@ -75,7 +76,7 @@ class ActivitiesController < ApplicationController
       :notice,
       :phone,
       :email, 
-      :other_contect, 
+      :other_contact, 
       :limit,
       :image,
       ticket_types_attributes: [:id, :title, :content, :quantity, :sell_start, :sell_deadline, :price, :_destroy, :valid_at, :expire_at],
