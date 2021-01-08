@@ -5,6 +5,10 @@ class User < ApplicationRecord
   has_many :orders
   has_many :own_activities, class_name: 'Activity'
 
+  has_many :chatroom_users
+  has_many :chatrooms, through: :chatroom_users
+  has_many :messages
+
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
