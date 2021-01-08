@@ -1,6 +1,6 @@
   document.addEventListener('DOMContentLoaded', function(){
 
-    const searchBtn = document.querySelector('.search-btn')
+    const searchBtn = document.querySelector('.js-search-btn')
 
     searchBtn.addEventListener('click', function() {
       const searchInput = document.querySelector('.search-input').value
