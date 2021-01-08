@@ -2,16 +2,19 @@
 
   <% if current_user %>
 
-    <section class="bg-red-700 flex justify-between px-3 items-center">
+    <section class="t-nav flex justify-between px-3 items-center">
       <section>
         <%= link_to root_path do%>
-          <%= image_tag '/images/newlogo.png' ,class:"h-20" %>
+          RUBYTIX
         <% end%>
+        <%#= link_to root_path do%>
+          <%#= image_tag '/images/newlogo.png' ,class:"h-20" %>
+        <%# <% end%> 
       </section>
 
       <div class="js-search-bar t-search-bar">
-        <input type="text" class="search-input bg-red-100 rounded-md h-10 mx-3" placeholder="請輸入關鍵字">
-        <i class="fas fa-search fa-2x submit search-btn hover:text-gray-100 "></i>
+        <input type="text" class="search-input bg-red-100 rounded-md h-10 mx-3 px-3" placeholder="請輸入關鍵字">
+        <i class="fas fa-search fa-2x submit search-btn  "></i>
       </div>
 
       <section class="flex">
@@ -52,7 +55,7 @@
  
   <% else %>
 
-    <section class="bg-red-700 flex justify-between px-3 items-center">
+    <section class="t-nav flex justify-between px-3 items-center">
 
       <section>
         <%= link_to root_path do%>

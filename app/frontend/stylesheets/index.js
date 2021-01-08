@@ -4,6 +4,5 @@ import "tailwindcss/utilities";
 import "./actiontext.scss";
 import "trix/dist/trix";
 import "trix/dist/trix.css";
-
-import "./navbar/index.js"
-import "./shared/index.js"
+import "./navbar"
+import "./shared"
