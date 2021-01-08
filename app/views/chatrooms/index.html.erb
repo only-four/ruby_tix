@@ -17,11 +17,22 @@
         <td><%= link_to 'Show', chatroom %></td>
         <td><%= link_to 'Edit', edit_chatroom_path(chatroom) %></td>
         <td><%= link_to 'Destroy', chatroom, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'join', chatroom_chatroom_users_path(chatroom), method: 'post' %></td>
+        <td><%= link_to 'leave', chatroom_chatroom_users_path(chatroom), method: 'delete' %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
 
-<br>
+<div>
+<% if current_user %>
+  <h5>聊天室777</h5>
+    <ul><% current_user.chatrooms.each do |chatroom| %>
+      <li><%= link_to chatroom.name, chatroom %></li>
+    <% end %>
+    </ul>
+<% end %>
+</div>
 
+<br>
 <%= link_to 'New Chatroom', new_chatroom_path %>
