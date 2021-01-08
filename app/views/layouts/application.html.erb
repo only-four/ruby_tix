@@ -10,25 +10,27 @@
     <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= stylesheet_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <link href=’https://fonts.googleapis.com/css?family=Raleway' 
+   rel=’stylesheet’ type=’text/css’>
   </head>
 
   <body>
 
-    <section class="m-auto">
+    <section>
       <%= render 'shared/navbar' %>
     </section>
+
 
     <%# <section class="m-auto"> %>
       <%#= render 'shared/mainbar' %>
     <%# </section> %>
 
     <div>
-    
       <%# <section class="m-auto">
         <%= render 'shared/option' %>
       <%# </section> %>
 
-      <section class="js-main-area w-full m-auto pt-20 pb-20 ">
+      <section class="js-main-area w-full m-auto pt-20 pb-20 t-body">
         <%= yield %>
         <%= notice %>
       </section>

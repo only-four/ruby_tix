@@ -15,7 +15,6 @@
               <%= link_to activity_path(activity.id) do %>
                 <div class="w-full">
                   <%= image_tag activity.image_url if activity.image_url.present? %> 
-                  <%# <img src="https://picsum.photos/400/300/?random=1">   %>
                 </div>
                 <div class="absolute bottom-0 left-0 bg-gray-100 bg-opacity-75 ">
                   <h5 class="text-xl group-hover:text-gray-900"><%= activity.title %></h5>

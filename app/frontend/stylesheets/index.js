@@ -6,3 +6,4 @@ import "trix/dist/trix";
 import "trix/dist/trix.css";
 import "./navbar"
 import "./shared"
+
