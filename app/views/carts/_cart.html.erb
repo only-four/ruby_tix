@@ -8,20 +8,26 @@
             <table class="min-w-full divide-y divide-gray-200">
               <thead class="bg-red-200 text-center">
                 <tr>
-                  <td  scope="col" class="px-6 py-3 text-md font-normal text-gray-900 uppercase tracking-wider text-center">活動票券名稱</td>
+                  <td  scope="col" class="px-6 py-3 text-md font-normal text-gray-900 uppercase tracking-wider text-center">編號</td>
+                  <td  scope="col" class="px-6 py-3 text-md font-normal text-gray-900 uppercase tracking-wider text-center">活動名稱</td>
+                  <td  scope="col" class="px-6 py-3 text-md font-normal text-gray-900 uppercase tracking-wider text-center">票券名稱</td>
                   <td  scope="col" class="px-6 py-3 text-md font-normal text-gray-900 uppercase tracking-wider text-center">數量</td>
                   <td  scope="col" class="px-6 py-3 text-md font-normal text-gray-900 uppercase tracking-wider text-center">單價</td>
                   <td  scope="col" class="px-6 py-3 text-md font-normal text-gray-900 uppercase tracking-wider text-center">小計</td>
+                  <td  scope="col" class="px-6 py-3 text-md font-normal text-gray-900 uppercase tracking-wider text-center">管理</td>
                 </tr>
               </thead>
 
               <tbody>
-                <% current_cart.items.each do |item| %>
+                <% current_cart.items.each_with_index do |item, index| %>
                   <tr class= "px-6 py-3 text-center">
+                    <td><%= index + 1 %></td>
+                    <td><%= "活動名稱" %></td>
                     <td><%= item.ticket_type.title %></td>
                     <td><%= item.quantity %></td>
                     <td><%= item.ticket_type.price %></td>
                     <td><%= item.price %></td>
+                    <td><%= link_to '刪除（待修正）',cart_path(@id), method: "delete", data: { confirm: "確認刪除" }%></td>
                   </tr>
                 <% end %>
                   <tr class= "px-6 py-3 text-center">

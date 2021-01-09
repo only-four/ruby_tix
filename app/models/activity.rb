@@ -11,8 +11,9 @@ class Activity < ApplicationRecord
   accepts_nested_attributes_for :ticket_types, allow_destroy: true, reject_if: :all_blank
   mount_uploader :image, ImageUploader
 
-  validates :title, :content, :begin_datetime, :finish_datetime, :phone, :email, :limit
-  
+  validates :title, :content, :begin_datetime, :finish_datetime, :phone, :email, :limit  
+  # scope :available, -> { where(is_available: true) }
+
   enum is_available: {
     prepare: 1,
     ongoing: 2,

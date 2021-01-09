@@ -4,6 +4,7 @@ class ActivitiesController < ApplicationController
 
     def index
       @activities = Activity.all
+      # @activities = Activity.available
     end
   
     def new
@@ -28,7 +29,7 @@ class ActivitiesController < ApplicationController
     def edit; end
 
     def update
-      p params
+      p params     
       if @activity.update(activity_params)
         # TODO:這邊要處理掉
         b = @activity.ticket_types.new(title:params[:activity][:ticket_types_attributes][:"0"][:title], 
