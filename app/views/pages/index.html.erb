@@ -1,58 +1,37 @@
 <div class="w-full z-20 ">
 
-  <section class="hot-activity">
-    <div class=" flex justify-center py-3 my-3">
-      <h2 class="text-2xl px-2 font-extrabold bg-gray-50">熱門活動</h2>
-    </div>
-    <div class="px-3">
-      <div class="activity_item grid grid-cols-3 gap-4">
-    
-          <% @activities.each do |activity| %>
-        <div class="js-activity-item bg-gray-200 p-3 group border-gray-500 hover:bg-white hover:shadow-lg hover:border-transparent">
 
-            <div class="relative">
-                      
-              <%= link_to activity_path(activity.id) do %>
-                <div class="w-full">
-                  <%= image_tag activity.image_url if activity.image_url.present? %> 
-                </div>
-                <div class="absolute bottom-0 left-0 bg-gray-100 bg-opacity-75 ">
-                  <h5 class="text-xl group-hover:text-gray-900"><%= activity.title %></h5>
-                </div>
-              <% end%>
+  <div class="t-grid t-activity-area">
+    <% @activities.each do |activity| %>
+      <%= link_to activity_path(activity.id) do %>
+        <div class="t-item">
+          <div>
+
+            <div class="t-item-img">
+              <%= image_tag activity.image_url if activity.image_url.present? %> 
             </div>
-    
-          <div class="flex justify-between mt-3">
-            <div class="flex">
-              <div>
-                <i class="far fa-calendar-alt"></i>
+
+            
+            <div class="flex justify-between">
+              <div class="item__details">
+                <h5><%= activity.title %></h5>
               </div>
-              <div class="pl-2">
-                <p><%= activity.begin_datetime  %></p>
+              <div class="t-item-date">
+                <div class="t-date-icon"><i class="far fa-calendar-alt fa-2x"></i></div>
+                <div><%= activity.begin_datetime&.strftime("%Y/%m/%d") %></div>
               </div>
-    
             </div>
-            <div class="flex">
-              <a href="#">
-                <div class="flex">
-                  <div class="pl-2">
-                    <p>more</p>
-                  </div>
-                  <div>
-                    <i class="fas fa-angle-double-right"></i>
-                  </div>
-                </div>
-              </a>
+          
+
+            <div>
+              <%= activity.brief %>
             </div>
+
           </div>
-
         </div>
-                  <% end %>
-    
+      <% end %>     
+    <% end %>
+  </div>
 
-    
-      </div>
-    </div>
-  </section>
 
 </div>
