@@ -5,6 +5,7 @@
     >
     <div class = "qr-codesss">
       <canvas class="qr-canvas" data-id="<%= ticket.ticket_number if ticket.activated? %>"></canvas>
+      <%# if ticket.activated? %>
     </div>     
       <div class="flex-col">          
         <p class="my-2 text-xs italic font-light text-gray-500">
