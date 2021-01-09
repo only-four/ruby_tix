@@ -64,7 +64,6 @@ Rails.application.routes.draw do
     end
   end
 
-  # qr_code reader
   get 'qr_code_reader', to: 'qr_codes#reader'
   resources :qr_codes, only: [:create] do
     collection do
