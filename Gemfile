@@ -42,10 +42,16 @@ gem 'omniauth-facebook', '~> 8.0'
 gem 'omniauth-google-oauth2', '~> 0.8.0'
 # order/aasm
 gem 'aasm', '~> 5.1', '>= 5.1.1'
+# carrierwave/for image-upload
+gem 'carrierwave', '~> 2.1'
+gem 'fog-aws', '~> 3.7'
 # cart/checkout for linepay
 gem 'faraday', '~> 1.1.0'
 # security
 gem 'omniauth-rails_csrf_protection', '~> 0.1.2'
+# carrierwave/for image-upload
+gem 'carrierwave', '~> 2.1'
+
 gem "nokogiri", ">= 1.11.0.rc4"
 gem 'simple_form'
 gem 'will_paginate', '~> 3.1'
