@@ -50,6 +50,11 @@ Rails.application.routes.draw do
     resources :ticket_types, only:[:index, :destroy]
     get "/choose", to: "ticket_types#choose_ticket"
     resources :comments, only:[:create, :destroy]
+    resources :qr_codes, only: [] do
+      collection do
+        get :scan
+      end
+    end
   end
 
   resources :activities_user
@@ -64,10 +69,10 @@ Rails.application.routes.draw do
     end
   end
 
-  get 'qr_code_reader', to: 'qr_codes#reader'
+  
   resources :qr_codes, only: [:create] do
     collection do
-      get :scan
+      # get :scan
       get :attand_list
     end
     member do

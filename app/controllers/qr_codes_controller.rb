@@ -10,19 +10,21 @@ class QrCodesController < ApplicationController
   end
 
   def create         
-    if Ticket.where(ticket_number: @qr_data) == []
-      qr_code = QrCode.create(data: @qr_data)
-      redirect_to participated_qr_code_path(qr_code)
-      ticket= Ticket.find_by(ticket_number: @qr_data)
-      ticket.use!       
-    else
-      render :scan
-      # redirect_to '/'
-    end
+    qr_code = QrCode.create(data: @qr_data)
+    redirect_to participated_qr_code_path(qr_code)
+    ticket.use!       
+    # ticket= Ticket.find_by(ticket_number: @qr_data)
+    # if ticket.state == "activated"
+    # else
+    #   render :scan
+    # end
   end
 
   def participated
     @qr_code = QrCode.find(params[:id])
+    @current_ticket= Ticket.find_by(ticket_number:@qr_code.data)
+    @current_tickettype = TicketType.find(id:@current_ticket.ticket_type_id)
+    @current_activity = Activity.find(id:@current_tickettype.activity_id)
   end
 
   private

@@ -13,7 +13,7 @@ module RubyTix
     # config.hosts << "www.rubytix.fun"
     # config.hosts << "warm-earth-15284.herokuapp.com"
     # config.hosts << "rocky-caverns-12313.herokuapp.com"
-    # config.hosts << "b8fcb5b3c787.ngrok.io"
+    config.hosts << "8ea3249a3102.ngrok.io"
     
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration can go into files in config/initializers

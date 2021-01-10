@@ -5,7 +5,7 @@ const codeReader = new BrowserQRCodeReader();
 codeReader
   .decodeFromInputVideoDevice(undefined, 'video')
   .then((result) => {
-    document.getElementById('result').textContent = result.text
+    document.getElementById('result').textContent = "此票券無效"
     let qrDataFromReader = result.text;
     let formData = new FormData();
     let qrCodeParams = {

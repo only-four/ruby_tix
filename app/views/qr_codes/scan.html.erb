@@ -1,6 +1,7 @@
 <div class="conrainer text-center">
   <h1>掃描QR Code</h1>
-  <div>
+  <%= link_to "目前參加者名單", attand_list_qr_codes_path(@qr_code) %>
+  <div style="margin-left:30%;">
     <video id="video" width="500" height="400"></video>
   </div>
   <label>Result:</label>

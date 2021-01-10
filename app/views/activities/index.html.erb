@@ -20,7 +20,7 @@
       <td>參加人數</td>
       <td>活動編輯</td>
       <td>票券管理</td>
-      <td></td>
+      <td>qr_code</td>
     </tr>
   </thead>
   
@@ -45,6 +45,7 @@
           <%= link_to '新增票券', edit_activity_path(activity)%>
         <% end %>
       </td>
+      <td><%= link_to '驗票', scan_activity_qr_codes_path(activity) %></td>
     </tr>   
     <% end %>
   </tbody>
