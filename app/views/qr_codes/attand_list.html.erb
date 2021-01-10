@@ -1,6 +1,6 @@
 <div class="container text-center">
   <h1>活動參與表</h1>
-  <%= link_to '繼續掃qr-code', scan_qr_codes_path, class: 'button' %>
+<%# <%= link_to '繼續掃qr-code', scan_activity_qr_codes_path(@current_activity) %> %>
   <p><strong>成功參加活動者：</strong></p>
   <p>目前參加人數: <%= @qr_codes.count %></p>
   <ul>

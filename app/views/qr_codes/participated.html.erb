@@ -1,5 +1,5 @@
 <%= link_to "已參加活動者名單", attand_list_qr_codes_path(@qr_code) %>
-<%= link_to '繼續掃qr-code', scan_activity_qr_codes_path(1) %>
+<%= link_to '繼續掃qr-code', scan_activity_qr_codes_path(@current_activity) %>
 <p>第<%= @qr_code.id %>位參加者</p>
 <p>QR data: <%= @qr_code.data %></p>
 <p>Scanned on <%= @qr_code.created_at.strftime('%Y-%m-%d-%H:%M:%S') %></p>
