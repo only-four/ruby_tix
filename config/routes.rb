@@ -53,6 +53,7 @@ Rails.application.routes.draw do
     resources :qr_codes, only: [] do
       collection do
         get :scan
+        get :attand_list
       end
     end
   end
