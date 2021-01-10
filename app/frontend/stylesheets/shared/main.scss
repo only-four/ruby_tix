@@ -46,7 +46,7 @@ html {
 
 .t-grid {
   display: grid;
-  grid-gap: 30px;
+  grid-gap: 45px;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   grid-auto-rows: 150px;
   grid-auto-flow: row dense;
@@ -54,6 +54,7 @@ html {
 }
 .t-activity-area :first-child {
   grid-column-end: auto;
+  box-sizing: content-box;
 
   @media screen and (min-width: 768px) {
     grid-column: 1/-1;
@@ -61,11 +62,11 @@ html {
   }
 }
 
-.t-activity-area :nth-child(2n) {
-  grid-row-end: span 3;
-}
+// .t-activity-area :nth-child(2n) {
+//   grid-row-end: span 3;
+// }
 
-.t-activity-area :nth-child(2n + 1) {
+.t-activity-area :nth-child(n + 1) {
   grid-row-end: span 2;
 }
 
@@ -136,6 +137,8 @@ html {
   right: 0;
   left: 0;
   margin: auto;
+  width: 300px;
+  justify-content: center;
 }
 
 .t-item-date {

@@ -8,10 +8,13 @@
           <div>
 
             <div class="t-item-img">
-              <%= image_tag activity.image_url if activity.image_url.present? %> 
+              <% if activity.image_url.present? %>
+                <%= image_tag activity.image_url if activity.image_url.present? %> 
+              <% else %>
+                <img src="/images/rubytix006.png" alt="rubytix.fun" class="t-replace-img">
+              <% end %>
             </div>
 
-            
             <div class="flex justify-between">
               <div class="item__details">
                 <h5><%= activity.title %></h5>
@@ -22,10 +25,10 @@
               </div>
             </div>
           
-
             <div>
-              <%= activity.brief %>
+              <p class="truncate"><%= activity.brief %></p>
             </div>
+
 
           </div>
         </div>

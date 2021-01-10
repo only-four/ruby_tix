@@ -6,11 +6,8 @@
   </div>
 </div>
 
-
 <div>
-
   <% if current_user %>
-
     <section class="t-nav flex justify-between items-center">
       <section>
         <%= link_to root_path do%>
@@ -19,8 +16,8 @@
       </section>
 
       <div class="js-search-bar t-search-area">
-        <input type="text" class="search-input t-search-input" placeholder="請輸入關鍵字">
-        <i class="fas fa-search fa-2x submit t-search-btn "></i>
+        <input type="text" class="js-search-input t-search-input" placeholder="請輸入關鍵字">
+        <button class="js-search-btn"><i class="fas fa-search fa-2x submit t-search-btn "></i></button>
       </div>
 
       <section class="flex">
@@ -47,27 +44,20 @@
           <div class="border border-gray-900 bg-gray-100 hover:font-semibold px-3 py-2"><%= link_to '活動管理', activities_path, class: "hover:no-underline hover:text-gray-900" %></div>
           <div class="border border-gray-900 bg-gray-100 hover:font-semibold px-3 py-2"><%= link_to '會員登出', destroy_user_session_path, :method => :delete , class: "hover:no-underline hover:text-gray-900" %></div>
         </div>
-     
-        <%# <button> %>
-          <%#= link_to '登出', destroy_user_session_path, :method => :delete , class: "submit search-btn flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-gray-100 bg-red-600 hover:bg-gray-100 hover:text-red-600 hover:no-underline h-10" %> 
-        <%# </button>     %>
       </section>
-
     </section>
  
   <% else %>
-
     <section class="t-nav flex justify-between px-3 items-center">
-
       <section>
         <%= link_to root_path do%>
-          <%= image_tag '/images/newlogo.png' ,class:"h-20" %>
+          <p class="t-nav-logo">RUBYTIX</p>
         <% end%>
       </section>
 
-      <div class="search-bar flex">
-        <input type="text" class="search-input bg-red-100 rounded-md h-10 mr-3" placeholder="請輸入關鍵字">
-        <button class="submit search-btn flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-gray-100 bg-red-600 hover:bg-gray-100 hover:text-red-600 h-10">搜尋</button>
+      <div class="js-search-bar t-search-area">
+        <input type="text" class="js-search-input t-search-input" placeholder="請輸入關鍵字">
+        <i class="fas fa-search fa-2x submit t-search-btn js-search-btn"></i>
       </div>
 
       <div class="flex">
@@ -80,7 +70,6 @@
         </button>
       </div>
     </section>
-
   <% end %>
 </div>
 
