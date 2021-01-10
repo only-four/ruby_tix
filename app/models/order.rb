@@ -2,6 +2,7 @@ class Order < ApplicationRecord
   before_create :generate_ordernumber
   belongs_to :user
   has_many :order_items
+  has_many :tickets
 
   validates :participant, :tel, :address, presence: true
   include AASM
@@ -37,9 +38,9 @@ class Order < ApplicationRecord
   end
 
     # 產生訂單編號
-    private
-    def generate_ordernumber
-      self.num = SecureRandom.hex(5) unless num
-    end
+  private
+  def generate_ordernumber
+    self.num = SecureRandom.hex(5) unless num
+  end
 
 end

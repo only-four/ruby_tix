@@ -46,28 +46,34 @@ Rails.application.routes.draw do
     delete :cancel, on: :member
 
     resources :users
-    # 主辦方設定票券寫在activity new 頁面 暫定
-    resources :ticket_types, :except => [ :show]
-    #使用者選則票券頁面
+  
+    resources :ticket_types, only:[:index, :destroy]
     get "/choose", to: "ticket_types#choose_ticket"
-    # 單一活動底下 comment
     resources :comments, only:[:create, :destroy]
   end
 
   resources :activities_user
 
-
-  # 訂單成立後顯示個人票券
   resources :tickets, only: [ :create] do
-    post 'attend_event', on: :member
-    get 'attend_event_result', on: :member
+    member do
+      post :attend_event
+      get :attend_event_result      
+    end
     collection do
       get :my_tickets
     end
   end
 
-  # qr_code reader
-  get 'qr_code_reader', to: 'qr_codes#index'
+  get 'qr_code_reader', to: 'qr_codes#reader'
+  resources :qr_codes, only: [:create] do
+    collection do
+      get :scan
+      get :attand_list
+    end
+    member do
+      get :participated      
+    end
+  end
 
   resources :orders, only:[:index, :show, :create, :destroy]
 

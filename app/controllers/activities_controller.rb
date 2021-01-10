@@ -36,8 +36,11 @@ class ActivitiesController < ApplicationController
   
     def show
       @comment = @activity.comments.new
-      # show comments
-      @comments = @activity.comments.order(updated_at: :desc)
+      @comments = @activity.comments.paginate(page: params[:page], per_page: 4).order(updated_at: :desc)
+      respond_to do |format|
+        format.html
+        format.js
+      end
     end
 
     def destroy

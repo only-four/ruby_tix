@@ -1,4 +1,5 @@
 class User < ApplicationRecord
+  rolify
   has_many :activities, through: :activity_users
   has_many :activity_users
   has_many :comments
@@ -13,8 +14,6 @@ class User < ApplicationRecord
          :omniauthable, :omniauth_providers => [:facebook, :google_oauth2]
 
   has_rich_text :content
-
-
 
   def self.from_omniauth(auth)
      # Case 1: Find existing user by facebook uid

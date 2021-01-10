@@ -8,17 +8,22 @@ class OrdersController < ApplicationController
   end
 
   def create
+
     @order = current_user.orders.build(order_params)
     @order[:price] = current_cart.total_price.to_i
     # result = []
     current_cart.items.each do |item|
       @order.order_items.build(ticket_types_title: item.ticket_type_id, quantity: item.quantity)
+      @order.save
+      
+      @ticket = @order.tickets.build(ticket_type_id: item.ticket_type_id)
       # a1 = item.ticket_type_id
       # result.push(TicketType.find_by(id:a1).title) 若要藉由result抓產品名稱則用此陣列
-    end
+    end 
 
-    if @order.save
 
+
+    if @order.save && @ticket.save
       resp = Faraday.post("https://sandbox-api-pay.line.me/v2/payments/request") do |req|
         req.headers['Content-Type'] = 'application/json'
         req.headers['X-LINE-ChannelId'] = "1655423053"
@@ -35,6 +40,7 @@ class OrdersController < ApplicationController
 
       # returnCode中「0000」表示成功
       if result["returnCode"] == "0000"
+        @ticket.activate!
         payment_url = result["info"]["paymentUrl"]["web"]
         redirect_to payment_url
       else
@@ -42,6 +48,7 @@ class OrdersController < ApplicationController
         render 'cart/checkout'
       end
     end
+
   end
 
   def confirm

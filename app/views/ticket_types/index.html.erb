@@ -1,32 +1,32 @@
 <h2 class="text-xl mb-2 ml-2">票券列表</h2>
 
 <table class="table table-hover">
-  <thead class="table-dark">
+  <thead class="table-dark ">
     <tr>
-      <th>活動id</th>
+      <th>#</th>
       <th>活動名稱</th>
-      <th>活動票券id</th>
       <th>票券種類</th>
       <th>數量</th>
+      <th>銷售量</th>
       <th>票價</th>
       <th>狀態</th>
       <th></th>
     </tr>
   </thead>
 
-  <tbody>
-    <% @ticket_types.each do |ticket_type| %>
+    <% @ticket_types.each_with_index do |ticket_type, index| %>
       <tr>
-        <td><%= ticket_type.activity.id %></td>
+        <td> <%= index + 1 %> </td>
         <td><%= ticket_type.activity.title %></td>
-        <td><%= ticket_type.id %></td>
         <td><%= ticket_type.title %></td>
         <td><%= ticket_type.quantity %></td>
+        <td><%= ticket_type.tickets.count %></td>
         <td>＄<%= ticket_type.price %></td>
         <td>
-          <%= content_tag :span, '銷售中', class: "bg-teal-500" if ticket_type.on_sell? %>
-          <%= content_tag :span, '售完', class: "bg-yellow-400" if ticket_type.fully_booked? %>
-          <%= content_tag :span, '停止販售', class: "bg-red-600" if ticket_type.sell_closed? %>
+          <%= content_tag :span, '處理中', class: " p-2 bg-blue-400 textg-blue-800 rounded-lg" if ticket_type.pending? %>
+          <%= content_tag :span, '銷售中', class: " p-2 bg-teal-400 text-teal-800 rounded-lg" if ticket_type.on_sale? %>
+          <%= content_tag :span, '售完', class: "p-2 bg-yellow-400 text-yellow-800 rounded-lg" if ticket_type.fully_booked? %>
+          <%= content_tag :span, '停止販售', class: "p-2 bg-red-400 text-red-800 rounded-lg" if ticket_type.sale_closed? %>
         </td>
         <td>
           <%= link_to "編輯", edit_activity_path(ticket_type.activity_id), class: 'button is-light is-small' %>

@@ -32,6 +32,8 @@ gem 'jquery-ui-rails', '~> 6.0', '>= 6.0.1'
 
 # user/devise
 gem 'devise', '~> 4.7', '>= 4.7.3'
+gem 'rolify', '~> 5.3'
+gem 'cancancan', '~> 3.2', '>= 3.2.1'
 # figaro -> for secret manage
 gem 'figaro', '~> 1.2' 
 # user/facebook api
@@ -51,8 +53,8 @@ gem 'omniauth-rails_csrf_protection', '~> 0.1.2'
 gem 'carrierwave', '~> 2.1'
 
 gem "nokogiri", ">= 1.11.0.rc4"
-
 gem 'simple_form'
+gem 'will_paginate', '~> 3.1'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
