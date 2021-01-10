@@ -1,9 +1,9 @@
 class User < ApplicationRecord
-  rolify
   has_many :activities, through: :activity_users
   has_many :activity_users
   has_many :comments
   has_many :orders
+  has_many :rolify
   has_many :own_activities, class_name: 'Activity'
   mount_uploader :image, ImageUploader
   devise :database_authenticatable, :registerable,

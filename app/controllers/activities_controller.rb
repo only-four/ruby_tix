@@ -31,14 +31,10 @@ class ActivitiesController < ApplicationController
     def update
       p params     
       if @activity.update(activity_params)
-        # TODO:這邊要處理掉
-        b = @activity.ticket_types.new(title:params[:activity][:ticket_types_attributes][:"0"][:title], 
-          quantity:params[:activity][:ticket_types_attributes][:"0"][:quantity].to_i, 
-          price:params[:activity][:ticket_types_attributes][:"0"][:price].to_i, 
-          sell_start:params[:activity][:ticket_types_attributes][:"0"][:sell_start], 
-          sell_deadline:params[:activity][:ticket_types_attributes][:"0"][:sell_deadline])
-        if b.save!
-        redirect_to activities_path(@activity), notice: "資料更新成功!" 
+        # TODO:這邊要調整一下, ticket_types_params
+        ticketTypesParams = @activity.ticket_types.new(ticket_types_params)
+        if ticketTypesParams.save!
+          redirect_to activities_path(@activity), notice: "資料更新成功!" 
         else        
           root_path
         end
@@ -87,4 +83,14 @@ class ActivitiesController < ApplicationController
   def find_activity
     @activity = Activity.find(id: params[:id])
   end
+  def ticket_types_params
+    title:params[:activity][:ticket_types_attributes][:"0"][:title], 
+          quantity:params[:activity][:ticket_types_attributes][:"0"][:quantity].to_i, 
+          price:params[:activity][:ticket_types_attributes][:"0"][:price].to_i, 
+          sell_start:params[:activity][:ticket_types_attributes][:"0"][:sell_start], 
+          sell_deadline:params[:activity][:ticket_types_attributes][:"0"][:sell_deadline],
+          valid_at:params[:activity][:ticket_types_attributes][:"0"][:valid_at],
+          expire_at:params[:activity][:ticket_types_attributes][:"0"][:expire_at]
+  end
+
 end

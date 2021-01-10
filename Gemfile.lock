@@ -336,7 +336,7 @@ DEPENDENCIES
   capybara (>= 2.15)
   carrierwave (~> 2.1)
   devise (~> 4.7, >= 4.7.3)
-  enum_help
+  enum_help (~> 0.0.17)
   factory_bot_rails (~> 6.1)
   faker (~> 2.15, >= 2.15.1)
   faraday (~> 1.1.0)
