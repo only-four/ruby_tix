@@ -51,7 +51,7 @@
           <div>
             <%= form.label:expire_at, '票券過期時間' %>
           </div>
-
+          <%# TODO: 這裡要有一個檢查機制，結束時間要比開始時間晚，至少半小時/一小時？%>
           <div>
             <%= form.date_field:expire_at %>
             <%= form.time_field:expire_at %>
