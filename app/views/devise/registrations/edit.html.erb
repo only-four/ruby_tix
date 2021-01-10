@@ -3,66 +3,60 @@
   <div class="max-w-md w-full space-y-8">
     <h2 class="mt-6 text-center text-4xl font-extrabold text-gray-900 mb-5 extrabold ">編輯會員資料</h2>
 
+    <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+      <%= render "devise/shared/error_messages", resource: resource %>
 
-  <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
-    <%= render "devise/shared/error_messages", resource: resource %>
+      <div class="form-group">
+        <%= f.label :頭像 %>
+        <%= f.file_field :image, id: :user_image %>
+        <%= image_tag resource.image_url if resource.image_url.present? %>
+      </div> 
 
+      <div class="field  mb-2">
+        <%= f.label :帳戶名稱 %>
+        <%= f.text_field :account_name, placeholder: "暱稱", class: "appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm" %>
+      </div>
 
+      <div class="field  mb-2">
+        <%= f.label :信箱 %>
+        <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "信箱", class: "appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm" %>
+      </div>
 
-    <div class="form-group">
-      <%= f.label :頭像 %>
-      <%= f.file_field :image, id: :user_image %>
-      <%= image_tag resource.image_url if resource.image_url.present? %>
-    </div> 
+      <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+        <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+      <% end %>
 
-    <div class="field  mb-2">
-      <%= f.label :帳戶名稱 %>
-      <%= f.text_field :account_name, placeholder: "暱稱", class: "appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm" %>
-    </div>
+      <div class="field  mb-2">
+        <%= f.label :新密碼 %>
+        <%= f.password_field :password, autocomplete: "new-password", placeholder: "您的密碼（請輸入至少6個英文字母或數字）", class: "appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm" %>
+        <%# if @minimum_password_length %>
+        <%# <em>請輸入至少 <%= @minimum_password_length個英文字母)</em> %> 
+        <%# end %>
+      </div>
 
-    <div class="field  mb-2">
-      <%= f.label :信箱 %>
-      <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "信箱", class: "appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm" %>
-    </div>
+      <div class="field  mb-2">
+        <%= f.label :確認新密碼 %>
+        <%= f.password_field :password_confirmation, autocomplete: "new-password", placeholder: "請再輸入一次您的密碼(若無需變更，請留白。)", class: "appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm" %>
+      </div>
 
-    <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-      <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+      <div class="field  mt-10 mb-2">
+        <%= f.label :原密碼 %> 
+        <%= f.password_field :current_password, autocomplete: "current-password", placeholder: "請輸入您現在的密碼，以確認此次變更內容。", class: "appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm" %>
+      </div>
+
+      <div class="mb-2 justify-between grid gap-4 grid-cols-2">
+
+        <div>
+          <%= link_to '返回首頁', root_path , class: "actions group relative w-full flex justify-center py-2 px-4 border  text-sm font-medium rounded-md  text-gray-900 bg-gray-100 border-red-600 hover:border-red-600 hover:bg-gray-100 hover:text-red-600 hover:no-underline hover:shadow-lg" %>
+        </div>
+
+        <div class="actions">
+          <%= f.submit "確認更新" , class: "actions group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-gray-100 bg-red-600 hover:border-red-600 hover:bg-gray-100 hover:text-red-600 hover:no-underline	hover:shadow-lg hover:border-transparent" %>
+        </div>
+      </div>
+      
+        <%= button_to "刪除我的帳號?", registration_path(resource_name), data: { confirm: "確定刪除嗎?" }, method: :delete, class: "actions group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md bg-gray-100 text-red-700 border-red-700" %>
+
     <% end %>
-
-    <div class="field  mb-2">
-      <%= f.label :新密碼 %>
-      <%= f.password_field :password, autocomplete: "new-password", placeholder: "您的密碼（請輸入至少6個英文字母或數字）", class: "appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm" %>
-      <%# if @minimum_password_length %>
-      <%# <em>請輸入至少 <%= @minimum_password_length個英文字母)</em> %> 
-      <%# end %>
-    </div>
-
-    <div class="field  mb-2">
-      <%= f.label :確認新密碼 %>
-      <%= f.password_field :password_confirmation, autocomplete: "new-password", placeholder: "請再輸入一次您的密碼(若無需變更，請留白。)", class: "appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm" %>
-    </div>
-
-    <div class="field  mt-10 mb-2">
-      <%= f.label :原密碼 %> 
-      <%= f.password_field :current_password, autocomplete: "current-password", placeholder: "請輸入您現在的密碼，以確認此次變更內容。", class: "appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm" %>
-    </div>
-
-    <div class="mb-2 justify-between grid gap-4 grid-cols-2">
-
-      <div>
-        <%= link_to '返回首頁', root_path , class: "actions group relative w-full flex justify-center py-2 px-4 border  text-sm font-medium rounded-md  text-gray-900 bg-gray-100 border-red-600 hover:border-red-600 hover:bg-gray-100 hover:text-red-600 hover:no-underline hover:shadow-lg" %>
-      </div>
-
-      <div class="actions">
-        <%= f.submit "確認更新" , class: "actions group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-gray-100 bg-red-600 hover:border-red-600 hover:bg-gray-100 hover:text-red-600 hover:no-underline	hover:shadow-lg hover:border-transparent" %>
-      </div>
-    </div>
-    
-      <%= button_to "刪除我的帳號?", registration_path(resource_name), data: { confirm: "確定刪除嗎?" }, method: :delete, class: "actions group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md bg-gray-100 text-red-700 border-red-700" %>
-
-  <% end %>
-
-
-  
-
+  </div>
 </div>

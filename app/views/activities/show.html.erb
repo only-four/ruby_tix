@@ -1,12 +1,10 @@
 <div class="container">
-
-<%# 活動內容 %>
   <%= simple_form_for @activity do |f|%>
     <%= image_tag @activity.image_url if @activity.image_url.present? %>
 
     <% if @activity %>
       <h1 class="mt-6 text-left text-4xl font-extrabold text-gray-900 mb-5">
-        【 <%= @activity.title %>】
+        【<%= @activity.title %>】
       </h1>
 
       <ul>
@@ -55,42 +53,29 @@
         <li class="text-left text-xl font-extrabold text-red-800 pl-2">注意事項</li>
         <%= @activity.notice %>
       </ul>
-
-
-
-
-
+      
       <%= @activity.hostname %>
       聯絡電話<%= @activity.phone %>
       聯絡信箱<%= @activity.email %>
       其他聯絡方式<%= @activity.other_contact %>
-
-      <%#= "((上傳資料（還沒寫，預留欄位）))" %>
-      上傳資料<%= @activity.limit %>
-      上傳資料<%= @activity.limit %>
-
     <% else %>
       <h1>找不到活動喔！請確定你的連結是否正確！</h1>
     <% end %>
-
     <div class="flex justify-between mt-10">
       <%= link_to '回到活動列表', activities_path, class: "submit search-btn flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium bg-gray-100 text-gray-800 hover:border-red-600 hover:bg-gray-100 hover:text-red-600 hover:no-underline h-10" %>
-
       <%= f.button :submit, '參加活動' ,class: "flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-gray-100 bg-red-600 hover:border-red-600 hover:bg-gray-100 hover:text-red-600 hover:no-underline h-10" %>
     </div>
-    
   <% end %>
-
-<%# 活動之評論內容 %>
   <section class="section-comments">
     <div class="container">
       <h2><strong><%= @activity.comments.count %> </strong>Comment</h2>
-
       <%= render 'comments/comments', activity: @activity, comment: @comment %>
       <%= render 'comments/show_comments', comments: @comments %>
-
+      <% if @comments.next_page %>
+        <div class="coin-comment__load-more text-center p-2  bg-gray-500 ">
+          <%= click_for_more_comments(@activity, @comments) %>
+        </div>
+      <% end %>
     </div>
   </section>
-    
-
 </div>

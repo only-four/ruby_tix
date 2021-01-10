@@ -5,13 +5,13 @@ require("javascript")
 require("stylesheets")
 require("trix")
 require("@rails/actiontext")
-
 // import "stimulus"
 import "controllers"
 import 'bootstrap'
 import 'bootstrap/dist/css/bootstrap.css'
-import "@fortawesome/fontawesome-free/js/all"
 import 'jquery'
 import $ from 'jquery';
 window.$ = $
-import './qr_code_reader'
+// import './qr_code_reader';
+import Swal from 'sweetalert2';
+window.Swal= Swal

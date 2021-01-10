@@ -15,17 +15,17 @@
         <% end%>
       </section>
 
-      <div class="js-search-bar t-search-area">
+      <section class="js-search-bar t-search-area">
         <input type="text" class="js-search-input t-search-input" placeholder="請輸入關鍵字">
         <button class="js-search-btn"><i class="fas fa-search fa-2x submit t-search-btn "></i></button>
-      </div>
+      </section>
 
       <section class="flex">
         <div class="js-user-avator h-12 w-12 flex items-center justify-center t-nav-btn">
           <i class="far fa-user-circle fa-2x t-nav-btn"></i>
         </div>       
 
-        <%= link_to orders_path do %>
+        <%= link_to cart_path do %>
           <div class="relative">
             <div class="h-12 w-12 flex items-center justify-center t-nav-btn">
               <i class="fas fa-cart-plus fa-2x "></i> 
@@ -55,12 +55,12 @@
         <% end%>
       </section>
 
-      <div class="js-search-bar t-search-area">
+      <section class="js-search-bar t-search-area">
         <input type="text" class="js-search-input t-search-input" placeholder="請輸入關鍵字">
         <i class="fas fa-search fa-2x submit t-search-btn js-search-btn"></i>
-      </div>
+      </section>
 
-      <div class="flex">
+      <section class="flex">
         <button>
           <%= link_to '註冊', new_registration_path(:user) , class: "submit search-btn flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium  text-gray-100 bg-red-600 hover:bg-gray-100 hover:text-red-600 hover:no-underline h-10 mr-3" %> 
         </button>
@@ -68,7 +68,7 @@
         <button>
           <%= link_to '登入', new_session_path(:user) , class: "submit search-btn flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium  text-gray-100 bg-red-600 hover:bg-gray-100 hover:text-red-600 hover:no-underline h-10" %>
         </button>
-      </div>
+      </section>
     </section>
   <% end %>
 </div>

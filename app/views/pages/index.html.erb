@@ -1,6 +1,5 @@
 <div class="w-full z-20 ">
 
-
   <div class="t-grid t-activity-area">
     <% @activities.each do |activity| %>
       <%= link_to activity_path(activity.id) do %>
@@ -29,12 +28,10 @@
               <p class="truncate"><%= activity.brief %></p>
             </div>
 
-
           </div>
         </div>
       <% end %>     
     <% end %>
   </div>
-
 
 </div>

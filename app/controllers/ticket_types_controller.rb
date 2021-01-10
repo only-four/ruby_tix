@@ -16,9 +16,7 @@ class TicketTypesController < ApplicationController
   end
 
   private
-
   def find_activity
     @activity = Activity.find(params[:activity_id])    
   end
-
 end
