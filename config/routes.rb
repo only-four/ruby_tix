@@ -25,7 +25,6 @@ Rails.application.routes.draw do
       post :pay
       get :pay_confirm
     end
-
     collection do
       get :confirm
     end

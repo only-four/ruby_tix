@@ -3,13 +3,13 @@ class ChatroomUsersController < ApplicationController
   before_action :set_chatroom
 
   def create
-    @chatroom_user = @chatroom.chatroom_users.where(user_id: current_user.id).first_or_create
+    @chatroom.chatroom_users.where(user: current_user).first_or_create!
     redirect_to @chatroom
   end
 
   def destroy
-    @chatroom_user = @chatroom.chatroom_users.where(user_id: current_user.id).destroy_all
-    redirect_to chatrooms_path
+    @chatroom.chatroom_users.where(user: current_user).destroy_all
+    redirect_to @chatroom
   end
 
   private

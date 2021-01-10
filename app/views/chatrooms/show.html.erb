@@ -1,3 +1,4 @@
+<div data-controller="channel" data-channel-id="<%= @chatroom.id %>">
 <p id="notice"><%= notice %></p>
 
 <p>
@@ -5,15 +6,36 @@
   <%= @chatroom.name %>
 </p>
 
+<% Chatroom.all.each do |chatroom| %>
+  <div>
+  <%= link_to chatroom.name, chatroom %>
+  <% if current_user.chatrooms.include?(chatroom) %>
+    <%= link_to '刪除', chatroom_chatroom_users_path(chatroom), method: 'delete' %>
+  <% end %>
+  </div>
+<% end %>
+
+<div>
+<h2>聊天室現有使用者</h2>
+<% @chatroom.users.each do |user| %>
+  <%= user.name %>
+<% end %>
+</div>
+
+<% if current_user.chatrooms.include?(@chatroom) %>
+  <%= form_with model:([@chatroom, Message.new]) do |f| %>
+    <%= f.text_area :body, class: "form-controller" ,rows: 1, placeholder: '輸入聊天內容...', autofocus: true %>
+  <% end %>
+<% else %>
+  <%= link_to "#{@chatroom.name}", chatroom_chatroom_users_path(@chatroom), method: 'post' %>
+<% end %>
+
 <div data-behavior="messages">
   <% @chatroom.messages.each do |message| %>
-    <div><%= current_user.name%>：<%= message.body %> </div>
+    <div><%= message.user.name%>（<%= message.created_at.strftime("%T") %>）：<%= message.body %> </div>
   <% end %>
 </div>
 
-<%= form_for([@chatroom, Message.new]) do |f| %>
-  <%= f.text_area :body, rows: 1, autofocus: true %>
-<% end %>  
-
 <%= link_to 'Edit', edit_chatroom_path(@chatroom) %> |
 <%= link_to 'Back', chatrooms_path %>
+</div>

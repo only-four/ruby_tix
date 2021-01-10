@@ -16,7 +16,7 @@
   <% @orders.each do |order| %>
     <tr>
       <td><%= order.num %></td>
-      <td><%= order.created_at %></td>
+      <td><%= order.created_at.strftime("%Y/%m/%d/%T") %></td>
       <td><%= order.price %></td>
       <td><%= order.state %></td>
       <td><%= link_to '付款', pay_order_path(order), method:'POST', data: {confirm:'確定付款？'} if order.may_pay? %></td>
