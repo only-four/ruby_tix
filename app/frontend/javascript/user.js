@@ -1,4 +1,4 @@
-document.addEventListener('DOMContentLoaded', function(){
+document.addEventListener("turbolinks:load", function(){
   const avator = document.querySelector('.js-user-avator')
   const option = document.querySelector('.js-user-option')
 
