@@ -384,11 +384,7 @@ DEPENDENCIES
   pg (>= 0.18, < 2.0)
   puma (~> 4.3.7)
   rails (~> 6.0.3, >= 6.0.3.4)
-<<<<<<< HEAD
-  redis (~> 4.0)
-=======
   rolify (~> 5.3)
->>>>>>> de60600c7b666032d28d713e7e7b6adcb35dea8d
   rspec-rails (~> 4.0, >= 4.0.1)
   sass-rails (>= 6)
   selenium-webdriver
