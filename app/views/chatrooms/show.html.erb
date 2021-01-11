@@ -22,19 +22,17 @@
 <% end %>
 </div>
 
+<div data-target="channel.messages">
+<%= render @chatroom.messages %>
+</div>
+
 <% if current_user.chatrooms.include?(@chatroom) %>
-  <%= form_with model:([@chatroom, Message.new]) do |f| %>
-    <%= f.text_area :body, class: "form-controller" ,rows: 1, placeholder: '輸入聊天內容...', autofocus: true %>
+  <%= form_with model: [@chatroom, Message.new], data: { action: "ajax:success->channel#clearMessage" } do |f| %>
+    <%= f.text_field :body, class: "form-controller" ,rows: 1, placeholder: '輸入聊天內容...', autofocus: true,data:{ target: "channel.newMessage"} %>
   <% end %>
 <% else %>
   <%= link_to "#{@chatroom.name}", chatroom_chatroom_users_path(@chatroom), method: 'post' %>
 <% end %>
-
-<div data-behavior="messages">
-  <% @chatroom.messages.each do |message| %>
-    <div><%= message.user.name%>（<%= message.created_at.strftime("%T") %>）：<%= message.body %> </div>
-  <% end %>
-</div>
 
 <%= link_to 'Edit', edit_chatroom_path(@chatroom) %> |
 <%= link_to 'Back', chatrooms_path %>
