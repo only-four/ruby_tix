@@ -132,7 +132,6 @@ a:hover {
   width: 300px;
   justify-content: center;
 }
-
 .t-item-date {
   @apply flex;
   @apply items-center;
@@ -142,4 +141,11 @@ a:hover {
 }
 .t-float-icon {
   z-index: 20;
+}
+.t-footer {
+  @apply px-10;
+  background-color: rgb(228, 226, 226);
+}
+
+.t-form-thead {
 }

@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css?family=Sriracha");
+@import url("https://fonts.googleapis.com/css?family=Noto Serif");
 .t-nav-div {
   background-image: url("/images/bgimg02.jpg");
   background-repeat: no-repeat;
@@ -7,7 +7,7 @@
 }
 
 .t-nav-logo {
-  font-family: "Sriracha", serif;
+  font-family: "Noto Serif", serif;
   font-size: 40px;
   font-weight: 900;
   color: #750000;
@@ -25,6 +25,18 @@
 
 .t-nav-btn {
   color: #750000;
+}
+
+.t-user-btn {
+  @apply flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-gray-100 h-10;
+  background-color: #750000;
+  border: 2px solid #750000;
+}
+.t-user-btn:hover {
+  @apply no-underline;
+  background-color: #f5f4f4;
+  color: #750000;
+  border: 2px solid #750000;
 }
 
 .t-cart-quantity {

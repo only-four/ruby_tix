@@ -1,4 +1,4 @@
-<%= simple_form_for @activity do |f|%>
+<%= simple_form_for @activity, url: url, method: method do |f|%>
 
   <div class="mb-2 text-center">
     <%= f.hidden_field :user_id, value: current_user.id %>
