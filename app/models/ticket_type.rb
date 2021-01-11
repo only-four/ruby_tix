@@ -22,6 +22,7 @@ class TicketType < ApplicationRecord
     end
   end  
 
+  # to do
   # def during_selling_period?
   #   if Time.now > ticket_type.sell_start && Time.now < ticket_type.sell_deadline
   #     ticket_type.on_sale!

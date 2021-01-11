@@ -11,8 +11,8 @@ class Ticket < ApplicationRecord
 
     event :activate do
       transitions from: :pending, to: :activated
-      # after do
-        
+      # to do
+      # after do      
       # end
     end
 
