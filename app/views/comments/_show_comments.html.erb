@@ -6,8 +6,6 @@
       <div class="flex items-center">
         <div class="h-12 w-12 rounded-full"><%= image_tag comment.user.image_url if comment.user.image_url.present? %></div>
         
-          <%# class: "h-12 w-12 rounded-full" %>
-
         <div class="ml-2">
           <div class="text-sm ">
             <span class="font-semibold"><%= comment.user.name %></span>
@@ -22,7 +20,6 @@
             </svg>
           </div>
         </div>
-
       </div>
 
       <p class="text-gray-800 text-sm mt-2 leading-normal md:leading-relaxed"><%= comment.content %></p>

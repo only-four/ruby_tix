@@ -6,8 +6,7 @@ class QrCodesController < ApplicationController
     @qr_codes = QrCode.order(created_at: :desc).first(20)
   end
 
-  def scan
-  end
+  def scan; end
 
   def create         
     if Ticket.where(ticket_number: @qr_data) == []
@@ -17,7 +16,6 @@ class QrCodesController < ApplicationController
       ticket.use!       
     else
       render :scan
-      # redirect_to '/'
     end
   end
 
@@ -26,7 +24,6 @@ class QrCodesController < ApplicationController
   end
 
   private
-
   def set_qr_data
     qr_code_params = JSON.parse(params[:qr_code_json_data]).with_indifferent_access
     @qr_data = qr_code_params[:qr_data]

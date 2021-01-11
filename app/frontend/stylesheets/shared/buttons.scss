@@ -1,0 +1,28 @@
+.t-edit-button {
+  @apply bg-red-600;
+}
+
+.t-check-button {
+  @apply relative;
+  @apply w-full;
+  @apply flex;
+  @apply justify-center;
+  @apply py-2;
+  @apply px-4;
+  @apply border;
+  @apply border-transparent;
+  @apply text-sm;
+  @apply font-medium;
+  @apply rounded-md;
+  @apply text-gray-100;
+  @apply bg-red-600;
+}
+
+.t-check-button:hover {
+  @apply border-red-600;
+  @apply bg-gray-100;
+  @apply text-red-600;
+  @apply no-underline;
+  @apply shadow-lg;
+  @apply border-transparent;
+}

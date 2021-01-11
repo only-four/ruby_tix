@@ -2,10 +2,15 @@ Rails.application.routes.draw do
   root to: 'pages#index'
 
   resources :pages do
-    # 沒id
     collection do
       get :search
-      get :footer_page
+      get :abouts_us , to: "pages#abouts_us"
+      get :footer_notice , to: "pages#footer_notice"
+      get :process , to: "pages#process_method"
+      get :questions , to: "pages#questions"
+      get :sell_purchase , to: "pages#sell_purchase"
+      get :service_centre , to: "pages#service_centre"
+      get :dervice_terms , to: "pages#dervice_terms"
     end
   end 
 
@@ -15,25 +20,23 @@ Rails.application.routes.draw do
                :omniauth_callbacks => "users/omniauth_callbacks"
              }
 
-  resources :orders, only:[:index, :create, :show, :destroy] do
+  resources :orders, only: [:index, :create, :show, :destroy] do
     member do
       delete :cancel
       post :pay
       get :pay_confirm
     end
-
     collection do
       get :confirm
     end
   end
 
-  resource :cart, only:[:show, :destroy] do
+  resource :cart, only: [:show, :destroy] do
     collection do
-      post :add, path:'add/:id'
+      post :add, path: 'add/:id'
     end
     get :checkout
   end
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   
   namespace :admin do
     resources :users
@@ -41,20 +44,21 @@ Rails.application.routes.draw do
   end
 
   resources :activities do
-    post :join, on: :member
-    post :confirm, on: :member  
-    delete :cancel, on: :member
-
+    member do
+      post :join
+      post :confirm  
+      delete :cancel
+    end
+    
     resources :users
-  
-    resources :ticket_types, only:[:index, :destroy]
+    resources :ticket_types, only: [:index, :destroy]
+    resources :comments, only: [:create, :destroy]
     get "/choose", to: "ticket_types#choose_ticket"
-    resources :comments, only:[:create, :destroy]
   end
 
   resources :activities_user
 
-  resources :tickets, only: [ :create] do
+  resources :tickets, only: [:create] do
     member do
       post :attend_event
       get :attend_event_result      
@@ -74,13 +78,4 @@ Rails.application.routes.draw do
       get :participated      
     end
   end
-
-  resources :orders, only:[:index, :show, :create, :destroy]
-
-  resource :cart, only:[:index, :destroy] do
-    collection do
-      post :add, path:'add/:id'
-    end
-  end
-
 end

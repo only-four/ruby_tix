@@ -1,57 +1,71 @@
   <div class="js-ticketType-form" id="accordion" new-ticket_types ="<%= form.object.new_record? %>" >
-    <div class="nested-basic-info">
-      <%= form.text_field:title%>
-      <%= form.number_field:quantity, placeholder: '數量', min: 0 %>
-      <%= form.number_field:price, placeholder: '票價', min:0 %>
+    <div class="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg mb-5 p-10">
+      <div class="nested-basic-info items-center flex justify-left">
+        <div class="nested-hidden-info" >
+          <div class="flex">
+            <div>
+              <%= form.label:title, '票卷名稱'%>
+              <%= form.text_field:title, class: "appearance-none rounded-none relative   py-2 w-2.5 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-md bg-gray-100 focus:bg-white focus:z-10 sm:text-sm px-3 mx-4" %>
+            </div>
+            <div>
+              <%= form.label:quantity, '票卷數量'%>
+              <%= form.number_field:quantity, min: 0, class: "appearance-none rounded-none relative   py-2 w-2.5 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-md bg-gray-100 focus:bg-white focus:z-10 sm:text-sm px-3 mx-3" %>
+            </div>
+            <div>
+              <%= form.label:price, '票卷單價'%>
+              <%= form.number_field:price, min:0, class: "appearance-none rounded-none relative   py-2 w-2.5 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-md bg-gray-100 focus:bg-white focus:z-10 sm:text-sm px-3 mx-3" %>
+            </div>
+          </div>
 
-      <%#= link_to '#', class:"card-link", data:{toggle:"collapse"},cdata:{parent:"#accordion"} do %>
-        <%# <i class="fas fa-chevron-circle-down"></i> %>
-      <%# end %>
+          <div class="flex items-center mt-3">
+            <%= form.label:sell_start, '售票開始日'%>
+            <%= form.date_field:sell_start, class: "appearance-none rounded-none relative block py-2  border border-gray-300 placeholder-gray-500 text-gray-900 rounded-md bg-gray-100 focus:bg-white focus:z-10 sm:text-sm px-3 mx-3" %>
+            <%= form.time_field:sell_start, class: "appearance-none rounded-none relative block py-2  border border-gray-300 placeholder-gray-500 text-gray-900 rounded-md bg-gray-100 focus:bg-white focus:z-10 sm:text-sm px-3" %>
+          </div>
 
-      <%= link_to '#', data: { action: 'ticket-types-form#removeTicketType' } do %>
-        <i class="far fa-trash-alt new-ticket-delete-btn"></i>
-      <% end %>
-    </div>
+          <div class="flex items-center mt-3">
+            <%= form.label:finish_datetime, '售票結束日' %>
+            <%= form.date_field:sell_deadline, class: "appearance-none rounded-none relative block py-2  border border-gray-300 placeholder-gray-500 text-gray-900 rounded-md bg-gray-100 focus:bg-white focus:z-10 sm:text-sm px-3 mx-3" %>
+            <%= form.time_field:sell_deadline, class: "appearance-none rounded-none relative block py-2  border border-gray-300 placeholder-gray-500 text-gray-900 rounded-md bg-gray-100 focus:bg-white focus:z-10 sm:text-sm px-3" %>
+          </div>
 
-    <div class=" nested-hidden-info"  >
-      <div class="card card-body collapse.show" id="e">
-        <div>
-          <%= form.label:sell_start, '售票開始日'%>
+          <div class="items-center mt-3">
+            <%= form.label:content, '票券說明'%> 
+            <%= form.rich_text_area :content,placeholder: "請完整說明你的票卷內容", class: "appearance-none rounded-none relative block py-2  border border-gray-300 placeholder-gray-500 text-gray-900 rounded-md bg-gray-100 focus:bg-white focus:z-10 sm:text-sm" %>
+          </div>
+
+          <div>
+            <%= form.date_field:sell_deadline %>
+            <%= form.time_field:sell_deadline %>
+          </div>
+
+          <div>
+            <%= form.label:valid_at, '票券有效時間' %>
+          </div>
+
+          <div>
+            <%= form.date_field:valid_at %>
+            <%= form.time_field:valid_at%>
+          </div>
+
+          <div>
+            <%= form.label:expire_at, '票券過期時間' %>
+          </div>
+
+          <div>
+            <%= form.date_field:expire_at %>
+            <%= form.time_field:expire_at %>
+          </div>
+
+          <div class="items-center mt-3 grid grid-cols-6 gap-4">
+            <%= link_to '#', data: { action: 'ticket-types-form#removeTicketType' } do %>
+              <div class= "flex items-center justify-center border-2 border-gray-600 rounded-md text-base font-medium  text-gray-600 hover:border-red-600 hover:text-red-600 hover:no-underline h-10 col-start-2 col-span-4">
+                刪除此張票卷<i class="far fa-trash-alt new-ticket-delete-btn"></i>
+              </div>
+            <% end %>
+          </div>
         </div>
-
-        <div>
-          <%= form.date_field:sell_start %>
-          <%= form.time_field:sell_start %>
-        </div>
-
-        <div>
-          <%= form.label:finish_datetime, '結束時間' %>
-        </div>
-
-        <div>
-          <%= form.date_field:sell_deadline %>
-          <%= form.time_field:sell_deadline %>
-        </div>
-        <div>
-          <%= form.label:valid_at, '票券有效時間' %>
-        </div>
-
-        <div>
-          <%= form.date_field:valid_at %>
-          <%= form.time_field:valid_at%>
-        </div>
-        <div>
-          <%= form.label:expire_at, '票券過期時間' %>
-        </div>
-
-        <div>
-          <%= form.date_field:expire_at %>
-          <%= form.time_field:expire_at %>
-        </div>
-
-        <%= form.label:content, '票券說明'%>
-        <%= form.text_area:content, rows: "5" %>
+        <%= form.hidden_field :_destroy %>
       </div>
     </div>
-    <%= form.hidden_field :_destroy %>
   </div>
