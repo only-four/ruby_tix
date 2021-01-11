@@ -1,210 +1,199 @@
-
-
-
-
-
-
 <%= form_for @activity do |f|%>
-  <%= f.hidden_field :user_id, value: current_user.id %>
+<%= f.hidden_field :user_id, value: current_user.id %>
+<%# 第一步：活動基本資訊 %>
+<div class="flex flex-col mb-10">
+<div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
+<div class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
+<div class="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
+<table class="min-w-full divide-y divide-gray-200">
+<thead class="t-thead h-10">
+<%= form_for @activity do |f|%>
+<%= f.hidden_field :user_id, value: current_user.id %>
+<tr class= "px-6 py-3 text-center text-2xl h-20">
+<th colspan="2">第一步：活動基本資訊</th>
+</tr>
+</thead>
 
-  <%# 第一步：活動基本資訊 %>
-  <div class="flex flex-col mb-10">
-    <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
-      <div class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
-        <div class="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
-          <table class="min-w-full divide-y divide-gray-200">
-            <thead class="bg-red-200 h-10">
-              <%= form_for @activity do |f|%>
-              <%= f.hidden_field :user_id, value: current_user.id %>
-              <tr class= "px-6 py-3 text-center text-2xl h-20">
-                <th colspan="2">第一步：活動基本資訊</th>
-              </tr>
-            </thead>
 
-            <tbody class="max-w-screen-lg	 m-auto">
-              <%# <tr  class= "px-6 py-3"> %>
-              <tr class= "my-5 px-6 py-3">
-                <td class="px-6 py-3 text-lg font-normal text-gray-900 uppercase tracking-wider">
-                  <%= f.label :title, "活動名稱" %>
-                </td>
-                <td ><%= f.text_field :title, class: "appearance-none rounded-none relative block w-5/6 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-md bg-gray-100 focus:bg-white focus:z-10 sm:text-sm" %></td>
-  
-              </tr>
-
-              <tr class= "my-5 px-6 py-3">
-                <td scope="col" class="w-1/2 px-6 py-3 text-right text-lg font-normal text-gray-900 uppercase tracking-wider">
-                  <%= f.label :begin_datetime, "開始時間" %>
-                </td>
-                <td scope="col"><%= f.datetime_field :begin_datetime, class: "appearance-none rounded-none relative block w-5/6 py-2 w-1/2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-md bg-gray-100 focus:bg-white focus:z-10 sm:text-sm" %></td>
-              </tr>
-
-              <tr class= "my-5 px-6 py-3">
-                <td scope="col" class="w-1/2 px-6 py-3 text-right text-lg font-normal text-gray-900 uppercase tracking-wider">
-                  <%= f.label :finish_datetime, "結束時間" %>
-                </td>
-                <td scope="col"><%= f.datetime_field :finish_datetime, class: "appearance-none rounded-none relative block w-5/6 py-2 w-1/2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-md bg-gray-100 focus:bg-white focus:z-10 sm:text-sm" %></td>
-              </tr>
-
-              <tr class= "my-5 px-6 py-3">
-                <td scope="col" class="w-1/2 px-6 py-3 text-right text-lg font-normal text-gray-900 uppercase tracking-wider">
-                  <%= f.label :location, "活動地點" %>
-                </td>
-                <td scope="col"><%= f.text_field :location, class: "appearance-none rounded-none relative block w-5/6 py-2 w-1/2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-md bg-gray-100 focus:bg-white focus:z-10 sm:text-sm" %></td>
-              </tr>
-
-              <tr class= "my-5 px-6 py-3">
-                <td scope="col" class="w-1/2 px-6 py-3 text-right text-lg font-normal text-gray-900 uppercase tracking-wider">
-                  <%= f.label :content, "活動說明" %>
-                </td>
-                <td scope="col"><%= f.rich_text_area :content, placeholder: "請完整說明你的活動內容", class: "appearance-none rounded-none relative block w-5/6 py-2 w-1/2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-md bg-gray-100 focus:bg-white focus:z-10 sm:text-sm" %> </td>
-              </tr>
-
-              <tr class= "my-5 px-6 py-3">
-                <td scope="col" class="w-1/2 px-6 py-3 text-right text-lg font-normal text-gray-900 uppercase tracking-wider">
-                  <%= f.label :brief, "活動摘要" %>
-                </td>
-                <td scope="col"><%= f.text_area :brief, placeholder: "此處的內容將作為活動欄位上的簡要介紹，以及Google搜尋的簡介說明", class: "appearance-none rounded-none relative block w-5/6 py-2 w-1/2 border border-gray-300 placeholder-gray-600 text-gray-900 rounded-md bg-gray-100 focus:bg-white focus:z-10 sm:text-sm" %>
-                </td>
-              </tr>
-
-              <tr class= "my-5 px-6 py-3">
-                <td scope="col" class="w-1/2 px-6 py-3 text-right text-lg font-normal text-gray-900 uppercase tracking-wider">
-                  <%= f.label :brief, "活動標籤" %>
-                </td>
-                <td scope="col"><%= f.text_field :tag, class: "appearance-none rounded-none relative block w-5/6 py-2 w-1/2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-md bg-gray-100 focus:bg-white focus:z-10 sm:text-sm" %></td>
-              </tr>
-
-              <tr class= "my-5 px-6 py-3">
-                <td scope="col" class="w-1/2 px-6 py-3 text-right text-lg font-normal text-gray-900 uppercase tracking-wider">
-                  <%= f.label :link, "參考連結" %>
-                </td>
-                <td scope="col"><%= f.text_field :link,placeholder: "加上相關資訊，如 Facebook 或 Instagram，讓使用者能更瞭解此活動", class: "appearance-none rounded-none relative block w-5/6 py-2 w-1/2 border border-gray-300 placeholder-gray-600 text-gray-900 rounded-md bg-gray-100 focus:bg-white focus:z-10 sm:text-sm" %></td>
-              </tr>
-
-              <tr class= "my-5 px-6 py-3">
-                <td scope="col" class="w-1/2 px-6 py-3 text-right text-lg font-normal text-gray-900 uppercase tracking-wider">
-                  <%= f.label :form, "活動形式" %>
-                </td>
-                <td scope="col"></td>
-              </tr>
-
-              <tr class= "my-5 px-6 py-3">
-                <td scope="col" class="w-1/2 px-6 py-3 text-right text-lg font-normal text-gray-900 uppercase tracking-wider">
-                  <%= f.label :limit, "人數限制" %>
-                </td>
-                <td scope="col"><%= f.number_field :limit, class: "appearance-none rounded-none relative block w-5/6 py-2 w-1/2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-md bg-gray-100 focus:bg-white focus:z-10 sm:text-sm" %></td>
-              </tr>
-
-              <tr class= "my-5 px-6 py-3">
-                <td scope="col" class="w-1/2 px-6 py-3 text-right text-lg font-normal text-gray-900 uppercase tracking-wider">
-                  <%= f.label :notice, "注意事項" %> 
-                </td>
-                <td scope="col"><%= f.text_area :notice, class: "appearance-none rounded-none relative block w-5/6 py-2 w-1/2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-md bg-gray-100 focus:bg-white focus:z-10 sm:text-sm" %></td>
-              </tr>
-            </tbody>
-
-            <% end  %>
-          </table>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <%# 第二步：聯絡方式 %>
-  <div class="flex flex-col mb-10">
-    <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
-      <div class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
-        <div class="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
-          <table class="min-w-full divide-y divide-gray-200">
-            <thead class="bg-red-200 h-10">
-              <%= form_for @activity do |f|%>
-              <%= f.hidden_field :user_id, value: current_user.id %>
-              <tr class= "px-6 py-3 text-center text-2xl h-20">
-                <th colspan="2">第二步：聯絡方式</th>
-              </tr>
-            </thead>
-
-            <tbody>
-              <%# <tr  class= "px-6 py-3"> %>
-              <tr class= "my-5 px-6 py-3">
-                <td scope="col" class="w-1/2 px-6 py-3 text-right text-lg font-normal text-gray-900 uppercase tracking-wider">
-                  <%= f.label :phone, "電話" %>
-                </td>
-                <td scope="col"><%= f.phone_field :phone, class: "appearance-none rounded-none relative block w-5/6 py-2 w-1/2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-md bg-gray-100 focus:bg-white focus:z-10 sm:text-sm" %></td>
-              </tr>
-
-              <tr class= "my-5 px-6 py-3">
-                <td scope="col" class="w-1/2 px-6 py-3 text-right text-lg font-normal text-gray-900 uppercase tracking-wider">
-                  <%= f.label :email, "信箱" %>
-                </td>
-                <td scope="col"><%= f.email_field :email, class: "appearance-none rounded-none relative block w-5/6 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-md bg-gray-100 focus:bg-white focus:z-10 sm:text-sm" %></td>
-              </tr>
-
-              <tr class= "my-5 px-6 py-3">
-                <td scope="col" class="w-1/2 px-6 py-3 text-right text-lg font-normal text-gray-900 uppercase tracking-wider">
-                  <%= f.label :other_contact, "其他聯絡方式" %>
-                </td>
-                <td scope="col"><%= f.text_field :other_contact, class: "appearance-none rounded-none relative block w-5/6 py-2  border border-gray-300 placeholder-gray-500 text-gray-900 rounded-md bg-gray-100 focus:bg-white focus:z-10 sm:text-sm" %></td>
-              </tr>  
-
-            </tbody>
-
-            <% end  %>
-          </table>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <%# 第三步：新增票卷 %>
-  <div class="flex flex-col mb-10">
-    <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
-      <div class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
-        <div class="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
-          <table class="min-w-full divide-y divide-gray-200">
-            <thead class="bg-red-200 h-10">
-              <%= fields_for :tickets do |tickets_fields| %>
-              <%= f.hidden_field :user_id, value: current_user.id %>
-              <tr class= "px-6 py-3 text-center text-2xl h-20">
-                <th colspan="4">第三步：新增票卷</th>  
-              </tr>
-            </thead>
-
-            </table>
-          </div>
-      </div>
-    </div>
-  </div>
-
-  <%# 票卷內容 %>
-    <div class="nested-container">
-      <div data-controller="ticket-types-form" class="nested-form">
-        <template data-ticket-types-form-target="form">
-          <%= f.fields_for :ticket_types, TicketType.new, child_index: 'NEW_FORM' do |new_form|%>  
-            <%= render 'ticket_types/ticket_types_form', form: new_form %>
-          <% end %>
-        </template>
-
-        <%= f.fields_for :ticket_types do |form|%>  
-          <%= render 'ticket_types/ticket_types_form', form: form %>
-        <% end %>
-
-        <div data-action = "click->ticket-types-form#addTicketType" data-ticket-types-form-target="addBtn" class="nested-add-btn">
-          <%= link_to '#' do %>
-            <div class= "flex items-center justify-center border-2  rounded-md text-base font-medium text-gray-700 hover:no-underline h-10 col-start-2 col-span-4 shadow overflow-hidden border-b border-gray-200 hover:bg-gray-200 hover:text-gray-800"><i class="fas fa-plus-circle"></i> <p class="hover:no-underline">新增票種</p></div>
-          <% end %>
-        </div>
-      </div>
-    </div>
-  
-  <%# button %>
-  <div class="flex justify-between mt-10">
-    <%= link_to '回到活動列表', activities_path, class: "submit search-btn flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium bg-gray-100 text-gray-800 hover:border-red-600 hover:bg-gray-100 hover:text-red-600 hover:no-underline h-10" %>
-
-    <%= f.submit '送出-建立活動與票券' ,  class: " flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-gray-100 bg-red-600 hover:border-red-600 hover:bg-gray-100 hover:text-red-600 hover:no-underline h-10" %>
-  </div>
-
- 
-  <% end %>
+</tbody>
+<%# <tr class= "px-6 py-3"> %>
+<tr>
+  <td class="form-group">
+    <%= f.label :活動首圖 %>
+    <%= f.file_field :image, id: :activity_image %>
+    <%= image_tag activity.image_url if activity.image_url.present? %>
+  </td> 
+</tr>
+<tr class= "my-5 px-6 py-3">
+<td scope="col" class="w-1/2 px-6 py-3 text-right text-lg font-normal text-gray-900 uppercase tracking-wider">
+<%= f.label :title, "活動名稱" %>
+</td>
+<td scope="col">
+<%= f.text_field :title, class: "appearance-none rounded-none relative block py-2  border border-gray-300 placeholder-gray-500 text-gray-900 rounded-md bg-gray-100 focus:bg-white focus:z-10 sm:text-sm" %></td>
+</tr>
+<tr class= "my-5 px-6 py-3">
+<td scope="col" class="w-1/2 px-6 py-3 text-right text-lg font-normal text-gray-900 uppercase tracking-wider">
+<%= f.label :begin_datetime, "開始時間" %>
+</td>
+<td scope="col"><%= f.datetime_field :begin_datetime, class: "appearance-none rounded-none relative block w-5/6 py-2 w-1/2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-md bg-gray-100 focus:bg-white focus:z-10 sm:text-sm" %></td>
+</tr>
+<tr class= "my-5 px-6 py-3">
+<td scope="col" class="w-1/2 px-6 py-3 text-right text-lg font-normal text-gray-900 uppercase tracking-wider">
+<%= f.label :finish_datetime, "結束時間" %>
+</td>
+<td scope="col"><%= f.datetime_field :finish_datetime, class: "appearance-none rounded-none relative block w-5/6 py-2 w-1/2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-md bg-gray-100 focus:bg-white focus:z-10 sm:text-sm" %></td>
+</tr>
+<tr class= "my-5 px-6 py-3">
+<td scope="col" class="w-1/2 px-6 py-3 text-right text-lg font-normal text-gray-900 uppercase tracking-wider">
+<%= f.label :location, "活動地點" %>
+</td>
+<td scope="col"><%= f.text_field :location, class: "appearance-none rounded-none relative block w-5/6 py-2 w-1/2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-md bg-gray-100 focus:bg-white focus:z-10 sm:text-sm" %></td>
+</tr>
+<tr class= "my-5 px-6 py-3">
+<td scope="col" class="w-1/2 px-6 py-3 text-right text-lg font-normal text-gray-900 uppercase tracking-wider">
+<%= f.label :content, "活動說明" %>
+</td>
+<td scope="col"><%= f.rich_text_area :content, placeholder: "請完整說明你的活動內容", class: "appearance-none rounded-none relative block w-5/6 py-2 w-1/2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-md bg-gray-100 focus:bg-white focus:z-10 sm:text-sm" %> </td>
+</tr>
+<tr class= "my-5 px-6 py-3">
+<td scope="col" class="w-1/2 px-6 py-3 text-right text-lg font-normal text-gray-900 uppercase tracking-wider">
+<%= f.label :brief, "活動摘要" %>
+</td>
+<td scope="col"><%= f.text_area :brief, placeholder: "此處的內容將作為活動欄位上的簡要介紹，以及Google搜尋的簡介說明", class: "appearance-none rounded-none relative block w-5/6 py-2 w-1/2 border border-gray-300 placeholder-gray-600 text-gray-900 rounded-md bg-gray-100 focus:bg-white focus:z-10 sm:text-sm" %>
+</td>
+</tr>
+<tr class= "my-5 px-6 py-3">
+<td scope="col" class="w-1/2 px-6 py-3 text-right text-lg font-normal text-gray-900 uppercase tracking-wider">
+<%= f.label :brief, "活動標籤" %>
+</td>
+<td scope="col"><%= f.text_field :tag, class: "appearance-none rounded-none relative block w-5/6 py-2 w-1/2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-md bg-gray-100 focus:bg-white focus:z-10 sm:text-sm" %></td>
+</tr>
+<tr class= "my-5 px-6 py-3">
+<td scope="col" class="w-1/2 px-6 py-3 text-right text-lg font-normal text-gray-900 uppercase tracking-wider">
+<%= f.label :link, "參考連結" %>
+</td>
+<td scope="col"><%= f.text_field :link,placeholder: "加上相關資訊，如 Facebook 或 Instagram，讓使用者能更瞭解此活動", class: "appearance-none rounded-none relative block w-5/6 py-2 w-1/2 border border-gray-300 placeholder-gray-600 text-gray-900 rounded-md bg-gray-100 focus:bg-white focus:z-10 sm:text-sm" %></td>
+</tr>
+<tr class= "my-5 px-6 py-3">
+<td scope="col" class="w-1/2 px-6 py-3 text-right text-lg font-normal text-gray-900 uppercase tracking-wider">
+<%= f.label :form, "活動形式" %>
+</td>
+<td scope="col"></td>
+</tr>
+<tr class= "my-5 px-6 py-3">
+<td scope="col" class="w-1/2 px-6 py-3 text-right text-lg font-normal text-gray-900 uppercase tracking-wider">
+<%= f.label :limit, "人數限制" %>
+</td>
+<td scope="col"><%= f.number_field :limit, class: "appearance-none rounded-none relative block w-5/6 py-2 w-1/2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-md bg-gray-100 focus:bg-white focus:z-10 sm:text-sm" %></td>
+</tr>
+<tr class= "my-5 px-6 py-3">
+<td scope="col" class="w-1/2 px-6 py-3 text-right text-lg font-normal text-gray-900 uppercase tracking-wider">
+<%= f.label :notice, "注意事項" %> 
+</td>
+<td scope="col"><%= f.text_area :notice, class: "appearance-none rounded-none relative block w-5/6 py-2 w-1/2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-md bg-gray-100 focus:bg-white focus:z-10 sm:text-sm" %></td>
+</tr>
+</div>
+</div>
+</div>
 <% end %>
+</table>
+</div>
+</div>
+</div>
+</div>
+
+
+
+
+
+
+
+<%# 第二步：聯絡方式 %>
+<div class="flex flex-col mb-10">
+<div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
+<div class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
+<div class="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
+<table class="min-w-full divide-y divide-gray-200">
+<thead class="t-thead h-10">
+<%= form_for @activity do |f|%>
+<%= f.hidden_field :user_id, value: current_user.id %>
+<tr class= "px-6 py-3 text-center text-2xl h-20">
+<th colspan="2">第二步：聯絡方式</th>
+</tr>
+</thead>
+<tbody>
+<%# <tr class= "px-6 py-3"> %>
+<tr class= "my-5 px-6 py-3">
+<td scope="col" class="w-1/2 px-6 py-3 text-right text-lg font-normal text-gray-900 uppercase tracking-wider">
+<%= f.label :phone, "電話" %>
+</td>
+<td scope="col"><%= f.phone_field :phone, class: "appearance-none rounded-none relative block w-5/6 py-2 w-1/2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-md bg-gray-100 focus:bg-white focus:z-10 sm:text-sm" %></td>
+</tr>
+<tr class= "my-5 px-6 py-3">
+<td scope="col" class="w-1/2 px-6 py-3 text-right text-lg font-normal text-gray-900 uppercase tracking-wider">
+<%= f.label :email, "信箱" %>
+</td>
+<td scope="col"><%= f.email_field :email, class: "appearance-none rounded-none relative block py-2  border border-gray-300 placeholder-gray-500 text-gray-900 rounded-md bg-gray-100 focus:bg-white focus:z-10 sm:text-sm" %></td>
+</tr>
+<tr class= "my-5 px-6 py-3">
+<td scope="col" class="w-1/2 px-6 py-3 text-right text-lg font-normal text-gray-900 uppercase tracking-wider">
+<%= f.label :other_contact, "其他聯絡方式" %>
+</td>
+<td scope="col"><%= f.text_field :other_contact, class: "appearance-none rounded-none relative block py-2  border border-gray-300 placeholder-gray-500 text-gray-900 rounded-md bg-gray-100 focus:bg-white focus:z-10 sm:text-sm" %></td>
+</tr> 
+</tbody>
+<% end %>
+</table>
+</div>
+</div>
+</div>
+</div>
+<%# 第三步：新增票卷 %>
+<div class="flex flex-col mb-10">
+<div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
+<div class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
+<div class="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
+<table class="min-w-full divide-y divide-gray-200">
+<thead class="t-thead h-10"">
+<%= fields_for :tickets do |tickets_fields| %>
+<%= f.hidden_field :user_id, value: current_user.id %>
+<tr class= "px-6 py-3 text-center text-2xl h-20">
+<th colspan="4">第三步：新增票卷</th> 
+</tr>
+</thead>
+</table>
+</div>
+</div>
+</div>
+</div>
+<%# 票卷內容 %>
+<div class="nested-container">
+<div data-controller="ticket-types-form" class="nested-form">
+<template data-ticket-types-form-target="form">
+<%= f.fields_for :ticket_types, TicketType.new, child_index: 'NEW_FORM' do |new_form|%> 
+<%= render 'ticket_types/ticket_types_form', form: new_form %>
+<% end %>
+</template>
+<%= f.fields_for :ticket_types do |form|%> 
+<%= render 'ticket_types/ticket_types_form', form: form %>
+<% end %>
+<div data-action = "click->ticket-types-form#addTicketType" data-ticket-types-form-target="addBtn" class="nested-add-btn">
+<%= link_to '#' do %>
+<div class= "flex items-center justify-center border-2 rounded-md text-base font-medium text-gray-700 hover:no-underline h-10 col-start-2 col-span-4 shadow overflow-hidden border-b border-gray-200 hover:bg-gray-200 hover:text-gray-800"><i class="fas fa-plus-circle"></i> <p class="hover:no-underline">新增票種</p></div>
+<% end %>
+</div>
+</div>
+</div>
+<%# button %>
+<div class="flex justify-between mt-10">
+<%= link_to '回到活動列表', activities_path, class: "t-back-button" %>
+<%= f.submit '送出-建立活動與票券' , class: "t-create-button" %>
+</div>
+<% end %>
+<% end %>
+
+
+
+
+
 

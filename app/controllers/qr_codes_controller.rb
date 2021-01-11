@@ -9,14 +9,14 @@ class QrCodesController < ApplicationController
   def scan; end
 
   def create         
-    if Ticket.where(ticket_number: @qr_data) == []
-      qr_code = QrCode.create(data: @qr_data)
-      redirect_to participated_qr_code_path(qr_code)
-      ticket= Ticket.find_by(ticket_number: @qr_data)
-      ticket.use!       
-    else
-      render :scan
-    end
+    qr_code = QrCode.create(data: @qr_data)
+    redirect_to participated_qr_code_path(qr_code)
+    ticket= Ticket.find_by(ticket_number: @qr_data)
+    ticket.use!       
+    # if Ticket.where(ticket_number: @qr_data) == []
+    # else
+    #   render :scan
+    # end
   end
 
   def participated

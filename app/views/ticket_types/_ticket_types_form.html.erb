@@ -34,32 +34,21 @@
             <%= form.rich_text_area :content,placeholder: "請完整說明你的票卷內容", class: "appearance-none rounded-none relative block py-2  border border-gray-300 placeholder-gray-500 text-gray-900 rounded-md bg-gray-100 focus:bg-white focus:z-10 sm:text-sm" %>
           </div>
 
-          <div>
-            <%= form.date_field:sell_deadline %>
-            <%= form.time_field:sell_deadline %>
-          </div>
-
-          <div>
+          <div class="flex items-center mt-3">
             <%= form.label:valid_at, '票券有效時間' %>
+            <%= form.date_field:valid_at, class: "appearance-none rounded-none relative block py-2  border border-gray-300 placeholder-gray-500 text-gray-900 rounded-md bg-gray-100 focus:bg-white focus:z-10 sm:text-sm px-3 mx-3" %>
+            <%= form.time_field:valid_at, class: "appearance-none rounded-none relative block py-2  border border-gray-300 placeholder-gray-500 text-gray-900 rounded-md bg-gray-100 focus:bg-white focus:z-10 sm:text-sm px-3 mx-3" %>
           </div>
 
-          <div>
-            <%= form.date_field:valid_at %>
-            <%= form.time_field:valid_at%>
-          </div>
-
-          <div>
+          <div class="flex items-center mt-3">
             <%= form.label:expire_at, '票券過期時間' %>
-          </div>
-
-          <div>
-            <%= form.date_field:expire_at %>
-            <%= form.time_field:expire_at %>
+            <%= form.date_field:expire_at, class: "appearance-none rounded-none relative block py-2  border border-gray-300 placeholder-gray-500 text-gray-900 rounded-md bg-gray-100 focus:bg-white focus:z-10 sm:text-sm px-3 mx-3" %>
+            <%= form.time_field:expire_at, class: "appearance-none rounded-none relative block py-2  border border-gray-300 placeholder-gray-500 text-gray-900 rounded-md bg-gray-100 focus:bg-white focus:z-10 sm:text-sm px-3 mx-3" %>
           </div>
 
           <div class="items-center mt-3 grid grid-cols-6 gap-4">
             <%= link_to '#', data: { action: 'ticket-types-form#removeTicketType' } do %>
-              <div class= "flex items-center justify-center border-2 border-gray-600 rounded-md text-base font-medium  text-gray-600 hover:border-red-600 hover:text-red-600 hover:no-underline h-10 col-start-2 col-span-4">
+              <div class= "flex items-center justify-center border-2 border-gray-600 rounded-md text-base font-medium  text-gray-600 hover:border-red-600 hover:text-red-600 hover:no-underline h-10  px-3">
                 刪除此張票卷<i class="far fa-trash-alt new-ticket-delete-btn"></i>
               </div>
             <% end %>

@@ -21,6 +21,7 @@ class OrdersController < ApplicationController
         request_header(req)
         req.body = {
           productName: "RubyTix",
+          productImageUrl: "https://www.flaticon.com/svg/static/icons/svg/2850/2850737.svg",
           amount: current_cart.total_price.to_i,
           currency: "TWD",
           confirmUrl: "http://localhost:5000/orders/confirm",
@@ -89,6 +90,7 @@ class OrdersController < ApplicationController
       request_header(req)
       req.body = {
         productName: "RubyTix",
+        productImageUrl: "https://www.flaticon.com/svg/static/icons/svg/2850/2850737.svg",
         amount: @order[:price],
         currency: "TWD",
         confirmUrl: "http://localhost:5000/orders/#{@order.id}/pay_confirm",
