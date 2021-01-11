@@ -1,28 +1,52 @@
-<h2>訂單列表</h2>
+<div class="container">
+  <div class="items-center justify-center px-2 sm:px-6 lg:px-8">
+    <h2 class="mt-6 text-center text-4xl font-extrabold text-gray-900 mb-5 extrabold ">訂單管理</h2>
 
-<table>
-  <thead>
-    <tr>
-      <td>訂單編號</td>
-      <td>建立日期</td>
-      <td>總金額</td>
-      <td>狀態</td>
-      <td>訂單付款</td>
-      <td>訂單取消</td>
-    </tr>
-  </thead>
+    <div class="flex flex-col">
+      <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
+        <div class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
+          <div class="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
+            <table class="min-w-full divide-y divide-gray-200">
+              <thead class="bg-red-200 text-center">
+                <tr>
+                  <th scope="col" class="px-6 py-3  text-md font-normal text-gray-900 uppercase tracking-wider">
+                    訂單編號
+                  </th>
+                  <th scope="col" class="px-6 py-3  text-md font-normal text-gray-900 uppercase tracking-wider">
+                    建立日期
+                  </th>
+                  <th scope="col" class="px-6 py-3  text-md font-normal text-gray-900 uppercase tracking-wider">
+                    總金額
+                  </th>
+                  <th scope="col" class="px-6 py-3  text-md font-normal text-gray-900 uppercase tracking-wider">
+                    狀態
+                  </th>
+                  <th scope="col" class="px-6 py-3  text-md font-normal text-gray-900 uppercase tracking-wider">
+                    訂單付款
+                  </th>
+                  <th scope="col" class="px-6 py-3  text-md font-normal text-gray-900 uppercase tracking-wider">
+                    訂單取消
+                  </th>
+                </tr>
+              </thead>
 
-  <tbody>
-  <% @orders.each do |order| %>
-    <tr>
-      <td><%= order.num %></td>
-      <td><%= order.created_at %></td>
-      <td><%= order.price %></td>
-      <td><%= order.state %></td>
-      <td><%= link_to '付款', pay_order_path(order), method:'POST', data: {confirm:'確定付款？'} if order.may_pay? %></td>
-      <td><%= link_to '退款', cancel_order_path(order), method:'delete', data: {confirm:'是否取消訂單？'} if order.may_refund? %></td>
-    </tr>
-  <%end%>
-  </tbody>
+              <tbody>
+                <% @orders.each do |order| %>
+                  <tr class= "px-6 py-3 text-center">
+                    <td><%= order.num %></td>
+                    <td><%= order.created_at %></td>
+                    <td><%= order.price %></td>
+                    <td><%= order.state %></td>
+                    <td><%= link_to '付款', pay_order_path(order), method:'POST', data: {confirm:'確定付款？'} if order.may_pay? %></td>
+                    <td><%= link_to '退款', cancel_order_path(order), method:'delete', data: {confirm:'是否取消訂單？'} if order.may_refund? %></td>
+                  </tr>   
+                <%end %>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
 
-</table>
+  </div>
+</div>

@@ -4,4 +4,3 @@ document.addEventListener('DOMContentLoaded', function(){
     attendBtn.save();  // 未完成
   })
 }) 
-// 參加活動

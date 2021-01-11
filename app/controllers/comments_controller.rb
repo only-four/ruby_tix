@@ -4,9 +4,7 @@ class CommentsController < ApplicationController
   # acts_as_paranoid without_default_scope: true  
   
   def create
-    p params
-    @activity = Activity.find(params[:activity_id])  
-    @comment = @activity.comments.new(comment_params)
+    @comment = @activity.comments.build(comment_params)
     @comment.user = current_user
     @comment.save
   end
