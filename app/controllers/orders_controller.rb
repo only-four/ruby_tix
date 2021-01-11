@@ -136,8 +136,8 @@ class OrdersController < ApplicationController
   def request_header(request)
     request.headers = {
       'Content-Type': 'application/json',
-      'X-LINE-ChannelId': "1655423053",
-      'X-LINE-ChannelSecret': "85852ff615ac559df286663802382d07",
+      'X-LINE-ChannelId': ENV["line_pay_channel_id"],
+      'X-LINE-ChannelSecret': ENV["line_pay_channel_secret"],
     }
   end
 end
