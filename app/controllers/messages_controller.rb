@@ -4,7 +4,7 @@ class MessagesController < ApplicationController
 
   def create
     @message = @chatroom.messages.create(message_params)
-    MessageChannel.broadcast_to @channel, message: render_to_string(@message)
+    MessageChannel.broadcast_to @chatroom, message: render_to_string(@message)
   end
 
   private
@@ -12,6 +12,7 @@ class MessagesController < ApplicationController
     @chatroom = current_user.chatrooms.find(params[:chatroom_id])
   end
 
+  # 透過.merge方法可以將兩個hash合併
   def message_params
     params.require(:message).permit(:body).merge(user:current_user)
   end

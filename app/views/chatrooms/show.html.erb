@@ -1,39 +1,42 @@
 <div data-controller="channel" data-channel-id="<%= @chatroom.id %>">
-<p id="notice"><%= notice %></p>
+  <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Name:</strong>
-  <%= @chatroom.name %>
-</p>
+  <p>
+    <strong>現在位於:</strong>
+    <%= @chatroom.name %>
+  </p>
 
-<% Chatroom.all.each do |chatroom| %>
+  <% Chatroom.all.each do |chatroom| %>
+    <div>
+    <%= link_to chatroom.name, chatroom %>
+    <% if current_user.chatrooms.include?(chatroom) %>
+      <%= link_to '刪除', chatroom_chatroom_users_path(chatroom), method: 'delete' %>
+    <% end %>
+    </div>
+  <% end %>
+
   <div>
-  <%= link_to chatroom.name, chatroom %>
-  <% if current_user.chatrooms.include?(chatroom) %>
-    <%= link_to '刪除', chatroom_chatroom_users_path(chatroom), method: 'delete' %>
+  <h2>聊天室現有使用者</h2>
+  <% @chatroom.users.each do |user| %>
+    <%= user.name %>
   <% end %>
   </div>
-<% end %>
 
-<div>
-<h2>聊天室現有使用者</h2>
-<% @chatroom.users.each do |user| %>
-  <%= user.name %>
-<% end %>
-</div>
+  <div data-target="channel.messages">
+  <%= render @chatroom.messages %>
+  </div>
 
-<div data-target="channel.messages">
-<%= render @chatroom.messages %>
-</div>
-
-<% if current_user.chatrooms.include?(@chatroom) %>
-  <%= form_with model: [@chatroom, Message.new], data: { action: "ajax:success->channel#clearMessage" } do |f| %>
-    <%= f.text_field :body, class: "form-controller" ,rows: 1, placeholder: '輸入聊天內容...', autofocus: true,data:{ target: "channel.newMessage"} %>
+  <% if current_user.chatrooms.include?(@chatroom) %>
+    <%= form_with model: [@chatroom, Message.new], data: { action: "ajax:success->channel#clearMessage" } do |f| %>
+      <%= f.text_field :body, class: "form-controller" ,rows: 1, placeholder: '輸入聊天內容...', autofocus: true, data: { target: "channel.newMessage"} %>
+    <% end %>
+  <% else %>
+    <%= link_to "點選加入#{@chatroom.name}", chatroom_chatroom_users_path(@chatroom), method: 'post' %>
   <% end %>
-<% else %>
-  <%= link_to "#{@chatroom.name}", chatroom_chatroom_users_path(@chatroom), method: 'post' %>
-<% end %>
 
-<%= link_to 'Edit', edit_chatroom_path(@chatroom) %> |
-<%= link_to 'Back', chatrooms_path %>
+  <div>
+    <%= link_to 'Edit', edit_chatroom_path(@chatroom) %> |
+    <%= link_to 'Back', chatrooms_path %>
+  </div>
+
 </div>
