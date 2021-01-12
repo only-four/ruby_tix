@@ -1,4 +1,4 @@
-document.addEventListener('DOMContentLoaded', function(){
+document.addEventListener("turbolinks:load", function(){
   const minusBtn = document.querySelectorAll('.js-minusTicket')
   const addBtn = document.querySelectorAll('.js-addTicket')
   const detailBtn = document.querySelectorAll('.js-cardLink')

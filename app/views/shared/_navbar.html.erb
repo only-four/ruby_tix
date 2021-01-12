@@ -39,7 +39,7 @@
 
         <div class="js-user-option hidden fixed mt-20 mr-100">
           <div class="border border-gray-900 bg-gray-100 hover:font-semibold px-3 py-2"><%= link_to '編輯會員資料', edit_registration_path(:user), class: "hover:no-underline hover:text-gray-900" %></div>
-          <div class="border border-gray-900 bg-gray-100 hover:font-semibold px-3 py-2"><%= link_to '票卷管理', my_tickets_tickets_path, class: "hover:no-underline hover:text-gray-900" %></div>
+          <div class="border border-gray-900 bg-gray-100 hover:font-semibold px-3 py-2"><%= link_to '票券管理', my_tickets_tickets_path, class: "hover:no-underline hover:text-gray-900" %></div>
           <div class="border border-gray-900 bg-gray-100 hover:font-semibold px-3 py-2"><%= link_to '訂單管理', orders_path, class: "hover:no-underline hover:text-gray-900" %></div>
           <div class="border border-gray-900 bg-gray-100 hover:font-semibold px-3 py-2"><%= link_to '活動管理', activities_path, class: "hover:no-underline hover:text-gray-900" %></div>
           <div class="border border-gray-900 bg-gray-100 hover:font-semibold px-3 py-2"><%= link_to '會員登出', destroy_user_session_path, :method => :delete , class: "hover:no-underline hover:text-gray-900" %></div>
@@ -62,11 +62,11 @@
 
       <section class="flex">
         <button>
-          <%= link_to '註冊', new_registration_path(:user) , class: "submit search-btn flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium  text-gray-100 bg-red-600 hover:bg-gray-100 hover:text-red-600 hover:no-underline h-10 mr-3" %> 
+          <%= link_to '註冊', new_registration_path(:user) , class: "t-user-btn hover:no-underline mr-3" %> 
         </button>
 
         <button>
-          <%= link_to '登入', new_session_path(:user) , class: "submit search-btn flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium  text-gray-100 bg-red-600 hover:bg-gray-100 hover:text-red-600 hover:no-underline h-10" %>
+          <%= link_to '登入', new_session_path(:user) , class: "t-user-btn  hover:no-underline" %>
         </button>
       </section>
     </section>

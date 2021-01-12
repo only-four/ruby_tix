@@ -1,4 +1,4 @@
-document.addEventListener('DOMContentLoaded', function(){
+document.addEventListener("turbolinks:load", function(){
   var QRCode = require('qrcode')
   var canvases = document.querySelectorAll('.qr-canvas')
   canvases.forEach(function(canvas) {
