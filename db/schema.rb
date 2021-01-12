@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_01_08_081510) do
+ActiveRecord::Schema.define(version: 2021_01_11_201859) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -72,6 +72,7 @@ ActiveRecord::Schema.define(version: 2021_01_08_081510) do
     t.integer "price", default: 0
     t.integer "total_price", default: 0
     t.integer "activity_users_count"
+    t.string "image"
     t.index ["user_id"], name: "index_activities_on_user_id"
   end
 
@@ -89,6 +90,7 @@ ActiveRecord::Schema.define(version: 2021_01_08_081510) do
     t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.datetime "last_read_at"
     t.index ["chatroom_id"], name: "index_chatroom_users_on_chatroom_id"
     t.index ["user_id"], name: "index_chatroom_users_on_user_id"
   end
@@ -136,9 +138,7 @@ ActiveRecord::Schema.define(version: 2021_01_08_081510) do
     t.integer "quantity"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.bigint "ticket_types_id"
     t.index ["order_id"], name: "index_order_items_on_order_id"
-    t.index ["ticket_types_id"], name: "index_order_items_on_ticket_types_id"
   end
 
   create_table "orders", force: :cascade do |t|
@@ -157,9 +157,25 @@ ActiveRecord::Schema.define(version: 2021_01_08_081510) do
     t.index ["user_id"], name: "index_orders_on_user_id"
   end
 
+  create_table "qr_codes", force: :cascade do |t|
+    t.string "data"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "roles", force: :cascade do |t|
+    t.string "name"
+    t.string "resource_type"
+    t.bigint "resource_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["name", "resource_type", "resource_id"], name: "index_roles_on_name_and_resource_type_and_resource_id"
+    t.index ["resource_type", "resource_id"], name: "index_roles_on_resource_type_and_resource_id"
+  end
+
   create_table "ticket_types", force: :cascade do |t|
     t.string "title"
-    t.string "content"
+    t.text "content"
     t.integer "quantity"
     t.integer "price"
     t.datetime "created_at", precision: 6, null: false
@@ -168,6 +184,8 @@ ActiveRecord::Schema.define(version: 2021_01_08_081510) do
     t.datetime "sell_start"
     t.datetime "sell_deadline"
     t.string "state"
+    t.datetime "valid_at"
+    t.datetime "expire_at"
     t.index ["activity_id"], name: "index_ticket_types_on_activity_id"
   end
 
@@ -201,9 +219,18 @@ ActiveRecord::Schema.define(version: 2021_01_08_081510) do
     t.string "fb_token"
     t.string "provider"
     t.string "uid"
+    t.string "image"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["fb_uid"], name: "index_users_on_fb_uid"
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+  end
+
+  create_table "users_roles", id: false, force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "role_id"
+    t.index ["role_id"], name: "index_users_roles_on_role_id"
+    t.index ["user_id", "role_id"], name: "index_users_roles_on_user_id_and_role_id"
+    t.index ["user_id"], name: "index_users_roles_on_user_id"
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
@@ -218,7 +245,6 @@ ActiveRecord::Schema.define(version: 2021_01_08_081510) do
   add_foreign_key "messages", "chatrooms"
   add_foreign_key "messages", "users"
   add_foreign_key "order_items", "orders"
-  add_foreign_key "order_items", "ticket_types", column: "ticket_types_id"
   add_foreign_key "orders", "users"
   add_foreign_key "ticket_types", "activities"
   add_foreign_key "tickets", "orders"

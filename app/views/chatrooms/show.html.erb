@@ -26,6 +26,7 @@
   <%= render @chatroom.messages %>
   </div>
 
+
   <% if current_user.chatrooms.include?(@chatroom) %>
     <%= form_with model: [@chatroom, Message.new], data: { action: "ajax:success->channel#clearMessage" } do |f| %>
       <%= f.text_field :body, class: "form-controller" ,rows: 1, placeholder: '輸入聊天內容...', autofocus: true, data: { target: "channel.newMessage"} %>
@@ -33,6 +34,7 @@
   <% else %>
     <%= link_to "點選加入#{@chatroom.name}", chatroom_chatroom_users_path(@chatroom), method: 'post' %>
   <% end %>
+
 
   <div>
     <%= link_to 'Edit', edit_chatroom_path(@chatroom) %> |
