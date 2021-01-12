@@ -35,10 +35,13 @@
     <%= link_to "點選加入#{@chatroom.name}", chatroom_chatroom_users_path(@chatroom), method: 'post' %>
   <% end %>
 
-
   <div>
     <%= link_to 'Edit', edit_chatroom_path(@chatroom) %> |
     <%= link_to 'Back', chatrooms_path %>
+  </div>
+
+  <div>
+    <span>test</span>
   </div>
 
 </div>
