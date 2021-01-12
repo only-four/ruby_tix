@@ -1,7 +1,29 @@
-.t-edit-button {
-  @apply bg-red-600;
+.t-create-button {
+  @apply flex items-center justify-center px-4 py-2 border text-sm font-medium rounded-md bg-gray-100;
+  // border: 2px solid #750000;
+  color: #750000;
 }
-
+.t-create-button:hover {
+  @apply no-underline shadow-lg;
+  color: #750000;
+  border: 1px solid #750000;
+}
+.t-create-button-text:hover {
+  @apply no-underline;
+  color: #750000;
+}
+.t-edit-button {
+  @apply relative flex justify-center py-2 px-4 border text-sm font-medium rounded-md text-gray-900 bg-gray-100;
+}
+.t-edit-button:hover {
+  @apply border-red-600 bg-gray-100 text-red-600 no-underline shadow-lg;
+}
+.t-delete-button {
+  @apply relative flex justify-center py-2 px-4 border text-sm font-medium rounded-md text-gray-900 bg-gray-100;
+}
+.t-delete-button:hover {
+  @apply border-red-600 bg-gray-100 text-red-600 no-underline shadow-lg;
+}
 .t-check-button {
   @apply relative;
   @apply w-full;
@@ -17,7 +39,6 @@
   @apply text-gray-100;
   @apply bg-red-600;
 }
-
 .t-check-button:hover {
   @apply border-red-600;
   @apply bg-gray-100;
@@ -25,4 +46,10 @@
   @apply no-underline;
   @apply shadow-lg;
   @apply border-transparent;
+}
+.t-back-button {
+  @apply flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium bg-gray-100 text-gray-800 h-10;
+}
+.t-back-button:hover {
+  @apply border-red-600 bg-gray-100 text-red-600 no-underline shadow-lg;
 }

@@ -1,4 +1,4 @@
-document.addEventListener('DOMContentLoaded', function(){
+document.addEventListener("turbolinks:load", function(){
   const searchBtn = document.querySelector('.js-search-btn')
 
   searchBtn.addEventListener('click', function(){

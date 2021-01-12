@@ -66,7 +66,7 @@ class ActivitiesController < ApplicationController
       :notice,
       :phone,
       :email, 
-      :other_contect, 
+      :other_contact, 
       :limit,
       :image,
       ticket_types_attributes: [:id, :title, :content, :quantity, :sell_start, :sell_deadline, :price, :_destroy, :valid_at, :expire_at],

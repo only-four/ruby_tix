@@ -39,7 +39,7 @@
               </thead>
 
               <tbody>
-                  <% @ticket_types.each do |ticket_type| %>
+                  <% @ticket_types.each_with_index do |ticket_type, index| %>
                   <tr  class= "px-6 py-3 text-center">
                     <td><%= index + 1 %></td>
                     <td><%= ticket_type.activity.title %> </td>
