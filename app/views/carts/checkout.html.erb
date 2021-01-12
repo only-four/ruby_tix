@@ -1,15 +1,12 @@
 <h1>結帳</h1>
 
   <%= render "cart"%>
-
   <%= if @order.errors.full_messages do |message| %>
     <%= message %>
     <% end %>
   <% end %>
 
-
   <%= form_with(model: @order) do |form| %>
-
   <div>
     <%= form.label:姓名 %>
     <%= form.text_field:participant %>
@@ -24,6 +21,5 @@
     <%= form.label:地址 %>
     <%= form.text_field:address %>
   </div>
-
   <%= form.submit '確認結帳'%>
   <% end %>

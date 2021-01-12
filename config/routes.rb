@@ -6,10 +6,15 @@ Rails.application.routes.draw do
   root to: 'pages#index'
 
   resources :pages do
-    # 沒id
     collection do
       get :search
-      get :footer_page
+      get :abouts_us , to: "pages#abouts_us"
+      get :footer_notice , to: "pages#footer_notice"
+      get :process , to: "pages#process_method"
+      get :questions , to: "pages#questions"
+      get :sell_purchase , to: "pages#sell_purchase"
+      get :service_centre , to: "pages#service_centre"
+      get :dervice_terms , to: "pages#dervice_terms"
     end
   end 
 
@@ -19,7 +24,7 @@ Rails.application.routes.draw do
                :omniauth_callbacks => "users/omniauth_callbacks"
              }
 
-  resources :orders, only:[:index, :create, :show, :destroy] do
+  resources :orders, only: [:index, :create, :show, :destroy] do
     member do
       delete :cancel
       post :pay
@@ -30,54 +35,51 @@ Rails.application.routes.draw do
     end
   end
 
-  resource :cart, only:[:show, :destroy] do
+  resource :cart, only: [:show, :destroy] do
     collection do
-      post :add, path:'add/:id'
+      post :add, path: 'add/:id'
     end
     get :checkout
   end
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   
   namespace :admin do
     resources :users
     resources :activities
   end
 
-  resources :activities, except: [:update] do
-    post :join, on: :member
-    post :confirm, on: :member  
-    delete :cancel, on: :member
-
+  resources :activities do
+    member do
+      post :join
+      post :confirm  
+      delete :cancel
+    end
+    
     resources :users
-    # 主辦方設定票券寫在activity new 頁面 暫定
-    resources :ticket_types, :except => [ :show]
-    #使用者選則票券頁面
+    resources :ticket_types, only: [:index, :destroy]
+    resources :comments, only: [:create, :destroy]
     get "/choose", to: "ticket_types#choose_ticket"
-    # 單一活動底下 comment
-    resources :comments, only:[:create, :destroy]
   end
 
   resources :activities_user
 
-
-  # 訂單成立後顯示個人票券
-  resources :tickets, only: [ :create] do
-    post 'attend_event', on: :member
-    get 'attend_event_result', on: :member
+  resources :tickets, only: [:create] do
+    member do
+      post :attend_event
+      get :attend_event_result      
+    end
     collection do
       get :my_tickets
     end
   end
 
-  # qr_code reader
-  get 'qr_code_reader', to: 'qr_codes#index'
-
-  resources :orders, only:[:index, :show, :create, :destroy]
-
-  resource :cart, only:[:index, :destroy] do
+  get 'qr_code_reader', to: 'qr_codes#reader'
+  resources :qr_codes, only: [:create] do
     collection do
-      post :add, path:'add/:id'
+      get :scan
+      get :attand_list
+    end
+    member do
+      get :participated      
     end
   end
-
 end

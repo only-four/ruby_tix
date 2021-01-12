@@ -1,77 +1,75 @@
-<div class=" w-full h-20 fixed max-w-screen-xl z-20">
-
-  <% if current_user %>
-
-  <section class="bg-red-700 flex justify-between px-3 items-center">
-    <section>
-      <%= link_to root_path do%>
-        <%= image_tag '/images/newlogo.png' ,class:"h-20" %>
-      <% end%>
-    </section>
-
-    <div class="search-bar flex">
-      <input type="text" class="search-input bg-red-100 rounded-md h-10 mx-3" placeholder="11">
-      <button class="submit search-btn flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-gray-100 bg-red-600 hover:bg-gray-900 hover:text-yellow-600 h-10">搜尋</button>
-    </div>
-
-    <section class="flex">
-      <select name="current_user_account_name" class="current_user_account_name rounded-md mx-3 px-96">
-        <option value="1"  selected="selected"><%= current_user.account_name %></option>
-        <option value="2" class="member_centre">會員中心</option>
-        <option value="3" class="activitv y_record">活動紀錄</option>
-        <option value="4" class="hold_activity">舉辦活動</option>
-        <option value="5" class="shopping_cart">購物車</option>
-      </select>
-      <button class="submit search-btn flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-gray-100 bg-red-600 hover:bg-gray-900 hover:text-yellow-600 hover:no-underline h-10">
-        <%= link_to('登出', destroy_user_session_path, :method => :delete) %> 
-      </button>
-    </section>
-  </section>
-      
-  <% else %>
-
-  <section class="bg-red-700 flex justify-between px-3 items-center">
-    <section>
-      <%= link_to root_path do%>
-        <%= image_tag '/images/newlogo.png' ,class:"h-20" %>
-      <% end%>
-    </section>
-
-    <div class="search-bar flex">
-      <input type="text" class="search-input bg-red-100 rounded-md h-10 mx-3" placeholder="11">
-      <button class="submit search-btn flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-gray-100 bg-red-600 hover:bg-gray-900 hover:text-yellow-600 h-10">搜尋</button>
-    </div>
-
-    <div class="flex">
-      <button class="submit search-btn flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-gray-100 bg-red-600 hover:bg-gray-900 hover:text-yellow-600 hover:no-underline h-10 mx-3">
-        <%= link_to('會員註冊', new_registration_path(:user)) %> 
-      </button>
-
-      <button class="submit search-btn flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-gray-100 bg-red-600 hover:bg-gray-900 hover:text-yellow-600 hover:no-underline h-10">
-        <%= link_to('會員登入', new_session_path(:user))%>
-      </button>
-    </div>
-  </section>
-
-  <% end %>
+<div class="t-nav-div">
+  <div class="t-category-area">
+    <div class="t-category">熱門精選</div>
+    <div class="t-category">5xRuby</div>
+    <div class="t-category">文藝休閒</div>
+  </div>
 </div>
 
+<div>
+  <% if current_user %>
+    <section class="t-nav flex justify-between items-center">
+      <section>
+        <%= link_to root_path do%>
+          <p class="t-nav-logo">RUBYTIX</p>
+        <% end%>
+      </section>
 
-<script>
-  document.addEventListener('DOMContentLoaded', function(){
+      <section class="js-search-bar t-search-area">
+        <input type="text" class="js-search-input t-search-input" placeholder="請輸入關鍵字">
+        <button class="js-search-btn"><i class="fas fa-search fa-2x submit t-search-btn "></i></button>
+      </section>
 
-    const searchBtn = document.querySelector('.search-btn')
+      <section class="flex">
+        <div class="js-user-avator h-12 w-12 flex items-center justify-center t-nav-btn">
+          <i class="far fa-user-circle fa-2x t-nav-btn"></i>
+        </div>       
 
-    searchBtn.addEventListener('click', function() {
-      const searchInput = document.querySelector('.search-input').value
-      console.log(searchInput);
-      const searchAPI = window.location.origin
-      fetch(`${searchAPI}/pages/search.json?search=${searchInput}`)
-      // response.json可將得到的結果轉換成json格式
-      .then(response => response.json())
-      .then(result => console.log(result))
-      ;
-    })
-  })
-</script>
+        <%= link_to cart_path do %>
+          <div class="relative">
+            <div class="h-12 w-12 flex items-center justify-center t-nav-btn">
+              <i class="fas fa-cart-plus fa-2x "></i> 
+            </div>
+          </div>
+        <% end%>
+
+        <div class="t-cart-quantity rounded-full h-5 w-5 flex items-center justify-center">
+          <%= current_cart.total_quantity %>  
+        </div>
+
+        <div class="js-user-option hidden fixed mt-20 mr-100">
+          <div class="border border-gray-900 bg-gray-100 hover:font-semibold px-3 py-2"><%= link_to '編輯會員資料', edit_registration_path(:user), class: "hover:no-underline hover:text-gray-900" %></div>
+          <div class="border border-gray-900 bg-gray-100 hover:font-semibold px-3 py-2"><%= link_to '票券管理', my_tickets_tickets_path, class: "hover:no-underline hover:text-gray-900" %></div>
+          <div class="border border-gray-900 bg-gray-100 hover:font-semibold px-3 py-2"><%= link_to '訂單管理', orders_path, class: "hover:no-underline hover:text-gray-900" %></div>
+          <div class="border border-gray-900 bg-gray-100 hover:font-semibold px-3 py-2"><%= link_to '活動管理', activities_path, class: "hover:no-underline hover:text-gray-900" %></div>
+          <div class="border border-gray-900 bg-gray-100 hover:font-semibold px-3 py-2"><%= link_to '會員登出', destroy_user_session_path, :method => :delete , class: "hover:no-underline hover:text-gray-900" %></div>
+        </div>
+      </section>
+    </section>
+ 
+  <% else %>
+    <section class="t-nav flex justify-between px-3 items-center">
+      <section>
+        <%= link_to root_path do%>
+          <p class="t-nav-logo">RUBYTIX</p>
+        <% end%>
+      </section>
+
+      <section class="js-search-bar t-search-area">
+        <input type="text" class="js-search-input t-search-input" placeholder="請輸入關鍵字">
+        <i class="fas fa-search fa-2x submit t-search-btn js-search-btn"></i>
+      </section>
+
+      <section class="flex">
+        <button>
+          <%= link_to '註冊', new_registration_path(:user) , class: "t-user-btn hover:no-underline mr-3" %> 
+        </button>
+
+        <button>
+          <%= link_to '登入', new_session_path(:user) , class: "t-user-btn  hover:no-underline" %>
+        </button>
+      </section>
+    </section>
+  <% end %>
+</div>
 

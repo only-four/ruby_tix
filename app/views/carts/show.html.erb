@@ -1,8 +1,4 @@
-<h1>檢視購物車</h1>
-
-<%= link_to '清空購物車', cart_path, method: :'delete'%>
-
-<%= render "cart"%>
-
-<%= link_to '繼續選購', activities_path %>
-<%= link_to '結帳', checkout_cart_path if not current_cart.empty? %>
+<div class="container">
+  <h2 class="mt-6 text-center text-4xl font-extrabold text-gray-900 mb-5 extrabold ">檢視購物車</h2>
+  <%= render "cart"%>
+</div>

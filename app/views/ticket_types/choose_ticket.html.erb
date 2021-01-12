@@ -1,65 +1,55 @@
-<h1>請選擇票券</h1>
+<h2 class="mt-6 text-center text-4xl font-extrabold text-gray-900 mb-5 extrabold">請選擇票券</h2>
 
-<% @ticket_types.each do |ticket| %>  
-  <div class="card choose-ticket-card" id="accordion">
-    <div class="card-body price" >
-      
-      <h5 class="card-title"><%= ticket.title %></h5>
+<div class="container">
+  <div class="items-center justify-center px-2 sm:px-6 lg:px-8">
+    <% @ticket_types.each do |ticket| %>  
+      <div class="px-5 py-3 shadow overflow-hidden border-b border-gray-200 sm:rounded-lg" id="accordion">
 
-      <h6 class="card-subtitle mb-2 text-muted">NT$<%= ticket.price %></h6>
-     
-      <a class="card-link" data-toggle="collapse" data-parent="#accordion" href="#collapse`${ticket_types.id}`"  data-target="#e" >更多資訊</a>
-      
-      <div class="qty " style="display:inline; margin-left:250px;">
-        <span class="minus"style="margin-right:20px;"> <a href="#"><i class="fas fa-minus-circle"></i></a></span>
-        <input type="number" class="count" name="qty" value="1" style="width: 30px;">
-        <span class="plus "> <a href="#"><i class="fas fa-plus-circle"></i></a></span>
-        <%= link_to '放到購物車', add_cart_path(ticket.id), method: "post", remote:true %>
+        <div class="items-center" >
+          <div class="flex items-center justify-between">
+            <%= link_to activity_path(@activity.id) do %>
+              <h5 class="text-2xl"><%= ticket.activity.title %></h5>
+            <% end %>
+            <h5 class="text-2xl"><%= ticket.valid_at&.strftime("%Y/%m/%d") %></h5>
+            <h5 class="text-2xl"><%= ticket.title %></h5>
+            <h5 class="text-2xl">NT$<%= ticket.price %></h5>
+            <div class="flex items-center justify-between">
+              <button class="js-minusTicket rounded-full  h-10 w-10 flex items-center justify-center bg-gray-700 text-gray-100 mr-2" id="minusItem">-</button>
+              <span class="js-ticketQuantity mr-2">0</span>
+              <button class="js-addTicket rounded-full  h-10 w-10 flex items-center justify-center bg-gray-700 text-gray-100" id="addItem">+</button>
+            </div>
+            <div class="flex">
+              <button class="js-cardLink col-end-7 col-span-1 bg-gray-200 px-2 py-2 border border-transparent rounded-md shadow-sm text-center font-medium  hover:border-red-600 hover:bg-gray-100 hover:text-red-600 hover:no-underline h-10 mr-3" >更多資訊...</button>
+
+              <%= link_to '加入購物車', add_cart_path(ticket.id), method: "post", remote:true, class: "js-cardLink flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-gray-100 bg-red-600 hover:border-red-600 hover:bg-gray-100 hover:text-red-600 hover:no-underline h-10" %>
+            </div>
+          </div>
+
+          <div class="flex items-center justify-between mt-5">
+            <div>
+              <span>開售日期：</span>
+                <%= ticket.sell_start.strftime("%Y/%m/%d") %>
+              <span>停售日期：</span>
+                <%= ticket.sell_deadline.strftime("%Y/%m/%d") %>
+              <span>狀態：</span>
+                <%= content_tag :span, '未開售', class:"p-2 bg-blue-400 textg-blue-800 rounded-lg" if ticket.pending? %>
+                <%= content_tag :span, '銷售中', class:"p-2 bg-teal-400 text-teal-800 rounded-lg" if ticket.on_sale? %>
+                <%= content_tag :span, '售完', class: "p-2 bg-yellow-400 text-yellow-800 rounded-lg" if ticket.fully_booked? %>
+                <%= content_tag :span, '停止販售', class:"p-2 bg-red-400 text-red-800 rounded-lg" if ticket.sale_closed? %>
+            </div>
+          </div>
+        <div>
+          <div class="js-ticket-detail bg-gray-100 hidden">
+            <h2>票券資訊：</h2>
+            <%= ticket.content %>
+          </div>         
+        </div>      
       </div>
-
-     <span>數量： </span>
-      <%= ticket.quantity %>
-      <span>目前購買：</span>
-      <%= ticket.tickets.count %>
-
-      <span>開售：</span>
-      <%= ticket.sell_start.strftime("%Y/%m/%d") %>
-      <span>截止販售：</span>
-      <%= ticket.sell_deadline.strftime("%Y/%m/%d") %>
-
-      <div>狀態：
-        <%= content_tag :span, '銷售中', class: "bg-teal-500" if ticket.on_sell? %>
-        <%= content_tag :span, '售完', class: "bg-yellow-400" if ticket.fully_booked? %>
-        <%= content_tag :span, '停止販售', class: "bg-red-600" if ticket.sell_closed? %>
-
-
-      </div>
-
-              
-    </div>
-
-    <div class="collapse " id="e" >
-      <div class="card card-body info" >
-        <h2>活動資訊：</h2>
-        <%= ticket.content %>
-      </div>
-    </div>
-
   </div>
-<% end %>
+    <% end %>
 
-購物車總數量：<%= current_cart.total_quantity %>
-購物車總價格：<%= current_cart.total_price %>
-<%= link_to '前往結帳頁面', checkout_cart_path %>
-
-<script>
-  $('.collapse').collapse('toggle')
-</script>  
-  
-
-
-
-
-  
-
-
+  <div class="flex justify-between mt-10">
+    <%= link_to '回到首頁', pages_path, class: "submit search-btn flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium bg-gray-100 text-gray-800 hover:border-red-600 hover:bg-gray-100 hover:text-red-600 hover:no-underline h-10" %>
+    <%= link_to '前往訂單頁面' , cart_path,  class: "flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-gray-100 bg-red-600 hover:border-red-600 hover:bg-gray-100 hover:text-red-600 hover:no-underline h-10" %>
+  </div>
+</div>

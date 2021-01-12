@@ -3,6 +3,10 @@ class Order < ApplicationRecord
   before_create :generate_ordernumber
   belongs_to :user
   has_many :order_items
+<<<<<<< HEAD
+=======
+  has_many :tickets
+>>>>>>> dev
   validates :participant, :tel, :address, presence: true
   
   aasm column: :state do
@@ -25,9 +29,19 @@ class Order < ApplicationRecord
       transitions from: :paid, to: :completed
     end
   end
+<<<<<<< HEAD
   
     private
     def generate_ordernumber
       self.num = SecureRandom.hex(5) unless num
     end
 end
+=======
+
+    # 產生訂單編號
+  private
+  def generate_ordernumber
+    self.num = SecureRandom.hex(5) unless num
+  end
+end
+>>>>>>> dev

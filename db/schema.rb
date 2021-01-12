@@ -10,7 +10,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+<<<<<<< HEAD
 ActiveRecord::Schema.define(version: 2021_01_11_201859) do
+=======
+ActiveRecord::Schema.define(version: 2021_01_08_084836) do
+
+>>>>>>> dev
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -121,6 +126,7 @@ ActiveRecord::Schema.define(version: 2021_01_11_201859) do
     t.index ["ticket_id"], name: "index_event_attandances_on_ticket_id"
   end
 
+<<<<<<< HEAD
   create_table "messages", force: :cascade do |t|
     t.bigint "chatroom_id", null: false
     t.bigint "user_id", null: false
@@ -131,6 +137,8 @@ ActiveRecord::Schema.define(version: 2021_01_11_201859) do
     t.index ["user_id"], name: "index_messages_on_user_id"
   end
 
+=======
+>>>>>>> dev
   create_table "order_items", force: :cascade do |t|
     t.bigint "order_id", null: false
     t.string "activities_title"
@@ -186,6 +194,11 @@ ActiveRecord::Schema.define(version: 2021_01_11_201859) do
     t.string "state"
     t.datetime "valid_at"
     t.datetime "expire_at"
+<<<<<<< HEAD
+=======
+    t.bigint "activity_id"
+    t.string "state"
+>>>>>>> dev
     t.index ["activity_id"], name: "index_ticket_types_on_activity_id"
   end
 
