@@ -1,28 +1,28 @@
 <%= form_for @activity do |f|%>
-<%= f.hidden_field :user_id, value: current_user.id %>
-<%# 第一步：活動基本資訊 %>
-<div class="flex flex-col mb-10">
-<div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
-<div class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
-<div class="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
-<table class="min-w-full divide-y divide-gray-200">
-<thead class="t-thead h-10">
-<%= form_for @activity do |f|%>
-<%= f.hidden_field :user_id, value: current_user.id %>
-<tr class= "px-6 py-3 text-center text-2xl h-20">
-<th colspan="2">第一步：活動基本資訊</th>
-</tr>
-</thead>
+  <%= f.hidden_field :user_id, value: current_user.id %>
+  <%# 第一步：活動基本資訊 %>
+  <div class="flex flex-col mb-10">
+  <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
+  <div class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
+  <div class="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
+  <table class="min-w-full divide-y divide-gray-200">
+  <thead class="t-thead h-10">
+  <%= form_for @activity do |f|%>
+  <%= f.hidden_field :user_id, value: current_user.id %>
+  <tr class= "px-6 py-3 text-center text-2xl h-20">
+  <th colspan="2">第一步：活動基本資訊</th>
+  </tr>
+  </thead>
 
 
 </tbody>
 <%# <tr class= "px-6 py-3"> %>
-<tr>
-  <td class="form-group">
+
+  <div class="form-group">
     <%= f.label :活動首圖 %>
     <%= f.file_field :image, id: :activity_image %>
     <%= image_tag activity.image_url if activity.image_url.present? %>
-  </td> 
+  </div> 
 </tr>
 <tr class= "my-5 px-6 py-3">
 <td scope="col" class="w-1/2 px-6 py-3 text-right text-lg font-normal text-gray-900 uppercase tracking-wider">
@@ -158,7 +158,7 @@
 <%= fields_for :tickets do |tickets_fields| %>
 <%= f.hidden_field :user_id, value: current_user.id %>
 <tr class= "px-6 py-3 text-center text-2xl h-20">
-<th colspan="4">第三步：新增票卷</th> 
+<th colspan="4">第三步：新增票券</th> 
 </tr>
 </thead>
 </table>

@@ -2,6 +2,7 @@
   @apply flex;
   @apply items-center;
   @apply justify-center;
+
   border: 2px #750000 solid;
   border-radius: 60px;
   height: 40px;
@@ -10,7 +11,6 @@
 
 .t-search-btn {
   color: #750000;
-  // border-left: 2px #750000 solid;
   padding-left: 10px;
 }
 
