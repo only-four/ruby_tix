@@ -10,8 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_01_08_084836) do
-
+ActiveRecord::Schema.define(version: 2021_01_11_195111) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -74,6 +73,7 @@ ActiveRecord::Schema.define(version: 2021_01_08_084836) do
     t.integer "total_price", default: 0
     t.integer "activity_users_count"
     t.string "image"
+    t.string "state"
     t.index ["user_id"], name: "index_activities_on_user_id"
   end
 
@@ -155,14 +155,13 @@ ActiveRecord::Schema.define(version: 2021_01_08_084836) do
     t.integer "price"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.bigint "activity_id"
     t.datetime "sell_start"
     t.datetime "sell_deadline"
+    t.bigint "activity_id"
     t.string "state"
     t.datetime "valid_at"
     t.datetime "expire_at"
-    t.bigint "activity_id"
-    t.string "state"
+    t.boolean "period"
     t.index ["activity_id"], name: "index_ticket_types_on_activity_id"
   end
 

@@ -4,13 +4,13 @@ Rails.application.routes.draw do
   resources :pages do
     collection do
       get :search
-      get :abouts_us , to: "pages#abouts_us"
-      get :footer_notice , to: "pages#footer_notice"
-      get :process , to: "pages#process_method"
+      get :purchase , to: "pages#purchase"
       get :questions , to: "pages#questions"
-      get :sell_purchase , to: "pages#sell_purchase"
-      get :service_centre , to: "pages#service_centre"
-      get :dervice_terms , to: "pages#dervice_terms"
+      get :handle , to: "pages#handle"
+      get :sales , to: "pages#sales"
+      get :about_us , to: "pages#about_us"
+      get :service_center , to: "pages#service_center"
+      get :terms , to: "pages#terms"
     end
   end 
 
