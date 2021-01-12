@@ -30,20 +30,6 @@
                 </tr>
               </thead>
 
-<<<<<<< HEAD
-  <tbody>
-  <% @orders.each do |order| %>
-    <tr>
-      <td><%= link_to order.num, my_tickets_tickets_path %></td>
-      <td><%= order.created_at.strftime("%Y/%m/%d/%T") %></td>
-      <td><%= order.price %></td>
-      <td><%= order.state %></td>
-      <td><%= link_to '付款', pay_order_path(order), method:'POST', data: {confirm:'確定付款？'} if order.may_pay? %></td>
-      <td><%= link_to '退款', cancel_order_path(order), method:'delete', data: {confirm:'是否取消訂單？'} if order.may_refund? %></td>
-    </tr>
-  <%end%>
-  </tbody>
-=======
               <tbody>
                 <% @orders.each do |order| %>
                   <tr class= "px-6 py-3 text-center">
@@ -61,7 +47,6 @@
         </div>
       </div>
     </div>
->>>>>>> dev
 
   </div>
 </div>

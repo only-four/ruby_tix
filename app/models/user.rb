@@ -1,23 +1,17 @@
 class User < ApplicationRecord
-<<<<<<< HEAD
-=======
   rolify
->>>>>>> dev
   has_many :activity_users
   has_many :activities, through: :activity_users
   has_many :comments
   has_many :orders
   has_many :own_activities, class_name: 'Activity'
-<<<<<<< HEAD
   has_many :chatroom_users, dependent: :destroy
   has_many :chatrooms, through: :chatroom_users
   has_many :messages, dependent: :destroy
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
-=======
   mount_uploader :image, ImageUploader
->>>>>>> dev
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable,
          :omniauthable, :omniauth_providers => [:facebook, :google_oauth2]
