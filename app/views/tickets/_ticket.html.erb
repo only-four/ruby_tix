@@ -76,20 +76,14 @@
             <p class="text-xs font-semibold text-red-800">
               <%= ticket.state %>     
             </p>
-          </div>              
-          <div class="flex flex-col ml-20 mt-12">
-            <p class="mb-1 text-xs text-gray-500"></p>
-            <p class="text-xs font-semibold text-red-800">
-              <%= link_to '參加活動', attend_event_ticket_path(ticket), method: :post, name: 'use' if ticket.activated?  %>     
-            </p>
-          </div>              
+          </div>                        
         </div>
       </div>
     </div>
   </div>
 <div class="xl:hidden flex flex-col bg-white border rounded-md shadow-md">
   <div class="py-2 px-4 flex-col flex text-center">
-    <img class="mx-auto" src="https://store-images.s-microsoft.com/image/apps.33967.13510798887182917.246b0a3d-c3cc-46fc-9cea-021069d15c09.392bf5f5-ade4-4b36-aa63-bb15d5c3817a"/>
+    <canvas class="qr-canvas mobile-canvas" data-id="<%= ticket.ticket_number if ticket.activated? %>"></canvas>
     <p class="font-bold text-lg md:text-3xl">Scan here to check in!</p>
   </div>
   <hr class="border-dashed border-2 border-gray-400"/>

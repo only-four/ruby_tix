@@ -1,8 +1,10 @@
 <div class="conrainer text-center">
   <h1>掃描QR Code</h1>
-  <div>
-    <video id="video" width="500" height="400"></video>
+  <div style="margin-left:30%;">
+    <video id="video" width="500" height="400" ></video>
   </div>
-  <label>Result:</label>
+  <label>結果:</label>
+  <a href=""class="js-activity-id" data-id="<%= @current_activity_id %>">pipi</a>
   <pre><code id="result"></code></pre>
+  <%= link_to "目前參加者名單", attand_list_activity_qr_codes_path(1) %>
 </div>

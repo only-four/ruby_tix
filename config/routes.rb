@@ -54,7 +54,7 @@ Rails.application.routes.draw do
     resources :ticket_types, only: [:index, :destroy]
     resources :comments, only: [:create, :destroy]
     get "/choose", to: "ticket_types#choose_ticket"
-    resources :qr_codes, only: [:create] do
+    resources :qr_codes, only: [] do
       collection do
         get :scan
         get :attand_list
@@ -77,14 +77,15 @@ Rails.application.routes.draw do
     end
   end
 
-  get 'qr_code_reader', to: 'qr_codes#reader'
+  # get 'qr_code_reader', to: 'qr_codes#reader'
   resources :qr_codes, only: [:create] do
     collection do
       # get :scan
-      get :attand_list
+      # get :attand_list
+      post :manual_attand
     end
     member do
-      get :participated      
+      # get :participated      
     end
   end
 end
