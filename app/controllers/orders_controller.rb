@@ -1,10 +1,6 @@
 class OrdersController < ApplicationController
   def index
-    if current_user
       @orders = current_user.orders.order(id: :desc)
-    else
-      redirect_to '/users/sign_up', notice:'請先註冊或登入會員'
-    end
   end
 
   def create
@@ -55,7 +51,7 @@ class OrdersController < ApplicationController
       transaction_id = result["info"]["transactionId"]
       order = current_user.orders.find_by(num: order_id)
       order.pay!(transaction_id: transaction_id)
-      session[:cart7749] = nil
+      session[Cart::SessionKey] = nil
       redirect_to orders_path, notice: "付款完成"
     else
       redirect_to checkout_cart_path, notice: "付款發生錯誤"
@@ -123,7 +119,7 @@ class OrdersController < ApplicationController
     if result["returnCode"] == "0000"
       transaction_id = result["info"]["transactionId"]
       @order.pay!(transaction_id: transaction_id)
-      session[:cart7749] = nil
+      session[Cart::SessionKey] = nil
       redirect_to orders_path, notice: "付款完成"
     else
       redirect_to orders_path, notice: "付款發生錯誤"

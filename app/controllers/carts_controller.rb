@@ -2,7 +2,7 @@ class CartsController < ApplicationController
   def add
     ticket_types = TicketType.find_by(id: params[:id])
     current_cart.add_item(ticket_types.id)
-    session[:cart7749] = current_cart.serialize
+    session[Cart::SessionKey] = current_cart.serialize
   end
 
   def destroy
