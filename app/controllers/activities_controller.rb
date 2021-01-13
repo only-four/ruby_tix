@@ -14,6 +14,7 @@ class ActivitiesController < ApplicationController
       @activity = Activity.new(activity_params)
       if @activity.save!
         redirect_to activities_path(@activity.id), notice: "新增活動成功！ 請繼續新增活動票種"
+        @notice = Notice.create(notices:flash[:notice])
        else
         render :new
       end
