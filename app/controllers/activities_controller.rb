@@ -7,9 +7,10 @@ class ActivitiesController < ApplicationController
   
     def new
       @activity = Activity.new
+      @categories = Category.all
       2.times { @activity.ticket_types.build }
     end 
-
+    
     def create
       @activity = Activity.new(activity_params)
       if @activity.save!

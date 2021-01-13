@@ -31,6 +31,21 @@
 <td scope="col">
 <%= f.text_field :title, class: "appearance-none rounded-none relative block py-2  border border-gray-300 placeholder-gray-500 text-gray-900 rounded-md bg-gray-100 focus:bg-white focus:z-10 sm:text-sm" %></td>
 </tr>
+
+<td scope="col" class="w-1/2 px-6 py-3 text-right text-lg font-normal text-gray-900 uppercase tracking-wider">
+<%= f.label :title, "活動分類" %>
+</td>
+<td>
+<select name="post[author_id]" id="post_author_id">
+<% @categories.each do |category| %> 
+  <option value="<%= category.id %>"><%= category.name %></option>
+<% end%>
+</select>
+</td>
+</tr>
+
+
+
 <tr class= "my-5 px-6 py-3">
 <td scope="col" class="w-1/2 px-6 py-3 text-right text-lg font-normal text-gray-900 uppercase tracking-wider">
 <%= f.label :begin_datetime, "開始時間" %>
