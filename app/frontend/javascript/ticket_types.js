@@ -6,9 +6,9 @@ document.addEventListener("turbolinks:load", function(){
 
   minusBtn.forEach(function(evt){
     evt.addEventListener('click', function(e) {
-      console.log(e.target.nextSibling);
+      console.log(e.target.nextSibling );
       e.preventDefault();
-      addTicket(-1);
+      addTicket(-1, e.target);
     })
   })
 
@@ -16,21 +16,21 @@ document.addEventListener("turbolinks:load", function(){
     evt.addEventListener('click', function(e) {
       const quantity = e.target.previousSibling.previousElementSibling.textContent
       e.preventDefault();
-      addTicket(1);
+      addTicket(1, e.target);
     })
   })
 
   detailBtn.forEach(function(e){
     e.addEventListener('click', function(e){
-
       // e.target.previousSibling.textContent
-      console.log(e.target.parentNode.nextSibling.firstChild);
+      //console.log(e.target.parentNode.nextSibling.firstChild);
+      ticketDetail = 
       ticketDetail.classList.toggle("hidden");
     })
   })
 
-  function addTicket(amount){
-    var quantityField = document.querySelector('.js-ticketQuantity');
+  function addTicket(amount, node){
+    var quantityField = node.parentNode.querySelector('.js-ticketQuantity');
     var quantity = parseInt(quantityField.innerHTML); 
     quantity = quantity + amount;
     // 設定quantity最小值為0

@@ -8,6 +8,8 @@ class Activity < ApplicationRecord
   has_many :ticket_types, dependent: :destroy
   belongs_to :creator, foreign_key: :user_id, class_name: 'User'
 
+  # validates :hostname, :title, :content, :begin_datetime, :finish_datetime, :phone, :email, :limit
+
   # ticket_type 寫在activity頁面 巢狀表單
   accepts_nested_attributes_for :ticket_types, allow_destroy: true, reject_if: :all_blank
   mount_uploader :image, ImageUploader
@@ -24,6 +26,10 @@ class Activity < ApplicationRecord
 
     event :ongo do
       transitions from: :prepare, to: :ongoing
+      before do |args|
+        self.transaction_id = args[:transaction_id]
+        self.begin_datetime = Time.now
+      end
     end
 
     event :expire do

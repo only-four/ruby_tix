@@ -4,7 +4,7 @@ class ApplicationController < ActionController::Base
 
   private
   def no_record_found
-    render plain: "sorry, the record you're looking for doesn't exist.", status: 404
+    render plain: "抱歉，你所尋找的網頁不存在！", status: 404
   end
 
 end

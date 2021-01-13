@@ -14,16 +14,22 @@
   </tr>
   </thead>
 
-
-</tbody>
 <%# <tr class= "px-6 py-3"> %>
 
   <div class="form-group">
-    <%= f.label :活動首圖 %>
+    <%= f.label :活動顯示圖片 %><br />
+    <%= "此圖片會顯示於活動頁面，和主頁以供瀏覽（建議大小：1200x760px ??? ）" %>
     <%= f.file_field :image, id: :activity_image %>
     <%= image_tag activity.image_url if activity.image_url.present? %>
   </div> 
 </tr>
+  <tr class= "my-5 px-6 py-3">
+    <td scope="col" class="w-1/2 px-6 py-3 text-right text-lg font-normal text-gray-900 uppercase tracking-wider">
+    <%= f.label :hostname, "主辦單位名稱" %></td>
+    <td scope="col">
+    <%= f.text_field :hostname, class: "appearance-none rounded-none relative block py-2  border border-gray-300 placeholder-gray-500 text-gray-900 rounded-md bg-gray-100 focus:bg-white focus:z-10 sm:text-sm" %></td>
+  </tr>
+
 <tr class= "my-5 px-6 py-3">
 <td scope="col" class="w-1/2 px-6 py-3 text-right text-lg font-normal text-gray-900 uppercase tracking-wider">
 <%= f.label :title, "活動名稱" %>
@@ -81,6 +87,7 @@
 <tr class= "my-5 px-6 py-3">
 <td scope="col" class="w-1/2 px-6 py-3 text-right text-lg font-normal text-gray-900 uppercase tracking-wider">
 <%= f.label :form, "活動形式" %>
+<%#= f.input :form, label: "活動形式" , collection: ["線上活動", "實體活動", "其他（請於活動內容說明）"],:input_html => { :class => 'appearance-none rounded-none relative block py-2 w-full border border-gray-300 placeholder-gray-500 text-gray-900 rounded-md bg-gray-100 focus:bg-white focus:z-10 sm:text-sm' } %>
 </td>
 <td scope="col"></td>
 </tr>
@@ -105,9 +112,6 @@
 </div>
 </div>
 </div>
-
-
-
 
 
 
@@ -152,13 +156,15 @@
 </div>
 </div>
 </div>
-<%# 第三步：新增票卷 %>
+
+
+<%# 第三步：新增票券 %>
 <div class="flex flex-col mb-10">
 <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
 <div class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
 <div class="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
 <table class="min-w-full divide-y divide-gray-200">
-<thead class="t-thead h-10"">
+<thead class="t-thead h-10">
 <%= fields_for :tickets do |tickets_fields| %>
 <%= f.hidden_field :user_id, value: current_user.id %>
 <tr class= "px-6 py-3 text-center text-2xl h-20">
@@ -170,7 +176,9 @@
 </div>
 </div>
 </div>
-<%# 票卷內容 %>
+
+
+<%# 票券內容 %>
 <div class="nested-container">
 <div data-controller="ticket-types-form" class="nested-form">
 <template data-ticket-types-form-target="form">
