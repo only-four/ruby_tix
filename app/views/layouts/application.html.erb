@@ -2,10 +2,8 @@
 <html>
   <head>
     <title>RubyTix</title>
-        
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
     <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
     <link href=’https://fonts.googleapis.com/css?family=Raleway' rel=’stylesheet’ type=’text/css’>
@@ -22,27 +20,22 @@
     </script>
     <!-- End Google Tag Manager -->
   </head>
-
   <body>
     <!-- Google Tag Manager (noscript) -->
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KLBFCRB" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <!-- End Google Tag Manager (noscript) -->
-
     <div>
       <%= render 'shared/navbar' %>
     </div>
-
     <div>
       <section class="js-main-area w-full m-auto pt-20 pb-20 t-body">
         <%= yield %>
         <%= notice %>
       </section>
-
-      <section class="m-auto">
+      <section class="">
         <%= render 'shared/float' %>
       </section>
     </div>
-
     <div class="m-auto bottom-0">
       <%= render 'shared/footer' %>
     </div>

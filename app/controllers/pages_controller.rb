@@ -3,27 +3,26 @@ class PagesController < ApplicationController
     @activities = Activity.all
   end
 
-  def purchase
+  def member
   end
 
-  def questions
+  def guide
   end
 
-  def handle
+  def faq
   end
 
-  def sales
+  def join
+  end
+
+  def hold
   end
 
   def about_us
   end
 
-  def service_center
-  end
-
   def terms
   end
-
 
   def search
     @search_value = Activity.where('title ILIKE ?', "%#{params[:search]}%")

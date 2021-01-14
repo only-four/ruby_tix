@@ -24,7 +24,8 @@ document.addEventListener("turbolinks:load", function(){
     e.addEventListener('click', function(e){
       // e.target.previousSibling.textContent
       //console.log(e.target.parentNode.nextSibling.firstChild);
-      ticketDetail = 
+      // FIXME 處理點擊「更多資訊」沒有對應到相應位置的問題
+      // ticketDetail = 
       ticketDetail.classList.toggle("hidden");
     })
   })
