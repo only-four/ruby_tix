@@ -6,11 +6,18 @@ document.addEventListener("turbolinks:load", function(){
   const bellwin = document.querySelector('.js-bell-window')
 
   avator.addEventListener('click', function(){
+    if(bellwin.classList.contains('hidden')){
+    } else{
+      bellwin.classList.toggle("hidden");
+    }
     option.classList.toggle("hidden");
   })
 
   bell.addEventListener('click', function(){
-    // console.log(bellwin)
+    if(option.classList.contains('hidden')){
+    } else{
+      option.classList.toggle("hidden");
+    }
     bellwin.classList.toggle("hidden");
   })
 })
