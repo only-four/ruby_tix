@@ -7,11 +7,12 @@ class ActivitiesController < ApplicationController
   
     def new
       @activity = Activity.new
-      # @categories = Category.all
+      @categories = Category.all
       2.times { @activity.ticket_types.build }
     end 
     
     def create
+      p params
       @activity = Activity.new(activity_params)
       if @activity.save!
         redirect_to activities_path(@activity.id), notice: "新增活動成功！ 請繼續新增活動票種"

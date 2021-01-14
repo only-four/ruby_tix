@@ -5,6 +5,7 @@ require("javascript")
 require("stylesheets")
 require("trix")
 require("@rails/actiontext")
+// require("social-share-button")
 // import "stimulus"
 import "controllers"
 import 'bootstrap'
@@ -15,3 +16,4 @@ window.$ = $
 // import './qr_code_reader';
 import Swal from 'sweetalert2';
 window.Swal= Swal
+
