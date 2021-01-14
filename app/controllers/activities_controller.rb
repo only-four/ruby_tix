@@ -46,6 +46,7 @@ class ActivitiesController < ApplicationController
     end
 
     def destroy
+      # @activity = @activity.find(params[:id])
       @activity.destroy if @activity
       redirect_to activities_path, notice: "活動資料已刪除!"
     end
@@ -62,7 +63,7 @@ class ActivitiesController < ApplicationController
       :finish_datetime,
       :location,
       :content,
-      :user_id, :hostname,
+      :hostname,
       :brief,
       :tag,
       :link,
