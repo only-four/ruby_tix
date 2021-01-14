@@ -21,6 +21,10 @@
       </section>
 
       <section class="flex">
+        <div class="js-bell-notify h-12 w-12 flex items-center justify-center t-nav-btn">
+          <i class="fas fa-bell fa-2x t-nav-btn"></i>
+        </div>
+        
         <div class="js-user-avator h-12 w-12 flex items-center justify-center t-nav-btn">
           <i class="far fa-user-circle fa-2x t-nav-btn"></i>
         </div>       
@@ -44,6 +48,15 @@
           <div class="border border-gray-900 bg-gray-100 hover:font-semibold px-3 py-2"><%= link_to '活動管理', activities_path, class: "hover:no-underline hover:text-gray-900" %></div>
           <div class="border border-gray-900 bg-gray-100 hover:font-semibold px-3 py-2"><%= link_to '會員登出', destroy_user_session_path, :method => :delete , class: "hover:no-underline hover:text-gray-900" %></div>
         </div>
+
+        <div class="js-bell-window hidden fixed mt-20 mr-100" >
+          <ul>
+          <% current_user.notices.limit(10).order(created_at: :desc).each do |item| %>
+          <div class="border border-gray-900 bg-gray-100 hover:font-semibold px-3 py-2"><%= item.notices %></div>
+          <% end %>
+          </ul>
+        </div>
+
       </section>
     </section>
  

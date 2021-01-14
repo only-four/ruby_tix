@@ -1,10 +1,6 @@
 class OrdersController < ApplicationController
   def index
-    if current_user
-      @orders = current_user.orders.order(id: :desc)  #從使用者的角度建立訂單，並且排序
-    else
-      redirect_to '/users/sign_up', notice:'請先註冊或登入會員'
-    end
+      @orders = current_user.orders.order(id: :desc)
   end
 
   def create
@@ -55,10 +51,11 @@ class OrdersController < ApplicationController
       transaction_id = result["info"]["transactionId"]
       order = current_user.orders.find_by(num: order_id)
       order.pay!(transaction_id: transaction_id)
-      session[:cart7749] = nil
-      redirect_to orders_path, notice: '付款完成'
+      session[Cart::SessionKey] = nil
+      redirect_to orders_path, notice: "您的訂單已成功付款"
+      @notice = current_user.notices.create(notices:flash[:notice])
     else
-      redirect_to checkout_cart_path, notice: '付款發生錯誤'
+      redirect_to checkout_cart_path, notice: "付款發生錯誤"
     end
   end
 
@@ -74,6 +71,7 @@ class OrdersController < ApplicationController
       if result["returnCode"] == "0000"
       @order.refund!
         redirect_to orders_path, notice: "訂單 #{@order.num}已完成退款"
+        @notice = current_user.notices.create(notices:flash[:notice])
       else
         redirect_to orders_path, notice: "退款失敗"
       end
@@ -103,7 +101,7 @@ class OrdersController < ApplicationController
       payment_url = result["info"]["paymentUrl"]["web"]
       redirect_to payment_url
     else
-      redirect_to orders_path, notice: '付款發生錯誤'
+      redirect_to orders_path, notice: "付款發生錯誤"
     end
   end
 
@@ -123,11 +121,14 @@ class OrdersController < ApplicationController
     if result["returnCode"] == "0000"
       transaction_id = result["info"]["transactionId"]
       @order.pay!(transaction_id: transaction_id)
-      session[:cart7749] = nil
-      redirect_to orders_path, notice: '付款完成'
+      session[Cart::SessionKey] = nil
+      redirect_to orders_path, notice: "付款完成"
     else
-      redirect_to orders_path, notice: '付款發生錯誤'
+      redirect_to orders_path, notice: "付款發生錯誤"
     end
+  end
+
+  def show
   end
 
   private
