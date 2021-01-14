@@ -1,4 +1,5 @@
 class ActivitiesController < ApplicationController
+    # TODO：登入檢查
     before_action :find_activity, only: [:join, :edit, :destroy, :update, :show]
 
     def index
@@ -52,13 +53,15 @@ class ActivitiesController < ApplicationController
   def activity_params
     params.require(:activity).permit(
       :content,
-      :user,
-      :user_id,
+      # :user,
+      # :user_id,
+      :period,
       :title,
       :begin_datetime,
       :finish_datetime,
       :location,
       :content,
+      :user_id, :hostname,
       :brief,
       :tag,
       :link,
@@ -76,4 +79,14 @@ class ActivitiesController < ApplicationController
   def find_activity
     @activity = Activity.find_by(id: params[:id])
   end
+  def ticket_types_params
+    title:params[:activity][:ticket_types_attributes][:"0"][:title], 
+          quantity:params[:activity][:ticket_types_attributes][:"0"][:quantity].to_i, 
+          price:params[:activity][:ticket_types_attributes][:"0"][:price].to_i, 
+          sell_start:params[:activity][:ticket_types_attributes][:"0"][:sell_start], 
+          sell_deadline:params[:activity][:ticket_types_attributes][:"0"][:sell_deadline],
+          valid_at:params[:activity][:ticket_types_attributes][:"0"][:valid_at],
+          expire_at:params[:activity][:ticket_types_attributes][:"0"][:expire_at]
+  end
+
 end

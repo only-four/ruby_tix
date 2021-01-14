@@ -1,4 +1,5 @@
 @import url("https://fonts.googleapis.com/css?family=Noto Serif");
+
 .t-nav-div {
   background-image: url("/images/bgimg02.jpg");
   background-repeat: no-repeat;
@@ -32,6 +33,7 @@
   background-color: #750000;
   border: 2px solid #750000;
 }
+
 .t-user-btn:hover {
   @apply no-underline;
   background-color: #f5f4f4;
@@ -46,6 +48,7 @@
   background-color: #000;
   color: #fff;
 }
+
 .t-category-area {
   display: flex;
   justify-content: center;

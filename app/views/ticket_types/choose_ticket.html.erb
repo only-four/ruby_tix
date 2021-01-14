@@ -20,23 +20,12 @@
             </div>
             <div class="flex">
               <button class="js-cardLink col-end-7 col-span-1 bg-gray-200 px-2 py-2 border border-transparent rounded-md shadow-sm text-center font-medium  hover:border-red-600 hover:bg-gray-100 hover:text-red-600 hover:no-underline h-10 mr-3" >更多資訊...</button>
-
+            <%# // content_tag do %>
               <%= link_to '加入購物車', add_cart_path(ticket.id), method: "post", remote:true, class: "js-cardLink flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-gray-100 bg-red-600 hover:border-red-600 hover:bg-gray-100 hover:text-red-600 hover:no-underline h-10" %>
             </div>
           </div>
 
           <div class="flex items-center justify-between mt-5">
-            <div>
-              <span>開售日期：</span>
-                <%= ticket.sell_start.strftime("%Y/%m/%d") %>
-              <span>停售日期：</span>
-                <%= ticket.sell_deadline.strftime("%Y/%m/%d") %>
-              <span>狀態：</span>
-                <%= content_tag :span, '未開售', class:"p-2 bg-blue-400 textg-blue-800 rounded-lg" if ticket.pending? %>
-                <%= content_tag :span, '銷售中', class:"p-2 bg-teal-400 text-teal-800 rounded-lg" if ticket.on_sale? %>
-                <%= content_tag :span, '售完', class: "p-2 bg-yellow-400 text-yellow-800 rounded-lg" if ticket.fully_booked? %>
-                <%= content_tag :span, '停止販售', class:"p-2 bg-red-400 text-red-800 rounded-lg" if ticket.sale_closed? %>
-            </div>
           </div>
         <div>
           <div class="js-ticket-detail bg-gray-100 hidden">

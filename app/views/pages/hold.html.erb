@@ -1,0 +1,40 @@
+<section class="pt-40">
+  <div class="px-5">
+    <h2 class="text-4xl font-extrabold bg-gray-50">活動辦理流程</h2>
+    <h3 class="text-xl my-4">你好！歡迎來到RubyTix！</h3>
+    <div class="py-3">
+      <ul class="list-decimal list-inside">
+        <li class="text-lg my-6">請先進行註冊程序，取得RubyTix之使用者資格</li>
+        <%= "圖例示範" %>
+        <img src="https://picsum.photos/400/400/?random=1" alt="註冊示意圖" class="mx-6">
+        <li class="text-lg my-6">使用已經註冊的帳號登入RubyTix</li>
+        <%= "圖例示範" %>
+        <img src="https://picsum.photos/400/400/?random=2" alt="登入網站" class="mx-6">
+        <%#= 從這裡開始修改  %>
+        <%#= 從這裡開始修改  %>
+        <%#= 從這裡開始修改  %>
+        <li class="text-lg my-6">進入網站後，可移至所喜愛的活動頁點選「參加活動」。</li>
+        <%= "圖例示範" %>
+        <img src="https://picsum.photos/400/400/?random=7" alt="登入網站" class="mx-6">
+        <li class="text-lg my-6">待進入購票頁面後，您可選擇該活動之票券種類與張數。</li>
+        <%#= TODO :（提醒您，此時「＋」為空心樣，滑鼠點擊後變為藍色實心樣代表選取成功） %>
+        <%= "圖例示範" %>
+        <img src="https://picsum.photos/400/400/?random=6" alt="" class="mx-6">
+        <li class="text-lg my-6">點擊「＋」和「-」來選擇票券張數，並點選下方的「參加活動」。</li>
+        <%= "圖例示範" %>
+        <img src="https://picsum.photos/400/400/?random=3" alt="" class="mx-6">
+        <li class="text-lg my-6">填寫報名資料（請注意，活動資訊將會透過郵件寄送至購買票券之帳號的信箱，而非此處填寫之聯繫信箱地址）</li>
+        <%= "圖例示範" %>
+        <img src="https://picsum.photos/400/400/?random=4" alt="" class="mx-6">
+        <li class="text-lg my-6">若為付費票種，請選擇適合的付款方式，再點選「結帳」。
+          <%#= 請留意付款期限，「線上付款」需於 30 分鐘繳費； %>
+          <%#= 「線下付款」則為 D+1 內（若主辦單位另有規定，則以主辦單位設定之繳費期限為主），訂單逾期將自動取消該次報名，並釋出名額。 %>
+        </li>
+        <%= "圖例示範" %>
+        <img src="https://picsum.photos/400/400/?random=5" alt="" class="mx-6">
+        <li class="text-lg my-6">準備好了嗎？去尋找你的活動吧！</li>
+        <div class="w-2/6 my-6 mx-3"><%= link_to '開始舉辦活動！', new_activity_path, class: "t-back-button" %></div>
+      </ul>
+    </div>
+  </div>
+</section>
