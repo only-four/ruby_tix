@@ -1,0 +1,19 @@
+<h2 class="text-4xl my-4">客服中心</h2>
+
+<h3 class="text-xl my-4">你好！歡迎來到RubyTix！</h3>
+
+<div class="text-lg my-2 w-2/6">
+  <div>
+    若有任何問題，可查閱
+    <%= link_to '[常見問題]', questions_pages_path %>或是
+    <span class="js-chat-btn">[智慧客服]</span>（畫面右下角的圓圈），亦歡迎來信聯繫。
+  </div>
+  <br/>
+  <div>
+    聯絡信箱：<a href="mailto:contact@rubytix.fun">contact@rubytix.fun</a>
+  </div>
+  <div>
+    智慧客服服務時間：週一至週五(10:00~17:00)
+  </div>
+</div>
+<div class="my-10"></div>

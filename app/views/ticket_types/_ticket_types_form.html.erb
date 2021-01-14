@@ -22,7 +22,6 @@
             <%= form.date_field:sell_start, class: "appearance-none rounded-none relative block py-2  border border-gray-300 placeholder-gray-500 text-gray-900 rounded-md bg-gray-100 focus:bg-white focus:z-10 sm:text-sm px-3 mx-3" %>
             <%= form.time_field:sell_start, class: "appearance-none rounded-none relative block py-2  border border-gray-300 placeholder-gray-500 text-gray-900 rounded-md bg-gray-100 focus:bg-white focus:z-10 sm:text-sm px-3" %>
           </div>
-
           <div class="flex items-center mt-3">
             <%= form.label:finish_datetime, '售票結束日' %>
             <%= form.date_field:sell_deadline, class: "appearance-none rounded-none relative block py-2  border border-gray-300 placeholder-gray-500 text-gray-900 rounded-md bg-gray-100 focus:bg-white focus:z-10 sm:text-sm px-3 mx-3" %>
@@ -31,15 +30,19 @@
 
           <div class="items-center mt-3">
             <%= form.label:content, '票券說明'%> 
-            <%= form.rich_text_area :content,placeholder: "請完整說明你的票卷內容", class: "appearance-none rounded-none relative block py-2  border border-gray-300 placeholder-gray-500 text-gray-900 rounded-md bg-gray-100 focus:bg-white focus:z-10 sm:text-sm" %>
+            <%= form.rich_text_area :content,placeholder: "請完整說明你的票券內容", class: "appearance-none rounded-none relative block py-2  border border-gray-300 placeholder-gray-500 text-gray-900 rounded-md bg-gray-100 focus:bg-white focus:z-10 sm:text-sm" %>
           </div>
-
+          <div class="items-center mt-3">
+            <%# TODO:做一個checkbox，打勾後可以直接帶入活動時間到 票券有效時間 %>
+            <%= form.check_box :period %>
+            <%= label :period, "票券有效期間等同活動期間" %>           
+          </div>
           <div class="flex items-center mt-3">
             <%= form.label:valid_at, '票券有效時間' %>
             <%= form.date_field:valid_at, class: "appearance-none rounded-none relative block py-2  border border-gray-300 placeholder-gray-500 text-gray-900 rounded-md bg-gray-100 focus:bg-white focus:z-10 sm:text-sm px-3 mx-3" %>
             <%= form.time_field:valid_at, class: "appearance-none rounded-none relative block py-2  border border-gray-300 placeholder-gray-500 text-gray-900 rounded-md bg-gray-100 focus:bg-white focus:z-10 sm:text-sm px-3 mx-3" %>
           </div>
-
+            <%# TODO: 這裡要有一個檢查機制，結束時間要比開始時間晚，至少半小時/一小時？%>
           <div class="flex items-center mt-3">
             <%= form.label:expire_at, '票券過期時間' %>
             <%= form.date_field:expire_at, class: "appearance-none rounded-none relative block py-2  border border-gray-300 placeholder-gray-500 text-gray-900 rounded-md bg-gray-100 focus:bg-white focus:z-10 sm:text-sm px-3 mx-3" %>

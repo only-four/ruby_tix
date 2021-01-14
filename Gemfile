@@ -53,6 +53,7 @@ gem 'will_paginate', '~> 3.1'
 gem 'font-awesome-rails', '~> 4.6', '>= 4.6.3.1'
 # share button
 gem 'social-share-button', '~> 1.2', '>= 1.2.3'
+gem 'omniauth', '~> 1.9', '>= 1.9.1'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
