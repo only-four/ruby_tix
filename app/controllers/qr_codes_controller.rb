@@ -1,5 +1,6 @@
 class QrCodesController < ApplicationController
   before_action :authenticate_user!
+  before_action :host?
   before_action :set_qr_data, only: :create
 
   def attand_list
@@ -37,14 +38,20 @@ class QrCodesController < ApplicationController
   end
 
   private
-  def set_unattand_data
-    params = JSON.parse(params[:unAttandData])    
-    @unattand= params[:unAttandData]
-  end
+    def host?
+      unless current_user.id == Activity.find(params[:activity_id]).user_id
+        redirect_to '/', notice: "您沒有權限"
+      end   
+    end
 
-  def set_qr_data
-    qr_code_params = JSON.parse(params[:qr_code_json_data]).with_indifferent_access
-    @qr_data = qr_code_params[:qr_data]
-    @current_activity_id = qr_code_params[:activity_id]
-  end
+    def set_unattand_data
+      params = JSON.parse(params[:unAttandData])    
+      @unattand= params[:unAttandData]
+    end
+
+    def set_qr_data
+      qr_code_params = JSON.parse(params[:qr_code_json_data]).with_indifferent_access
+      @qr_data = qr_code_params[:qr_data]
+      @current_activity_id = qr_code_params[:activity_id]
+    end
 end

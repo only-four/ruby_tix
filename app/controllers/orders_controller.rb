@@ -1,10 +1,7 @@
 class OrdersController < ApplicationController
+  before_action :authenticate_user!
   def index
-    if current_user
-      @orders = current_user.orders.order(id: :desc)  #從使用者的角度建立訂單，並且排序
-    else
-      redirect_to '/users/sign_up', notice:'請先註冊或登入會員'
-    end
+    @orders = current_user.orders.order(id: :desc)
   end
 
   def create
