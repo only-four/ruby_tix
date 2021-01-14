@@ -4,6 +4,7 @@ class User < ApplicationRecord
   has_many :activities, through: :activity_users
   has_many :comments
   has_many :orders
+  has_many :notices
   has_many :own_activities, class_name: 'Activity'
   has_many :chatroom_users, dependent: :destroy
   has_many :chatrooms, through: :chatroom_users

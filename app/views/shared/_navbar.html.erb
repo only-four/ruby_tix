@@ -51,8 +51,8 @@
 
         <div class="js-bell-window hidden fixed mt-20 mr-100" >
           <ul>
-          <% Notice.all.limit(10).order(created_at: :desc).each do |item| %>
-          <li><div class="border border-gray-900 bg-gray-100 hover:font-semibold px-3 py-2"><%= item.notices %></div></li>
+          <% current_user.notices.limit(10).order(created_at: :desc).each do |item| %>
+          <div class="border border-gray-900 bg-gray-100 hover:font-semibold px-3 py-2"><%= item.notices %></div>
           <% end %>
           </ul>
         </div>
