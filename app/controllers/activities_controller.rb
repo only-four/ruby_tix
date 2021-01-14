@@ -7,7 +7,7 @@ class ActivitiesController < ApplicationController
   
     def new
       @activity = Activity.new
-      @categories = Category.all
+      # @categories = Category.all
       2.times { @activity.ticket_types.build }
     end 
     
