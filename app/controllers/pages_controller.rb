@@ -3,25 +3,25 @@ class PagesController < ApplicationController
     @activities = Activity.all
   end
 
-  def footer_notice
+  def member
   end
 
-  def questions
+  def guide
   end
 
-  def sell_purchase
+  def faq
   end
 
-  def service_centre
+  def join
   end
 
-  def dervice_terms
+  def hold
   end
 
-  def abouts_us
+  def about_us
   end
 
-  def process_method
+  def terms
   end
 
   def search

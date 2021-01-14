@@ -39,7 +39,8 @@
         </li>
 
         <li class="flex items-center">
-          <i class="fas fa-people-arrows fa-lg text-red-800"></i>
+          <i class="fas fa-user fa-lg text-red-800"></i>
+          
           <p class="text-left text-xl font-extrabold text-red-800 pl-2">人數限制</p>
           <p class="text-left text-xl pl-2"><%= @activity.limit %>
         </li>
@@ -61,11 +62,17 @@
     <% else %>
       <h1>找不到活動喔！請確定你的連結是否正確！</h1>
     <% end %>
+
+
+
     <div class="flex justify-between mt-10">
-      <%= link_to '回到活動列表', activities_path, class: "submit search-btn flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium bg-gray-100 text-gray-800 hover:border-red-600 hover:bg-gray-100 hover:text-red-600 hover:no-underline h-10" %>
-      <%= link_to '參加活動', activity_choose_path(@activity.id) , method:"get", class: "flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-gray-100 bg-red-600 hover:border-red-600 hover:bg-gray-100 hover:text-red-600 hover:no-underline h-10" %>
+      <%= link_to '回到活動列表', activities_path, class: "t-back-button flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium h-10" %>
+      <%= link_to '參加活動', activity_choose_path(@activity.id) , method:"get", class: "t-create-button flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-gray-100  hover:border-red-600 hover:bg-gray-100 hover:text-red-600 hover:no-underline h-10" %>
     </div>
   <% end %>
+
+
+
   <section class="section-comments">
     <div class="container">
       <h2><strong><%= @activity.comments.count %> </strong>Comment</h2>
@@ -79,3 +86,4 @@
     </div>
   </section>
 </div>
+<div><%= link_to '回到活動列表', activities_path, class: "t-back-button" %></div>
