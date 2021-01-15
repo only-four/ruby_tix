@@ -77,15 +77,11 @@ Rails.application.routes.draw do
     end
   end
 
-  # get 'qr_code_reader', to: 'qr_codes#reader'
   resources :qr_codes, only: [:create] do
     collection do
-      # get :scan
-      # get :attand_list
       post :manual_attand
     end
-    member do
-      # get :participated      
-    end
   end
+
+  resources :seats, only: [:show]
 end

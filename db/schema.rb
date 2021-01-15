@@ -10,8 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_01_08_084836) do
-
+ActiveRecord::Schema.define(version: 2021_01_15_091630) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -74,6 +73,8 @@ ActiveRecord::Schema.define(version: 2021_01_08_084836) do
     t.integer "total_price", default: 0
     t.integer "activity_users_count"
     t.string "image"
+    t.string "activity"
+    t.datetime "attend_in"
     t.index ["user_id"], name: "index_activities_on_user_id"
   end
 
@@ -84,6 +85,22 @@ ActiveRecord::Schema.define(version: 2021_01_08_084836) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["activity_id"], name: "index_activity_users_on_activity_id"
     t.index ["user_id"], name: "index_activity_users_on_user_id"
+  end
+
+  create_table "chatroom_users", force: :cascade do |t|
+    t.bigint "chatroom_id", null: false
+    t.bigint "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "last_read_at"
+    t.index ["chatroom_id"], name: "index_chatroom_users_on_chatroom_id"
+    t.index ["user_id"], name: "index_chatroom_users_on_user_id"
+  end
+
+  create_table "chatrooms", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "comments", force: :cascade do |t|
@@ -104,6 +121,24 @@ ActiveRecord::Schema.define(version: 2021_01_08_084836) do
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "ticket_id"
     t.index ["ticket_id"], name: "index_event_attandances_on_ticket_id"
+  end
+
+  create_table "messages", force: :cascade do |t|
+    t.bigint "chatroom_id", null: false
+    t.bigint "user_id", null: false
+    t.text "body"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["chatroom_id"], name: "index_messages_on_chatroom_id"
+    t.index ["user_id"], name: "index_messages_on_user_id"
+  end
+
+  create_table "notices", force: :cascade do |t|
+    t.string "notices"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.bigint "user_id", null: false
+    t.index ["user_id"], name: "index_notices_on_user_id"
   end
 
   create_table "order_items", force: :cascade do |t|
@@ -136,6 +171,7 @@ ActiveRecord::Schema.define(version: 2021_01_08_084836) do
     t.string "data"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "event"
   end
 
   create_table "roles", force: :cascade do |t|
@@ -146,6 +182,14 @@ ActiveRecord::Schema.define(version: 2021_01_08_084836) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["name", "resource_type", "resource_id"], name: "index_roles_on_name_and_resource_type_and_resource_id"
     t.index ["resource_type", "resource_id"], name: "index_roles_on_resource_type_and_resource_id"
+  end
+
+  create_table "seats", force: :cascade do |t|
+    t.string "seat_number"
+    t.integer "event"
+    t.boolean "available"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "ticket_types", force: :cascade do |t|
@@ -161,8 +205,7 @@ ActiveRecord::Schema.define(version: 2021_01_08_084836) do
     t.string "state"
     t.datetime "valid_at"
     t.datetime "expire_at"
-    t.bigint "activity_id"
-    t.string "state"
+    t.boolean "period"
     t.index ["activity_id"], name: "index_ticket_types_on_activity_id"
   end
 
@@ -177,6 +220,7 @@ ActiveRecord::Schema.define(version: 2021_01_08_084836) do
     t.bigint "order_id"
     t.string "ticket_number"
     t.string "state"
+    t.integer "event"
     t.index ["order_id"], name: "index_tickets_on_order_id"
     t.index ["ticket_type_id"], name: "index_tickets_on_ticket_type_id"
   end
@@ -214,9 +258,14 @@ ActiveRecord::Schema.define(version: 2021_01_08_084836) do
   add_foreign_key "activities", "users"
   add_foreign_key "activity_users", "activities"
   add_foreign_key "activity_users", "users"
+  add_foreign_key "chatroom_users", "chatrooms"
+  add_foreign_key "chatroom_users", "users"
   add_foreign_key "comments", "activities"
   add_foreign_key "comments", "users"
   add_foreign_key "event_attandances", "tickets"
+  add_foreign_key "messages", "chatrooms"
+  add_foreign_key "messages", "users"
+  add_foreign_key "notices", "users"
   add_foreign_key "order_items", "orders"
   add_foreign_key "orders", "users"
   add_foreign_key "ticket_types", "activities"
