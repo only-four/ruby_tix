@@ -1,0 +1,10 @@
+@import "social-share-button";
+$size: 22px;
+
+.social-share-button {
+  .ssb-icon {
+    background-size: $size $size;
+    height: $size;
+    width: $size;
+  }
+}

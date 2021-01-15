@@ -11,6 +11,7 @@
 # It's strongly recommended that you check this file into your version control system.
 
 ActiveRecord::Schema.define(version: 2021_01_12_134944) do
+
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -73,7 +74,6 @@ ActiveRecord::Schema.define(version: 2021_01_12_134944) do
     t.integer "activity_users_count"
     t.string "image"
     t.integer "category_id"
-    t.string "state"
     t.string "activity"
     t.datetime "attend_in"
     t.index ["user_id"], name: "index_activities_on_user_id"

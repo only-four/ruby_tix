@@ -1,6 +1,6 @@
 class ActivitiesController < ApplicationController
     # TODO：登入檢查
-    before_action :find_activity, only: [:join, :edit, :destroy, :update, :show]
+    before_action :find_activity, only: [:join, :edit, :destroy, :show]
 
     def index
       @activities = Activity.all
@@ -13,23 +13,23 @@ class ActivitiesController < ApplicationController
     end 
     
     def create
-      p params
       @activity = Activity.new(activity_params)
       if @activity.save!
         redirect_to activities_path(@activity.id), notice: "新增活動成功！ 請繼續新增活動票種"
-       else
+      else
         render :new
       end
     end
-
+    
     def join
       @activity.activity_users.create if @activity
       redirect_to activities_path, notice: "報名完成！"
     end
-
+    
     def edit; end
-
+    
     def update
+      @activity = Activity.find(params[:id])
       if @activity.update!(activity_params)
         redirect_to activities_path(@activity), notice: "資料更新成功!"      
       else
@@ -79,7 +79,7 @@ class ActivitiesController < ApplicationController
   end 
 
   def find_activity
-    @activity = Activity.find_by(id: params[:id])
+    @activity = Activity.find(params[:id])
   end
   def ticket_types_params
     title:params[:activity][:ticket_types_attributes][:"0"][:title], 

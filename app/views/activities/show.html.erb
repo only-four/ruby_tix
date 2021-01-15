@@ -5,7 +5,18 @@
     <% if @activity %>
       <h1 class="mt-6 text-left text-4xl font-extrabold text-gray-900 mb-5">
         【<%= @activity.title %>】
+          <%#= social_share_button_tag(@activity.title) %>
       </h1>
+
+     
+      <div  class="t-copy-area">
+        <div id="copythis" class="t-copy-input">http://rubytix.fun</div>
+        <div class="t-copy-btn">
+          <a href="javascript:void(0)" onclick="CopyTextToClipboard('copythis')" class="t-copy-text">
+          <i class="far fa-copy t-copy-text"></i> 分享複製連結</a>
+        </div>
+      </div>
+
 
       <ul>
         <li class="flex items-center ">
@@ -87,3 +98,17 @@
   </section>
 </div>
 <div><%= link_to '回到活動列表', activities_path, class: "t-back-button" %></div>
+
+
+<script>
+function CopyTextToClipboard(id) {
+    var TextRange = document.createRange();
+    TextRange.selectNode(document.getElementById(id));
+    sel = window.getSelection();
+        sel.removeAllRanges();
+        sel.addRange(TextRange);
+    document.execCommand("copy");
+    alert("複製完成！") //此行可加可不加
+  }
+
+</script>

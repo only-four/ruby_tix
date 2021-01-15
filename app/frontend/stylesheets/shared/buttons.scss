@@ -79,3 +79,26 @@
     #f6d365 100%
   );
 }
+.t-copy-area {
+  @apply flex items-center;
+}
+.t-copy-input {
+  background-color: rgba($color: #750000, $alpha: 0.7);
+  padding: 15px 30px;
+  font-size: 14px;
+  color: #000;
+}
+.t-copy-btn {
+  @apply flex;
+  background-color: #750000;
+  color: #fff;
+  padding: 15px 10px;
+  font-size: 14px;
+}
+.t-copy-btn:hover {
+  font-weight: 900;
+}
+.t-copy-text:hover {
+  text-decoration: none;
+  color: #fff;
+}
