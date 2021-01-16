@@ -1,11 +1,7 @@
-.seat-container {
+.js-seatmap {
   width: 10%;
   margin:auto;
   margin-bottom: 30px;
-}
-
-.js-row {
-  display: flex;
 }
 
 .js-seat i{
@@ -24,8 +20,9 @@
   color: rgb(122, 111, 111);
 }
 .js-row{
+  display: flex;
   display: grid;
-  grid-template-columns: repeat(8, 1fr) ;
+  grid-template-columns: repeat(8, 1fr);
 }
 
 .js-seat:not(.occupied):hover {

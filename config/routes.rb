@@ -83,5 +83,5 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :seats, only: [:show]
+  resources :seats, only: [:show, :update]
 end
