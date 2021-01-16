@@ -52,6 +52,7 @@ gem 'will_paginate', '~> 3.1'
 # font awesome
 gem 'font-awesome-rails', '~> 4.6', '>= 4.6.3.1'
 gem 'omniauth', '~> 1.9', '>= 1.9.1'
+gem 'rails-i18n', '~> 6.0'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
