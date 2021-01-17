@@ -19,7 +19,7 @@ document.addEventListener("DOMContentLoaded", function () {
       data.append("seat_number", `${current_seat}`)
       data.append("seat_id", `${current_seat_id}`)
       Rails.ajax({
-        url: "/seats/`${current_seat_id}`",
+        url: "/seats/1",
         type: "put",
         data: data,
         success: function(resp) {

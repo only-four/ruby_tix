@@ -4,7 +4,7 @@ class QrCodesController < ApplicationController
   before_action :set_qr_data, only: :create
 
   def attand_list
-    @qr_codes = QrCode.order(created_at: :desc)
+    @qr_codes = QrCode.order(created_at: :desc).where(event: params[:activity_id])
     @tickets= Ticket.where(event:params[:activity_id]).includes(:order)
     @attand_list_activity_id = params[:activity_id]
   end
@@ -35,6 +35,7 @@ class QrCodesController < ApplicationController
   def manual_attand  
     QrCode.create(data: params[:unAttandData])
     Ticket.find_by(ticket_number: params[:unAttandData]).update(state:"used")
+    
   end
 
   private

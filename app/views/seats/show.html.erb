@@ -2,7 +2,7 @@
 <div class="js-seatmap">
   <div class="js-row">
     <% @seats.each do |seat| %>         
-      <i class="js-seat fas fa-couch" data-seat="<%= seat.seat_number %>" data-id ="<%= seat.id %>" ></i>
+      <i class="js-seat fas fa-couch" data-seat="<%= seat.seat_number %>" data-id ="<%= seat.id %>" data-state ="<%= seat.state %>" ></i>
     <% end %>
     <span>1</span>
     <span>2</span>

@@ -1,6 +1,6 @@
 import Rails from '@rails/ujs';
 document.addEventListener('DOMContentLoaded', function() {
-  const unattands = document.querySelectorAll('.unattand')
+  const unattands = document.querySelectorAll('.js-unattand')
   unattands.forEach(function(unattand) {
     unattand.addEventListener('click', function(){
       console.log(unattand.dataset.id)  
