@@ -1,13 +1,15 @@
 .js-seatmap {
+  margin:auto;    
   width: 10%;
-  margin:auto;
   margin-bottom: 30px;
 }
-
-.js-seat i{
-  color: darkgray;
+.js-num-row{
+  display: flex;
 }
-
+.js-row span{
+  text-align: center;
+  font-size: 1px;
+}
 .js-seat{
   margin: 8px;
   color: rgb(104, 197, 209);

@@ -2,16 +2,23 @@
 <div class="js-seatmap">
   <div class="js-row">
     <% @seats.each do |seat| %>         
-      <div class="js-seat" data-id="<%= seat.seat_number %>"><%= seat.seat_number %></div>
+      <i class="js-seat fas fa-couch" data-seat="<%= seat.seat_number %>" data-id ="<%= seat.id %>" ></i>
     <% end %>
+    <span>1</span>
+    <span>2</span>
+    <span>3</span>
+    <span>4</span>
+    <span>5</span>
+    <span>6</span>
+    <span>7</span>
+    <span>8</span>
   </div>
 </div>
-
 <div>
   <ul>
     <li>活動名稱：五倍音樂祭</li>
-    <li>全部座位：<%= @seats.count %></li>
-    <li id = "js-seat-left">剩餘座位：</li>
+    <li class="js-all-seats" data-id="<%= @seats.count %>" >全部座位：<%= @seats.count %></li>
+    <li>剩餘座位：<i class = "js-seat-left"></i></li>
     <li>已選取座位數：<span class = "js-seat-count">0</span> </li>
     <li></li>
     <li></li>

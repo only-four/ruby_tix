@@ -17,11 +17,11 @@
   <body>
     <div>
       <%= render 'shared/navbar' %>
+      <%= render 'shared/notice' if notice %>
     </div>
 
     <div>
       <section class="js-main-area w-full m-auto pt-20 pb-20 t-body">
-        <%= notice %>
         <%= yield %>
       </section>
 
