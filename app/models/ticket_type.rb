@@ -22,6 +22,13 @@ class TicketType < ApplicationRecord
     end
   end  
 
+  # def period
+  #   if perion = true 
+  #     valid_at = begin_datetime 
+  #     expire_at = finish_datetime 
+  #   end 
+  # end
+
   # to do
   # def during_selling_period?
   #   if Time.now > ticket_type.sell_start && Time.now < ticket_type.sell_deadline

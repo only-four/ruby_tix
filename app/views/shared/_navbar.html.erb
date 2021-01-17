@@ -1,26 +1,47 @@
-<div class="t-nav-div">
-  <div class="t-category-area">
-    <div class="t-category">熱門精選</div>
-    <div class="t-category">5xRuby</div>
-    <div class="t-category">文藝休閒</div>
-  </div>
-</div>
-
 <div>
   <% if current_user %>
     <section class="t-nav flex justify-between items-center">
-      <section>
-        <%= link_to root_path do%>
-          <p class="t-nav-logo">RUBYTIX</p>
-        <% end%>
+      <%# category+logo %>
+      <section class="flex">
+        <div class="flex justify-between items-center h-12 w-12">
+          <div class="mr-2 js-category-icon">
+            <i class="fas fa-bars fa-lg t-nav-btn"></i>
+          </div>
+
+          <%= link_to root_path do%>
+            <p class="t-nav-logo">RUBYTIX</p>
+          <% end%>
+        </div>
+
+        <div class="js-category-option fixed mt-20 hidden">
+          <% @categories.each do |category| %>
+            <div class="border border-gray-900 bg-gray-100 hover:font-semibold px-3 py-2">
+              <%= link_to category.name, class: "hover:no-underline hover:text-gray-900" %>
+            </div>
+          <% end %>
+        </div>
+
       </section>
+
+
+
+
+      <%# search bar %>
 
       <section class="js-search-bar t-search-area">
         <input type="text" class="js-search-input t-search-input focus:outline-none" placeholder="請輸入關鍵字">
-        <button class="js-search-btn"><i class="fas fa-search fa-2x submit t-search-btn "></i></button>
+        <button class="js-search-btn"><i class="fas fa-search fa-lg submit t-search-btn"></i></button>
       </section>
 
+
+
+      <%# user+cart %>
+
       <section class="flex">
+        <div class="js-bell-notify h-12 w-12 flex items-center justify-center t-nav-btn">
+          <i class="fas fa-bell fa-2x t-nav-btn"></i>
+        </div>
+        
         <div class="js-user-avator h-12 w-12 flex items-center justify-center t-nav-btn">
           <i class="far fa-user-circle fa-2x t-nav-btn"></i>
         </div>       
@@ -37,13 +58,22 @@
           <%= current_cart.total_quantity %>  
         </div>
 
-        <div class="js-user-option hidden fixed mt-20 mr-100">
+        <div class="js-user-option  fixed mt-20 mr-100 hidden">
           <div class="border border-gray-900 bg-gray-100 hover:font-semibold px-3 py-2"><%= link_to '編輯會員資料', edit_registration_path(:user), class: "hover:no-underline hover:text-gray-900" %></div>
           <div class="border border-gray-900 bg-gray-100 hover:font-semibold px-3 py-2"><%= link_to '票券管理', tickets_my_path, class: "hover:no-underline hover:text-gray-900" %></div>
           <div class="border border-gray-900 bg-gray-100 hover:font-semibold px-3 py-2"><%= link_to '訂單管理', orders_path, class: "hover:no-underline hover:text-gray-900" %></div>
           <div class="border border-gray-900 bg-gray-100 hover:font-semibold px-3 py-2"><%= link_to '活動管理', activities_path, class: "hover:no-underline hover:text-gray-900" %></div>
           <div class="border border-gray-900 bg-gray-100 hover:font-semibold px-3 py-2"><%= link_to '會員登出', destroy_user_session_path, :method => :delete , class: "hover:no-underline hover:text-gray-900" %></div>
         </div>
+
+        <div class="js-bell-window hidden fixed mt-20 mr-100" >
+          <ul>
+          <% current_user.notices.limit(10).order(created_at: :desc).each do |item| %>
+          <div class="border border-gray-900 bg-gray-100 hover:font-semibold px-3 py-2"><%= item.notices %></div>
+          <% end %>
+          </ul>
+        </div>
+
       </section>
     </section>
  
@@ -72,4 +102,5 @@
     </section>
   <% end %>
 </div>
+
 

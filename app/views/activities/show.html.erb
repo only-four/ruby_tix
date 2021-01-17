@@ -7,6 +7,16 @@
         【<%= @activity.title %>】
       </h1>
 
+     
+      <div  class="t-copy-area">
+        <div id="copythis" class="t-copy-input">http://rubytix.fun</div>
+        <div class="t-copy-btn js-copy-btn">
+          <a href="javascript:void(0)" onclick="CopyTextToClipboard('copythis')" class="t-copy-text">
+          <i class="far fa-copy t-copy-text"></i> 分享複製連結</a>
+        </div>
+      </div>
+
+
       <ul>
         <li class="flex items-center ">
           <i class="far fa-clock fa-lg text-red-800"></i>
@@ -86,3 +96,29 @@
     </div>
   </section>
 </div>
+<div><%= link_to '回到活動列表', activities_path, class: "t-back-button" %></div>
+
+
+<script>
+function CopyTextToClipboard(id) {
+    var TextRange = document.createRange();
+    TextRange.selectNode(document.getElementById(id));
+    sel = window.getSelection();
+        sel.removeAllRanges();
+        sel.addRange(TextRange);
+    document.execCommand("copy");
+  }
+
+ document.addEventListener("turbolinks:load", function(){
+   document.querySelector(".js-copy-btn").addEventListener('click', function(evt){
+     evt.preventDefault();
+     Swal.fire({
+       position: 'center',
+       icon: 'success',
+       title: '複製成功',
+       showConfirmButton: false,
+       timer: 2000
+     })  
+   })
+  })
+</script>

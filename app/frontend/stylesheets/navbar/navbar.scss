@@ -1,4 +1,5 @@
 @import url("https://fonts.googleapis.com/css?family=Noto Serif");
+
 .t-nav-div {
   background-image: url("/images/bgimg02.jpg");
   background-repeat: no-repeat;
@@ -32,6 +33,7 @@
   background-color: #750000;
   border: 2px solid #750000;
 }
+
 .t-user-btn:hover {
   @apply no-underline;
   background-color: #f5f4f4;
@@ -46,6 +48,7 @@
   background-color: #000;
   color: #fff;
 }
+
 .t-category-area {
   display: flex;
   justify-content: center;
@@ -69,4 +72,12 @@
   font-weight: 900;
   text-align: center;
   line-height: 5.5;
+}
+.t-category-option {
+  @apply border border-gray-900 bg-gray-100 px-3 py-2;
+  margin-top: 20px;
+}
+
+.t-category-option:hover {
+  @apply font-semibold;
 }
