@@ -5,6 +5,7 @@ require("javascript")
 require("stylesheets")
 require("trix")
 require("@rails/actiontext")
+require("swiper/bundle")
 // import "stimulus"
 import "controllers"
 import 'bootstrap'

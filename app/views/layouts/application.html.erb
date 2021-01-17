@@ -4,12 +4,11 @@
     <title>RubyTix</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%#= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
     <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
     <link href=’https://fonts.googleapis.com/css?family=Raleway' rel=’stylesheet’ type=’text/css’>
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+    <%# <link rel="stylesheet" href="node_modules/swiper/swiper.min.css"> %>
     <!-- Google Tag Manager -->
     <script>
       (function(w,d,s,l,i){
@@ -41,5 +40,6 @@
     <div class="m-auto bottom-0">
       <%= render 'shared/footer' %>
     </div>
+    <%# <script src="node_modules/swiper/swiper-bundle.min.js"></script> %>
   </body>
 </html>

@@ -1,6 +1,7 @@
 import { BrowserQRCodeReader } from '@zxing/library/cjs/index.js';
 import Rails from '@rails/ujs';
 
+
 const codeReader = new BrowserQRCodeReader();
 codeReader
   .decodeFromInputVideoDevice(undefined, 'video')
