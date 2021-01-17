@@ -17,6 +17,7 @@ class ActivitiesController < ApplicationController
       if @activity.save!
         redirect_to activities_path(@activity.id), notice: "新增活動成功！ 請繼續新增活動票種"
       else
+        @notice = current_user.notices.create(notices:flash[:notice])
         render :new
       end
     end
@@ -24,6 +25,7 @@ class ActivitiesController < ApplicationController
     def join
       @activity.activity_users.create if @activity
       redirect_to activities_path, notice: "報名完成！"
+      @notice = current_user.notices.create(notices:flash[:notice])
     end
     
     def edit

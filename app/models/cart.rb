@@ -1,7 +1,7 @@
 class Cart
-  attr_reader :items
   SessionKey = :cart7749
-
+  attr_reader :items
+  
   def initialize(items = [])
     @items = items
   end

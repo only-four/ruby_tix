@@ -1,0 +1,12 @@
+<div>
+  <% if !@bar_shown && @last_read_at && message.created_at > @last_read_at %>
+  <%# 註解！這邊是要做未讀通知的紅線，引入bar_shown使他不要重複render %>
+    <% @bar_shown = true %>
+    <div class="border-bottom border-danger"></div>
+  <% end %>
+
+  <div>
+    <div><%= message.user.name %>（<%= message.created_at.strftime("%T") %>）：</div>
+    <div><%= message.body %></div>
+  </div>
+</div>

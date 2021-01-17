@@ -12,7 +12,6 @@ class Order < ApplicationRecord
 
     event :pay do
       transitions from: :pending, to: :paid
-
       before do |args|
         self.transaction_id = args[:transaction_id]
         self.paid_at = Time.now
@@ -27,7 +26,7 @@ class Order < ApplicationRecord
       transitions from: :paid, to: :completed
     end
   end
-
+  
     # 產生訂單編號
   private
   def generate_ordernumber

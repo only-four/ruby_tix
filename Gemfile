@@ -17,7 +17,7 @@ gem 'turbolinks', '~> 5'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.7'
 # Use Redis adapter to run Action Cable in production
-# gem 'redis', '~> 4.0'
+gem 'redis', '~> 4.0'
 # Use Active Model has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
@@ -43,7 +43,7 @@ gem 'aasm', '~> 5.1', '>= 5.1.1'
 gem 'carrierwave', '~> 2.1'
 gem 'fog-aws', '~> 3.7'
 # cart/checkout for linepay
-gem 'faraday', '~> 1.1.0'
+gem 'faraday', '~> 1.3'
 # security
 gem 'omniauth-rails_csrf_protection', '~> 0.1.2'
 gem "nokogiri", ">= 1.11.0.rc4"
