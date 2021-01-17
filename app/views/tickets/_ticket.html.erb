@@ -15,13 +15,11 @@
       </div>
       <div class="text-left">
         <p class="pb-2 text-xs italic">Powered By</p>
-        <img src="https://ad-venture.org.uk/wp-content/uploads/2017/05/logo-placeholder.png"/>
+        <img src="/images/rubytix002.png"/>
       </div>
     </div>
     <div class="relative flex flex-col w-3/4">
-      <img src="https://picsum.photos/1024/450?random=1"/>
-      <%# <img src="/images/rubytix001.png" alt="ticket-img" class="h-full"> %>
-      
+      <img src="https://picsum.photos/1024/450?random=<%= ticket.id %>"/>      
       <div class="absolute p-1 bottom-24">
         <div class="flex flex-row px-4 py-2 text-xs font-bold text-red-800 bg-white rounded-md">
           <span class="mr-2 font-normal text-gray-500">主辦單位</span>
@@ -87,7 +85,7 @@
     <p class="font-bold text-lg md:text-3xl">Scan here to check in!</p>
   </div>
   <hr class="border-dashed border-2 border-gray-400"/>
-    <img src="https://picsum.photos/1024/450?random=1"/>
+    <img src="https://picsum.photos/1024/450?random=<%= ticket.id %>"/>
   <div class="py-2 px-4 flex flex-col text-sm md:text-2xl">
     <p class="self-start font-bold text-gray-500">活動開始：</p>
     <div class="flex text-sm justify-between my-2 md:text-xl">
@@ -118,7 +116,7 @@
   <hr class="border-gray-400"/>
   <div class="py-2 px-4 flex flex-col text-sm md:text-2xl">
     <p class="self-start font-bold text-gray-500">Powered By</p>
-    <img class="mx-auto my-2" src="https://ad-venture.org.uk/wp-content/uploads/2017/05/logo-placeholder.png"/>
+    <img class="mx-auto my-2" src="/images/rubytix002.png"/>
   </div>
   </div>
 </div>  

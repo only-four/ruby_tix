@@ -72,10 +72,8 @@ Rails.application.routes.draw do
       post :attend_event
       get :attend_event_result      
     end
-    collection do
-      get :my_tickets
-    end
   end
+  get "/tickets/my", to: "tickets#my_tickets"
 
   resources :qr_codes, only: [:create] do
     collection do

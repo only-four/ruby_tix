@@ -1,18 +1,13 @@
 <div class="container text-center">
   <h3>活動名稱：<%= Activity.find(@attand_list_activity_id).title %></h3>
   <span>目前報到人數：<%= @qr_codes.count %>/ <%= Ticket.where(event: @attand_list_activity_id).count %> </span>
-  <ul>
-    <% @qr_codes.each.with_index(1) do |qr_code, index| %>
-      <li><%= "Scan #{index}: " %><%= link_to qr_code.data%></li>
-    <% end %>
-  </ul>
 </div>
 
 
   <div class="w-2/3 mx-auto">
     <div class="bg-white shadow-md rounded my-6">
       <table class="text-left w-full">
-        <thead>
+        <thead class="bg-gray-400">
           <tr>
             <th class="py-4 px-6 bg-grey font-bold uppercase text-sm border-b border-grey-light">參加者名單</th>
             <th class="py-4 px-6 bg-grey font-bold uppercase text-sm border-b border-grey-light">票號</th>
