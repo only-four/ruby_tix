@@ -1,5 +1,4 @@
 class PagesController < ApplicationController
-  before_action :allcategory
   def index
     @activities = Activity.all
     # @categories = Category.all
@@ -34,8 +33,4 @@ class PagesController < ApplicationController
   end
 
 
-  private
-  def allcategory
-    @categories = Category.all
-  end
 end
