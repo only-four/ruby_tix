@@ -1,6 +1,6 @@
 class ActivitiesController < ApplicationController
     # TODO：登入檢查
-    before_action :find_activity, only: [:join, :edit, :destroy, :show]
+    before_action :find_activity, only: [:join, :edit, :destroy, :update, :show]
 
     def index
       @activities = Activity.all
@@ -33,8 +33,6 @@ class ActivitiesController < ApplicationController
     end
     
     def update 
-      p params
-      @activity = Activity.find(params[:id])
       if @activity.update!(activity_params)
         redirect_to activities_path(@activity), notice: "資料更新成功!"      
       else
