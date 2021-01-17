@@ -26,9 +26,12 @@ class ActivitiesController < ApplicationController
       redirect_to activities_path, notice: "報名完成！"
     end
     
-    def edit; end
+    def edit
+      @categories = Category.all
+    end
     
-    def update
+    def update 
+      p params
       @activity = Activity.find(params[:id])
       if @activity.update!(activity_params)
         redirect_to activities_path(@activity), notice: "資料更新成功!"      
@@ -74,6 +77,7 @@ class ActivitiesController < ApplicationController
       :other_contact, 
       :limit,
       :image,
+      :category_id,
       ticket_types_attributes: [:id, :title, :content, :quantity, :sell_start, :sell_deadline, :price, :_destroy, :valid_at, :expire_at],
       address_attributes: [:location, :id, :_destroy]  )
   end 
