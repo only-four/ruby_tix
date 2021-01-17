@@ -1,6 +1,8 @@
 class PagesController < ApplicationController
+  before_action :allcategory
   def index
     @activities = Activity.all
+    # @categories = Category.all
   end
 
   def member
@@ -29,5 +31,11 @@ class PagesController < ApplicationController
     respond_to do |format|
       format.json {render json: @search_value}
     end
+  end
+
+
+  private
+  def allcategory
+    @categories = Category.all
   end
 end
