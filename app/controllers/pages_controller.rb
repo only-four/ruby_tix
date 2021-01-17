@@ -1,6 +1,7 @@
 class PagesController < ApplicationController
   def index
     @activities = Activity.all
+    # @categories = Category.all
   end
 
   def member
@@ -30,4 +31,6 @@ class PagesController < ApplicationController
       format.json {render json: @search_value}
     end
   end
+
+
 end

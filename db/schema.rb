@@ -73,7 +73,7 @@ ActiveRecord::Schema.define(version: 2021_01_14_084304) do
     t.integer "total_price", default: 0
     t.integer "activity_users_count"
     t.string "image"
-    t.string "state"
+    t.integer "category_id"
     t.string "activity"
     t.datetime "attend_in"
     t.index ["user_id"], name: "index_activities_on_user_id"
@@ -86,6 +86,12 @@ ActiveRecord::Schema.define(version: 2021_01_14_084304) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["activity_id"], name: "index_activity_users_on_activity_id"
     t.index ["user_id"], name: "index_activity_users_on_user_id"
+  end
+
+  create_table "categories", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "chatroom_users", force: :cascade do |t|

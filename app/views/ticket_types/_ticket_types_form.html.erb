@@ -1,6 +1,6 @@
   <div class="js-ticketType-form" id="accordion" new-ticket_types ="<%= form.object.new_record? %>" >
     <div class="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg mb-5 p-10">
-      <div class="nested-basic-info items-center flex justify-left">
+      <div class="items-center flex justify-left">
         <div class="nested-hidden-info" >
           <div class="flex">
             <div>
@@ -51,8 +51,9 @@
 
           <div class="items-center mt-3 grid grid-cols-6 gap-4">
             <%= link_to '#', data: { action: 'ticket-types-form#removeTicketType' } do %>
-              <div class= "flex items-center justify-center border-2 border-gray-600 rounded-md text-base font-medium  text-gray-600 hover:border-red-600 hover:text-red-600 hover:no-underline h-10  px-3">
-                刪除此張票券<i class="far fa-trash-alt new-ticket-delete-btn"></i>
+              <div class= "flex items-center justify-center border-2 rounded-md text-base font-medium  text-red-600 hover:border-red-600 hover:text-red-600 hover:no-underline h-10 px-4">
+                <p>刪除此張票卷</p>
+                <i class="far fa-trash-alt new-ticket-delete-btn"></i>
               </div>
             <% end %>
           </div>
@@ -60,4 +61,4 @@
         <%= form.hidden_field :_destroy %>
       </div>
     </div>
-  </div>
+  </div> 

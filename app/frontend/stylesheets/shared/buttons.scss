@@ -53,3 +53,59 @@
 .t-back-button:hover {
   @apply border-red-600 bg-gray-100 text-red-600 no-underline shadow-lg;
 }
+.t-form-create-btn {
+  flex: 1 1 auto;
+  margin: 5px;
+  padding: 10px;
+  text-align: center;
+  text-transform: uppercase;
+  transition: 0.5s;
+  background-size: 200% auto;
+  /* text-shadow: 0px 0px 10px rgba(0,0,0,0.2);*/
+  box-shadow: 0 0 20px #eee;
+  border-radius: 10px;
+}
+
+.t-form-create-btn:hover {
+  background-position: right center; /* change the direction of the change here */
+}
+
+.t-form-create-btn {
+  color: #fff;
+  background-image: linear-gradient(
+    to right,
+    #750000 0%,
+    #fda085 51%,
+    #f6d365 100%
+  );
+}
+.t-copy-area {
+  @apply flex items-center;
+}
+.t-copy-input {
+  background-color: rgba($color: #750000, $alpha: 0.7);
+  padding: 15px 30px;
+  font-size: 14px;
+  color: #000;
+}
+.t-copy-btn {
+  @apply flex;
+  background-color: #750000;
+  color: #fff;
+  padding: 15px 10px;
+  font-size: 14px;
+}
+.t-copy-btn:hover {
+  font-weight: 900;
+}
+.t-copy-text:hover {
+  text-decoration: none;
+  color: #fff;
+}
+.t-nav-category-btn {
+  background-color: #750000;
+  color: #fff;
+  margin: 0 2px;
+  padding: 10px;
+  border-radius: 5px;
+}

@@ -8,6 +8,7 @@
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
     <link href=’https://fonts.googleapis.com/css?family=Raleway' rel=’stylesheet’ type=’text/css’>
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+
     <!-- Google Tag Manager -->
     <script>
       (function(w,d,s,l,i){
@@ -20,24 +21,27 @@
     </script>
     <!-- End Google Tag Manager -->
   </head>
+
+
   <body>
     <!-- Google Tag Manager (noscript) -->
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KLBFCRB" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <!-- End Google Tag Manager (noscript) -->
     <div>
-      <%= render 'shared/navbar' %>
+      <%= render 'shared/navbar'%>
     </div>
     <div>
-      <section class="js-main-area w-full m-auto pt-20 pb-20 t-body">
-        <%= yield %>
+      <section class="js-main-area t-body">
         <%= notice %>
+        <%= yield %>
       </section>
-      <section class="">
+      <section>
         <%= render 'shared/float' %>
       </section>
     </div>
     <div class="m-auto bottom-0">
       <%= render 'shared/footer' %>
     </div>
+    <%# <script src="node_modules/swiper/swiper-bundle.min.js"></script> %>
   </body>
 </html>
