@@ -1,5 +1,5 @@
 class ActivitiesController < ApplicationController
-    # TODO：登入檢查
+    before_action :authenticate_user!
     before_action :find_activity, only: [:join, :edit, :destroy, :update, :show]
 
     def index
@@ -43,10 +43,6 @@ class ActivitiesController < ApplicationController
     def show
       @comment = @activity.comments.new
       @comments = @activity.comments.paginate(page: params[:page], per_page: 4).order(updated_at: :desc)
-      respond_to do |format|
-        format.html
-        format.js
-      end
     end
 
     def destroy

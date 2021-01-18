@@ -10,7 +10,8 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_01_14_084304) do
+ActiveRecord::Schema.define(version: 2021_01_17_082825) do
+
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -178,6 +179,7 @@ ActiveRecord::Schema.define(version: 2021_01_14_084304) do
     t.string "data"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "event"
   end
 
   create_table "roles", force: :cascade do |t|
@@ -188,6 +190,16 @@ ActiveRecord::Schema.define(version: 2021_01_14_084304) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["name", "resource_type", "resource_id"], name: "index_roles_on_name_and_resource_type_and_resource_id"
     t.index ["resource_type", "resource_id"], name: "index_roles_on_resource_type_and_resource_id"
+  end
+
+  create_table "seats", force: :cascade do |t|
+    t.string "seat_number"
+    t.integer "event"
+    t.boolean "available"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.integer "taken_by"
+    t.string "state"
   end
 
   create_table "ticket_types", force: :cascade do |t|
@@ -218,6 +230,7 @@ ActiveRecord::Schema.define(version: 2021_01_14_084304) do
     t.bigint "order_id"
     t.string "ticket_number"
     t.string "state"
+    t.integer "event"
     t.index ["order_id"], name: "index_tickets_on_order_id"
     t.index ["ticket_type_id"], name: "index_tickets_on_ticket_type_id"
   end

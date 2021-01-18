@@ -12,6 +12,7 @@ import 'bootstrap/dist/css/bootstrap.css'
 import 'jquery'
 import $ from 'jquery';
 window.$ = $
+import "chart.js"
 // import './qr_code_reader';
 import Swal from 'sweetalert2';
 window.Swal= Swal

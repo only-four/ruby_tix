@@ -60,7 +60,7 @@
 
         <div class="js-user-option  fixed mt-20 mr-100 hidden">
           <div class="border border-gray-900 bg-gray-100 hover:font-semibold px-3 py-2"><%= link_to '編輯會員資料', edit_registration_path(:user), class: "hover:no-underline hover:text-gray-900" %></div>
-          <div class="border border-gray-900 bg-gray-100 hover:font-semibold px-3 py-2"><%= link_to '票券管理', my_tickets_tickets_path, class: "hover:no-underline hover:text-gray-900" %></div>
+          <div class="border border-gray-900 bg-gray-100 hover:font-semibold px-3 py-2"><%= link_to '票券管理', tickets_my_path, class: "hover:no-underline hover:text-gray-900" %></div>
           <div class="border border-gray-900 bg-gray-100 hover:font-semibold px-3 py-2"><%= link_to '訂單管理', orders_path, class: "hover:no-underline hover:text-gray-900" %></div>
           <div class="border border-gray-900 bg-gray-100 hover:font-semibold px-3 py-2"><%= link_to '活動管理', activities_path, class: "hover:no-underline hover:text-gray-900" %></div>
           <div class="border border-gray-900 bg-gray-100 hover:font-semibold px-3 py-2"><%= link_to '會員登出', destroy_user_session_path, :method => :delete , class: "hover:no-underline hover:text-gray-900" %></div>

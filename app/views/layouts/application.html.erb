@@ -28,11 +28,13 @@
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KLBFCRB" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <!-- End Google Tag Manager (noscript) -->
     <div>
+      <%= render 'shared/navbar' %>
+      <%= render 'shared/notice' if notice %>
       <%= render 'shared/navbar'%>
     </div>
     <div>
+      <section class="js-main-area w-full m-auto pt-20 pb-20 t-body">
       <section class="js-main-area t-body">
-        <%= notice %>
         <%= yield %>
       </section>
       <section>
