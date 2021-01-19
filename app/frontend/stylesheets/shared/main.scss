@@ -31,19 +31,15 @@ html {
   right: 50px;
   bottom: 50px;
   z-index: 100;
+  color: #750000;
+}
+.t-float-icon {
+  border: none;
 }
 
-// .section {
-//   display: none;
-
-//   @media screen and (min-width: 768px) {
-//     padding: 4rem;
-//   }
-
-//   @supports (display: grid) {
-//     display: block;
-//   }
-// }
+.t-float-icon:hover {
+  color: #000;
+}
 
 .t-grid {
   display: grid;
@@ -77,7 +73,7 @@ html {
   // padding: 10px;
   grid-column-start: auto;
   grid-row-start: auto;
-  background-color: rgb(194, 152, 110);
+  background-color: #444;
   background-size: cover;
   background-position: center;
   box-shadow: -2px 2px 10px 0px rgba(#444, 0.4);
@@ -136,11 +132,12 @@ html {
   justify-content: center;
 }
 .t-item-detail {
-  padding: 0 10px;
+  padding: 5px 10px;
 }
 .t-item-date {
   @apply flex;
   @apply items-center;
+  font-size: 16px;
 }
 .t-item-date :first-child {
   margin-right: 3px;

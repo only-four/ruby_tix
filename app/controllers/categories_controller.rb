@@ -1,4 +1,6 @@
 class CategoriesController < ApplicationController
+  before_action :admin_identify
+
   def index
     @categories = Category.all
   end
@@ -38,6 +40,10 @@ class CategoriesController < ApplicationController
   private
   def category_params
     params.require(:category).permit(:id, :name)
+  end
+
+  def admin_identify
+    redirect_to root_path unless current_user.has_role? :admin
   end
 
 end
