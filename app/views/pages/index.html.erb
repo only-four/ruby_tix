@@ -23,6 +23,10 @@
   <div class="swiper-button swiper-button-prev"></div>
 </div>
 
+    <div class="flex justify-between mt-10">
+      <%= link_to '回到活動列表', activities_path, class: "t-back-button flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium h-10" %>
+      <%= link_to "新增活動", new_activity_path, class: "t-create-button-text" %>
+    </div>
 
 <div class="w-full z-20 ">
 
@@ -53,7 +57,6 @@
               <p class="truncate"><%= activity.brief %></p>
             </div>
 
-
         </div>
       <% end %>     
     <% end %>
@@ -61,17 +64,18 @@
 
 </div>
 <script>
-      var swiper = new Swiper('.swiper-container', {
-      slidesPerView: 1,
-      spaceBetween: 30,
-      loop: true,
-      pagination: {
-        el: '.swiper-pagination',
-        clickable: true,
-      },
-      navigation: {
-        nextEl: '.swiper-button-next',
-        prevEl: '.swiper-button-prev',
-      },
-});
+    var swiper = new Swiper('.swiper-container', {
+    slidesPerView: 1,
+    spaceBetween: 30,
+    loop: true,
+    pagination: {
+      el: '.swiper-pagination',
+      clickable: true,
+    },
+    navigation: {
+      nextEl: '.swiper-button-next',
+      prevEl: '.swiper-button-prev',
+    },
+  });
 </script>
+

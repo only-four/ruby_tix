@@ -7,10 +7,8 @@ class Activity < ApplicationRecord
   # has_many :tickets
   has_many :ticket_types, dependent: :destroy
   belongs_to :creator, foreign_key: :user_id, class_name: 'User'
-  belongs_to :category
+  # belongs_to :category
   
-
-
   validates :hostname, :title, :content, :begin_datetime, :finish_datetime, :phone, :email, :limit, presence: true
 
   # ticket_type 寫在activity頁面 巢狀表單

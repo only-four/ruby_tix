@@ -56,6 +56,7 @@
                     <td><%= activity.finish_datetime&.strftime("%Y/%m/%d") %></td>
                     <td><%= activity.location %></td>
                     <td><%= activity.activity_users.size %></td>
+                    <%#  @qr_codes.count %>
                     <td class="flex justify-around">
                         <%= link_to '所有票券', activity_ticket_types_path(activity), class: "t-edit-button"%>
                         <%= link_to '編輯', edit_activity_path(activity), class: "t-edit-button"%>

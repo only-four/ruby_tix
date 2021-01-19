@@ -27,7 +27,7 @@
         <img class="mr-0.5" src="https://static-exp1.licdn.com/sc/h/d310t2g24pvdy4pt1jkedo4yb"/>
         <img class="mr-0.5" src="https://static-exp1.licdn.com/sc/h/5thsbmikm6a8uov24ygwd914f"/>
         <img class="mr-0.5" src="https://static-exp1.licdn.com/sc/h/7fx9nkd7mx8avdpqm5hqcbi97"/>
-        <span class="ml-1">comment no. <%= comment.id %> </span>
+        <span class="ml-1">留言數：<%= comment.id %> </span>
         <%= (link_to '刪除', activity_comment_path(@activity, comment), remote: true, method: "delete", class: "js-removeBtn", data: { confirm: "確認刪除？" }) if current_user == comment.user %>
       </div>
 
