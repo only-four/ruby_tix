@@ -1,3 +1,33 @@
+<div class="swiper-container mt-20">
+  <div class="swiper-wrapper">
+    <div class="swiper-slide t-slide-img">
+      <img src="/images/rubytix010.png">
+    </div>
+    <div class="swiper-slide">
+      <img src="/images/callback.png">
+    </div>
+    <div class="swiper-slide">
+      <img src="/images/shoppingdog.png">
+    </div>
+    <div class="swiper-slide">
+      <img src="/images/sociview.png">
+    </div>
+    <div class="swiper-slide">
+      <img src="/images/ubayeats.png">
+    </div>
+  </div>
+  <!-- Add Pagination -->
+  <div class="swiper-pagination"></div>
+  <!-- Add Arrows -->
+  <div class="swiper-button swiper-button-next"></div>
+  <div class="swiper-button swiper-button-prev"></div>
+</div>
+
+    <div class="flex justify-between mt-10">
+      <%= link_to '回到活動列表', activities_path, class: "t-back-button flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium h-10" %>
+      <%= link_to "新增活動", new_activity_path, class: "t-create-button-text" %>
+    </div>
+
 <div class="w-full z-20 ">
 
   <div class="t-grid t-activity-area">
@@ -15,7 +45,7 @@
 
             <div class="flex justify-between t-item-detail">
               <div class="item__details">
-                <h5><%= activity.title %></h5>
+                <h5 ><%= activity.title %></h5>
               </div>
               <div class="t-item-date">
                 <div class="t-date-icon"><i class="far fa-calendar-alt fa-2x"></i></div>
@@ -27,10 +57,25 @@
               <p class="truncate"><%= activity.brief %></p>
             </div>
 
-
         </div>
       <% end %>     
     <% end %>
   </div>
 
 </div>
+<script>
+    var swiper = new Swiper('.swiper-container', {
+    slidesPerView: 1,
+    spaceBetween: 30,
+    loop: true,
+    pagination: {
+      el: '.swiper-pagination',
+      clickable: true,
+    },
+    navigation: {
+      nextEl: '.swiper-button-next',
+      prevEl: '.swiper-button-prev',
+    },
+  });
+</script>
+

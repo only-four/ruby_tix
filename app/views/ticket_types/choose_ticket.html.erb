@@ -31,7 +31,11 @@
           <div class="js-ticket-detail bg-gray-100 hidden">
             <h2>票券資訊：</h2>
             <%= ticket.content %>
-          </div>         
+          </div> 
+            <%= content_tag :span, '銷售中', class:"p-2 bg-blue-400 textg-blue-800 rounded-lg" if ticket.pending? %>
+            <%= content_tag :span, '銷售中', class:"p-2 bg-teal-400 text-teal-800 rounded-lg" if ticket.on_sale? %>
+            <%= content_tag :span, '售完', class: "p-2 bg-yellow-400 text-yellow-800 rounded-lg" if ticket.fully_booked? %>
+            <%= content_tag :span, '停止販售', class:"p-2 bg-red-400 text-red-800 rounded-lg" if ticket.sale_closed? %>        
         </div>      
       </div>
   </div>

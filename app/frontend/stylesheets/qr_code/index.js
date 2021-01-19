@@ -1,0 +1,1 @@
+import "./qr_code_scanner.css"

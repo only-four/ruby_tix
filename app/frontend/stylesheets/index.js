@@ -7,3 +7,5 @@ import "trix/dist/trix.css";
 import "./navbar"
 import "./shared"
 import "./tickets"
+import "./seats"
+import "./qr_code"

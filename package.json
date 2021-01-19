@@ -10,10 +10,12 @@
     "@rails/webpacker": "4.3.0",
     "@zxing/library": "^0.18.3",
     "bootstrap": "4.5.3",
+    "chart.js": "^2.9.4",
     "popper.js": "^1.16.1",
     "qrcode": "^1.4.4",
     "stimulus": "^2.0.0",
     "sweetalert2": "^10.13.0",
+    "swiper": "^6.4.5",
     "tailwindcss": "1.7.6",
     "trix": "^1.2.0",
     "turbolinks": "^5.2.0",
@@ -22,6 +24,7 @@
   "version": "0.1.0",
   "devDependencies": {
     "jquery": "^3.5.1",
+    "prettier": "2.2.1",
     "webpack-dev-server": "^3.11.0"
   },
   "description": "This README would normally document whatever steps are necessary to get the application up and running.",
