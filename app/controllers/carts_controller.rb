@@ -6,6 +6,7 @@ class CartsController < ApplicationController
   end
 
   def destroy
+    byebug
     session[Cart::SessionKey] = nil
     redirect_to cart_path, notice: '購物車已清空'
     @notice = current_user.notices.create(notices:flash[:notice])

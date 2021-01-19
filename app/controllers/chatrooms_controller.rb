@@ -7,6 +7,7 @@ class ChatroomsController < ApplicationController
   end
 
   def show
+    @chatrooms = Chatroom.all
     @chatroom_user = current_user.chatroom_users.find_by(chatroom: @chatroom)
     @last_read_at = @chatroom_user&.last_read_at || @chatroom.created_at
     @chatroom_user&.touch(:last_read_at)

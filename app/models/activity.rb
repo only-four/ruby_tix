@@ -20,31 +20,31 @@ class Activity < ApplicationRecord
     expired: 3
    }
 
-   aasm column: :state do
-    state :prepare, initial: true
-    state :ongoing, :expired, :canceled, :deleted
+  #  aasm column: :state do
+  #   state :prepare, initial: true
+  #   state :ongoing, :expired, :canceled, :deleted
 
-    event :ongo do
-      transitions from: :prepare, to: :ongoing
-      before do |args|
-        self.transaction_id = args[:transaction_id]
-        self.begin_datetime = Time.now
-      end
-    end
+  #   event :ongo do
+  #     transitions from: :prepare, to: :ongoing
+  #     before do |args|
+  #       self.transaction_id = args[:transaction_id]
+  #       self.begin_datetime = Time.now
+  #     end
+  #   end
 
-    event :expire do
-      transitions from: :ongoing, to: :expired
-    end
+  #   event :expire do
+  #     transitions from: :ongoing, to: :expired
+  #   end
 
-    event :cancel do
-      transitions from: :ongoing, to: :canceled
-    end
+  #   event :cancel do
+  #     transitions from: :ongoing, to: :canceled
+  #   end
 
-    event :delete do
-      transitions from: [:prepare, :expired], to: :deleted
-    end
+  #   event :delete do
+  #     transitions from: [:prepare, :expired], to: :deleted
+  #   end
 
-  end   
+  # end   
 
   
 

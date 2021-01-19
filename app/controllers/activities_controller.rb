@@ -57,7 +57,6 @@ class ActivitiesController < ApplicationController
       :content,
       # :user,
       # :user_id,
-      :period,
       :title,
       :begin_datetime,
       :finish_datetime,

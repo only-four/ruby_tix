@@ -8,7 +8,7 @@
             <table class="min-w-full divide-y divide-gray-200">
               <thead class="t-thead text-center">
                 <tr>
-                  <td  scope="col" class="px-6 py-3 text-md font-normal text-gray-100 uppercase tracking-wider text-center">活動編號</td>
+                  <td  scope="col" class="px-6 py-3 text-md font-normal text-gray-100 uppercase tracking-wider text-center">活動名稱</td>
                   <td  scope="col" class="px-6 py-3 text-md font-normal text-gray-100 uppercase tracking-wider text-center">活動票券名稱</td>
                   <td  scope="col" class="px-6 py-3 text-md font-normal text-gray-100 uppercase tracking-wider text-center">數量</td>
                   <td  scope="col" class="px-6 py-3 text-md font-normal text-gray-100 uppercase tracking-wider text-center">單價</td>
@@ -20,7 +20,7 @@
               <tbody>
                 <% current_cart.items.each_with_index do |item, index| %>
                   <tr class= "px-6 py-3 text-center">
-                    <td><%= index + 1 %></td><
+                    <td><%= item.ticket_type.activity.title %></td>
                     <td><%= item.ticket_type.title %></td>
                     <td><%= item.quantity %></td>
                     <td><%= item.ticket_type.price %></td>
@@ -29,8 +29,9 @@
                   </tr>
                 <% end %>
                   <tr class= "px-6 py-3 text-center">
-                    <td>總計</td>
                     <td></td>
+                    <td></td>
+                    <td><%= current_cart.total_quantity %></td>
                     <td></td>
                     <td><%= current_cart.total_price %></td>
                   </tr>
@@ -46,7 +47,7 @@
       <%= link_to '結帳', checkout_cart_path , class: "t-check-button actions group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-gray-100 bg-red-600 hover:border-red-600 hover:bg-gray-100 hover:text-red-600 hover:no-underline	hover:shadow-lg hover:border-transparent" %>
     </div>
 
-      <%= button_to "清空購物車?", cart_path, method: :'delete', class: "t-delete-button actions group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md bg-gray-100 text-red-700 border-red-700" %>
+      <%= button_to "清空購物車", cart_path, method: :'delete', class: "t-delete-button actions group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md bg-gray-100 text-red-700 border-red-700" %>
+      <%= link_to '回到活動列表', activities_path, class: "t-delete-button actions group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md bg-gray-100 text-red-700 border-red-700" %>
   </div>
 </div>
-<div><%= link_to '回到活動列表', activities_path, class: "t-back-button" %></div>

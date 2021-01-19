@@ -1,29 +1,55 @@
-<h1>結帳</h1>
+<h2 class="mt-6 text-center text-4xl font-extrabold text-gray-900 mb-5 extrabold">結帳</h2>
 <%= render "cart"%>
-<%= if @order.errors.full_messages do |message| %>
-  <%= message %>
+  <%= if @order.errors.full_messages do |message| %>
+    <%= message %>
+  <% end %>
 <% end %>
-<% end %>
-<%= form_with(model: @order) do |form| %>
-  <div>
-    請填入票券使用者資料
-    <div class="items-center mt-3">
-      <%# TODO:做一個checkbox，打勾後可以直接帶入使用者資料 %>
-      <%= form.check_box :period %>
-      <%= label :period, "使用者與購買者相同請打勾" %>
+
+<div class="container">
+  <div class="items-center justify-center px-2 sm:px-6 lg:px-8">
+    <div class="flex flex-col mb-10">
+      <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
+        <div class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
+          <div class="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
+            <div class="min-w-full divide-y divide-gray-200">
+
+              <div>
+                <%= form_with(model: @order) do |form|%>
+                  <div class="flex flex-col items-center text-white">
+                    <div colspan="2" class="bg-red-900 w-full text-center ">請填入票券使用者資料</th>
+                  </div>
+                
+                <div class="table-row-group">
+
+                  <div class= "my-5 px-2 flex align-middle">
+                    <div scope="col" class="w-1/2 px-1 text-right text-lg font-normal text-gray-900 uppercase tracking-wider">
+                      <%= form.label:姓名：, class:"mb-0" %>
+                    </div>
+                    <div scope="col"><%= form.text_field:participant,value: current_user.name, class: "appearance-none rounded-none relative block border border-gray-300 placeholder-gray-500 text-gray-900 rounded-md bg-gray-100 focus:bg-white focus:z-10 lg:text-lg" %>
+                    </div>
+                  </div>
+
+                  <div class= "my-5 px-2 flex align-middle">
+                  <div scope="col" class="w-1/2 px-1 text-right text-lg font-normal text-gray-900 uppercase tracking-wider">
+                    <%= form.label:電子信箱：, class:"mb-0" %>
+                  </div>
+                  <div scope="col"><%= form.text_field:address,value: current_user.name, class: "appearance-none rounded-none relative block border border-gray-300 placeholder-gray-500 text-gray-900 rounded-md bg-gray-100 focus:bg-white focus:z-10 lg:text-lg" %>
+                  </div>
+                </div>
+                
+                  <div class="flex justify-center mb-3">
+                    <div scope="col" class="w-1/2 mr-5 text-right text-lg font-normal text-gray-900 uppercase tracking-wider">
+                      <%= form.submit '確認結帳', class: "bg-red-600 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-full" %>
+                    </div>
+                  </div>
+
+                </div>
+
+              <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
-  </div>
-  <div>
-    <%= form.label:姓名 %>
-    <%= form.text_field:participant %>
-  </div>
-  <div>
-    <%= form.label:電話 %>
-    <%= form.text_field:tel %>
-  </div>
-  <div>
-    <%= form.label:地址 %>
-    <%= form.text_field:address %>
-  </div>
-  <%= form.submit '確認結帳', class: "t-create-button"%>
-<% end %>
+</div>
+</div>
