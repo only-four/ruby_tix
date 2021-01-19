@@ -1,6 +1,6 @@
 class QrCodesController < ApplicationController
   before_action :authenticate_user!
-  before_action :host?
+  # before_action :host?
   before_action :set_qr_data, only: :create
 
   def attand_list
@@ -32,10 +32,9 @@ class QrCodesController < ApplicationController
     @attand_list_activity_id = params[:activity_id]
   end
 
-  def manual_attand  
+  def manual_attand
     QrCode.create(data: params[:unAttandData])
     Ticket.find_by(ticket_number: params[:unAttandData]).update(state:"used")
-    
   end
 
   private

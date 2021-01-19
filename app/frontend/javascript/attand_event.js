@@ -14,7 +14,8 @@ document.addEventListener('DOMContentLoaded', function() {
           
         },
         error: function(data) {}
-      }) 
+      })
+      location.reload()
     })    
   })
 })
