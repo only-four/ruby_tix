@@ -72,6 +72,8 @@ Rails.application.routes.draw do
     get "/choose", to: "ticket_types#choose_ticket"
   end
 
+  resources :categories
+
   resources :activities_user
 
   resources :tickets, only: [:create] do
