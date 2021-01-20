@@ -30,6 +30,8 @@ Rails.application.routes.draw do
     end
   end 
 
+  resource :favorite, only: [:index, :create]
+
   devise_for :users, 
              :controllers => {
                :registrations => "users/registrations", 

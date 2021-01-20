@@ -80,6 +80,13 @@ ActiveRecord::Schema.define(version: 2021_01_19_044500) do
     t.index ["user_id"], name: "index_activities_on_user_id"
   end
 
+  create_table "activity_favorites", force: :cascade do |t|
+    t.integer "activity_id"
+    t.integer "favorite_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "activity_users", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.bigint "activity_id", null: false
@@ -129,6 +136,13 @@ ActiveRecord::Schema.define(version: 2021_01_19_044500) do
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "ticket_id"
     t.index ["ticket_id"], name: "index_event_attandances_on_ticket_id"
+  end
+
+  create_table "favorites", force: :cascade do |t|
+    t.string "title"
+    t.integer "user_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "messages", force: :cascade do |t|
@@ -248,6 +262,7 @@ ActiveRecord::Schema.define(version: 2021_01_19_044500) do
     t.string "provider"
     t.string "uid"
     t.string "image"
+    t.integer "favorite_id"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["fb_uid"], name: "index_users_on_fb_uid"
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
