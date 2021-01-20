@@ -3,9 +3,9 @@
   <%# 第一步：活動基本資訊 %>
   <div class="container my-10">
     <div class="items-center justify-center px-2 sm:px-6 lg:px-8 border-2">
-      <div class="act_banner my-2 ">
-        <%= f.label :活動顯示圖片 ,class: "border-2 " %><br />
-        <%= "此圖片會顯示於活動頁面，和主頁以供瀏覽（建議大小：1200x760px ??? ）" %><br />
+      <div class="act_banner my-2">
+        <%= f.label :活動顯示圖片 ,class: "border-2" %><br />
+        <%= "此圖片會顯示於活動頁面，和主頁以供瀏覽（圖片大小限制：1200x760px）" %><br />
         <%= f.file_field :image, id: :activity_image %>
         <%= image_tag activity.image_url if @activity.image_url.present? %>
       </div>
@@ -26,9 +26,9 @@
             <% end %>  
           </thead>
         </table>
-    <div class="overflow-hidden border-b border-gray-200 sm:rounded-lg mb-5 p-10">
+    <div class="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg mb-5 p-10">
       <div class="items-center flex justify-left">
-        <div class="form-group">
+        <div class="form-group m-auto">
           <div class="hostname my-2">
             <%= f.label :hostname, "主辦單位" %>                  
             <%= f.text_field :hostname, class: "appearance-none rounded-none relative border border-gray-300 placeholder-gray-500 text-gray-900 rounded-md bg-gray-100 focus:bg-white focus:z-10 sm:text-sm mx-4 px-3 py-2 w-2.5" %>
@@ -39,12 +39,12 @@
           </div>
           <div class="act_beginTime my-2">
             <%= f.label :begin_datetime, "開始時間" %>
-            <%= f.date_field :begin_datetime, class: "appearance-none rounded-none relative border border-gray-300 placeholder-gray-500 text-gray-900 rounded-md bg-gray-100 focus:bg-white focus:z-10 sm:text-sm mx-4 pl-3 py-2" %>
+            <%= f.date_field :begin_datetime, class: "appearance-none rounded-none relative border border-gray-300 placeholder-gray-500 text-gray-900 rounded-md bg-gray-100 focus:bg-white focus:z-10 sm:text-sm ml-4 pl-3 py-2" %>
             <%= f.time_select :finish_datetime, {:minute_step => 30}, class: "appearance-none rounded-none relative border border-gray-300 placeholder-gray-500 text-gray-900 rounded-md bg-gray-100 focus:bg-white focus:z-10 sm:text-sm px-3 py-2" %>
           </div>
           <div class="act_finishTime my-2">
             <%= f.label :finish_datetime, "結束時間" %>
-            <%= f.date_field :finish_datetime, class: "appearance-none rounded-none relative border border-gray-300 placeholder-gray-500 text-gray-900 rounded-md bg-gray-100 focus:bg-white focus:z-10 sm:text-sm mx-4 pl-3 py-2" %>
+            <%= f.date_field :finish_datetime, class: "appearance-none rounded-none relative border border-gray-300 placeholder-gray-500 text-gray-900 rounded-md bg-gray-100 focus:bg-white focus:z-10 sm:text-sm ml-4 pl-3 py-2" %>
             <%= f.time_select :finish_datetime, {:minute_step => 30}, class: "appearance-none rounded-none relative border border-gray-300 placeholder-gray-500 text-gray-900 rounded-md bg-gray-100 focus:bg-white focus:z-10 sm:text-sm px-3 py-2" %>
           </div> 
           <div class="act_location my-2">
@@ -55,8 +55,8 @@
             <%= f.text_field :location, class: "appearance-none rounded-none relative border border-gray-300 placeholder-gray-500 text-gray-900 rounded-md bg-gray-100 focus:bg-white focus:z-10 sm:text-sm mx-4 px-3 py-2 w-1/2" %>
           </div>
           <div class="act_location my-2">
-            <%= f.label :location_guide, "活動地點指引" %>
-            <%= f.text_field :location_guide, placeholder: "請說明如何到達該活動地點，如：西門捷運站5號出口，出站後直走約五分鐘，於214巷右轉即可見到「OOO」招牌", class: "appearance-none rounded-none relative border border-gray-300 placeholder-gray-500 text-gray-900 rounded-md bg-gray-100 focus:bg-white focus:z-10 sm:text-sm mx-4 px-3 py-2 w-4/6 h-300" %>
+            <%= f.label :location_guide, "活動地點指引", class:"block" %>
+            <%= f.text_field :location_guide, placeholder: "請說明如何到達該活動地點，如：西門捷運站5號出口，出站後直走約五分鐘，於214巷右轉即可見到「OOO」招牌", class: "appearance-none rounded-none relative border border-gray-300 placeholder-gray-500 text-gray-900 rounded-md bg-gray-100 focus:bg-white focus:z-10 sm:text-sm mx-4 px-3 py-2 w-6/6 h-300 block" %>
           </div>
           <div class="act_content my-2">
             <%= f.label :content, "活動說明" %>
@@ -116,7 +116,7 @@
         </table>
         <div class="overflow-hidden border-b border-gray-200 sm:rounded-lg mb-5 p-10">
           <div class="items-center flex justify-left">
-            <div class="act_contact">
+            <div class="act_contact m-auto">
               <div class="act_phone my-2">
                 <%= f.label :phone, "電話" %>
                 <%= f.phone_field :phone, class: "appearance-none rounded-none relative border border-gray-300 placeholder-gray-500 text-gray-900 rounded-md bg-gray-100 focus:bg-white focus:z-10 sm:text-sm mx-4 px-3 py-2 w-2.5" %>
@@ -156,7 +156,7 @@
           <thead class="t-thead h-10">
             <%= fields_for :tickets do |tickets_fields| %>
               <%= f.hidden_field :user_id, value: current_user.id %>
-              <tr class= "px-6 py-3 text-center text-2xl h-20">
+              <tr class= "px-6 pt-3 text-center text-2xl h-20">
                 <th colspan="4">第三步：新增票券</th>
               </tr>
           </thead>
@@ -179,7 +179,7 @@
       <div data-action = "click->ticket-types-form#addTicketType" data-ticket-types-form-target="addBtn" class="nested-add-btn">
         <%= link_to '#' do %>
           <div class= "flex items-center justify-center border-2 rounded-md text-base font-medium text-gray-700 hover:no-underline h-10 col-start-2 col-span-4 shadow overflow-hidden border-b border-gray-200 hover:bg-gray-200 hover:text-gray-800"><i class="fas fa-plus-circle"></i>
-            <p class="hover:no-underline">新增票種</p>
+            <p class="hover:no-underline ml-2">新增票種</p>
           </div>          
         <% end %>
       </div>
@@ -192,8 +192,10 @@
 <% end %>
 <% end %>
 
-<div style='width: 800px;'>  
-  <div id="map" style='width: 800px; height: 400px;'></div>  
+<%# <div style='width: 800px;'>  
+  <div id="map" style='width: 800px; height: 400px;'>
+  <div class="bg-red-500"></div>
+  </div>  
 </div>  
 
 <script type="text/javascript">  
@@ -213,5 +215,6 @@
     handler.bounds.extendWith(markers);  
     handler.fitMapToBounds();  
   });  
-</script>
+</script> %>
+
 
