@@ -1,6 +1,6 @@
 import "./user"
 import "./chatbox"
-// import "./comment"
+import "./comment"
 // import "./ticket_types"
 import "./search"
 import "./qr_code"
