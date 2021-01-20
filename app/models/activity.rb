@@ -1,6 +1,8 @@
 class Activity < ApplicationRecord
   include AASM  
   has_rich_text :content
+  has_rich_text :notice
+  has_rich_text :brief
   has_many :activity_users, dependent: :destroy
   has_many :users, through: :activity_users 
   has_many :comments, dependent: :destroy
