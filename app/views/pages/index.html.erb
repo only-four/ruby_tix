@@ -1,35 +1,3 @@
-<div class="swiper-container mt-20">
-  <div class="swiper-wrapper">
-    <div class="swiper-slide t-slide-img">
-      <img src="/images/A.jpg">
-    </div>
-    <div class="swiper-slide">
-      <img src="/images/B.png">
-    </div>
-    <div class="swiper-slide">
-      <img src="/images/C.png">
-    </div>
-    <div class="swiper-slide">
-      <img src="/images/D.png">
-    </div>
-    <div class="swiper-slide">
-      <img src="/images/E.png">
-    </div>
-    <div class="swiper-slide">
-      <img src="/images/F.png">
-    </div>
-    <div class="swiper-slide">
-      <img src="/images/G.png">
-    </div>
-
-  </div>
-
-  <!-- Add Arrows -->
-  <div class="swiper-button swiper-button-next"></div>
-  <div class="swiper-button swiper-button-prev"></div>
-</div>
-
-
 <div class="w-full z-20 ">
 
   <div class="t-grid t-activity-area">
@@ -47,7 +15,7 @@
 
             <div class="flex justify-between t-item-detail">
               <div class="item__details">
-                <h5><%= activity.title %></h5>
+                <h5>【<%= activity.title %>】</h5>
               </div>
               <div class="t-item-date">
                 <div class="t-date-icon"><i class="far fa-calendar-alt"></i></div>
@@ -56,7 +24,7 @@
             </div>
           
             <div class="t-item-detail">
-              <p class="truncate"><%= activity.brief %></p>
+              <p class="t-truncate"><%= activity.brief %></p>
             </div>
 
 

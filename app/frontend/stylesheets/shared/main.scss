@@ -69,11 +69,12 @@ html {
   flex-direction: column;
   justify-content: flex-end;
   box-sizing: border-box;
-  color: #fff;
+
+  background-color: #48463e;
   // padding: 10px;
   grid-column-start: auto;
   grid-row-start: auto;
-  background-color: #444;
+  // background-color: #444;
   background-size: cover;
   background-position: center;
   box-shadow: -2px 2px 10px 0px rgba(#444, 0.4);
@@ -130,25 +131,40 @@ html {
   width: 280px;
   padding: 10px;
   justify-content: center;
+  background-color: #48463e;
+  // border-radius: 20px;
 }
 .t-item-detail {
   padding: 5px 10px;
 }
+.t-item-detail h5 {
+  color: #cb594d;
+  font-weight: 600;
+}
 .t-item-date {
   @apply flex;
   @apply items-center;
+  color: #ddd;
   font-size: 16px;
 }
 .t-item-date :first-child {
   margin-right: 3px;
+}
+.t-truncate,
+.t-truncate:hover {
+  color: #ddd;
 }
 .t-float-icon {
   z-index: 20;
 }
 .t-footer {
   @apply px-10;
-  background-color: rgb(228, 226, 226);
+  background-color: #ddd;
 }
 .t-footer-title {
   color: #750000;
+}
+.t-footer-copyright {
+  background-color: #444;
+  color: #ddd;
 }
