@@ -81,6 +81,8 @@ Rails.application.routes.draw do
     end    
   end
 
+  resources :categories
+
   resources :activities_user
 
   resources :tickets, only: [:create] do

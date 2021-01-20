@@ -1,1 +1,1 @@
-import "./qr_code_scanner.css"
+import "./qr_code_scanner"

@@ -1,8 +1,8 @@
 <div class="container">
   <%= simple_form_for @activity do |f|%>
     <div class="">
-      <%= image_tag @activity&.image_url %>
-<%#= image_tag @activity.image_url if @activity.image_url.present? %>
+      <%#= image_tag @activity&.image_url %>
+<%= image_tag @activity.image_url if @activity.image_url.present? %>
     </div>
 
     <% if @activity %>
