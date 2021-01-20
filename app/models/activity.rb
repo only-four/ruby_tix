@@ -11,7 +11,7 @@ class Activity < ApplicationRecord
   belongs_to :creator, foreign_key: :user_id, class_name: 'User'
   # belongs_to :category
   
-  validates :hostname, :title, :content, :begin_datetime, :finish_datetime, :phone, :email, :limit, presence: true
+  # validates :hostname, :title, :content, :begin_datetime, :finish_datetime, :phone, :email, :limit, presence: true
 
   # ticket_type 寫在activity頁面 巢狀表單
   accepts_nested_attributes_for :ticket_types, allow_destroy: true, reject_if: :all_blank
