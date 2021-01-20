@@ -56,7 +56,7 @@
           </div>
           <div class="act_location my-2">
             <%= f.label :location_guide, "活動地點指引" %>
-            <%= f.text_field :location_guide, placeholder: "請說明如何到達該活動地點，如：西門捷運站5號出口，出站後直走約五分鐘，於214巷右轉即可見到「OOO」招牌", class: "appearance-none rounded-none relative border border-gray-300 placeholder-gray-500 text-gray-900 rounded-md bg-gray-100 focus:bg-white focus:z-10 sm:text-sm mx-4 px-3 py-2 w-1/2" %>
+            <%= f.text_field :location_guide, placeholder: "請說明如何到達該活動地點，如：西門捷運站5號出口，出站後直走約五分鐘，於214巷右轉即可見到「OOO」招牌", class: "appearance-none rounded-none relative border border-gray-300 placeholder-gray-500 text-gray-900 rounded-md bg-gray-100 focus:bg-white focus:z-10 sm:text-sm mx-4 px-3 py-2 w-4/6 h-300" %>
           </div>
           <div class="act_content my-2">
             <%= f.label :content, "活動說明" %>
@@ -68,7 +68,7 @@
           </div>
           <div class="act_link my-2">
             <%= f.label :link, "相關連結" %>
-            <%= f.url_field :link, placeholder: "可加上相關連結，如網站或是社群帳號，讓使用者能更瞭解此活動", class: "appearance-none rounded-none relative border border-gray-300 placeholder-gray-500 text-gray-900 rounded-md bg-gray-100 focus:bg-white focus:z-10 sm:text-sm mx-4 px-3 py-2 w-4/6" %>
+            <%= f.url_field :link, placeholder: "可加上相關連結，讓使用者能更瞭解此活動", class: "appearance-none rounded-none relative border border-gray-300 placeholder-gray-500 text-gray-900 rounded-md bg-gray-100 focus:bg-white focus:z-10 sm:text-sm mx-4 px-3 py-2 w-4/6" %>
           </div>
           <div class="act_form my-2">
             <%= f.label :form, "活動形式", class:"mr-6 my-2" %>
@@ -191,3 +191,27 @@
   </div>
 <% end %>
 <% end %>
+
+<div style='width: 800px;'>  
+  <div id="map" style='width: 800px; height: 400px;'></div>  
+</div>  
+
+<script type="text/javascript">  
+  handler = Gmaps.build('Google');  
+  handler.buildMap({ provider: {}, internal: {id: 'map'}}, function(){  
+    markers = handler.addMarkers([  
+      {  
+        "lat": 37.3333945,  
+        "lng": -121.8806499,  
+        "picture": {  
+          "width":  32,  
+          "height": 32  
+        },  
+        "infowindow": "SJSU"  
+      }  
+    ]);  
+    handler.bounds.extendWith(markers);  
+    handler.fitMapToBounds();  
+  });  
+</script>
+

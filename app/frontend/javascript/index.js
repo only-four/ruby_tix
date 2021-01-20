@@ -1,12 +1,12 @@
-import "./user"
-import "./chatbox"
+import "./user";
+import "./chatbox";
 // import "./comment"
-// import "./ticket_types"
-import "./search"
-import "./qr_code"
-import "./qr_code_reader"
-import "qrcode"
-import "./attand_list"
-import "./attand_event"
-import "./seat"
+import "./ticket_types";
+import "./search";
+import "./qr_code";
+import "./qr_code_reader";
+import "qrcode";
+import "./attand_list";
+import "./attand_event";
+import "./seat";
 // import "./swiper"

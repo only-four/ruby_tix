@@ -8,24 +8,13 @@ Rails.application.routes.draw do
   resources :pages do
     collection do
       get :search
-      # 會員服務
-      # member  新建
       get :member, to: "pages#member"
-        # guide   導覽頁 導流頁  join hold
       get :guide, to: "pages#guide"  
-      # 客服中心
-        # FAQ  兩個合併
       get :faq, to: "pages#faq"
-        # get :service_center , to: "pages#service_center"
-        # get :questions , to: "pages#questions"
-        # join 更名  參加活動
       get :join, to: "pages#join"
       get :hold, to: "pages#hold"
-      # get :purchase , to: "pages#purchase"
-        # hold_act  兩個合一
-        # get :sales , to: "pages#sales"
-      # 關於我們
       get :about_us, to: "pages#about_us"
+      get :privacy, to: "pages#privacy"
       get :terms, to: "pages#terms"
     end
   end 
