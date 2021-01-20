@@ -4,10 +4,10 @@ class CartsController < ApplicationController
     ticket_types = TicketType.find_by(id: params[:id])
     current_cart.add_item(ticket_types.id)
     session[Cart::SessionKey] = current_cart.serialize
+    # redirect_to activity_choose_path(ticket_types.activity)
   end
 
   def destroy
-    byebug
     session[Cart::SessionKey] = nil
     redirect_to cart_path, notice: '購物車已清空'
     @notice = current_user.notices.create(notices:flash[:notice])

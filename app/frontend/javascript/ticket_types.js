@@ -6,7 +6,6 @@ document.addEventListener("turbolinks:load", function(){
 
   minusBtn.forEach(function(evt){
     evt.addEventListener('click', function(e) {
-      console.log(e.target.nextSibling );
       e.preventDefault();
       addTicket(-1, e.target);
     })
