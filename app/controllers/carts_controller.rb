@@ -1,4 +1,5 @@
 class CartsController < ApplicationController
+  before_action :authenticate_user!
   def add
     ticket_types = TicketType.find_by(id: params[:id])
     current_cart.add_item(ticket_types.id)

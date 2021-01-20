@@ -168,3 +168,21 @@ html {
   background-color: #444;
   color: #ddd;
 }
+
+.t-category-items {
+  @apply flex justify-center items-center flex-wrap;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 15px 25px;
+  border-radius: 50px;
+  margin: 15px 30px;
+  background-color: #eea9a9;
+  color: #750000;
+  font-size: 20px;
+}
+
+.t-category-items:hover {
+  background-color: #750000;
+  color: #ddd;
+}

@@ -1,11 +1,39 @@
-<div class="container text-center">
-  <h1>活動參與表</h1>
-  <%= link_to '繼續掃qr-code', scan_qr_codes_path, class: 'button' %>
-  <p><strong>成功參加活動者：</strong></p>
-  <p>目前參加人數: <%= @qr_codes.count %></p>
-  <ul>
-    <% @qr_codes.each.with_index(1) do |qr_code, index| %>
-      <li><%= "Scan #{index}: " %><%= link_to qr_code.data%></li>
-    <% end %>
-  </ul>
+<div class="attand-list container text-center">
+  <h3>活動名稱：<%= Activity.find(@attand_list_activity_id).title %></h3>
+  <span>目前報到人數：
+  <%#= @qr_codes.count %>/ <%#= Ticket.where(event: @attand_list_activity_id).count %> 
+  </span>
 </div>
+
+
+  <div class="w-2/3 mx-auto">
+    <div class="bg-white shadow-md rounded my-6">
+      <table class="text-left w-full">
+        <thead class="bg-gray-400">
+          <tr>
+            <th class="py-4 px-6 bg-grey font-bold uppercase text-sm border-b border-grey-light">參加者名單</th>
+            <th class="py-4 px-6 bg-grey font-bold uppercase text-sm border-b border-grey-light">票號</th>
+            <th class="py-4 px-6 bg-grey font-bold uppercase text-sm border-b border-grey-light">狀態</th>
+            <th class="py-4 px-6 bg-grey font-bold uppercase text-sm border-b border-grey-light"></th>
+          </tr>
+        </thead>
+        <tbody>
+
+        <% @tickets.each.with_index(1) do |ticket, index| %>        
+          <tr>
+            <td class="py-4 px-6 border-b border-grey-light"><%= "#{index} " %><%= link_to ticket.order.user.name%></td>
+            <td class="py-4 px-6 border-b border-grey-light"><%= link_to ticket.ticket_number%>/<%= ticket.event %></td>
+            <td class="py-4 px-6 border-b border-grey-light">
+            <% if  QrCode.find_by(data: ticket.ticket_number) != nil %>
+              <span>已報到</span>
+            <% else %>  
+              <span>未報到</span>
+            </td>
+            <td><a class="js-unattand" data-id="<%= ticket.ticket_number %>">手動報到</a></td>
+            <% end %>
+          </tr>
+        <% end %>  
+        </tbody>
+      </table>
+    </div>
+  </div>    

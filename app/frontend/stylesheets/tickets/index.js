@@ -1,1 +1,1 @@
-import "./comments.scss"
+import "./my"

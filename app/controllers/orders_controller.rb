@@ -1,6 +1,7 @@
 class OrdersController < ApplicationController
+  before_action :authenticate_user!
   def index
-      @orders = current_user.orders.order(id: :desc)
+    @orders = current_user.orders.order(id: :desc)
   end
 
   def create
@@ -9,7 +10,7 @@ class OrdersController < ApplicationController
     current_cart.items.each do |item|
       @order.order_items.build(ticket_types_title: item.ticket_type_id, quantity: item.quantity)
       # @order.save
-      @ticket = @order.tickets.build(ticket_type_id: item.ticket_type_id)
+      @ticket = @order.tickets.build(ticket_type_id: item.ticket_type_id, event: TicketType.find(item.ticket_type_id).activity_id)
     end 
 
     if @order.save && @ticket.save

@@ -1,4 +1,15 @@
-<div class="w-full z-20 ">
+<div class="t-category-area">
+  <% @categories.each do |category| %>
+    <%= link_to root_path do%>
+    <p class="t-category-items">
+      <%= category.name %>
+    </p>
+    <% end %>
+  <% end %>
+</div>
+
+
+<div class="w-full z-20">
 
   <div class="t-grid t-activity-area">
     <% @activities.each do |activity| %>
@@ -27,19 +38,18 @@
               <p class="t-truncate"><%= activity.brief %></p>
             </div>
 
-
         </div>
       <% end %>     
     <% end %>
   </div>
 
 </div>
-<script>
-      var swiper = new Swiper('.swiper-container', {
 
-        navigation: {
-          nextEl: '.swiper-button-next',
-          prevEl: '.swiper-button-prev',
-        },
-      });
+<div class="flex justify-between mt-10">
+  <%= link_to '回到活動列表', activities_path, class: "t-back-button flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium h-10" %>
+  <%= link_to "新增活動", new_activity_path, class: "t-create-button-text" %>
+</div>
+
+<script>
+
 </script>

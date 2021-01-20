@@ -1,8 +1,6 @@
 <div class="container">
   <div class="items-center justify-center px-2 sm:px-6 lg:px-8">
-
     <h2 class="mt-6 text-center text-4xl font-extrabold text-gray-900 mb-5 extrabold ">活動列表</h2>
-
     <div class="flex mb-3 justify-between">
       <div>
         <%= link_to '返回首頁', root_path , class: "t-back-button" %>
@@ -12,7 +10,6 @@
         <i class="fas fa-angle-double-right"></i>
       </div>
     </div>
-
     <div class="flex flex-col">
       <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
         <div class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
@@ -59,17 +56,19 @@
                     <td><%= activity.finish_datetime&.strftime("%Y/%m/%d") %></td>
                     <td><%= activity.location %></td>
                     <td><%= activity.activity_users.size %></td>
+                    <%#  @qr_codes.count %>
                     <td class="flex justify-around">
+                        <%= link_to '所有票券', activity_ticket_types_path(activity), class: "t-edit-button"%>
                         <%= link_to '編輯', edit_activity_path(activity), class: "t-edit-button"%>
                         <%= link_to '刪除', activity_path(activity), method: "delete", data: { confirm: "確認刪除" }, class: "t-delete-button"%>
                     </td>
                     <td>
                       <div class="flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-gray-900 hover:border-gray-600 hover:bg-gray-100 hover:text-gray-900 hover:no-underline h-10">
-                      <%= link_to '驗票', scan_qr_codes_path , class: "mr-2"%>
+                      <%= link_to '驗票', scan_activity_qr_codes_path(activity) , class: "mr-2"%>
                       <img src="/images/ticket002.png" alt="check-ticket" class="h-5">
                       </div>
                     </td>
-                  </tr>   
+                  </tr>
                 <% end %>
               </tbody>
             </table>
@@ -79,5 +78,6 @@
     </div>
   </div>
 </div>
-<%= link_to '回到活動列表', activities_path, class: "t-back-button" %>
-
+<div class="m-10">
+  <%= link_to '回到活動列表', activities_path, class: "t-back-button" %>
+</div>
