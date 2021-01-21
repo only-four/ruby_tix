@@ -1,0 +1,63 @@
+<div class="w-full">
+  <section class="t-footer">
+    <div class=" py-8 flex justify-between text-center">
+      <div class="flex-wrap  justify-center text-left">
+        <li class="list-none justify-center">
+          <%= link_to root_path do%>
+            <%= image_tag '/images/newlogo.png', class:"h-20" %>
+          <% end%>
+        </li>
+        <li  class="list-none justify-center ml-3">
+          <i class="far fa-envelope"></i><a href="mailto:contact@rubytix.fun" class="mx-1">contact@rubytix.fun</a>
+        </li>
+        <li class="list-none justify-center ml-3">
+          <i class="far fa-clock"></i>
+          <%= link_to ' 週一至週五(10:00~17:00)', class:"js-chat-btn mx-1"  %>
+        </li>
+      </div>
+      <div class="flex-wrap  justify-center py-3">
+        <li class="list-none text-xl font-bold t-footer-title">會員服務</li>
+        <li class="list-none justify-center mt-2">
+          <%= link_to '加入會員', member_pages_path, class: "hover:no-underline hover:text-gray-100" %>
+        </li>
+        <li class="list-none justify-center">
+          <%= link_to '新手上路', guide_pages_path, class: "hover:no-underline hover:text-gray-100" %>
+        </li>
+      </div>
+      <div class="flex-wrap  justify-center py-3">
+        <li class="list-none text-xl font-bold t-footer-title">客服中心</li>
+        <li class="list-none justify-center mt-2">
+          <%= link_to '常見問題', faq_pages_path, class: "hover:no-underline hover:text-gray-100" %>
+        </li>
+        <li class="list-none justify-center">
+          <%= link_to '參加活動', join_pages_path, class: "hover:no-underline hover:text-gray-100" %>
+        </li>
+        <li class="list-none justify-center">
+          <%= link_to '舉辦活動', hold_pages_path, class: "hover:no-underline hover:text-gray-100" %>
+        </li>
+      </div>
+      <div class="flex-wrap  justify-center py-3 ">
+        <li class="list-none text-xl font-bold t-footer-title">關於我們</li>
+        <li class="list-none justify-center  mt-2">
+          <%= link_to '關於我們', about_us_pages_path, class: "hover:no-underline hover:text-gray-100" %>
+        </li>
+        <li class="list-none justify-center">
+          <%= link_to '服務條款', terms_pages_path, class: "hover:no-underline hover:text-gray-100" %>
+        </li>
+      </div>
+      <div class="flex-wrap  justify-center py-3 ">
+        <li class="list-none text-xl font-bold"></li>
+        <li class="list-none justify-center  mt-2">
+        </li>
+        <li class="list-none justify-center">
+        </li>
+        <li class="list-none justify-center">
+        </li>
+      </div>
+    </div>
+  </section>
+  <section class="t-footer-copyright text-center bg-gray-100 text-gray-500 py-3">
+    <p>rubytix.fun &copy; 2021 . All Rights Reserved
+      <p>
+      </section>
+    </div>

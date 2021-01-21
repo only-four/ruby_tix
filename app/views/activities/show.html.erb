@@ -1,0 +1,188 @@
+<div class="container">
+  <%= simple_form_for @activity do |f|%>
+    <div class="">
+      <%#= image_tag @activity&.image_url %>
+<%= image_tag @activity.image_url if @activity.image_url.present? %>
+    </div>
+
+    <% if @activity %>
+
+      <h1 class="text-left text-4xl font-black text-gray-900 mt-6 mb-5 border-8 border-transparent">
+        【 <%= @activity.title %> 】
+      </h1>
+<%# ＝＝＝＝＝＝＝＝＝＝＝＝分隔線＝＝＝＝＝＝＝＝＝＝＝＝ %>
+      <div class="divide-y-4 divide-red-800 divide-solid"> 
+        <div class="text-left text-4xl font-extrabold text-red-800 pl-2">活動資訊</div>
+            <div class="overflow-hidden border-b-2 border-blue-200 sm:rounded-lg mb-5 p-10">
+              <div class="justify-left items-center">  
+
+                <div class="flex items-center my-2">
+                  <i class="fas fa-home fa-lg text-red-800"></i>
+                  <p class="text-left text-xl pl-2">本活動由 [<%= @activity.hostname %>] 主辦</p>
+                </div>
+                <div class="flex items-center my-2">   
+                  <i class="far fa-clock fa-lg text-red-800"></i>
+                  <p class="text-left text-xl font-extrabold text-red-800 pl-2">開始與結束時間</p>
+                  <p class="text-left text-xl pl-2"><%= @activity.begin_datetime&.strftime("%Y/%m/%d/%H:%M") %>～<%= @activity.finish_datetime&.strftime("%Y/%m/%d/%H:%M") %></p>
+                </div>
+                <div class="flex items-center my-2">
+                  <i class="fas fa-map-marker-alt fa-lg text-red-800"></i>
+                  <p class="text-left text-xl font-extrabold text-red-800 pl-2">活動地點</p>
+                  <p class="text-left text-xl pl-2"><%= @activity.location %>
+                  <p class="text-left text-xl pl-2"><%= @activity.location_guide %>
+                </div>
+                <div class="flex items-center my-2">
+                  <i class="fas fa-link fa-lg text-red-800"></i>
+                  <p class="text-left text-xl font-extrabold text-red-800 pl-2">相關連結</p>
+                  <p class="text-left text-xl pl-2"><%= link_to '[點擊查看相關連結]', @activity.link, :target => '_blank' %></p>
+                </div>
+                <div class="flex items-center my-2">
+                  <i class="fas fa-clipboard fa-lg text-red-800"></i>     
+                  <p class="text-left text-xl font-extrabold text-red-800 pl-2">活動形式</p> 
+                  <p class="text-left text-xl pl-2"><%= @activity.form %></p>
+                  <%#= @activity.category %>     
+                </div>
+                <div class="flex items-center">
+                  <i class="fas fa-tag fa-lg text-red-800"></i>
+                  <p class="text-left text-xl font-extrabold text-red-800 pl-2">活動標籤</p>
+                  <p class="text-left text-xl pl-2"><%= @activity.tag %>
+                </div>
+                     <%# 活動標籤考慮刪除 %>
+            </div>
+          </div> 
+        </div>
+<%# ＝＝＝＝＝＝＝＝＝＝＝＝分隔線＝＝＝＝＝＝＝＝＝＝＝＝ %>
+        <div class="divide-y-4 divide-red-800 divide-solid"> 
+          <div class="text-left text-4xl font-extrabold text-red-800 pl-2">活動內容</div>
+              <div class="overflow-hidden border-b-2 border-blue-200 sm:rounded-lg mb-5 p-10">
+                <div class="justify-left items-center">  
+
+                  <div class="whitespace-pre-wrap"><%= @activity.brief %></div>
+                  <div class="whitespace-pre-wrap"><%= @activity.content %></div>
+
+           </div>
+          </div> 
+        </div>
+<%# ＝＝＝＝＝＝＝＝＝＝＝＝分隔線＝＝＝＝＝＝＝＝＝＝＝＝ %>
+          <div class="divide-y-4 divide-red-800 divide-solid"> 
+            <div class="text-left text-4xl font-extrabold text-red-800 pl-2">其他資訊</div>
+            <div class="overflow-hidden border-b-2 border-blue-200 sm:rounded-lg mb-5 p-10">
+              <div class="justify-left items-center">  
+
+                <div class="flex items-center my-2">
+                  <i class="fas fa-user fa-lg text-red-800"></i>
+                  <p class="text-left text-xl font-extrabold text-red-800 pl-2">人數限制</p>
+                  <p class="text-left text-xl pl-2"><%= @activity.limit %>
+                </div>
+                <div class="flex items-center my-2">
+                  <i class="fas fa-exclamation-triangle fa-lg text-red-800"></i>
+                  <p class="text-left text-xl font-extrabold text-red-800 pl-2">注意事項</p>
+                  <p class="text-left text-xl pl-2"><%= @activity.notice %>
+                </div>
+
+              </div>
+            </div> 
+          </div>
+<%# ＝＝＝＝＝＝＝＝＝＝＝＝分隔線＝＝＝＝＝＝＝＝＝＝＝＝ %>
+          <div class="divide-y-4 divide-red-800 divide-solid"> 
+            <div class="text-left text-4xl font-extrabold text-red-800 pl-2">地圖</div>
+            <div class="overflow-hidden border-b-2 border-blue-200 sm:rounded-lg mb-5 p-10">
+              <div class="justify-left items-center">  
+                      <%= "這裡放地圖" %>
+                      <%# <div class="whitespace-pre-wrap"><%= @activity.map %></div> %>
+                    
+              </div>
+            </div> 
+          </div>
+<%# ＝＝＝＝＝＝＝＝＝＝＝＝分隔線＝＝＝＝＝＝＝＝＝＝＝＝ %>
+        <div class="divide-y-4 divide-red-800 divide-solid"> 
+          <div class="text-left text-4xl font-extrabold text-red-800 pl-2">聯絡方式</div>
+          <div class="overflow-hidden border-b-2 border-blue-200 sm:rounded-lg mb-5 p-10">
+            <div class="justify-left items-center">  
+
+                  <div class="flex items-center">
+                    <i class="fas fa-tag fa-lg text-red-800"></i>
+                    <p class="text-left text-xl font-extrabold text-red-800 pl-2">聯絡電話</p>
+                    <p class="text-left text-xl pl-2"><%= @activity.phone %>
+                  </div>
+                  <div class="flex items-center">
+                    <i class="fas fa-tag fa-lg text-red-800"></i>
+                    <p class="text-left text-xl font-extrabold text-red-800 pl-2">聯絡信箱</p>
+                    <p class="text-left text-xl pl-2"><%= @activity.email %>
+                  </div>
+                  <div class="flex items-center">
+                    <i class="fas fa-tag fa-lg text-red-800"></i>
+                    <p class="text-left text-xl font-extrabold text-red-800 pl-2">其他聯絡方式</p>
+                    <p class="text-left text-xl pl-2"><%= @activity.other_contact %>
+                  </div>
+
+            </div>
+          </div> 
+        </div>
+<%# ＝＝＝＝＝＝＝＝＝＝＝＝分隔線＝＝＝＝＝＝＝＝＝＝＝＝ %>          
+    <% else %>
+      <h1>找不到活動喔！請確定你的連結是否正確！</h1>
+    <% end %>
+<%# ＝＝＝＝＝＝＝＝＝＝＝＝分隔線＝＝＝＝＝＝＝＝＝＝＝＝ %>    
+      <div class="overflow-hidden border-b border-gray-200 sm:rounded-lg mb-5 p-10">
+        <div class="items-center flex justify-left">
+          <div class="flex justify-between mt-10">
+            <div class="">
+              <%= link_to '參加活動', activity_choose_path(@activity.id) , method:"get", class: "t-create-button flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-gray-100  hover:border-red-600 hover:bg-gray-100 hover:text-red-600 hover:no-underline h-10" %>
+            </div>
+              <a href="phoneto:to_s(@activity.phone)" class="t-back-button flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium h-10"><i class="fas fa-phone-square-alt fa-lg"></i></a>
+              <a href="mailto:[to_s.@activity.email]"  class="t-back-button flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium h-10"><i class="far fa-envelope fa-lg"></i></a>
+            </div>
+             <div class="t-copy-area border-8 border-transparent h-10">
+              <div id="copythis" class="t-copy-input rounded-lg"> https://rubytix.fun </div>
+              <div class="t-copy-btn js-copy-btn rounded-lg">
+                <a href="javascript:void(0)" onclick="CopyTextToClipboard('copythis')" class="t-copy-text"><i class="far fa-copy t-copy-text"></i> 分享複製連結</a>
+              </div>
+            </div>
+        </div>
+      </div> 
+
+      <div class="overflow-hidden border-b border-gray-200 sm:rounded-lg mb-5 p-10">
+        <div class="items-center flex justify-left">
+          <div class="flex justify-between mt-10">
+            <%= link_to '回到活動列表', activities_path, class: "t-back-button flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium h-10" %>
+
+          </div>
+        </div>
+      </div> 
+<%# ＝＝＝＝＝＝＝＝＝＝＝＝分隔線＝＝＝＝＝＝＝＝＝＝＝＝ %>  
+  <% end %>
+
+<div class="my-8"> 
+  <section class="section-comments"></section>
+    <div class="container">
+      <h2><strong><%= @activity.comments.count %> </strong>Comment</h2>
+      <%= render 'comments/comments', activity: @activity, comment: @comment %>
+      <%= render 'comments/show_comments', comments: @comments %>
+    </div>
+  </section>
+</div>
+<%# ＝＝＝＝＝＝＝＝＝＝＝＝分隔線＝＝＝＝＝＝＝＝＝＝＝＝ %>  
+<script>
+function CopyTextToClipboard(id) {
+    var TextRange = document.createRange();
+    TextRange.selectNode(document.getElementById(id));
+    sel = window.getSelection();
+        sel.removeAllRanges();
+        sel.addRange(TextRange);
+    document.execCommand("copy");
+  }
+
+ document.addEventListener("turbolinks:load", function(){
+   document.querySelector(".js-copy-btn").addEventListener('click', function(evt){
+     evt.preventDefault();
+     Swal.fire({
+       position: 'center',
+       icon: 'success',
+       title: '複製成功',
+       showConfirmButton: false,
+       timer: 2000
+     })  
+   })
+  })
+</script>

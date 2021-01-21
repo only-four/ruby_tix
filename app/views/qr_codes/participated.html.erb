@@ -1,0 +1,17 @@
+<div class="text-center">
+  <%= link_to '手動報到', attand_list_activity_qr_codes_path(@attand_list_activity_id), class: 'button' %>
+  <p>成功報名票號: <%= @qr_code.data %></p>
+  <p>掃描時間 <%= @qr_code.created_at.strftime('%Y-%m-%d') %></p>
+</div>  
+
+<script>
+$(document).ready(function() {
+  Swal.fire({
+    position: 'center',
+    icon: 'success',
+    title: '參加成功',
+    showConfirmButton: false,
+    timer: 2000
+  })    
+})
+</script>

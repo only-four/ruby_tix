@@ -1,0 +1,51 @@
+<div class="container">
+  <div class="items-center justify-center px-2 sm:px-6 lg:px-8">
+    <h2 class="mt-6 text-center text-4xl font-extrabold text-gray-900 mb-5 extrabold ">訂單管理</h2>
+
+    <div class="flex flex-col">
+      <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
+        <div class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
+          <div class="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
+            <table class="min-w-full divide-y divide-gray-200">
+              <thead class="t-thead text-center">
+                <tr>
+                  <th scope="col" class="px-6 py-3  text-md font-normal text-gray-100 uppercase tracking-wider">
+                    訂單編號
+                  </th>
+                  <th scope="col" class="px-6 py-3  text-md font-normal text-gray-100 uppercase tracking-wider">
+                    建立日期
+                  </th>
+                  <th scope="col" class="px-6 py-3  text-md font-normal text-gray-100 uppercase tracking-wider">
+                    總金額
+                  </th>
+                  <th scope="col" class="px-6 py-3  text-md font-normal text-gray-100 uppercase tracking-wider">
+                    狀態
+                  </th>
+                  <th scope="col" class="px-6 py-3  text-md font-normal text-gray-100 uppercase tracking-wider">
+                    訂單付款
+                  </th>
+                  <th scope="col" class="px-6 py-3  text-md font-normal text-gray-100 uppercase tracking-wider">
+                    訂單取消
+                  </th>
+                </tr>
+              </thead>
+
+              <tbody>
+                <% @orders.each do |order| %>
+                  <tr class= "px-6 py-3 text-center">
+                    <td><%= link_to order.num, tickets_my_path %></td>
+                    <td><%= order.created_at&.strftime("%Y/%m/%d") %></td>
+                    <td><%= order.price %></td>
+                    <td><%= order.state %></td>
+                    <td><%= link_to '付款', pay_order_path(order), method:'POST', data: {confirm:'確定付款？'} if order.may_pay? %></td>
+                    <td><%= link_to '退款', cancel_order_path(order), method:'delete', data: {confirm:'是否取消訂單？'} if order.may_refund? %></td>
+                  </tr>   
+                <%end %>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

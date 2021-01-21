@@ -1,0 +1,111 @@
+.t-create-button {
+  @apply flex items-center justify-center px-4 py-2 border text-sm font-medium rounded-md bg-gray-100;
+  // border: 2px solid #750000;
+  color: #750000;
+}
+.t-create-button:hover {
+  @apply no-underline shadow-lg;
+  color: #750000;
+  border: 1px solid #750000;
+}
+.t-create-button-text:hover {
+  @apply no-underline;
+  color: #750000;
+}
+.t-edit-button {
+  @apply relative flex justify-center py-2 px-4 border text-sm font-medium rounded-md text-gray-900 bg-gray-100;
+}
+.t-edit-button:hover {
+  @apply border-red-600 bg-gray-100 text-red-600 no-underline shadow-lg;
+}
+.t-delete-button {
+  @apply relative flex justify-center py-2 px-4 border text-sm font-medium rounded-md text-gray-900 bg-gray-100;
+}
+.t-delete-button:hover {
+  @apply border-red-600 bg-gray-100 text-red-600 no-underline shadow-lg;
+}
+.t-check-button {
+  @apply relative;
+  @apply w-full;
+  @apply flex;
+  @apply justify-center;
+  @apply py-2;
+  @apply px-4;
+  @apply border;
+  @apply border-transparent;
+  @apply text-sm;
+  @apply font-medium;
+  @apply rounded-md;
+  @apply text-gray-100;
+  @apply bg-red-600;
+}
+.t-check-button:hover {
+  @apply border-red-600;
+  @apply bg-gray-100;
+  @apply text-red-600;
+  @apply no-underline;
+  @apply shadow-lg;
+  @apply border-transparent;
+}
+.t-back-button {
+  @apply flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium bg-gray-100 text-gray-800 h-10;
+}
+.t-back-button:hover {
+  @apply border-red-600 bg-gray-100 text-red-600 no-underline shadow-lg;
+}
+.t-form-create-btn {
+  flex: 1 1 auto;
+  margin: 5px;
+  padding: 10px;
+  text-align: center;
+  text-transform: uppercase;
+  transition: 0.5s;
+  background-size: 200% auto;
+  /* text-shadow: 0px 0px 10px rgba(0,0,0,0.2);*/
+  box-shadow: 0 0 20px #eee;
+  border-radius: 10px;
+}
+
+.t-form-create-btn:hover {
+  background-position: right center; /* change the direction of the change here */
+}
+
+.t-form-create-btn {
+  color: #fff;
+  background-image: linear-gradient(
+    to right,
+    #750000 0%,
+    #fda085 51%,
+    #f6d365 100%
+  );
+}
+.t-copy-area {
+  @apply flex items-center;
+}
+.t-copy-input {
+  background-color: rgba($color: #750000, $alpha: 0.7);
+  padding: 15px 30px;
+  font-size: 14px;
+  color: #000;
+}
+.t-copy-btn {
+  @apply flex;
+  background-color: #750000;
+  color: #fff;
+  padding: 15px 10px;
+  font-size: 14px;
+}
+.t-copy-btn:hover {
+  font-weight: 900;
+}
+.t-copy-text:hover {
+  text-decoration: none;
+  color: #fff;
+}
+.t-nav-category-btn {
+  background-color: #750000;
+  color: #fff;
+  margin: 0 2px;
+  padding: 10px;
+  border-radius: 5px;
+}

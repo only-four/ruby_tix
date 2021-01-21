@@ -1,0 +1,21 @@
+.t-search-area {
+  @apply flex;
+  @apply items-center;
+  @apply justify-center;
+
+  border: 2px #750000 solid;
+  border-radius: 60px;
+  height: 40px;
+  width: 500px;
+}
+
+.t-search-btn {
+  color: #750000;
+  padding-left: 10px;
+}
+
+.t-search-input {
+  background-color: #fff;
+  flex-grow: 0.8;
+  padding: 0 20px;
+}

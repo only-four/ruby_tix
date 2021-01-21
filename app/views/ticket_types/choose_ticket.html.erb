@@ -1,0 +1,48 @@
+<h2 class="mt-6 text-center text-4xl font-extrabold text-gray-900 mb-5 extrabold">請選擇票券</h2>
+
+<div class="container">
+  <div class="items-center justify-center px-2 sm:px-6 lg:px-8">
+    <% @ticket_types.each do |ticket| %>  
+      <div class="px-5 py-3 shadow overflow-hidden border-b border-gray-200 sm:rounded-lg" id="accordion">
+
+        <div class="items-center" >
+          <div class="flex items-center justify-between">
+            <%= link_to activity_path(@activity.id) do %>
+              <h5 class="text-2xl"><%= ticket.activity.title %></h5>
+            <% end %>
+            <h5 class="text-2xl"><%= ticket.valid_at&.strftime("%Y/%m/%d") %></h5>
+            <h5 class="text-2xl"><%= ticket.title %></h5>
+            <h5 class="text-2xl">NT$<%= ticket.price %></h5>
+            <div class="flex items-center justify-between">
+              <button class="js-minusTicket rounded-full  h-10 w-10 flex items-center justify-center bg-gray-700 text-gray-100 mr-2" id="minusItem">-</button>
+              <span class="js-ticketQuantity mr-2">0</span>
+              <button class="js-addTicket rounded-full  h-10 w-10 flex items-center justify-center bg-gray-700 text-gray-100" id="addItem">+</button>
+            </div>
+            <div class="flex">
+              <button class="js-cardLink col-end-7 col-span-1 bg-gray-200 px-2 py-2 border border-transparent rounded-md shadow-sm text-center font-medium  hover:border-red-600 hover:bg-gray-100 hover:text-red-600 hover:no-underline h-10 mr-3" >更多資訊...</button>
+            <%# // content_tag do %>
+              <%= link_to '加入購物車', add_cart_path(ticket.id), method: "post", remote:true, class: "js-cardLink flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-gray-100 bg-red-600 hover:border-red-600 hover:bg-gray-100 hover:text-red-600 hover:no-underline h-10" %>
+            </div>
+          </div>
+
+          <div class="flex items-center justify-between mt-5">
+          </div>
+        <div>
+          <div class="js-ticket-detail bg-gray-100 hidden">
+            <h2>票券資訊：</h2>
+            <%= ticket.content %>
+          </div> 
+            <%= content_tag :span, '銷售中', class:"p-2 bg-blue-400 textg-blue-800 rounded-lg" if ticket.pending? %>
+            <%= content_tag :span, '銷售中', class:"p-2 bg-teal-400 text-teal-800 rounded-lg" if ticket.on_sale? %>
+            <%= content_tag :span, '售完', class: "p-2 bg-yellow-400 text-yellow-800 rounded-lg" if ticket.fully_booked? %>
+            <%= content_tag :span, '停止販售', class:"p-2 bg-red-400 text-red-800 rounded-lg" if ticket.sale_closed? %>        
+        </div>      
+      </div>
+  </div>
+    <% end %>
+
+  <div class="flex justify-between mt-10">
+    <%= link_to '回到首頁', pages_path, class: "submit search-btn flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium bg-gray-100 text-gray-800 hover:border-red-600 hover:bg-gray-100 hover:text-red-600 hover:no-underline h-10" %>
+    <%= link_to '前往訂單頁面' , cart_path,  class: "flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-gray-100 bg-red-600 hover:border-red-600 hover:bg-gray-100 hover:text-red-600 hover:no-underline h-10" %>
+  </div>
+</div>

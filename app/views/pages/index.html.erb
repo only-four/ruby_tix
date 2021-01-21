@@ -1,0 +1,55 @@
+<div class="t-category-area">
+  <% @categories.each do |category| %>
+    <%= link_to root_path do%>
+    <p class="t-category-items">
+      <%= category.name %>
+    </p>
+    <% end %>
+  <% end %>
+</div>
+
+
+<div class="w-full z-20">
+
+  <div class="t-grid t-activity-area">
+    <% @activities.each do |activity| %>
+      <%= link_to activity_path(activity.id) do %>
+        <div class="t-item">
+
+            <div class="t-item-img">
+              <% if activity.image_url.present? %>
+                <%= image_tag activity.image_url if activity.image_url.present? %> 
+              <% else %>
+                <img src="/images/rubytix003.png" alt="rubytix.fun" class="t-replace-img">
+              <% end %>
+            </div>
+
+            <div class="flex justify-between t-item-detail">
+              <div class="item__details">
+                <h5>【<%= activity.title %>】</h5>
+              </div>
+              <div class="t-item-date">
+                <div class="t-date-icon"><i class="far fa-calendar-alt"></i></div>
+                <div><%= activity.begin_datetime&.strftime("%Y/%m/%d") %></div>
+              </div>
+            </div>
+          
+            <div class="t-item-detail">
+              <p class="t-truncate"><%= activity.brief %></p>
+            </div>
+
+        </div>
+      <% end %>     
+    <% end %>
+  </div>
+
+</div>
+
+<div class="flex justify-between mt-10">
+  <%= link_to '回到活動列表', activities_path, class: "t-back-button flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium h-10" %>
+  <%= link_to "新增活動", new_activity_path, class: "t-create-button-text" %>
+</div>
+
+<script>
+
+</script>
