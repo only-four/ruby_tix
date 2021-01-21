@@ -25,6 +25,9 @@ class PagesController < ApplicationController
   def terms
   end
 
+  def privacy
+  end
+
   def search
     @search_value = Activity.where('title ILIKE ?', "%#{params[:search]}%")
     respond_to do |format|

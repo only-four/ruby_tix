@@ -9,56 +9,39 @@
         <div class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
           <div class="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
             <table class="min-w-full divide-y divide-gray-200">
-              <thead class="bg-red-200">
+              <thead class="bg-red-200 text-center uppercase text-md font-normal text-gray-900 tracking-wider">
                 <tr>
-                  <th scope="col" class="px-6 py-3 text-left text-md font-normal text-gray-900 uppercase tracking-wider">
-                    #
-                  </th>
-                  <th scope="col" class="px-6 py-3 text-left text-md font-normal text-gray-900 uppercase tracking-wider">
-                    活動名稱
-                  </th>
-                  <th scope="col" class="px-6 py-3 text-left text-md font-normal text-gray-900 uppercase tracking-wider">
-                    票券種類
-                  </th>
-                  <th scope="col" class="px-6 py-3 text-left text-md font-normal text-gray-900 uppercase tracking-wider">
-                    數量
-                  </th>
-                  <th scope="col" class="px-6 py-3 text-left text-md font-normal text-gray-900 uppercase tracking-wider">
-                    銷售量
-                  </th>
-                  <th scope="col" class="px-6 py-3 text-left text-md font-normal text-gray-900 uppercase tracking-wider">
-                    票價
-                  </th>
-                  <th scope="col" class="px-6 py-3 text-left text-md font-normal text-gray-900 uppercase tracking-wider">
-                    狀態
-                  </th>
-                  <th scope="col" class="px-6 py-3 text-left text-md font-normal text-gray-900 uppercase tracking-wider">
-                    票券編輯
-                  </th>
+                  <th scope="col" class="px-6 py-3">#</th>
+                  <th scope="col" class="px-6 py-3">活動名稱</th>
+                  <th scope="col" class="px-6 py-3">票券種類</th>
+                  <th scope="col" class="px-6 py-3">數量</th>
+                  <th scope="col" class="px-6 py-3">銷售量</th>
+                  <th scope="col" class="px-6 py-3">票價</th>
+                  <th scope="col" class="px-6 py-3">狀態</th>
+                  <th scope="col" class="px-6 py-3">票券編輯</th>
                 </tr>
               </thead>
-
               <tbody>
                   <% @ticket_types.each_with_index do |ticket_type, index| %>
-                  <tr  class= "px-6 py-3 text-center">
+                  <tr class="px-6 py-3 text-center">
                     <td><%= index + 1 %></td>
-                    <td><%= ticket_type.activity.title %> </td>
+                    <td><%= link_to ticket_type.activity.title, activity_path(@activity.id), :target => '_blank' %></td>
                     <td><%= ticket_type.title %> </td>
                     <td><%= ticket_type.quantity %> </td>
                     <td><%= ticket_type.tickets.count %> </td>
                     <td><%= ticket_type.price %> </td>
                     <td>
-                      <%= content_tag :span, '銷售中', class: " p-2 bg-blue-400 textg-blue-800 rounded-lg" if ticket_type.pending? %>
-                      <%= content_tag :span, '銷售中', class: " p-2 bg-teal-400 text-teal-800 rounded-lg" if ticket_type.on_sale? %>
+                      <%= content_tag :span, '銷售中', class: "p-2 bg-blue-400 textg-blue-800 rounded-lg" if ticket_type.pending? %>
+                      <%= content_tag :span, '銷售中', class: "p-2 bg-teal-400 text-teal-800 rounded-lg" if ticket_type.on_sale? %>
                       <%= content_tag :span, '售完', class: "p-2 bg-yellow-400 text-yellow-800 rounded-lg" if ticket_type.fully_booked? %>
                       <%= content_tag :span, '停止販售', class: "p-2 bg-red-400 text-red-800 rounded-lg" if ticket_type.sale_closed? %>
                     </td>                
-                    <td class="flex">
-                      <%= link_to "編輯", edit_activity_path(ticket_type.activity_id), class: "submit search-btn flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-gray-100 bg-gray-900 hover:border-gray-600 hover:bg-gray-100 hover:text-gray-900 hover:no-underline h-10" %>
+                    <td class="flex justify-center">
+                      <%= link_to "編輯", edit_activity_path(ticket_type.activity_id), class: "submit search-btn flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-gray-100 bg-gray-900 hover:border-gray-600 hover:bg-gray-100 hover:text-gray-900 hover:no-underline h-10 mr-2" %>
                       <%= link_to "刪除", activity_ticket_type_path(id: ticket_type), method: 'delete', data: { confirm: '確認刪除?!' },class: "submit search-btn flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-gray-100 bg-gray-900 hover:border-gray-600 hover:bg-gray-100 hover:text-gray-900 hover:no-underline h-10" %>
                     </td>
                   </tr>   
-                <%end %>
+                <% end %>
               </tbody>
             </table>
           </div>
@@ -66,8 +49,6 @@
       </div>
     </div>
 </div>
-
-<div><%= link_to '回到活動列表', activities_path %></div>
-<div><%= link_to '於新分頁查看活動', activity_path(@activity.id), :target => '_blank' %></div>
-
-
+<div class="flex mx-2 my-10 w-3/6 sm:w-2/6">
+  <%= link_to '回到活動列表', activities_path, class: "t-back-button" %>
+</div>
