@@ -21,7 +21,7 @@
               <tbody>
                 <% current_cart.items.each_with_index do |item, index| %>
                   <tr class= "px-6 py-3 text-center">
-                    <td><%= index + 1 %></td><
+                    <td><%= index + 1 %></td>
                     <td><%= item.ticket_type.activity.title %></td>
                     <td><%= item.ticket_type.title %></td>
                     <td><%= item.quantity %></td>
@@ -32,7 +32,6 @@
                 <% end %>
                   <tr class= "px-6 py-3 text-center">
                     <td>總計</td>
-                    <td></td>
                     <td></td>
                     <td></td>
                     <td><%= current_cart.total_price %></td>
