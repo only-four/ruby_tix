@@ -5,14 +5,13 @@
 </div>  
 
 <script>
-  window.onload = function(evt){
-    evt.preventDefault();
-    Swal.fire({
-      position: 'center',
-      icon: 'success',
-      title: '參加成功',
-      showConfirmButton: false,
-      timer: 2000
-    })  
-  };
+$(document).ready(function() {
+  Swal.fire({
+    position: 'center',
+    icon: 'success',
+    title: '參加成功',
+    showConfirmButton: false,
+    timer: 2000
+  })    
+})
 </script>

@@ -1,8 +1,7 @@
 <div class="attand-list container text-center">
   <h3>活動名稱：<%= Activity.find(@attand_list_activity_id).title %></h3>
-  <span>目前報到人數：
-  <%#= @qr_codes.count %>/ <%#= Ticket.where(event: @attand_list_activity_id).count %> 
-  </span>
+  <span>目前報到人數：<%= @qr_codes.count if @qr_codes.count !=[] %>/ <%= Ticket.where(event: @attand_list_activity_id).count if Ticket.where(event: @attand_list_activity_id).count !=[] %> </span>
+
 </div>
 
 
