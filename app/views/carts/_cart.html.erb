@@ -27,6 +27,7 @@
                     <td><%= item.ticket_type.price %></td>
                     <td><%= item.price %></td>
                     <td><%= link_to '刪除',cart_path(@id), method: "delete", data: { confirm: "確認刪除" }%></td>
+                    <%# TODO:刪除單一項目，而不是清空購物車 %>
                   </tr>
                 <% end %>
                   <tr class= "px-6 py-3 text-center">

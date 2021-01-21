@@ -7,13 +7,10 @@
           <div class="mr-2 js-category-icon">
             <i class="fas fa-bars fa-lg t-nav-btn"></i>
           </div>
-
-          <%= link_to root_path do%>
-            <p class="t-nav-logo">RUBYTIX</p>
-          <% end%>
-        </div>
-
-        
+            <%= link_to root_path do%>
+              <p class="t-nav-logo">RUBYTIX</p>
+            <% end%>
+          </div>
         <div class="js-category-option fixed mt-20 hidden">
           <% @categories.each do |category| %>
             <div class="border border-gray-900 bg-gray-100 hover:font-semibold px-3 py-2">
@@ -21,23 +18,15 @@
             </div>
           <% end %>
         </div>
-        
       </section>
 
-
-
-
       <%# search bar %>
-
       <section class="js-search-bar t-search-area sm:ml-24 md:ml-24 ">
         <input type="text" class="js-search-input t-search-input focus:outline-none" placeholder="請輸入關鍵字">
         <button class="js-search-btn"><i class="fas fa-search fa-lg submit t-search-btn"></i></button>
       </section>
 
-
-
       <%# user+cart %>
-
       <section class="flex">
         <div class="js-bell-notify h-12 w-12 flex items-center justify-center t-nav-btn">
           <i class="fas fa-bell fa-2x t-nav-btn"></i>
@@ -98,7 +87,6 @@
         <button>
           <%= link_to '註冊', new_registration_path(:user) , class: "t-user-btn hover:no-underline mr-3" %> 
         </button>
-
         <button>
           <%= link_to '登入', new_session_path(:user) , class: "t-user-btn  hover:no-underline" %>
         </button>
@@ -106,5 +94,3 @@
     </section>
   <% end %>
 </div>
-
-
