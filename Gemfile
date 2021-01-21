@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby '2.7.0'
+ruby '2.7.2'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 6.0.3', '>= 6.0.3.4'
 # Use postgresql as the database for Active Record
@@ -53,6 +53,7 @@ gem 'will_paginate', '~> 3.1'
 gem 'font-awesome-rails', '~> 4.6', '>= 4.6.3.1'
 gem 'omniauth', '~> 1.9', '>= 1.9.1'
 gem 'rails-i18n', '~> 6.0'
+gem 'bundler', '~> 2.2', '>= 2.2.6'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
