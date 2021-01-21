@@ -374,6 +374,7 @@ DEPENDENCIES
   aasm (~> 5.1, >= 5.1.1)
   bootsnap (>= 1.4.2)
   bullet (~> 6.1)
+  bundler (~> 2.2, >= 2.2.6)
   byebug
   cancancan (~> 3.2, >= 3.2.1)
   capybara (>= 2.15)
@@ -420,4 +421,4 @@ RUBY VERSION
    ruby 2.7.2p137
 
 BUNDLED WITH
-   2.1.4
+   2.2.6
