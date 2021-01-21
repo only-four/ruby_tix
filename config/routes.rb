@@ -15,6 +15,7 @@ Rails.application.routes.draw do
       get :hold, to: "pages#hold"
       get :about_us, to: "pages#about_us"
       get :terms, to: "pages#terms"
+      get :privacy, to: "pages#privacy"
     end
   end 
 

@@ -23,17 +23,17 @@
 
                   <div class= "my-5 px-2 flex align-middle">
                     <div scope="col" class="w-1/2 px-1 text-right text-lg font-normal text-gray-900 uppercase tracking-wider">
-                      <%= form.label:姓名：, class:"mb-0" %>
+                      <%= form.label :姓名：, class:"mb-0" %>
                     </div>
-                    <div scope="col"><%= form.text_field:participant,value: current_user.name, class: "appearance-none rounded-none relative block border border-gray-300 placeholder-gray-500 text-gray-900 rounded-md bg-gray-100 focus:bg-white focus:z-10 lg:text-lg" %>
+                    <div scope="col"><%= form.text_field :participant, value: current_user.name, class: "appearance-none rounded-none relative block border border-gray-300 placeholder-gray-500 text-gray-900 rounded-md bg-gray-100 focus:bg-white focus:z-10 lg:text-lg" %>
                     </div>
                   </div>
 
                   <div class= "my-5 px-2 flex align-middle">
                   <div scope="col" class="w-1/2 px-1 text-right text-lg font-normal text-gray-900 uppercase tracking-wider">
-                    <%= form.label:電子信箱：, class:"mb-0" %>
+                    <%= form.label :電子信箱：, class:"mb-0" %>
                   </div>
-                  <div scope="col"><%= form.text_field:address,value: current_user.email, class: "appearance-none rounded-none relative block border border-gray-300 placeholder-gray-500 text-gray-900 rounded-md bg-gray-100 focus:bg-white focus:z-10 lg:text-lg" %>
+                  <div scope="col"><%= form.text_field :address, value: current_user.email, class: "appearance-none rounded-none relative block border border-gray-300 placeholder-gray-500 text-gray-900 rounded-md bg-gray-100 focus:bg-white focus:z-10 lg:text-lg" %>
                   </div>
                 </div>
                 

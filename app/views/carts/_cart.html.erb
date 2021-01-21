@@ -21,13 +21,14 @@
               <tbody>
                 <% current_cart.items.each_with_index do |item, index| %>
                   <tr class= "px-6 py-3 text-center">
-                    <td><%= index + 1 %></td><
+                    <td><%= index + 1 %></td>
                     <td><%= item.ticket_type.activity.title %></td>
                     <td><%= item.ticket_type.title %></td>
                     <td><%= item.quantity %></td>
                     <td><%= item.ticket_type.price %></td>
                     <td><%= item.price %></td>
                     <td><%= link_to '刪除',cart_path(@id), method: "delete", data: { confirm: "確認刪除" }%></td>
+                    <%# TODO:刪除單一項目，而不是清空購物車 %>
                   </tr>
                 <% end %>
                   <tr class= "px-6 py-3 text-center">

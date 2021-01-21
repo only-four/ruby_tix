@@ -8,8 +8,7 @@
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
     <link href=’https://fonts.googleapis.com/css?family=Raleway' rel=’stylesheet’ type=’text/css’>
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
-
-    <!-- Google Tag Manager -->
+    <%# <!-- Google Tag Manager --> %>
     <script>
       (function(w,d,s,l,i){
         w[l]=w[l]||[];
@@ -18,17 +17,14 @@
         j.async=true;
         j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
       })(window,document,'script','dataLayer','GTM-KLBFCRB');
-
-
     </script>
-    <!-- End Google Tag Manager -->
+    <%# <!-- End Google Tag Manager --> %>
   </head>
 
-
   <body>
-    <!-- Google Tag Manager (noscript) -->
+    <%# <!-- Google Tag Manager (noscript) --> %>
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KLBFCRB" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-    <!-- End Google Tag Manager (noscript) -->
+    <%# <!-- End Google Tag Manager (noscript) --> %>
     <div>
       <%= render 'shared/notice' if notice %>
       <%= render 'shared/navbar'%>
@@ -69,7 +65,6 @@
       <div>
         <%= render 'shared/float' %>
       </div>
-
 
     <div class="m-auto bottom-0">
       <%= render 'shared/footer' %>
