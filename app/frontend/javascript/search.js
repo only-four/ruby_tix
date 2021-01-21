@@ -1,5 +1,6 @@
 document.addEventListener("turbolinks:load", function(){
   const searchBtn = document.querySelector('.js-search-btn')
+  const swiper = document.querySelector('.js-swiper') 
 
   searchBtn.addEventListener('click', function(){
     // 取得輸入框的值
@@ -9,6 +10,7 @@ document.addEventListener("turbolinks:load", function(){
     if(searchInput == "") { return }
     // 如果yield不為空，就清空
     area = document.querySelector('.js-main-area')
+    console.log(swiper)      
     if(area.innerHTML != ""){
       area.innerHTML = ""
     }
@@ -19,7 +21,13 @@ document.addEventListener("turbolinks:load", function(){
       const areaDiv = document.createElement('div')
       const itemDiv = document.createElement('div')
       const imgDiv = document.createElement('img')
-      const title = document.createElement('p')       
+      const title = document.createElement('p')  
+      swiper.classList.add('hidden');
+      
+      
+
+      
+      
       // areaDiv.classList.add(...areaClassList)
       itemDiv.classList.add('t-item')
       imgDiv.classList.add('t-item-img')
