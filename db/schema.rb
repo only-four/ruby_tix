@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_01_19_044500) do
+ActiveRecord::Schema.define(version: 2021_01_21_072531) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -228,6 +228,7 @@ ActiveRecord::Schema.define(version: 2021_01_19_044500) do
     t.bigint "order_id"
     t.string "ticket_number"
     t.string "state"
+    t.integer "event"
     t.index ["order_id"], name: "index_tickets_on_order_id"
     t.index ["ticket_type_id"], name: "index_tickets_on_ticket_type_id"
   end
