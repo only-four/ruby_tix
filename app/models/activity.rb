@@ -8,7 +8,6 @@ class Activity < ApplicationRecord
   has_many :ticket_types, dependent: :destroy
   belongs_to :creator, foreign_key: :user_id, class_name: 'user'
   belongs_to :category
-
   has_many :favorites
   has_many :favorite_users, through: :favorites, source: 'user'
   
