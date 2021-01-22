@@ -20,7 +20,6 @@
     </script>
     <%# <!-- End Google Tag Manager --> %>
   </head>
-
   <body>
     <%# <!-- Google Tag Manager (noscript) --> %>
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KLBFCRB" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
@@ -29,7 +28,6 @@
       <%= render 'shared/notice' if notice %>
       <%= render 'shared/navbar'%>
     </div>
-
     <div class="swiper-container js-swiper">
       <div class="swiper-wrapper">
         <div class="swiper-slide t-slide-img">
@@ -57,7 +55,6 @@
       <div class="swiper-button1 swiper-button-next"></div>
       <div class="swiper-button1 swiper-button-prev"></div>
     </div>
-
       <%# <section class="js-main-area w-full m-auto pt-20 pb-20 t-body"> %>
     <div class="js-main-area t-body mt-20">
       <%= yield %>
@@ -65,7 +62,6 @@
       <div>
         <%= render 'shared/float' %>
       </div>
-
     <div class="m-auto bottom-0">
       <%= render 'shared/footer' %>
     </div>
@@ -74,21 +70,20 @@
 </html>
 
 <script>
-    var swiper = new Swiper('.swiper-container', {
-      spaceBetween: 30,
-      centeredSlides: true,
-      autoplay: {
-        delay: 2500,
-        disableOnInteraction: false,
-      },
-      pagination: {
-        el: '.swiper-pagination',
-        clickable: true,
-      },
-      navigation: {
-        nextEl: '.swiper-button-next',
-        prevEl: '.swiper-button-prev',
-      },
-    });
-
-  </script>
+  var swiper = new Swiper('.swiper-container', {
+    spaceBetween: 30,
+    centeredSlides: true,
+    autoplay: {
+      delay: 2500,
+      disableOnInteraction: false,
+    },
+    pagination: {
+      el: '.swiper-pagination',
+      clickable: true,
+    },
+    navigation: {
+      nextEl: '.swiper-button-next',
+      prevEl: '.swiper-button-prev',
+    },
+  });
+</script>

@@ -1,6 +1,6 @@
 <div class="container">
   <div class="items-center justify-center px-2 sm:px-6 lg:px-8">
-    <h2 class="mt-6 text-center text-4xl font-extrabold text-gray-900 mb-5 extrabold ">訂單管理</h2>
+    <h2 class="mt-6 text-center text-4xl font-extrabold text-gray-900 mb-5 extrabold">訂單管理</h2>
 
     <div class="flex flex-col">
       <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
@@ -40,7 +40,7 @@
                     <td><%= link_to '付款', pay_order_path(order), method:'POST', data: {confirm:'確定付款？'} if order.may_pay? %></td>
                     <td><%= link_to '退款', cancel_order_path(order), method:'delete', data: {confirm:'是否取消訂單？'} if order.may_refund? %></td>
                   </tr>   
-                <%end %>
+                <% end %>
               </tbody>
             </table>
           </div>
