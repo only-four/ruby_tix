@@ -78,31 +78,15 @@
   <hr class="border-dashed border-2 border-gray-400"/>
     <img src="https://picsum.photos/1024/450?random=<%= ticket.id %>"/>
   <div class="py-2 px-4 flex flex-col text-sm md:text-2xl">
-    <p class="self-start font-bold text-gray-500">活動開始：</p>
+    <p class="self-start font-bold text-gray-500">活動開始：<%= ticket.ticket_type.activity.begin_datetime&.strftime("%Y/%m/%d")%></p>
     <div class="flex text-sm justify-between my-2 md:text-xl">
-      <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
-      <p class="font-bold text-red-800"><%= ticket.ticket_type.activity.begin_datetime&.strftime("%Y/%m/%d") %></p>
-    </div>
-    <div class="flex text-sm justify-between my-2 md:text-xl">
-      <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
     </div>
   </div>
   <div class="py-2 px-4 flex flex-col text-sm md:text-2xl">
-    <p class="self-start font-bold text-gray-500">活動結束:</p>
-    <div class="flex text-sm md:text-xl justify-between my-2">
-      <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
-      <p class="font-bold text-red-800"><%= ticket.ticket_type.activity.finish_datetime&.strftime("%Y/%m/%d") %></p>
-    </div>
-    <div class="flex text-sm md:text-xl justify-between my-2">
-      <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-    </div>
+    <p class="self-start font-bold text-gray-500">活動結束: <%= ticket.ticket_type.activity.finish_datetime&.strftime("%Y/%m/%d") %></</p>
   </div>
   <div class="py-2 px-4 flex flex-col text-sm md:text-2xl">
-    <p class="self-start font-bold text-gray-500">活動地點：</p>
-    <div class="flex text-sm md:text-xl justify-between my-2">
-      <svg class="w-6 h-6 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
-      <p class="font-bold text-red-800"><%= ticket.ticket_type.activity.location %> </p>
-    </div>
+    <p class="self-start font-bold text-gray-500">活動地點：<%= ticket.ticket_type.activity.location %></p>
   </div>
   <hr class="border-gray-400"/>
   <div class="py-2 px-4 flex flex-col text-sm md:text-2xl">
