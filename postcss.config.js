@@ -21,6 +21,7 @@ if (process.env.RAILS_ENV === 'production') {
         './app/**/*.rb',
         './app/**/*.js',
         './app/**/*.scss',
+        './app/**/*.css',
       ],
       defaultExtractor: content => content.match(/[A-Za-z0-9-_:/]+/g) || []
     })
