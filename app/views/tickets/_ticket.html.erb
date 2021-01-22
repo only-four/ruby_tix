@@ -2,22 +2,11 @@
   <div class="hidden xl:flex flex-row justify-between shadow-md border rounded-md">
     <div class="flex flex-col items-center justify-between w-1/4 px-4 py-2 bg-white border-r-2 border-gray-500 border-dashed rounded-l-md">
     <div class = "qr-codesss">
-      <canvas class="qr-canvas" data-id="<%= ticket.ticket_number if ticket.activated? %>"></canvas>
+      <canvas class="qr-canvas" data-id="<%= ticket.ticket_number %>"></canvas>
     </div>     
-      <div class="flex-col">          
-        <p class="my-2 text-xs italic font-light text-gray-500">
-          Scan here to check in!
-        </p>
-        <div class="text-xs mb-2 text-gray-600">
-          <span class="text-gray-500">票券有效期限 :</span>
-          <%= ticket.ticket_type.activity.finish_datetime&.strftime("%Y/%m/%d/%H:%M")%>
-        </div>
-      </div>
       <div class="text-left">
         <p class="pb-2 text-xs italic">Powered By</p>
         <img src="/images/rubytix002.png"/>
-        <p class="pb-2 text-xs italic">Hosted by<%= ticket.ticket_type.activity.hostname %></p>
-        <img src="https://ad-venture.org.uk/wp-content/uploads/2017/05/logo-placeholder.png"/>
       </div>
     </div>
     <div class="relative flex flex-col w-3/4">
@@ -25,7 +14,7 @@
       <div class="absolute p-1 bottom-24">
         <div class="flex flex-row px-4 py-2 text-xs font-bold text-red-800 bg-white rounded-md">
           <span class="mr-2 font-normal text-gray-500">主辦單位</span>
-          <p class="font-semibold text-red-800"><%= ticket.ticket_type.activity.hostname %></p>
+          <p class="font-semibold text-red-800"><%= ticket.ticket_type.activity.title %></p>
         </div>
       </div>
       <div class="absolute self-end mr-1 mt-1">
@@ -82,8 +71,8 @@
     </div>
   </div>
 <div class="xl:hidden flex flex-col bg-white border rounded-md shadow-md">
-  <div class="py-2 px-4 flex-col flex text-center">
-    <canvas class="qr-canvas mobile-canvas" data-id="<%= ticket.ticket_number if ticket.activated? %>"></canvas>
+  <div class="mobile-canvas py-2 px-4 flex-col flex text-center">
+    <canvas class="qr-canvas "  data-id="<%= ticket.ticket_number %>"></canvas>
     <p class="font-bold text-lg md:text-3xl">Scan here to check in!</p>
   </div>
   <hr class="border-dashed border-2 border-gray-400"/>
@@ -99,7 +88,7 @@
     </div>
   </div>
   <div class="py-2 px-4 flex flex-col text-sm md:text-2xl">
-    <p class="self-start font-bold text-gray-500">活動結束</p>
+    <p class="self-start font-bold text-gray-500">活動結束:</p>
     <div class="flex text-sm md:text-xl justify-between my-2">
       <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
       <p class="font-bold text-red-800"><%= ticket.ticket_type.activity.finish_datetime&.strftime("%Y/%m/%d") %></p>
