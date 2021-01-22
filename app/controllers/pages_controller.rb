@@ -1,7 +1,7 @@
 class PagesController < ApplicationController
   def index
     @activities = Activity.all
-    @categories = Category.all
+    @categories = Category.all || []
   end
 
   def member

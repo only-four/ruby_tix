@@ -1,8 +1,8 @@
 <div class="t-category-area">
-  <% @categories.each do |category| %>
-    <%= link_to root_path do%>
+  <% @categories.each do |item| %>
+    <%= link_to root_path do %>
     <p class="t-category-items">
-      <%= category.name %>
+      <%= item.name %>
     </p>
     <% end %>
   <% end %>
