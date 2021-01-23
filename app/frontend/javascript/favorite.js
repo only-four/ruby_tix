@@ -12,15 +12,23 @@ document.addEventListener("turbolinks:load", function(){
 
     const token = document.querySelector('[name=csrf-token]').content
     axios.defaults.headers.common['X-CSRF-TOKEN'] = token
+    const icon = e.target
 
     axios.post(`/activities/${activityId}/favorite`, {})
     .then(function (response) {
       console.log(response);
+      if (response.data.status == 'added'){
+        icon.classList.remove('far')
+        icon.classList.add('fas')
+      }else{
+        icon.classList.remove('fas')
+        icon.classList.add('far')
+      }
     })
-    .catch(function (error) {
-      console.log(error);
-    });
-    console.log(e.currentTarget.dataset.id)
+    // .catch(function (error) {
+    //   console.log(error);
+    // });
+    // console.log(e.currentTarget.dataset.id)
 
 
   })

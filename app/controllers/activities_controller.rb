@@ -56,6 +56,19 @@ class ActivitiesController < ApplicationController
     redirect_to activities_path, notice: "活動資料已刪除!"
   end
 
+  def favorite
+    activity = Activity.find(params[:id])
+    if current_user.favorite?(activity)
+      # 移除我的最愛
+      current_user.favorite_activities.destroy(activity)
+      render json: { status: 'removed' }
+    else
+      # 加到我最愛
+      current_user.favorite_activities << activity
+      render json: { status: 'added' }
+    end
+  end
+
   private
   def activity_params
     params.require(:activity).permit(

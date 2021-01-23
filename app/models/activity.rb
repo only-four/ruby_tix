@@ -10,8 +10,9 @@ class Activity < ApplicationRecord
   has_many :ticket_types, dependent: :destroy
   belongs_to :creator, foreign_key: :user_id, class_name: 'User'
   belongs_to :category
-  has_many :activity_favorites
-  has_many :favorites, through: :activity_favorites
+
+  has_many :favorites
+  has_many :favorite_users, through: :favorites, source: 'user'
   
   validates :hostname, :title, :content, :begin_datetime, :finish_datetime, :phone, :email, :limit, presence: true
 
