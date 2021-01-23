@@ -1,19 +1,17 @@
 <div class="container">
   <%= simple_form_for @activity do |f|%>
     <div class="">
-      <%#= image_tag @activity&.image_url %>
-<%= image_tag @activity.image_url if @activity.image_url.present? %>
+      <%= image_tag @activity.image_url if @activity.image_url.present? %>
     </div>
 
     <% if @activity %>
-
       <h1 class="text-left text-4xl font-black text-gray-900 mt-6 mb-5 border-8 border-transparent">
         【 <%= @activity.title %> 】
       </h1>
 <%# ＝＝＝＝＝＝＝＝＝＝＝＝分隔線＝＝＝＝＝＝＝＝＝＝＝＝ %>
       <div class="divide-y-4 divide-red-800 divide-solid"> 
-        <div class="text-left text-4xl font-extrabold text-red-800 pl-2">活動資訊</div>
-            <div class="overflow-hidden border-b-2 border-blue-200 sm:rounded-lg mb-5 p-10">
+        <div class="text-left text-4xl font-extrabold text-blue-800 pl-2">活動資訊</div>
+            <div class="overflow-hidden border-b-0 border-blue-200 sm:rounded-lg mb-5 p-10">
               <div class="justify-left items-center">  
 
                 <div class="flex items-center my-2">
