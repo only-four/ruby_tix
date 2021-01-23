@@ -69,6 +69,10 @@ class ActivitiesController < ApplicationController
     end
   end
 
+  def my_favorite
+    @favorite_activities = current_user.favorite_activities
+  end
+
   private
   def activity_params
     params.require(:activity).permit(

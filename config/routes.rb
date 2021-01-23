@@ -71,6 +71,10 @@ Rails.application.routes.draw do
     member do
       post :favorite
     end
+
+    collection do
+      get :my_favorite
+    end
     
     resources :users
     resources :ticket_types, only: [:index, :destroy]

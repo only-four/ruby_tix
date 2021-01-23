@@ -150,9 +150,19 @@
               </div>
             </div>
 
-              <%= link_to '#', id: "js-fav-btn", data: { id: @activity.id} do %>
-                <i class="far fa-heart "></i>
+          <h2 data-controller="favorite" data-favorite-id="<%= @activity.id %>">
+            <% if user_signed_in? %>
+              <%= link_to '#', data: { action: 'favorite#add' } do %>
+                <% if current_user.favorite?(@activity) %>
+                  <i class="fas fa-heart" data-favorite-target="icon"></i>
+                <% else %>
+                  <i class="far fa-heart" data-favorite-target="icon"></i>
+                <% end %>
               <% end %>
+            <% else %>
+              <%= link_to new_session_path(:user), notice: '請先登入，即可收藏至個人清單' %>
+            <% end %>
+          </h2>
 
 
         </div>
