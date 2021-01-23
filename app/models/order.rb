@@ -5,6 +5,7 @@ class Order < ApplicationRecord
   has_many :order_items
   has_many :tickets
   validates :participant,:address, presence: true
+
   
   aasm column: :state do
     state :pending, initial: true
