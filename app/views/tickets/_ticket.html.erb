@@ -78,15 +78,19 @@
   <hr class="border-dashed border-2 border-gray-400"/>
     <img src="https://picsum.photos/1024/450?random=<%= ticket.id %>"/>
   <div class="py-2 px-4 flex flex-col text-sm md:text-2xl">
+    <p class="self-start font-bold text-gray-500">活動名稱：<%= ticket.ticket_type.activity.title %></p>
+  </div>
+  <div class="py-2 px-4 flex flex-col text-sm md:text-2xl">
     <p class="self-start font-bold text-gray-500">活動開始：<%= ticket.ticket_type.activity.begin_datetime&.strftime("%Y/%m/%d")%></p>
-    <div class="flex text-sm justify-between my-2 md:text-xl">
-    </div>
   </div>
   <div class="py-2 px-4 flex flex-col text-sm md:text-2xl">
     <p class="self-start font-bold text-gray-500">活動結束: <%= ticket.ticket_type.activity.finish_datetime&.strftime("%Y/%m/%d") %></</p>
   </div>
   <div class="py-2 px-4 flex flex-col text-sm md:text-2xl">
     <p class="self-start font-bold text-gray-500">活動地點：<%= ticket.ticket_type.activity.location %></p>
+  </div>
+    <div class="py-2 px-4 flex flex-col text-sm md:text-2xl">
+    <p class="self-start font-bold text-gray-500">票券號碼：<%= ticket.ticket_number %></p>
   </div>
   <hr class="border-gray-400"/>
   <div class="py-2 px-4 flex flex-col text-sm md:text-2xl">
