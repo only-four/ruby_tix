@@ -19,7 +19,7 @@ document.addEventListener("turbolinks:load", function(){
     .then(response => response.json())
     .then(result => result.forEach(element => {       
       const areaDiv = document.createElement('div')
-      const itemDiv = document.createElement('div')
+      const itemDiv = document.createElement('a')
       const imgDiv = document.createElement('img')
       const title = document.createElement('p')  
       swiper.classList.add('hidden');
@@ -37,6 +37,7 @@ document.addEventListener("turbolinks:load", function(){
       } else {
         imgDiv.src = "/images/rubytix006.png"
       }
+      itemDiv.setAttribute('href', `<%= activity_path(activity.id) %>`);
       title.textContent = element.title       
       // 將找到的那筆資料 轉出來，增加到main area。                 
       itemDiv.appendChild(imgDiv)
