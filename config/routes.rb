@@ -30,7 +30,7 @@ Rails.application.routes.draw do
     end
   end 
 
-  resource :favorite, only: [:index, :create]
+  resource :favorite, only: [:index, :create, :show]
 
   devise_for :users, 
              :controllers => {
@@ -66,6 +66,10 @@ Rails.application.routes.draw do
       post :join
       post :confirm  
       delete :cancel
+    end
+
+    member do
+      post :favorite
     end
     
     resources :users

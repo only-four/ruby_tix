@@ -15,7 +15,6 @@
     <% @activities.each do |activity| %>
       <%= link_to activity_path(activity.id) do %>
         <div class="t-item">
-
             <div class="t-item-img">
               <% if activity.image_url.present? %>
                 <%= image_tag activity.image_url if activity.image_url.present? %> 
@@ -36,8 +35,7 @@
           
             <div class="t-item-detail">
               <p class="t-truncate"><%= activity.brief %></p>
-            </div>
-
+            </div>    
         </div>
       <% end %>     
     <% end %>

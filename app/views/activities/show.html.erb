@@ -149,13 +149,11 @@
                 <a href="javascript:void(0)" onclick="CopyTextToClipboard('copythis')" class="t-copy-text"><i class="far fa-copy t-copy-text"></i> 分享複製連結</a>
               </div>
             </div>
-            <div class="t-favorite-area">
-              <a href="#">
-                <button class="js-fav-btn" value="<%= @activity.id %>">
-                  <i class="far fa-heart "></i>加到我的最愛
-                </button>
-              </a>
-            </div>
+
+              <%= link_to '#', id: "js-fav-btn", data: { id: @activity.id} do %>
+                <i class="far fa-heart "></i>
+              <% end %>
+
 
         </div>
       </div> 

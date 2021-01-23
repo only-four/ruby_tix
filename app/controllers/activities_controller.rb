@@ -1,6 +1,7 @@
 class ActivitiesController < ApplicationController
   before_action :authenticate_user!
   before_action :find_activity, only: [:join, :edit, :destroy, :update, :show]
+  skip_before_action :verify_authenticity_token, only: [:favorite ]
 
   def index
     @activities = Activity.all
