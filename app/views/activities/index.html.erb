@@ -15,33 +15,31 @@
         <div class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
           <div class="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
             <table class="min-w-full divide-y divide-gray-200">
-              <thead class="t-thead">
+              <thead class="t-thead text-center">
                 <tr>
-                  <th scope="col" class="px-6 py-3 text-left text-md font-normal uppercase tracking-wider">
+                  <th scope="col" class="px-6 py-3 text-md font-normal uppercase tracking-wider">
                     活動編號
                   </th>
-                  <th scope="col" class="px-6 py-3 text-left text-md font-normal uppercase tracking-wider">
-                    活動名稱
-                  </th>
-                  <th scope="col" class="px-6 py-3 text-left text-md font-normal uppercase tracking-wider">
+                  <th scope="col" class="px-6 py-3 text-md font-normal uppercase tracking-wider">活動名稱</th>
+                  <th scope="col" class="px-6 py-3 text-md font-normal uppercase tracking-wider">
                     活動狀態
                   </th>
-                  <th scope="col" class="px-6 py-3 text-left text-md font-normal uppercase tracking-wider">
+                  <th scope="col" class="px-6 py-3 text-md font-normal uppercase tracking-wider">
                     開始時間
                   </th>
-                  <th scope="col" class="px-6 py-3 text-left text-md font-normal uppercase tracking-wider">
+                  <th scope="col" class="px-6 py-3 text-md font-normal uppercase tracking-wider">
                     結束時間
                   </th>
-                  <th scope="col" class="px-6 py-3 text-left text-md font-normal uppercase tracking-wider">
+                  <th scope="col" class="px-6 py-3 text-md font-normal uppercase tracking-wider">
                     活動地點
                   </th>
-                  <th scope="col" class="px-6 py-3 text-left text-md font-normal uppercase tracking-wider">
+                  <th scope="col" class="px-6 py-3 text-md font-normal uppercase tracking-wider">
                     參加人數
                   </th>
-                  <th scope="col" class="px-6 py-3 text-center text-md font-normal uppercase tracking-wider">
+                  <th scope="col" class="px-6 py-3 text-md font-normal uppercase tracking-wider">
                     活動與票券管理
                   </th>
-                  <th scope="col" class="px-6 py-3 text-center text-md font-normal uppercase tracking-wider">
+                  <th scope="col" class="px-6 py-3 text-md font-normal uppercase tracking-wider">
                     驗票
                   </th>
                 </tr>
@@ -55,7 +53,8 @@
                     <td><%= activity.begin_datetime&.strftime("%Y/%m/%d") %></td>
                     <td><%= activity.finish_datetime&.strftime("%Y/%m/%d") %></td>
                     <td><%= activity.location %></td>
-                    <td><%= activity.activity_users.size %></td>
+                    <%# <td><%= activity.activity_users.size </td> %>
+                    <td><%= Ticket.where(event: @attand_list_activity_id).count %></td>  
                     <%#  @qr_codes.count %>
                     <td class="flex justify-around">
                       <%= link_to '所有票券', activity_ticket_types_path(activity), class: "t-edit-button"%>
@@ -82,5 +81,4 @@
   <%= link_to '回到活動列表', activities_path, class: "t-back-button" %>
 </div>
 <div class="my-10">
-
 </div>
