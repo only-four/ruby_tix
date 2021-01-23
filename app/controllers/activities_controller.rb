@@ -9,7 +9,7 @@ class ActivitiesController < ApplicationController
 
   def new
     @activity = Activity.new
-    # @categories = Category.all
+    @categories = Category.all
     2.times { @activity.ticket_types.build }
   end 
   
@@ -96,7 +96,7 @@ class ActivitiesController < ApplicationController
       :other_contact, 
       :limit,
       :image,
-      #:category_id,
+      :category_id,
       ticket_types_attributes: [:id, :title, :content, :quantity, :sell_start, :sell_deadline, :price, :_destroy, :valid_at, :expire_at],
       address_attributes: [:location, :id, :_destroy]  )
   end 
