@@ -3,9 +3,6 @@ import Rails from '@rails/ujs';
 document.addEventListener("DOMContentLoaded", function () {
   let activity_id = document.querySelector(".js-activity-id")
   let id = activity_id.dataset.id
-  activity_id.addEventListener("click", function(){
-    console.log(id);
-  });  
   const codeReader = new BrowserQRCodeReader();
   codeReader
     .decodeFromInputVideoDevice(undefined, 'video')

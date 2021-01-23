@@ -12,6 +12,7 @@ module RubyTix
     config.hosts << "www.rubytix.fun"
     config.hosts << "peaceful-forest-86679.herokuapp.com"
     config.hosts << "b8fcb5b3c787.ngrok.io"
+    config.hosts << "infinite-scrubland-08013.herokuapp.com"
     config.time_zone = "Taipei"
     config.i18n.default_locale = "zh-TW"
     config.assets.initialize_on_precompile = false
