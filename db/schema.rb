@@ -193,6 +193,7 @@ ActiveRecord::Schema.define(version: 2021_01_23_073202) do
     t.string "data"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "event"
   end
 
   create_table "roles", force: :cascade do |t|
@@ -242,6 +243,7 @@ ActiveRecord::Schema.define(version: 2021_01_23_073202) do
     t.bigint "order_id"
     t.string "ticket_number"
     t.string "state"
+    t.integer "event"
     t.index ["order_id"], name: "index_tickets_on_order_id"
     t.index ["ticket_type_id"], name: "index_tickets_on_ticket_type_id"
   end

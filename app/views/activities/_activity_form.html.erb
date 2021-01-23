@@ -1,5 +1,6 @@
 <%= form_for @activity do |f|%>
   <%= f.hidden_field :user_id, value: current_user.id %>
+  <p class="text-center">*字鍵為必填欄位。</p>
   <%# 第一步：活動基本資訊 %>
   <div class="container my-10">
     <div class="items-center justify-center px-2 sm:px-6 lg:px-8 border-2">
@@ -12,7 +13,7 @@
     </div>
   </div>
 
-<div class="flex flex-col mb-10">
+<div class="flex flex-col mb-10 container">
   <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
     <div class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
       <div class="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
@@ -30,36 +31,31 @@
       <div class="items-center flex justify-left">
         <div class="form-group">
           <div class="hostname my-2">
-            <%= f.label :hostname, "主辦單位" %>                  
+            <%= f.label :hostname, "主辦單位*" %>                  
             <%= f.text_field :hostname, class: "appearance-none rounded-none relative border border-gray-300 placeholder-gray-500 text-gray-900 rounded-md bg-gray-100 focus:bg-white focus:z-10 sm:text-sm mx-4 px-3 py-2 w-2.5" %>
           </div>
           <div class="act_title my-2">
-            <%= f.label :title, "活動名稱" %>
+            <%= f.label :title, "活動名稱*" %>
             <%= f.text_field :title, class: "appearance-none rounded-none relative border border-gray-300 placeholder-gray-500 text-gray-900 rounded-md bg-gray-100 focus:bg-white focus:z-10 sm:text-sm mx-4 px-3 py-2 w-2.5" %>
           </div>
-          <div class="act_title my-2">
-            <%= f.label :title, "活動分類" %>
-          <%= f.select(:category_id) do %>
-            <% @categories.each do |c| -%>
-              <%= content_tag(:option, c.name, value: c.id) %>
+          <div class="act_category my-2">
+            <%= f.label :title, "活動分類*", class:"mr-6 my-2" %>
+            <%= f.select(:category_id) do %>
+              <% @categories.each do |c| -%>
+                <%= content_tag(:option, c.name, value: c.id) %>
+              <% end %>
             <% end %>
-          <% end %>
           </div>
-
-
-
-
-
 
           <div class="act_beginTime my-2">
-            <%= f.label :begin_datetime, "開始時間", class:"" %>
-            <%= f.date_field :begin_datetime, class: "appearance-none rounded-none relative border border-gray-300 placeholder-gray-500 text-gray-900 rounded-md bg-gray-100 focus:bg-white focus:z-10 sm:text-sm mx-4 pl-3 py-2" %>
-            <%= f.time_select :finish_datetime, {:minute_step => 30}, class: "appearance-none rounded-none relative border border-gray-300 placeholder-gray-500 text-gray-900 rounded-md bg-gray-100 focus:bg-white focus:z-10 sm:text-sm px-3 py-2" %>
+            <%= f.label :begin_datetime, "開始時間*", class:"" %>
+            <%= f.date_field :begin_datetime, class: "js-act_begin_date appearance-none rounded-none relative border border-gray-300 placeholder-gray-500 text-gray-900 rounded-md bg-gray-100 focus:bg-white focus:z-10 sm:text-sm mx-4 pl-3 py-2" %>
+            <%= f.time_select :begin_datetime, {:minute_step => 30}, class: "js-act_begin_time appearance-none rounded-none relative border border-gray-300 placeholder-gray-500 text-gray-900 rounded-md bg-gray-100 focus:bg-white focus:z-10 sm:text-sm px-3 py-2" %>
           </div>
           <div class="act_finishTime my-2">
-            <%= f.label :finish_datetime, "結束時間", class:"" %>
-            <%= f.date_field :finish_datetime, class: "appearance-none rounded-none relative border border-gray-300 placeholder-gray-500 text-gray-900 rounded-md bg-gray-100 focus:bg-white focus:z-10 sm:text-sm mx-4 pl-3 py-2" %>
-            <%= f.time_select :finish_datetime, {:minute_step => 30}, class: "appearance-none rounded-none relative border border-gray-300 placeholder-gray-500 text-gray-900 rounded-md bg-gray-100 focus:bg-white focus:z-10 sm:text-sm px-3 py-2" %>
+            <%= f.label :finish_datetime, "結束時間*", class:"" %>
+            <%= f.date_field :finish_datetime, class: "js-act_end_date appearance-none rounded-none relative border border-gray-300 placeholder-gray-500 text-gray-900 rounded-md bg-gray-100 focus:bg-white focus:z-10 sm:text-sm mx-4 pl-3 py-2" %>
+            <%= f.time_select :finish_datetime, {:minute_step => 30}, class: "js-act_begin_time appearance-none rounded-none relative border border-gray-300 placeholder-gray-500 text-gray-900 rounded-md bg-gray-100 focus:bg-white focus:z-10 sm:text-sm px-3 py-2" %>
           </div> 
           <div class="act_location my-2">
             <%= f.label :location, "活動地點" %>
@@ -72,13 +68,13 @@
             <%= f.label :location_guide, "活動地點指引" %>
             <%= f.text_field :location_guide, placeholder: "請說明如何到達該活動地點，如：西門捷運站5號出口，出站後直走約五分鐘，於214巷右轉即可見到「OOO」招牌", class: "appearance-none rounded-none relative border border-gray-300 placeholder-gray-500 text-gray-900 rounded-md bg-gray-100 focus:bg-white focus:z-10 sm:text-sm mx-4 px-3 py-2 w-1/2" %>
           </div>
+          <div class="act_brief my-2">
+            <%= f.label :brief, "活動摘要*" %>
+            <%= f.text_field :brief, placeholder: "活動簡要介紹", :maxlength => 15, :size => 40, class: "appearance-none rounded-none relative border border-gray-300 placeholder-gray-500 text-gray-900 rounded-md bg-gray-100 focus:bg-white focus:z-10 sm:text-sm mx-4 px-4 py-2" %>
+          </div>
           <div class="act_content my-2">
             <%= f.label :content, "活動說明" %>
             <%= f.rich_text_area :content, placeholder: "請完整說明你的活動內容", class: "appearance-none rounded-none relative border border-gray-300 placeholder-gray-500 text-gray-900 rounded-md bg-gray-100 focus:bg-white focus:z-10 sm:text-sm" %> 
-          </div>
-          <div class="act_brief my-2">
-            <%= f.label :brief, "活動摘要" %>
-            <%= f.rich_text_area :brief, placeholder: "此處的內容為前一欄「活動說明」的摘要。將作為活動列表欄位上的簡要介紹", class: "appearance-none rounded-none relative border border-gray-300 placeholder-gray-500 text-gray-900 rounded-md bg-gray-100 focus:bg-white focus:z-10 sm:text-sm" %>
           </div>
           <div class="act_link my-2">
             <%= f.label :link, "相關連結" %>
@@ -114,7 +110,7 @@
 </div>     
 
 <%# 第二步：聯絡方式 %>
-<div class="flex flex-col mb-10">
+<div class="flex flex-col mb-10 container">
   <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
     <div class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
       <div class="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
@@ -162,7 +158,7 @@
   </div>
 </div>
 <%# 第三步：新增票券 %>
-<div class="flex flex-col mb-10">
+<div class="flex flex-col mb-10 container">
   <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
     <div class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
       <div class="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
@@ -180,7 +176,7 @@
   </div>
 </div>
   <%# 票券內容 %>
-  <div class="nested-container">
+  <div class="nested-container container">
     <div data-controller="ticket-types-form" class="nested-form">
       <template data-ticket-types-form-target="form">
         <%= f.fields_for :ticket_types, TicketType.new, child_index: 'NEW_FORM' do |new_form|%>
@@ -199,7 +195,7 @@
       </div>
     </div>
   </div>
-  <div class="flex justify-between mt-10">
+  <div class="flex justify-between mt-10 cntainer">
     <%= link_to '回到活動列表', activities_path, class: "t-back-button my-6" %>
     <%= f.submit '送出-建立活動與票券' , class: "t-create-button my-6" %>
   </div>

@@ -144,7 +144,7 @@
               <a href="mailto:[to_s.@activity.email]"  class="t-back-button flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium h-10"><i class="far fa-envelope fa-lg"></i></a>
             </div>
             <div class="t-copy-area border-8 border-transparent h-10">
-              <div id="copythis" class="t-copy-input rounded-lg"> https://rubytix.fun </div>
+              <div id="copythis" class="js-https t-copy-input rounded-lg"></div>
               <div class="t-copy-btn js-copy-btn rounded-lg">
                 <a href="javascript:void(0)" onclick="CopyTextToClipboard('copythis')" class="t-copy-text"><i class="far fa-copy t-copy-text"></i> 分享複製連結</a>
               </div>
@@ -180,16 +180,11 @@
   <% end %>
 
 <div class="my-8"> 
-  <section class="section-comments">
+  <section class="section-comments"></section>
     <div class="container">
       <h2><strong><%= @activity.comments.count %> </strong>Comment</h2>
       <%= render 'comments/comments', activity: @activity, comment: @comment %>
       <%= render 'comments/show_comments', comments: @comments %>
-      <% if @comments.next_page %>
-        <div class="coin-comment__load-more text-center p-2  bg-gray-500 ">
-          <%= click_for_more_comments(@activity, @comments) %>
-        </div>
-      <% end %>
     </div>
   </section>
 </div>

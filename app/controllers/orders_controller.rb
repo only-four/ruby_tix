@@ -9,10 +9,8 @@ class OrdersController < ApplicationController
     @order[:price] = current_cart.total_price.to_i
     current_cart.items.each do |item|
       @order.order_items.build(ticket_types_title: item.ticket_type_id, quantity: item.quantity)
-      # @order.save
       @ticket = @order.tickets.build(ticket_type_id: item.ticket_type_id, event: TicketType.find(item.ticket_type_id).activity_id)
-    end 
-
+    end
     if @order.save && @ticket.save
       response = Faraday.post("https://sandbox-api-pay.line.me/v2/payments/request") do |req|
         request_header(req)
@@ -21,7 +19,7 @@ class OrdersController < ApplicationController
           productImageUrl: "https://www.flaticon.com/svg/static/icons/svg/2850/2850737.svg",
           amount: current_cart.total_price.to_i,
           currency: "TWD",
-          confirmUrl: "http://localhost:5000/orders/confirm",
+          confirmUrl: "#{root_url}/orders/confirm",
           orderId: @order.num
         }.to_json
       end
@@ -92,7 +90,7 @@ class OrdersController < ApplicationController
         productImageUrl: "https://www.flaticon.com/svg/static/icons/svg/2850/2850737.svg",
         amount: @order[:price],
         currency: "TWD",
-        confirmUrl: "http://localhost:5000/orders/#{@order.id}/pay_confirm",
+        confirmUrl: "http://#{root_url}/orders/#{@order.id}/pay_confirm",
         orderId: @order.num
       }.to_json
     end

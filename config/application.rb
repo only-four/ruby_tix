@@ -11,6 +11,8 @@ module RubyTix
     config.load_defaults 6.0
     config.hosts << "www.rubytix.fun"
     config.hosts << "peaceful-forest-86679.herokuapp.com"
+    config.hosts << "damp-cove-37711.herokuapp.com"
+    config.hosts << "infinite-scrubland-08013.herokuapp.com"
     config.hosts << "b8fcb5b3c787.ngrok.io"
     config.time_zone = "Taipei"
     config.i18n.default_locale = "zh-TW"
