@@ -21,7 +21,7 @@ class OrdersController < ApplicationController
           productImageUrl: "https://www.flaticon.com/svg/static/icons/svg/2850/2850737.svg",
           amount: current_cart.total_price.to_i,
           currency: "TWD",
-          confirmUrl: "http://localhost:5000/orders/confirm",
+          confirmUrl: "#{root_url}/orders/confirm",
           orderId: @order.num
         }.to_json
       end
@@ -92,7 +92,7 @@ class OrdersController < ApplicationController
         productImageUrl: "https://www.flaticon.com/svg/static/icons/svg/2850/2850737.svg",
         amount: @order[:price],
         currency: "TWD",
-        confirmUrl: "http://localhost:5000/orders/#{@order.id}/pay_confirm",
+        confirmUrl: "#{root_url}/orders/#{@order.id}/pay_confirm",
         orderId: @order.num
       }.to_json
     end

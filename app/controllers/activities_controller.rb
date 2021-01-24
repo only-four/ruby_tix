@@ -3,7 +3,7 @@ class ActivitiesController < ApplicationController
   before_action :find_activity, only: [:join, :edit, :destroy, :update, :show]
 
   def index
-    @activities = Activity.all
+    @activities = Activity.where(user_id:current_user.id)
   end
 
   def new
@@ -17,9 +17,9 @@ class ActivitiesController < ApplicationController
     if @activity.save!
       redirect_to activities_path(@activity.id), notice: "新增活動成功！ 請繼續新增活動票種"
     else
-      @notice = current_user.notices.create(notices:flash[:notice])
       render :new
     end
+    @notice = current_user.notices.create(notices:flash[:notice])
   end
   
   def join

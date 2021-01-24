@@ -8,8 +8,6 @@ export default class extends Controller {
     console.log("Hello, Stimulus!", this.element)
   }
   addcart(){
-    // console.log("加入購物車",this.element)
-    // console.log(this.countTarget.textContent)
     this.hiddenTarget.value = this.countTarget.textContent
     console.log(this.hiddenTarget.value)
     let href = this.linkTarget.getAttribute('href').replace(/\/\?quantity=\d*/, '')

@@ -8,18 +8,18 @@ class Cart < CartsController
 
   def add_item(ticket_type_id, cart_quantity)
     found_item = items.find { |item| item.ticket_type_id == ticket_type_id }
-    cart_quantity = @cart_quantity
+    cart_quantity
     p @cart_quantity
     if found_item
     p "cart1"
     p @cart_quantity
-      found_item.increment(10)
+      found_item.increment(cart_quantity)
     else
     p "cart2"  
     p @cart_quantity
       @items << CartItem.new(ticket_type_id)
       found_item = items.find { |item| item.ticket_type_id == ticket_type_id }
-      found_item.increment(9)
+      found_item.increment(cart_quantity-1)
     end
   end
 

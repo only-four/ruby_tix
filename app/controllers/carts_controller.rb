@@ -4,8 +4,8 @@ class CartsController < ApplicationController
     ticket_types = TicketType.find_by(id: params[:id])
     p "tttttttttttttttttttttttttttttttttttttttttttttttttt"
     p params
-    @cart_quantity = params[:quantity]
-    p @cart_quantity
+    @cart_quantity = params[:quantity].to_i
+    p @cart_quantity.to_i
     p "iiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii"
     current_cart.add_item(ticket_types.id, @cart_quantity)
     session[Cart::SessionKey] = current_cart.serialize
