@@ -1,6 +1,6 @@
 class QrCodesController < ApplicationController
   before_action :authenticate_user!
-  # before_action :host?
+  before_action :host?
   before_action :set_qr_data, only: :create
 
   def attand_list
