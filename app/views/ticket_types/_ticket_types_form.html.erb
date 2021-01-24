@@ -54,17 +54,16 @@
             <%= form.label :expire_at, '票券過期時間*' %>
             <%= form.date_field :expire_at, class: "js-ticket_expire_at_date appearance-none rounded-none relative border border-gray-300 placeholder-gray-500 text-gray-900 rounded-md bg-gray-100 focus:bg-white focus:z-10 sm:text-sm ml-4 pl-3 py-2" %>
             <%= form.time_select :expire_at, {:minute_step => 30}, class: "js-ticket_expire_at_date appearance-none rounded-none relative border border-gray-300 placeholder-gray-500 text-gray-900 rounded-md bg-gray-100 focus:bg-white focus:z-10 sm:text-sm px-3 py-2" %>
-
           </div>
           <div class="items-center mt-3 grid grid-cols-6 md:grid-cols-3 gap-4">
             <%= link_to '#', data: { action: 'ticket-types-form#removeTicketType' } do %>
               <div class= "flex items-center justify-between border-2 rounded-md text-base font-medium text-red-600 hover:border-red-600 hover:text-red-600 hover:no-underline h-10 px-8">
                 <p class= "">刪除此張票券</p>
                 <i class="far fa-trash-alt new-ticket-delete-btn ml-2"></i>
-
               </div>
             <% end %>
           </div>
+          
         </div>
         <%= form.hidden_field :_destroy %>
       </div>
