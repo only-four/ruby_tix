@@ -1,4 +1,4 @@
-<div class=" w-3/4 px-4 py-2 text-gray-800">
+<div class=" xl:w-3/4 px-4 py-2 text-gray-800">
   <div class="hidden xl:flex flex-row justify-between shadow-md border rounded-md">
     <div class="flex flex-col items-center justify-between w-1/4 px-4 py-2 bg-white border-r-2 border-gray-500 border-dashed rounded-l-md">
     <div class = "qr-codesss">
@@ -70,28 +70,28 @@
       </div>
     </div>
   </div>
-<div class="xl:hidden flex flex-col bg-white border rounded-md shadow-md">
+<div class="xl:hidden flex flex-col mb-10 bg-white border rounded-md shadow-md">
   <div class="mobile-canvas py-2 px-4 flex-col flex text-center">
-    <canvas class="qr-canvas "  data-id="<%= ticket.ticket_number %>"></canvas>
-    <p class="font-bold text-lg md:text-3xl">Scan here to check in!</p>
+    <canvas class="qr-canvas-mobile"  data-id="<%= ticket.ticket_number %>"></canvas>
+    <p class="font-bold text-3xl">Scan here to check in!</p>
   </div>
   <hr class="border-gray-400"/>
-  <div class="py-2 px-4 flex flex-col text-sm md:text-2xl">
+  <div class="py-2 px-4 flex flex-col text-5xl">
     <img class="mx-auto my-2" src="/images/rubytix0002.png"/>
   </div>
-  <div class="py-2 px-4 flex flex-col text-sm md:text-2xl">
+  <div class="py-2 px-4 flex flex-col text-5xl">
     <p class="self-start font-bold text-gray-500">活動名稱：<%= ticket.ticket_type.activity.title %></p>
   </div>
-  <div class="py-2 px-4 flex flex-col text-sm md:text-2xl">
+  <div class="py-2 px-4 flex flex-col text-5xl">
     <p class="self-start font-bold text-gray-500">活動開始：<%= ticket.ticket_type.activity.begin_datetime&.strftime("%Y/%m/%d")%></p>
   </div>
-  <div class="py-2 px-4 flex flex-col text-sm md:text-2xl">
+  <div class="py-2 px-4 flex flex-col text-5xl">
     <p class="self-start font-bold text-gray-500">活動結束: <%= ticket.ticket_type.activity.finish_datetime&.strftime("%Y/%m/%d") %></</p>
   </div>
-  <div class="py-2 px-4 flex flex-col text-sm md:text-2xl">
+  <div class="py-2 px-4 flex flex-col text-5xl">
     <p class="self-start font-bold text-gray-500">活動地點：<%= ticket.ticket_type.activity.location %></p>
   </div>
-    <div class="py-2 px-4 flex flex-col text-sm md:text-2xl">
+    <div class="py-2 px-4 flex flex-col text-5xl">
     <p class="self-start font-bold text-gray-500">票券號碼：<%= ticket.ticket_number %></p>
   </div>
   </div>
