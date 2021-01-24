@@ -3,7 +3,7 @@ class ActivitiesController < ApplicationController
   before_action :find_activity, only: [:join, :edit, :destroy, :update, :show]
 
   def index
-    @activities = Activity.all
+    @activities = Activity.where(user_id:current_user.id)
   end
 
   def new
