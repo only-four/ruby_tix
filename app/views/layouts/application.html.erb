@@ -34,36 +34,10 @@
       <%= render 'shared/navbar'%>
     </div>
 
-    <div class="swiper-container js-swiper">
-      <div class="swiper-wrapper">
-        <div class="swiper-slide t-slide-img">
-          <img src="/images/O.png">
-        </div>
-        <div class="swiper-slide">
-          <img src="/images/M1.png">
-        </div>
-        <div class="swiper-slide">
-          <img src="/images/K.png">
-        </div>
-        <div class="swiper-slide">
-          <img src="/images/M2.png">
-        </div>
-        <div class="swiper-slide">
-          <img src="/images/L.png">
-        </div>
-        <div class="swiper-slide">
-          <img src="/images/M4.png">
-        </div>
-        <div class="swiper-slide">
-          <img src="/images/I.png">
-        </div>
-      </div>
-      <div class="swiper-button1 swiper-button-next"></div>
-      <div class="swiper-button1 swiper-button-prev"></div>
-    </div>
+
 
       <%# <section class="js-main-area w-full m-auto pt-20 pb-20 t-body"> %>
-    <div class="js-main-area t-body mt-20">
+    <div class="js-main-area">
       <%= yield %>
     </div>
       <div>
@@ -79,21 +53,6 @@
 </html>
 
 <script>
-    var swiper = new Swiper('.swiper-container', {
-      spaceBetween: 30,
-      centeredSlides: true,
-      autoplay: {
-        delay: 2500,
-        disableOnInteraction: false,
-      },
-      pagination: {
-        el: '.swiper-pagination',
-        clickable: true,
-      },
-      navigation: {
-        nextEl: '.swiper-button-next',
-        prevEl: '.swiper-button-prev',
-      },
-    });
+
 
   </script>

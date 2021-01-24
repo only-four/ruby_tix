@@ -1,6 +1,7 @@
 class ActivitiesController < ApplicationController
   before_action :authenticate_user!
   before_action :find_activity, only: [:join, :edit, :destroy, :update, :show]
+  skip_before_action :verify_authenticity_token, only: [:favorite ]
 
   def index
     @activities = Activity.where(user_id:current_user.id)
@@ -8,7 +9,7 @@ class ActivitiesController < ApplicationController
 
   def new
     @activity = Activity.new
-    # @categories = Category.all
+    @categories = Category.all
     2.times { @activity.ticket_types.build }
   end 
   
@@ -51,6 +52,23 @@ class ActivitiesController < ApplicationController
     redirect_to activities_path, notice: "活動資料已刪除!"
   end
 
+  def favorite
+    activity = Activity.find(params[:id])
+    if current_user.favorite?(activity)
+      # 移除我的最愛
+      current_user.favorite_activities.destroy(activity)
+      render json: { status: 'removed' }
+    else
+      # 加到我最愛
+      current_user.favorite_activities << activity
+      render json: { status: 'added' }
+    end
+  end
+
+  def my_favorite
+    @favorite_activities = current_user.favorite_activities
+  end
+
   private
   def activity_params
     params.require(:activity).permit(
@@ -74,7 +92,7 @@ class ActivitiesController < ApplicationController
       :other_contact, 
       :limit,
       :image,
-      #:category_id,
+      :category_id,
       ticket_types_attributes: [:id, :title, :content, :quantity, :sell_start, :sell_deadline, :price, :_destroy, :valid_at, :expire_at],
       address_attributes: [:location, :id, :_destroy]  )
   end 
