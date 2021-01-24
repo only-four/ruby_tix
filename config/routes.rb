@@ -82,7 +82,7 @@ Rails.application.routes.draw do
 
   resources :categories
 
-  resources :activities_user
+  # resources :activities_user
 
   resources :tickets, only: [:create] do
     member do
