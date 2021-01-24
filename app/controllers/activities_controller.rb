@@ -1,6 +1,6 @@
 class ActivitiesController < ApplicationController
   before_action :authenticate_user!
-  before_action :find_activity, only: [:join, :edit, :destroy, :update, :show]
+  before_action :find_activity, only: [:join, :edit, :destroy, :update, :show, :favorite]
   skip_before_action :verify_authenticity_token, only: [:favorite ]
 
   def index
@@ -53,8 +53,7 @@ class ActivitiesController < ApplicationController
   end
 
   def favorite
-    activity = Activity.find(params[:id])
-    if current_user.favorite?(activity)
+    if current_user.favorite?(@activity)
       # 移除我的最愛
       current_user.favorite_activities.destroy(activity)
       render json: { status: 'removed' }
@@ -80,6 +79,7 @@ class ActivitiesController < ApplicationController
       :begin_datetime,
       :finish_datetime,
       :location,
+      :location_guide,
       :content,
       :hostname,
       :brief,
