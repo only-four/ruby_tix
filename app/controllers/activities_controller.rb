@@ -35,8 +35,8 @@ class ActivitiesController < ApplicationController
   end
   
   def update 
-    if @activity.update!(activity_params)
-      redirect_to activities_path(@activity), notice: "資料更新成功!"      
+    if @activity.update(activity_params)
+      redirect_to activity_path(@activity.id), notice: "資料更新成功!"      
     else
       render :edit
     end
