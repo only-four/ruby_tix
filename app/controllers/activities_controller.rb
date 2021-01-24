@@ -4,19 +4,19 @@ class ActivitiesController < ApplicationController
   skip_before_action :verify_authenticity_token, only: [:favorite ]
 
   def index
-      @activities = Activity.where(user_id: current_user.id)
+    @activities = Activity.where(user_id: current_user.id)
   end
 
   def new
-    @activity = Activity.new
+    @activity = current_user.own_activities.new
     @categories = Category.all
     2.times { @activity.ticket_types.build }
   end 
   
   def create
-    @activity = Activity.new(activity_params)
-    if @activity.save!
-      redirect_to activities_path(@activity.id), notice: "新增活動成功！ 請繼續新增活動票種"
+    @activity = current_user.own_activities.new(activity_params)
+    if @activity.save
+      redirect_to activity_path(@activity.id), notice: "新增活動成功！ 請繼續新增活動票種"
     else
       @notice = current_user.notices.create(notices:flash[:notice])
       render :new
@@ -72,8 +72,6 @@ class ActivitiesController < ApplicationController
   def activity_params
     params.require(:activity).permit(
       :content,
-      # :user,
-      :user_id,
       :period,
       :title,
       :begin_datetime,

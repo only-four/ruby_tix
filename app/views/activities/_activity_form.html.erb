@@ -1,5 +1,4 @@
 <%= form_for(@activity) do |f|%>
-  <%= f.hidden_field :user_id, value: current_user.id %>
   <%# 第一步：活動基本資訊 %>
   <div class="container my-10 w-1/2 h-1/2">
     <div class="items-center justify-center px-2 sm:px-6 lg:px-8 border-2">
@@ -15,14 +14,13 @@
     </div>
   </div>
 
-  <div class="flex flex-col mb-10 container">
+  <div class="container flex flex-col mb-10 w-5/6">
     <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
       <div class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
         <div class="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
           <table class="min-w-full divide-y divide-gray-200">
             <thead class="t-thead h-10">
               <%= fields_for :tickets do |tickets_fields| %>
-                <%= f.hidden_field :user_id, value: current_user.id %>
                 <tr class= "px-6 py-3 text-center text-2xl h-20">
                   <th colspan="4">第一步：活動基本資訊</th>
                 </tr>
@@ -53,7 +51,7 @@
             <div class="act_beginTime my-2">
               <%= f.label :begin_datetime, "開始時間*" %>
               <%= f.date_field :begin_datetime, class: "js-act_begin_date appearance-none rounded-none relative border border-gray-300 placeholder-gray-500 text-gray-900 rounded-md bg-gray-100 focus:bg-white focus:z-10 sm:text-sm ml-4 pl-3 py-2" %>
-              <%= f.time_select :finish_datetime, {:minute_step => 30}, class: "js-act_begin_date appearance-none rounded-none relative border border-gray-300 placeholder-gray-500 text-gray-900 rounded-md bg-gray-100 focus:bg-white focus:z-10 sm:text-sm px-3 py-2" %>
+              <%= f.time_select :begin_datetime, {:minute_step => 30}, class: "js-act_begin_date appearance-none rounded-none relative border border-gray-300 placeholder-gray-500 text-gray-900 rounded-md bg-gray-100 focus:bg-white focus:z-10 sm:text-sm px-3 py-2" %>
             </div>
             <div class="act_finishTime my-2">
               <%= f.label :finish_datetime, "結束時間*" %>
@@ -67,7 +65,7 @@
                 <%#= "((這裡放google map api 抓上面的地點 顯示出地圖))" %>
               <%= f.text_field :location, class: "appearance-none rounded-none relative border border-gray-300 placeholder-gray-500 text-gray-900 rounded-md bg-gray-100 focus:bg-white focus:z-10 sm:text-sm ml-4 px-3 py-2 w-2/3" %>
             </div>
-              
+
             <div class="act_location my-2">
               <%= f.label :location_guide, "地點指引", class:"block" %>
               <%= f.text_field :location_guide, placeholder: "請說明如何到達該活動地點，如：西門捷運站5號出口，出站後直走約五分鐘，於214巷右轉即可見到「OOO」招牌", class: "appearance-none rounded-none relative border border-gray-300 placeholder-gray-500 text-gray-900 rounded-md bg-gray-100 focus:bg-white focus:z-10 sm:text-sm px-3 py-2 w-full h-300 block" %>
@@ -103,14 +101,13 @@
   </div>     
 
 <%# 第二步：聯絡方式 %>
-  <div class="flex flex-col mb-10 container">
+  <div class="container flex flex-col mb-10 w-5/6">
     <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
       <div class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
         <div class="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
           <table class="min-w-full divide-y divide-gray-200">
             <thead class="t-thead h-10">
               <%= form_for @activity do |f|%>
-                <%= f.hidden_field :user_id, value: current_user.id %>
                 <tr class= "px-6 py-3 text-center text-2xl h-20">
                   <th colspan="2">第二步：聯絡方式與相關限制</th>
                 </tr>
@@ -151,14 +148,13 @@
     </div>
   </div>
 <%# 第三步：新增票券 %>
-  <div class="flex flex-col mb-10 container">
+  <div class="container flex flex-col mb-10 w-5/6">
     <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
       <div class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
         <div class="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
           <table class="min-w-full divide-y divide-gray-200">
             <thead class="t-thead h-10">
               <%= fields_for :tickets do |tickets_fields| %>
-                <%= f.hidden_field :user_id, value: current_user.id %>
                 <tr class= "px-6 pt-3 text-center text-2xl h-20">
                   <th colspan="4">第三步：新增票券</th>
                 </tr>
