@@ -1,21 +1,22 @@
 class ActivitiesController < ApplicationController
   before_action :authenticate_user!
-  before_action :find_activity, only: [:join, :edit, :destroy, :update, :show]
+  before_action :find_activity, only: [:join, :edit, :destroy, :update, :show, :favorite]
+  skip_before_action :verify_authenticity_token, only: [:favorite ]
 
   def index
-    @activities = Activity.where(user_id:current_user.id)
+    @activities = Activity.where(user_id: current_user.id)
   end
 
   def new
-    @activity = Activity.new
-    # @categories = Category.all
+    @activity = current_user.own_activities.new
+    @categories = Category.all
     2.times { @activity.ticket_types.build }
   end 
   
   def create
-    @activity = Activity.new(activity_params)
-    if @activity.save!
-      redirect_to activities_path(@activity.id), notice: "新增活動成功！ 請繼續新增活動票種"
+    @activity = current_user.own_activities.new(activity_params)
+    if @activity.save
+      redirect_to activity_path(@activity.id), notice: "新增活動成功！ 請繼續新增活動票種"
     else
       render :new
     end
@@ -34,8 +35,8 @@ class ActivitiesController < ApplicationController
   end
   
   def update 
-    if @activity.update!(activity_params)
-      redirect_to activities_path(@activity), notice: "資料更新成功!"      
+    if @activity.update(activity_params)
+      redirect_to activity_path(@activity.id), notice: "資料更新成功!"      
     else
       render :edit
     end
@@ -43,11 +44,7 @@ class ActivitiesController < ApplicationController
 
   def show
     @comment = @activity.comments.new
-    @comments = @activity.comments.paginate(page: params[:page], per_page: 4).order(updated_at: :desc)
-    respond_to do |format|
-      format.html
-      format.js
-    end
+    @comments = @activity.comments.order(updated_at: :desc).includes(:user)
   end
 
   def destroy
@@ -55,17 +52,32 @@ class ActivitiesController < ApplicationController
     redirect_to activities_path, notice: "活動資料已刪除!"
   end
 
+  def favorite
+    if current_user.favorite?(@activity)
+      # 移除我的最愛
+      current_user.favorite_activities.destroy(activity)
+      render json: { status: 'removed' }
+    else
+      # 加到我最愛
+      current_user.favorite_activities << activity
+      render json: { status: 'added' }
+    end
+  end
+
+  def my_favorite
+    @favorite_activities = current_user.favorite_activities
+  end
+
   private
   def activity_params
     params.require(:activity).permit(
       :content,
-      # :user,
-      :user_id,
       :period,
       :title,
       :begin_datetime,
       :finish_datetime,
       :location,
+      :location_guide,
       :content,
       :hostname,
       :brief,
@@ -78,7 +90,7 @@ class ActivitiesController < ApplicationController
       :other_contact, 
       :limit,
       :image,
-      #:category_id,
+      :category_id,
       ticket_types_attributes: [:id, :title, :content, :quantity, :sell_start, :sell_deadline, :price, :_destroy, :valid_at, :expire_at],
       address_attributes: [:location, :id, :_destroy]  )
   end 

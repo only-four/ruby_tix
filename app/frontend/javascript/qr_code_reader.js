@@ -1,11 +1,8 @@
 import { BrowserQRCodeReader } from '@zxing/library/cjs/index.js';
 import Rails from '@rails/ujs';
-document.addEventListener("DOMContentLoaded", function () {
+document.addEventListener("turbolinks:load", function () {
   let activity_id = document.querySelector(".js-activity-id")
   let id = activity_id.dataset.id
-  activity_id.addEventListener("click", function(){
-    console.log(id);
-  });  
   const codeReader = new BrowserQRCodeReader();
   codeReader
     .decodeFromInputVideoDevice(undefined, 'video')

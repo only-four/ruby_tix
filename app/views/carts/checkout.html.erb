@@ -1,9 +1,11 @@
-<h2 class="mt-6 text-center text-4xl font-extrabold text-gray-900 mb-5 extrabold">結帳</h2>
-<%= render "cart"%>
-  <%= if @order.errors.full_messages do |message| %>
-    <%= message %>
+<div class="container mt-20">
+  <h2 class="mt-6 text-center text-4xl font-extrabold text-gray-900 mb-5 extrabold">結帳</h2>
+  <%= render "cart"%>
+    <%= if @order.errors.full_messages do |message| %>
+      <%= message %>
+    <% end %>
   <% end %>
-<% end %>
+</div>
 
 <div class="container">
   <div class="items-center justify-center px-2 sm:px-6 lg:px-8">

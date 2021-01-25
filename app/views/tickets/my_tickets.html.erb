@@ -1,31 +1,31 @@
 <div class="container">
-  <h2 class="text-xl mb-4 my-ticket">票券列表</h2>
-  <ul class="nav nav-tabs mt-3" id="myTab" role="tablist">
-    <li class="nav-item">
+  <h2 class="xl:text-xl mb-4 my-ticket text-6xl">票券列表</h2>
+  <ul class="nav nav-tabs mt-3 mb-3 " id="myTab" role="tablist">
+    <li class="nav-item xl:text-base text-6xl">
       <a class="nav-link active show bg-gray-200" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">可使用</a>
     </li>
-    <li class="nav-item">
+    <li class="nav-item xl:text-base text-6xl">
       <a class="nav-link bg-gray-200" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">處理中</a>
     </li>
-    <li class="nav-item">
+    <li class="nav-item xl:text-base text-6xl">
       <a class="nav-link bg-gray-200" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">已過期</a>
     </li>
   </ul>
   
   <div class="tab-content" id="myTabContent">
-    <div class="tab-pane fade show active " id="home" role="tabpanel" aria-labelledby="home-tab">
+    <div class="tab-pane fade show active xl:-ml-5" id="home" role="tabpanel" aria-labelledby="home-tab">
       <% @tickets.each do |ticket| %>              
         <%= render 'ticket', ticket: ticket if ticket.activated? %>
       <% end %>    
     </div>
 
-    <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+    <div class="tab-pane fade xl:-ml-5" id="profile" role="tabpanel" aria-labelledby="profile-tab">
       <% @tickets.each do |ticket| %> 
         <%= render 'ticket', ticket: ticket if ticket.pending? %>
       <% end %>
     </div>
 
-    <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
+    <div class="tab-pane fade xl:-ml-5" id="contact" role="tabpanel" aria-labelledby="contact-tab">
       <% @tickets.each do |ticket| %> 
         <%= render 'ticket', ticket: ticket if ticket.used? %>
       <% end %>     

@@ -33,7 +33,7 @@ class QrCodesController < ApplicationController
   end
 
   def manual_attand
-    QrCode.create(data: params[:unAttandData])
+    QrCode.create(data: params[:unAttandData], event: Ticket.find_by(ticket_number: params[:unAttandData]).event)
     Ticket.find_by(ticket_number: params[:unAttandData]).update(state:"used")
   end
 

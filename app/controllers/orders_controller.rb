@@ -10,8 +10,7 @@ class OrdersController < ApplicationController
     current_cart.items.each do |item|
       @order.order_items.build(ticket_types_title: item.ticket_type_id, quantity: item.quantity)
       @ticket = @order.tickets.build(ticket_type_id: item.ticket_type_id, event: TicketType.find(item.ticket_type_id).activity_id)
-    end 
-
+    end
     if @order.save && @ticket.save
       response = Faraday.post("https://sandbox-api-pay.line.me/v2/payments/request") do |req|
         request_header(req)

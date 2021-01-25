@@ -1,0 +1,35 @@
+<div class="container">
+  <div class="items-center justify-center px-2 sm:px-6 lg:px-8">
+    <h2 class="mt-6 text-center text-4xl font-extrabold text-gray-900 mb-5 extrabold ">收藏活動列表</h2>
+    <div class="flex flex-col">
+      <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
+        <div class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
+          <div class="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
+            <table class="min-w-full divide-y divide-gray-200">
+              <thead class="t-thead">
+                <tr>
+                  <th scope="col" class="px-6 py-3 text-center text-md font-normal uppercase tracking-wider">
+                    活動編號
+                  </th>
+                  <th scope="col" class="px-6 py-3 text-center text-md font-normal uppercase tracking-wider">
+                    活動名稱
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                <% @favorite_activities.each_with_index do |activity, index| %>
+                  <tr class= "px-6 py-3 text-center">
+                    <td><%= index + 1 %></td>
+                    <td><%= link_to activity.title, activity_path(activity.id) %></td>
+                  </tr>
+                <% end %>
+              </tbody>
+
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+
+</div>
+</div>

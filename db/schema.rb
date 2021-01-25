@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_01_21_072531) do
+ActiveRecord::Schema.define(version: 2021_01_23_073202) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -73,11 +73,18 @@ ActiveRecord::Schema.define(version: 2021_01_21_072531) do
     t.integer "total_price", default: 0
     t.integer "activity_users_count"
     t.string "image"
+    t.integer "category_id"
     t.string "activity"
     t.datetime "attend_in"
-    t.integer "category_id"
     t.text "location_guide"
     t.index ["user_id"], name: "index_activities_on_user_id"
+  end
+
+  create_table "activity_favorites", force: :cascade do |t|
+    t.integer "activity_id"
+    t.integer "favorite_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "activity_users", force: :cascade do |t|
@@ -131,6 +138,13 @@ ActiveRecord::Schema.define(version: 2021_01_21_072531) do
     t.index ["ticket_id"], name: "index_event_attandances_on_ticket_id"
   end
 
+  create_table "favorites", force: :cascade do |t|
+    t.integer "user_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.integer "activity_id"
+  end
+
   create_table "messages", force: :cascade do |t|
     t.bigint "chatroom_id", null: false
     t.bigint "user_id", null: false
@@ -179,6 +193,7 @@ ActiveRecord::Schema.define(version: 2021_01_21_072531) do
     t.string "data"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "event"
   end
 
   create_table "roles", force: :cascade do |t|
@@ -208,9 +223,9 @@ ActiveRecord::Schema.define(version: 2021_01_21_072531) do
     t.integer "price"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.bigint "activity_id"
     t.datetime "sell_start"
     t.datetime "sell_deadline"
+    t.bigint "activity_id"
     t.string "state"
     t.datetime "valid_at"
     t.datetime "expire_at"
@@ -249,6 +264,7 @@ ActiveRecord::Schema.define(version: 2021_01_21_072531) do
     t.string "provider"
     t.string "uid"
     t.string "image"
+    t.integer "favorite_id"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["fb_uid"], name: "index_users_on_fb_uid"
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
