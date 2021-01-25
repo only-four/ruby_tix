@@ -111,14 +111,14 @@ GEM
       faraday-net_http (~> 1.0)
       multipart-post (>= 1.2, < 3)
       ruby2_keywords
-    faraday-net_http (1.0.0)
+    faraday-net_http (1.0.1)
     ffi (1.14.2)
     ffi (1.14.2-java)
     ffi (1.14.2-x64-mingw32)
     ffi (1.14.2-x86-mingw32)
     figaro (1.2.0)
       thor (>= 0.14.0, < 2)
-    fog-aws (3.7.0)
+    fog-aws (3.8.0)
       fog-core (~> 2.1)
       fog-json (~> 1.1)
       fog-xml (~> 0.1)
@@ -157,10 +157,10 @@ GEM
     jquery-ui-rails (6.0.1)
       railties (>= 3.2.16)
     jwt (2.2.2)
-    listen (3.4.0)
+    listen (3.4.1)
       rb-fsevent (~> 0.10, >= 0.10.3)
       rb-inotify (~> 0.9, >= 0.9.10)
-    loofah (2.8.0)
+    loofah (2.9.0)
       crass (~> 1.0.2)
       nokogiri (>= 1.5.9)
     mail (2.7.1)
@@ -193,6 +193,8 @@ GEM
     nokogiri (1.11.1-x64-mingw32)
       racc (~> 1.4)
     nokogiri (1.11.1-x86-mingw32)
+      racc (~> 1.4)
+    nokogiri (1.11.1-x86_64-darwin)
       racc (~> 1.4)
     oauth2 (1.4.4)
       faraday (>= 0.8, < 2.0)
@@ -307,6 +309,7 @@ GEM
     selenium-webdriver (3.142.7)
       childprocess (>= 0.5, < 4.0)
       rubyzip (>= 1.2.2)
+    semantic_range (2.3.1)
     simple_form (5.0.3)
       actionpack (>= 5.0)
       activemodel (>= 5.0)
@@ -344,10 +347,11 @@ GEM
       nokogiri (~> 1.6)
       rubyzip (>= 1.3.0)
       selenium-webdriver (>= 3.0, < 4.0)
-    webpacker (4.3.0)
-      activesupport (>= 4.2)
+    webpacker (5.2.1)
+      activesupport (>= 5.2)
       rack-proxy (>= 0.6.1)
-      railties (>= 4.2)
+      railties (>= 5.2)
+      semantic_range (>= 2.3.0)
     websocket-driver (0.7.3)
       websocket-extensions (>= 0.1.0)
     websocket-driver (0.7.3-java)
@@ -364,11 +368,12 @@ PLATFORMS
   x64-mingw32
   x86-mingw32
   x86-mswin32
+  x86_64-darwin-19
 
 DEPENDENCIES
   aasm (~> 5.1, >= 5.1.1)
   bootsnap (>= 1.4.2)
-  bullet (~> 6.1, >= 6.1.2)
+  bullet (~> 6.1)
   byebug
   cancancan (~> 3.2, >= 3.2.1)
   capybara (>= 2.15)
@@ -378,7 +383,7 @@ DEPENDENCIES
   faker (~> 2.15, >= 2.15.1)
   faraday (~> 1.3)
   figaro (~> 1.2)
-  fog-aws (~> 3.7)
+  fog-aws (~> 3.8)
   font-awesome-rails (~> 4.6, >= 4.6.3.1)
   foreman (~> 0.87.2)
   hirb (~> 0.7.3)
@@ -386,7 +391,7 @@ DEPENDENCIES
   jbuilder (~> 2.7)
   jquery-rails (~> 4.4)
   jquery-ui-rails (~> 6.0, >= 6.0.1)
-  listen (~> 3.2)
+  listen (~> 3.4)
   nokogiri (>= 1.11.0.rc4)
   omniauth (~> 1.9, >= 1.9.1)
   omniauth-facebook (~> 8.0)
@@ -408,11 +413,11 @@ DEPENDENCIES
   tzinfo-data
   web-console (>= 3.3.0)
   webdrivers
-  webpacker (~> 4.0)
+  webpacker (~> 5.2)
   will_paginate (~> 3.1)
 
 RUBY VERSION
    ruby 2.7.0p0
 
 BUNDLED WITH
-   2.2.5
+   2.1.4
