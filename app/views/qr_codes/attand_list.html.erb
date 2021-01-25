@@ -21,10 +21,10 @@
             <td class="py-4 px-6 border-b border-grey-light"><%= "#{index} " %><%= link_to ticket.order.user.name%></td>
             <td class="py-4 px-6 border-b border-grey-light"><%= link_to ticket.ticket_number%>/<%= ticket.event %></td>
             <td class="py-4 px-6 border-b border-grey-light">
-              <% if  QrCode.find_by(data: ticket.ticket_number) != nil %>
+              <% if QrCode.find_by(data: ticket.ticket_number) != nil %>
                 <span class="bg-gray-400 text-white p-2 rounded-lg">已報到</span>
               <% else %>  
-              <span class="bg-blue-300 text-white p-2 rounded-lg">未報到</span>
+                <span class="bg-blue-300 text-white p-2 rounded-lg">未報到</span>
               </td>
               <td><a class="js-unattand" data-id="<%= ticket.ticket_number %>">手動報到</a></td>
             <% end %>
