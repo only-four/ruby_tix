@@ -4,7 +4,7 @@ class ActivitiesController < ApplicationController
   skip_before_action :verify_authenticity_token, only: [:favorite ]
 
   def index
-    @activities = Activity.all
+    @activities = Activity.where(user_id:current_user.id)
   end
 
   def new
