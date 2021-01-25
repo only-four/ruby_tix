@@ -31,6 +31,8 @@
             </div>
             <div>
             <%# =================== %>
+            <%# TODO: 待處理 %>
+            <% if false%>
               <div class="wrapper">
                 <div class="center">
                   <div class="card">
@@ -45,6 +47,7 @@
               </div>
               <script src="map.js"></script>
               <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAoTpNAl2WYuw5kigYMeWJO0ppiECjCrnE&libraries=places&callback=initMap"></script>
+              <% end %>
             <%# =================== %>
             </div>
 
@@ -78,7 +81,7 @@
         <div class="overflow-hidden border-b-2 border-blue-200 sm:rounded-lg mb-5 p-10">
             <div class="justify-items-center px-auto">  
 
-              <div class="whitespace-pre-wrap bg-gray-300 text-xl w-3/4 mx-auto px-auto"><%= @activity.brief %>
+              <div class="whitespace-pre-wrap bg-gray-300 border-1 border-gray-300 rounded-lg  text-xl w-3/4 mx-auto p-4"><%= @activity.brief %>
               </div>
               <div class="whitespace-pre-wrap text-lg w-3/4 mx-auto"><%= @activity.content %>
               </div>
@@ -175,7 +178,7 @@
               <a href="phoneto:to_s(@activity.phone)" class="t-back-button flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium h-10">
                 <i class="fas fa-phone-volume fa-lg ml-1"></i>
               </a>
-              <a href="mailto:[to_s.@activity.email]"  class="t-back-button flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium h-10"><i class="far fa-envelope fa-lg"></i></a>
+              <a href=mailto:@activity.email.value class="t-back-button flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium h-10"><i class="far fa-envelope fa-lg"></i></a>
             </div>
               <div id="copythis" class="js-https t-copy-input rounded-lg"></div>
               <div class="t-copy-btn js-copy-btn rounded-lg">
