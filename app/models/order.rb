@@ -4,9 +4,8 @@ class Order < ApplicationRecord
   belongs_to :user
   has_many :order_items
   has_many :tickets
-  validates :participant,:address, presence: true
+  validates :participant, :address, presence: true
 
-  
   aasm column: :state do
     state :pending, initial: true
     state :paid, :refunded, :completed
