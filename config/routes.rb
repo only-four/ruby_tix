@@ -1,8 +1,4 @@
 Rails.application.routes.draw do
-  resources :chatrooms do
-    resource :chatroom_users
-    resources :messages
-  end
   root to: 'pages#index'
 
   resources :pages do
@@ -18,33 +14,13 @@ Rails.application.routes.draw do
       get :privacy, to: "pages#privacy"
     end
   end 
-
-  resource :favorite, only: [:index, :create, :show]
-
+  
   devise_for :users, 
              :controllers => {
-               :registrations => "users/registrations", 
-               :omniauth_callbacks => "users/omniauth_callbacks"
-             }
+                :registrations => "users/registrations", 
+                :omniauth_callbacks => "users/omniauth_callbacks"
+              }
 
-  resources :orders, only: [:index, :create, :show, :destroy] do
-    member do
-      delete :cancel
-      post :pay
-      get :pay_confirm
-    end
-    collection do
-      get :confirm
-    end
-  end
-
-  resource :cart, only: [:show, :destroy] do
-    collection do
-      post :add, path: 'add/:id'
-    end
-    get :checkout
-  end
-  
   namespace :admin do
     resources :users
     resources :activities
@@ -82,8 +58,28 @@ Rails.application.routes.draw do
 
   resources :categories
 
-  # resources :activities_user
+  resource :favorite, only: [:index, :create, :show]
 
+  resources :orders, only: [:index, :create, :show, :destroy] do
+    member do
+      delete :cancel
+      post :pay
+      get :pay_confirm
+    end
+    collection do
+      get :confirm
+    end
+  end
+
+  resources :seats, only: [:show, :update]
+
+  resource :cart, only: [:show, :destroy] do
+    collection do
+      post :add, path: 'add/:id'
+    end
+    get :checkout
+  end
+  
   resources :tickets, only: [:create] do
     member do
       post :attend_event
@@ -98,5 +94,9 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :seats, only: [:show, :update]
+  resources :chatrooms do
+    resource :chatroom_users
+    resources :messages
+  end
+
 end
