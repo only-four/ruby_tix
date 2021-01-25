@@ -23,10 +23,7 @@ document.addEventListener("turbolinks:load", function(){
       const imgDiv = document.createElement('img')
       const title = document.createElement('p')  
       swiper.classList.add('hidden');
-      
-      
-
-      
+      console.log(element['id']);
       
       // areaDiv.classList.add(...areaClassList)
       itemDiv.classList.add('t-item')
@@ -37,7 +34,7 @@ document.addEventListener("turbolinks:load", function(){
       } else {
         imgDiv.src = "/images/rubytix006.png"
       }
-      itemDiv.setAttribute('href', `<%= activity_path(activity.id) %>`);
+      itemDiv.setAttribute('href', `window.location.element['id']`);
       title.textContent = element.title       
       // 將找到的那筆資料 轉出來，增加到main area。                 
       itemDiv.appendChild(imgDiv)
