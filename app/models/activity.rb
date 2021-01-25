@@ -6,13 +6,13 @@ class Activity < ApplicationRecord
   has_many :users, through: :activity_users 
   has_many :comments, dependent: :destroy
   has_many :ticket_types, dependent: :destroy
-  belongs_to :creator, foreign_key: :user_id, class_name: 'user'
+  belongs_to :creator, foreign_key: :user_id, class_name: 'User'
   belongs_to :category
   has_many :favorites
-  has_many :favorite_users, through: :favorites, source: 'user'
+  has_many :favorite_users, through: :favorites, source: 'User'
   
   validates :hostname, :title, :brief, :content, :begin_datetime, :finish_datetime, :phone, :email, :limit, presence: true
-
+  
   # ticket_type 寫在activity頁面 巢狀表單
   accepts_nested_attributes_for :ticket_types, allow_destroy: true, reject_if: :all_blank
   mount_uploader :image, ImageUploader
