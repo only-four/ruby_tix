@@ -31,24 +31,6 @@
             </div>
             <div>
             <%# =================== %>
-            <%# TODO: 待處理 %>
-            <% if false%>
-              <div class="wrapper">
-                <div class="center">
-                  <div class="card">
-                    <div class="card-harder bg-white">
-
-                    </div>
-                    <div class="card-body m-n3">
-                    
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <script src="map.js"></script>
-              <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAoTpNAl2WYuw5kigYMeWJO0ppiECjCrnE&libraries=places&callback=initMap"></script>
-              <% end %>
-            <%# =================== %>
             </div>
 
             <div class="flex items-center mt-4">
@@ -115,7 +97,26 @@
         <div class="overflow-hidden border-b-2 border-blue-200 sm:rounded-lg mb-5 p-10">
           <div class="justify-left items-center">  
                   <%= "這裡放地圖" %>
-                  <%# <div class="whitespace-pre-wrap"><%= @activity.map </div> %>
+                              <%# =================== %>
+            <%# TODO: 待處理 %>
+            <%# if false%>
+            <div class="wrapper">
+              <div class="center">
+                <div class="card">
+                  <div class="card-harder bg-white">
+                    <input type="text" id="mapsearch"><i class="fas fa-search m-2" id="btn"></i>
+                  </div>
+                  <div class="card-body m-n3">
+                    <div id="map-canvas"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+              <script src="map.js"></script>
+              <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAoTpNAl2WYuw5kigYMeWJO0ppiECjCrnE&libraries=places&callback=initMap">
+              </script>
+              <%# end %>
               <div>
               
               </div>
@@ -175,10 +176,10 @@
                 <% end %>
                 </h2>
               </div>  
-              <a href="phoneto:to_s(@activity.phone)" class="t-back-button flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium h-10">
+              <a href="phoneto:<%= @activity.phone %>" class="t-back-button flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium h-10">
                 <i class="fas fa-phone-volume fa-lg ml-1"></i>
               </a>
-              <a href=mailto:@activity.email.value class="t-back-button flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium h-10"><i class="far fa-envelope fa-lg"></i></a>
+              <a href="mailto:<%= @activity.email %>" class="t-back-button flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium h-10"><i class="far fa-envelope fa-lg"></i></a>
             </div>
               <div id="copythis" class="js-https t-copy-input rounded-lg"></div>
               <div class="t-copy-btn js-copy-btn rounded-lg">
