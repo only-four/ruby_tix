@@ -31,10 +31,10 @@
   </div>
 
   <div class="col-sm-10">
-    <div data-target="channel.messages">
-      <%= render @chatroom.messages %>
-    </div>
     <% if current_user.chatrooms.include?(@chatroom) %>
+      <div data-target="channel.messages">
+        <%= render @chatroom.messages %>
+      </div>
       <%= form_with model: [@chatroom, Message.new], data: { action: "ajax:success->channel#clearMessage" } do |form| %>
         <%= form.text_field :body, placeholder: "輸入聊天內容...", class: "form-control", data: { target: "channel.newMessage" } %>
       <% end %>

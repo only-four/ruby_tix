@@ -9,7 +9,6 @@ class OrdersController < ApplicationController
     @order[:price] = current_cart.total_price.to_i
     current_cart.items.each do |item|
       @order.order_items.build(ticket_types_title: item.ticket_type_id, quantity: item.quantity)
-      # @order.save
       @ticket = @order.tickets.build(ticket_type_id: item.ticket_type_id, event: TicketType.find(item.ticket_type_id).activity_id)
     end 
 
@@ -63,7 +62,7 @@ class OrdersController < ApplicationController
   def cancel
     @order = current_user.orders.find(params[:id])
 
-    if @order.paid?
+    if @order.已付款?
       response = Faraday.post("https://sandbox-api-pay.line.me/v2/payments/#{@order[:transaction_id]}/refund") do |req|
         request_header(req)
       end
