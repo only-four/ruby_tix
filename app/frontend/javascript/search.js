@@ -10,7 +10,7 @@ document.addEventListener("turbolinks:load", function(){
     if(searchInput == "") { return }
     // 如果yield不為空，就清空
     area = document.querySelector('.js-main-area')
-    console.log(swiper)      
+      
     if(area.innerHTML != ""){
       area.innerHTML = ""
     }
@@ -23,7 +23,7 @@ document.addEventListener("turbolinks:load", function(){
       const imgDiv = document.createElement('img')
       const title = document.createElement('p')  
       swiper.classList.add('hidden');
-      console.log(element['id']);
+      console.log(window.location.href);
       
       // areaDiv.classList.add(...areaClassList)
       itemDiv.classList.add('t-item')
@@ -34,7 +34,7 @@ document.addEventListener("turbolinks:load", function(){
       } else {
         imgDiv.src = "/images/rubytix006.png"
       }
-      itemDiv.setAttribute('href', `window.location.element['id']`);
+      itemDiv.setAttribute('href', window.location.href+'activities/'+element['id']);
       title.textContent = element.title       
       // 將找到的那筆資料 轉出來，增加到main area。                 
       itemDiv.appendChild(imgDiv)

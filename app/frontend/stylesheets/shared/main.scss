@@ -102,7 +102,7 @@ html {
   }
 
   &__details {
-    position: relative;
+    // position: relative;
     color: #444;
     background: #fff;
     font-weight: 900;
@@ -129,28 +129,83 @@ html {
   left: 0;
   margin: auto;
   width: 280px;
+  height: 280px;
   padding: 10px;
   justify-content: center;
   background-color: #48463e;
+
   // border-radius: 20px;
+}
+.t-item-img img {
+  width: 100%;
+  height: 100%;
+}
+.t-hp-category {
+  background-color: #fa0;
+  color: #fff;
+  position: absolute;
+  top: 20px;
+  left: -5px;
+  z-index: 10;
+  padding: 1px 5px;
+}
+.t-hp-cgp {
+  width: 0px;
+  height: 0px;
+  z-index: 10;
+  border-top: 4px solid #a60;
+  border-left: 4px solid transparent;
+  position: absolute;
+  left: 0;
+  bottom: -4px;
+  /* 也可以寫成下面這樣 */
+  /* top: 100%; */
+}
+.tag {
+  background-color: #fa0;
+  color: #fff;
+  position: absolute;
+  top: 20px;
+  left: -5px;
+  padding: 2px 8px;
+}
+
+.arrow {
+  width: 0px;
+  height: 0px;
+  border-top: 4px solid #a60;
+  border-left: 4px solid transparent;
+  position: absolute;
+  left: 0;
+  bottom: -4px;
+  /* 也可以寫成下面這樣 */
+  /* top: 100%; */
 }
 .t-item-detail {
   padding: 5px 10px;
+  background-color: #ffffff;
 }
 .t-item-detail h5 {
-  color: #cb594d;
+  color: #000;
+  letter-spacing: 3px;
+  font-size: 16px;
   font-weight: 600;
 }
+
 .t-item-date {
   @apply flex;
   @apply items-center;
-  color: #ddd;
+  color: #444;
   font-size: 16px;
 }
 .t-item-date :first-child {
   margin-right: 3px;
 }
-.t-truncate,
+.t-truncate {
+  color: #48463e;
+  padding: 0 6px;
+}
+
 .t-truncate:hover {
   color: #ddd;
 }
