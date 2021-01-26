@@ -1,7 +1,9 @@
 <div class="container xl:w-2/3 lg:w-3/4 sm:w-screen mt-40">
   <%= simple_form_for @activity do |f|%>
-    <div class="">
+    <div class="justify-between flex">
+      <div class="px-1"></div>
       <%= image_tag @activity.image_url if @activity.image_url.present? %>
+      <div class="px-1"></div>
     </div>
 
     <% if @activity %>

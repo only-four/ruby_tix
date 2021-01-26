@@ -112,10 +112,10 @@ class ActivitiesController < ApplicationController
     @_activity_params = raw_activity_params
     begin_date  = @_activity_params[:begin_datetime].to_datetime
     finish_date = @_activity_params[:finish_datetime].to_datetime
-    sell_start = @_activity_params[:sell_start].to_datetime
-    sell_deadline = @_activity_params[:sell_deadline].to_datetime
-    valid_at = @_activity_params[:valid_at].to_datetime
-    expire_at = @_activity_params[:expire_at].to_datetime
+    # sell_start = @_activity_params[:sell_start].to_datetime
+    # sell_deadline = @_activity_params[:sell_deadline].to_datetime
+    # valid_at = @_activity_params[:valid_at].to_datetime
+    # expire_at = @_activity_params[:expire_at].to_datetime
 
     @_activity_params["begin_datetime(1i)"] = begin_datetime.strftime("%Y")
     @_activity_params["begin_datetime(2i)"] = begin_datetime.strftime("%m")
@@ -125,21 +125,21 @@ class ActivitiesController < ApplicationController
     @_activity_params["finish_datetime(2i)"] = finish_datetime.strftime("%m")
     @_activity_params["finish_datetime(3i)"] = finish_datetime.strftime("%d")
 
-    @_activity_params["sell_start(1i)"] = sell_start.strftime("%Y")
-    @_activity_params["sell_start(2i)"] = sell_start.strftime("%m")
-    @_activity_params["sell_start(3i)"] = sell_start.strftime("%d")
+    # @_activity_params["sell_start(1i)"] = sell_start.strftime("%Y")
+    # @_activity_params["sell_start(2i)"] = sell_start.strftime("%m")
+    # @_activity_params["sell_start(3i)"] = sell_start.strftime("%d")
 
-    @_activity_params["sell_deadline(1i)"] = sell_deadline.strftime("%Y")
-    @_activity_params["sell_deadline(2i)"] = sell_deadline.strftime("%m")
-    @_activity_params["sell_deadline(3i)"] = sell_deadline.strftime("%d")
+    # @_activity_params["sell_deadline(1i)"] = sell_deadline.strftime("%Y")
+    # @_activity_params["sell_deadline(2i)"] = sell_deadline.strftime("%m")
+    # @_activity_params["sell_deadline(3i)"] = sell_deadline.strftime("%d")
 
-    @_activity_params["valid_at(1i)"] = valid_at.strftime("%Y")
-    @_activity_params["valid_at(2i)"] = valid_at.strftime("%m")
-    @_activity_params["valid_at(3i)"] = valid_at.strftime("%d")
+    # @_activity_params["valid_at(1i)"] = valid_at.strftime("%Y")
+    # @_activity_params["valid_at(2i)"] = valid_at.strftime("%m")
+    # @_activity_params["valid_at(3i)"] = valid_at.strftime("%d")
 
-    @_activity_params["expire_at(1i)"] = expire_at.strftime("%Y")
-    @_activity_params["expire_at(2i)"] = expire_at.strftime("%m")
-    @_activity_params["expire_at(3i)"] = expire_at.strftime("%d")
+    # @_activity_params["expire_at(1i)"] = expire_at.strftime("%Y")
+    # @_activity_params["expire_at(2i)"] = expire_at.strftime("%m")
+    # @_activity_params["expire_at(3i)"] = expire_at.strftime("%d")
 
     @_activity_params
   end

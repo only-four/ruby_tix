@@ -5,45 +5,45 @@
         <%= image_tag '/images/rubytix_concert.png', class:"" %>
       <% end %>   
     </div>
+    <%# ======[ubayeats]===== %>
     <div class="swiper-slide">
       <a href="https://ubayeats.shop/" target="_blank">
         <img src="/images/Astro_Ubayeats.png">
       </a> 
     </div>
-    <%# TODO：banner加上連結 %>
     <div class="swiper-slide">
       <a href="">
         <img src="/images/slide_coffee.png">
       </a> 
     </div>
+    <%# ======[callback]===== %>
     <div class="swiper-slide">
       <a href="https://callback.money/" target="_blank">
         <img src="/images/Astro_Call_back.png">
       </a> 
     </div>
-
     <div class="swiper-slide">
       <a href="">
         <img src="/images/slide_yoga.png">
       </a>
     </div>
+     <%# ======[shoppinggo]===== %>
     <div class="swiper-slide">
       <a href="https://shoppinggo.site/" target="_blank">
         <img src="/images/Astro_Shoppinggo.png">
       </a> 
     </div>
-
     <div class="swiper-slide">
       <a href="">
         <img src="/images/slide_picnic.png">
       </a> 
     </div>
+    <%# ======[sociview]===== %>
     <div class="swiper-slide">
-      <a href="https://github.com/demo-6th/SociView" target="_blank">
+      <a href="https://sociview.tw/" target="_blank">
         <img src="/images/Astro_SociView_3.png">
       </a> 
     </div>
-
     <div class="swiper-slide">
       <a href="activity_path.id">
         <img src="/images/slide_celebration.png">
@@ -80,8 +80,6 @@
               <% end %>
             </div>
 
-
-
             <div class="tag">
               <div class="arrow"></div>
               <% if activity.category %>
@@ -103,7 +101,6 @@
           
             <div class="t-item-detail">
               <p class="t-truncate"><%= activity.brief %></p>
-              <%# byebug %>
             </div>    
         </div>
       <% end %>     
@@ -112,7 +109,7 @@
 
 </div>
 
-<div class="flex justify-between mt-10">
+<div class="flex justify-between mt-10 px-10">
   <%= link_to '回到活動列表', activities_path, class: "t-back-button flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium h-10" %>
   <%= link_to "新增活動", new_activity_path, class: "t-create-button-text" %>
 </div>

@@ -1,4 +1,4 @@
-<div class="mt-20 qr-code-participated p-6 xl:text-center xl:text-base text-6xl">
+<div class="mt-40 qr-code-participated p-6 xl:text-center xl:text-base text-6xl">
   <p>票號: <%= @qr_code.data %></p>
   <p class="mb-3">掃描時間: <%= @qr_code.created_at.strftime('%T') %></p>
   <%= link_to '手動報到', attand_list_activity_qr_codes_path(@attand_list_activity_id), class: 'bg-gray-500 p-2 text-white rounded-lg' %>
@@ -16,4 +16,4 @@ $(document).ready(function() {
   })    
 })
 </script>
-<div class="my-40"></div>
+<div class="container my-20"></div>
