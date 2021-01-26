@@ -33,3 +33,4 @@
       <div class="text-gray-500 text-xs flex items-center mt-3">
         <%= (link_to '刪除', activity_comment_path(@activity, comment), remote: true, method: "delete", class: "js-removeBtn", data: { confirm: "確認刪除？" }) if current_user == comment.user %>
       </div>
+<% end %>

@@ -8,7 +8,7 @@
       <h1 class="text-left text-4xl font-black text-gray-900 mt-6 mb-4 border-8 border-transparent">
         【 <%= @activity.title %> 】
       </h1>
-<%# ＝＝＝＝＝＝＝＝＝＝＝＝分隔線＝＝＝＝＝＝＝＝＝＝＝＝ %>
+    <%# ＝＝＝＝＝＝＝＝＝＝＝＝分隔線＝＝＝＝＝＝＝＝＝＝＝＝ %>
       <div class="container mt-10"> 
         <div class="text-left text-4xl font-extrabold text-red-800 pl-2">活動資訊</div>
         <hr class="border-8 border-blue-800 mt-2"> 
@@ -53,7 +53,7 @@
                 <%# 活動標籤考慮刪除 %>
         </div>
       </div> 
-<%# ＝＝＝＝＝＝＝＝＝＝＝＝分隔線＝＝＝＝＝＝＝＝＝＝＝＝ %>
+    <%# ＝＝＝＝＝＝＝＝＝＝＝＝分隔線＝＝＝＝＝＝＝＝＝＝＝＝ %>
       <div class="container mt-10"> 
         <div class="text-left text-4xl font-extrabold text-red-800 pl-2">活動內容</div>
         <hr class="border-8 border-blue-800 mt-2"> 
@@ -66,7 +66,7 @@
 
           </div>
       </div>
-<%# ＝＝＝＝＝＝＝＝＝＝＝＝分隔線＝＝＝＝＝＝＝＝＝＝＝＝ %>
+    <%# ＝＝＝＝＝＝＝＝＝＝＝＝分隔線＝＝＝＝＝＝＝＝＝＝＝＝ %>
       <div class="container mt-10"> 
         <div class="text-left text-4xl font-extrabold text-red-800 pl-2">其他資訊</div>
         <hr class="border-8 border-blue-800 mt-2"> 
@@ -75,47 +75,48 @@
             <div class="flex items-center mt-2">
               <i class="fas fa-user fa-lg text-red-800"></i>
               <p class="text-left text-xl font-extrabold text-red-800 pl-2">人數限制</p>
-              <p class="text-left text-xl pl-2"><%= @activity.limit %>
+              <p class="text-left text-xl pl-2"><%= @activity.limit %></p>
             </div>
             <div class="flex items-center mt-2">
               <i class="fas fa-exclamation-triangle fa-lg text-red-800"></i>
               <p class="text-left text-xl font-extrabold text-red-800 pl-2">注意事項</p>
-              <p class="text-left text-xl pl-2"><%= @activity.notice %>
+              <p class="text-left text-xl pl-2"><%= @activity.notice %></p>
             </div>
 
-          </div>
+        </div>
       </div>
-<%# ＝＝＝＝＝＝＝＝＝＝＝＝分隔線＝＝＝＝＝＝＝＝＝＝＝＝ %>
-      <div class="container mt-10"> 
-        <div class="text-left text-4xl font-extrabold text-red-800 pl-2">地圖<</div>
-        <hr class="border-8 border-blue-800 mt-2"> 
-        <div class="justify-left items-center mt-4 pl-8">  
-                <%= "這裡放地圖" %>
-                            <%# =================== %>
-          <%# TODO: 待處理 %>
-          <%# if false%>
-          <div class="wrapper">
-            <div class="center">
-              <div class="card">
-                <div class="card-harder bg-white">
-                  <input type="text" id="mapsearch"><i class="fas fa-search m-2" id="btn"></i>
+    <%# ＝＝＝＝＝＝＝＝＝＝＝＝分隔線＝＝＝＝＝＝＝＝＝＝＝＝ %>
+      <% if false %>
+            <div class="container mt-10"> 
+              <div class="text-left text-4xl font-extrabold text-red-800 pl-2">地圖</div>
+              <hr class="border-8 border-blue-800 mt-2"> 
+              <div class="justify-left items-center mt-4 pl-8">  
+                      <%= "這裡放地圖" %>
+                                  <%# =================== %>
+                <%# TODO: 待處理 %>
+                <%# if false%>
+                <div class="wrapper">
+                  <div class="center">
+                    <div class="card">
+                      <div class="card-harder bg-white">
+                        <input type="text" id="mapsearch"><i class="fas fa-search m-2" id="btn"></i>
+                      </div>
+                      <div class="card-body m-n3">
+                        <div id="map-canvas"></div>
+                      </div>
+                    </div>
+                  </div>
                 </div>
-                <div class="card-body m-n3">
-                  <div id="map-canvas"></div>
+
+                  <script src="map.js"></script>
+                  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAoTpNAl2WYuw5kigYMeWJO0ppiECjCrnE&libraries=places&callback=initMap">
+                  </script>
+                  <%# end %>
+
                 </div>
-              </div>
             </div>
-          </div>
-
-            <script src="map.js"></script>
-            <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAoTpNAl2WYuw5kigYMeWJO0ppiECjCrnE&libraries=places&callback=initMap">
-            </script>
-            <%# end %>
-
-          </div>
-      </div>
-
-<%# ＝＝＝＝＝＝＝＝＝＝＝＝分隔線＝＝＝＝＝＝＝＝＝＝＝＝ %>
+      <% end %>
+    <%# ＝＝＝＝＝＝＝＝＝＝＝＝分隔線＝＝＝＝＝＝＝＝＝＝＝＝ %>
       <div class="container mt-10"> 
         <div class="text-left text-4xl font-extrabold text-red-800 pl-2">聯絡方式</div>
         <hr class="border-8 border-blue-800 mt-2"> 
@@ -137,16 +138,16 @@
           </div>
         </div>
       </div>
-<%# ＝＝＝＝＝＝＝＝＝＝＝＝分隔線＝＝＝＝＝＝＝＝＝＝＝＝ %>          
+    <%# ＝＝＝＝＝＝＝＝＝＝＝＝分隔線＝＝＝＝＝＝＝＝＝＝＝＝ %>          
     <% else %>
       <h1>找不到活動喔！請確定你的連結是否正確！</h1>
     <% end %>
-<%# ＝＝＝＝＝＝＝＝＝＝＝＝分隔線＝＝＝＝＝＝＝＝＝＝＝＝ %>    
+    <%# ＝＝＝＝＝＝＝＝＝＝＝＝分隔線＝＝＝＝＝＝＝＝＝＝＝＝ %>    
       <div class="container mt-20"> 
         <div class="overflow-hidden border-0 border-transparent mb-5 w-1/2 p-auto">
           <div class="items-center justify-center">
 
-              <div class="flex items-center justify-center border-8 border-green-400">
+              <div class="flex items-center justify-center">
                 <div class="">
                   <%= link_to '參加活動', activity_choose_path(@activity.id) , method:"get", class: "t-create-button flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-gray-100 hover:border-red-600 hover:bg-red-600 hover:text-white hover:no-underline h-10 w-32" %>
                 </div>
@@ -170,47 +171,37 @@
               </a>
               <a href="mailto:<%= @activity.email %>" class="t-back-button flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium h-10"><i class="far fa-envelope fa-lg"></i></a>
             </div>
-              <div id="copythis" class="js-https t-copy-input rounded-lg"></div>
-              <div class="t-copy-btn js-copy-btn rounded-lg">
+
+            <div class="flex justify-center">
+              <div id="copythis" class="js-https t-copy-input rounded-lg w-1/2"></div>
+              <div class="t-copy-btn js-copy-btn rounded-lg min-w-max">
                 <a href="javascript:void(0)" onclick="CopyTextToClipboard('copythis')" class="t-copy-text"><i class="far fa-copy t-copy-text"></i> 分享複製連結</a>
               </div>
-              <%# ＝＝＝＝＝＝＝＝＝分隔線＝＝＝＝＝＝＝＝＝ %>
-              <div class="t-copy-area h-10 border-8 border-yellow-400 items-center justify-center">
-                <div id="copythis" class="js-https t-copy-input rounded-lg"></div>
-                <div class="t-copy-btn js-copy-btn rounded-lg">
-                  <a href="javascript:void(0)" onclick="CopyTextToClipboard('copythis')" class="t-copy-text"><i class="far fa-copy t-copy-text"></i> 分享複製連結</a>
-                </div>
-              </div>
+            </div>
 
           </div> 
         </div>
       </div>
-      <hr class="border-1 border-gray-300 mt-20 mb-4">  
-      <% if false %>
-      <div class="overflow-hidden border-b border-gray-200 sm:rounded-lg mb-5 p-10">
-        <div class="items-center flex justify-left">
-          <div class="flex justify-between mt-10">
-            <%= link_to '回到活動列表', activities_path, class: "t-back-button flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium h-10" %>
-          </div>
-        </div>
-      </div> 
-      <% end %>
-<%# ＝＝＝＝＝＝＝＝＝＝＝＝分隔線＝＝＝＝＝＝＝＝＝＝＝＝ %>  
+    <%# ＝＝＝＝＝＝＝＝＝＝＝＝分隔線＝＝＝＝＝＝＝＝＝＝＝＝ %>  
   <% end %>
 
-<div class="m-8"> 
-  <section class="section-comments"></section>
-    <div class="container">
-      <h2 class="ml-4"><strong><%= @activity.comments.count %> </strong>Comment</h2>
-      <%= render 'comments/comments', activity: @activity, comment: @comment %>
-      <%= render 'comments/show_comments', comments: @comments %>
-    </div>
-  </section>
-</div>
-<%# ＝＝＝＝＝＝＝＝＝＝＝＝分隔線＝＝＝＝＝＝＝＝＝＝＝＝ %>  
-<div class="justify-center my-10 container xl:w-7/12 lg:w-3/4 sm:w-screen">
-  <%= link_to '查看更多活動', activities_path, class: "t-back-button flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium h-10" %>
-  <%= link_to "沒有喜歡的嗎？自己創一個吧！", new_activity_path, class: "t-create-button motion-reduce:transform-none" %>
+
+  <hr class="border-1 border-gray-300 mt-20 mb-4">  
+  <div class="m-8"> 
+    <section class="section-comments"></section>
+      <div class="container">
+        <h2 class="ml-4"><strong><%= @activity.comments.count %> </strong>Comment</h2>
+        <%= render 'comments/comments', activity: @activity, comment: @comment %>
+        <%= render 'comments/show_comments', comments: @comments %>
+      </div>
+    </section>
+  </div>
+
+  <%# ＝＝＝＝＝＝＝＝＝＝＝＝分隔線＝＝＝＝＝＝＝＝＝＝＝＝ %>  
+  <div class="justify-center my-10 container xl:w-7/12 lg:w-3/4 sm:w-screen">
+    <%= link_to '查看更多活動', activities_path, class: "t-back-button flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium h-10" %>
+    <%= link_to "沒有喜歡的嗎？自己創一個吧！", new_activity_path, class: "t-create-button motion-reduce:transform-none" %>
+  </div>
 </div>
 <%# ＝＝＝＝＝＝＝＝＝＝＝＝分隔線＝＝＝＝＝＝＝＝＝＝＝＝ %>  
 <script>

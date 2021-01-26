@@ -55,11 +55,12 @@ class ActivitiesController < ApplicationController
   def favorite
     if current_user.favorite?(@activity)
       # 移除我的最愛
-      current_user.favorite_activities.destroy(activity)
+      current_user.favorite_activities.destroy(@activity)
       render json: { status: 'removed' }
     else
       # 加到我最愛
-      current_user.favorite_activities << activity
+      # current_user.favorite_activities
+      current_user.favorite_activities << @activity
       render json: { status: 'added' }
     end
   end
