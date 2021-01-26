@@ -16,26 +16,33 @@
       <img src="/images/L.png">
     </div>
     <div class="swiper-slide">
+      <img src="/images/M3.png">
+    </div>
+    <div class="swiper-slide">
+      <img src="/images/Q.png">
+    </div>
+    <div class="swiper-slide">
       <img src="/images/M4.png">
     </div>
     <div class="swiper-slide">
-      <img src="/images/I.png">
+      <img src="/images/J.png">
     </div>
   </div>
   <div class="swiper-button swiper-button-next"></div>
   <div class="swiper-button swiper-button-prev"></div>
 </div>
 
+<% if false %>
 <div class="t-category-area">
-  <% @categories.each do |item| %>
-    <%= link_to root_path do %>
-    <p class="t-category-items">
-      <%= item.name %>
-    </p>
+  <% @categories.each do |category| %>
+    <%= link_to root_path do%>
+      <p class="t-category-items">
+        <%= category.name %>
+      </p>
     <% end %>
   <% end %>
 </div>
-
+<% end %>
 
 <div class="w-full z-20 container">
 
@@ -43,11 +50,22 @@
     <% @activities.each do |activity| %>
       <%= link_to activity_path(activity.id) do %>
         <div class="t-item">
-            <div class="t-item-img">
+            <div class="t-item-img ">
               <% if activity.image_url.present? %>
                 <%= image_tag activity.image_url if activity.image_url.present? %> 
               <% else %>
                 <img src="/images/rubytix003.png" alt="rubytix.fun" class="t-replace-img">
+              <% end %>
+            </div>
+
+
+
+            <div class="tag">
+              <div class="arrow"></div>
+              <% if activity.category %>
+                <%= activity.category.name %>
+              <% else %>
+                5xRuby
               <% end %>
             </div>
 

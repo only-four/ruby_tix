@@ -8,4 +8,5 @@ import "./shared";
 import "./tickets";
 import "./seats";
 import "./qr_code";
+import "./user";
 import "tailwindcss/utilities";

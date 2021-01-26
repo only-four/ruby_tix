@@ -1,14 +1,22 @@
 .swiper-container {
   width: 100%;
-  height: 55vh;
-  top: 4rem;
+  height: 35vh;
+  top: 4em;
 }
-// @media screen and (min-width: 768px) {
-//   .swiper-container {
-//     width: 100%;
-//     height: 35vh;
-//   }
-// }
+@media screen and (min-width: 912px) {
+  .swiper-container {
+    width: 100%;
+    height: 65vh;
+    top: 3rem;
+  }
+}
+@media screen and (min-width: 768px) {
+  .swiper-container {
+    width: 100%;
+    height: 65vh;
+    top: 3rem;
+  }
+}
 .swiper-wrapper {
   width: 100%;
 }

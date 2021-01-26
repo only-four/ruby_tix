@@ -1,4 +1,8 @@
 <div>
+
+  <input type="checkbox" id="menu_control">
+
+  
   <% if current_user %>
     <section class="t-nav flex justify-between items-center">
       <%# category+logo %>
@@ -7,17 +11,43 @@
           <div class="mr-2 js-category-icon">
             <i class="fas fa-bars fa-lg t-nav-btn"></i>
           </div>
-            <%= link_to root_path do%>
-              <p class="t-nav-logo">RUBYTIX</p>
-            <% end %>
-          </div>
-        <div class="js-category-option fixed mt-20 hidden">
-          <% @categories.each do |category| %>
-            <div class="border border-gray-900 bg-gray-100 hover:font-semibold px-3 py-2">
-              <%= link_to category.name, class: "hover:no-underline hover:text-gray-900" %>
-            </div>
-          <% end %>
+
+          <%= link_to root_path do%>
+            <p class="t-nav-logo">RUBYTIX</p>
+          <% end%>
         </div>
+      
+        <div class="js-category-option fixed mt-20 hidden">
+          <div class="border-b border-gray-900 bg-gray-900 text-gray-100 font-semibold px-6 py-2">活動分類</div>
+            <% @categories.each do |category| %>
+              <div class="border border-gray-900 bg-gray-100 hover:font-semibold px-6 py-2">
+                <%= link_to category.name, class: "hover:no-underline hover:text-gray-900" %>
+              </div>
+            <% end %>
+          <div>
+            <div class="border-b border-gray-900 bg-gray-900 text-gray-100 font-semibold px-6 py-2 js-user-avator-md">會員中心</div>
+            <div>
+              <div class="border border-gray-900 bg-gray-100 hover:font-semibold px-6 py-2"><%= link_to '編輯會員資料', edit_registration_path(:user), class: "hover:no-underline hover:text-gray-900" %></div>
+              <div class="border border-gray-900 bg-gray-100 hover:font-semibold px-6 py-2"><%= link_to '收藏活動', my_favorite_activities_path, class: "hover:no-underline hover:text-gray-900" %></div>
+              <div class="border border-gray-900 bg-gray-100 hover:font-semibold px-6 py-2"><%= link_to '我的票券', tickets_my_path, class: "hover:no-underline hover:text-gray-900" %></div>
+              <div class="border border-gray-900 bg-gray-100 hover:font-semibold px-6 py-2"><%= link_to '訂單管理', orders_path, class: "hover:no-underline hover:text-gray-900" %></div>
+            </div>
+          </div>
+
+          <div>
+            <div class="border-b border-gray-900 bg-gray-900 text-gray-100 font-semibold px-6 py-2">主辦方中心</div>
+            <div class="border border-gray-900 bg-gray-100 hover:font-semibold px-6 py-2">
+              <%= link_to '活動管理', activities_path, class: "hover:no-underline hover:text-gray-900" %>
+            </div>
+          </div>
+          
+          <div class="border-b border-gray-900 bg-gray-900 text-gray-100 font-semibold px-6 py-2">聯絡我們</div>
+
+          <div class="text-gray-100 bg-red-800  font-semibold hover:font-semibold px-6 py-2">
+            <%= link_to '會員登出', destroy_user_session_path, :method => :delete , class: "hover:no-underline hover:text-gray-900" %>
+          </div>
+        </div>      
+          
       </section>
 
       <%# search bar %>
@@ -33,7 +63,7 @@
         </div>
         
         <div class="js-user-avator h-12 w-12 flex items-center justify-center t-nav-btn">
-          <i class="far fa-user-circle fa-2x t-nav-btn"></i>
+          <i class="far fa-user fa-2x t-nav-btn"></i>
         </div>       
 
         <%= link_to cart_path do %>
