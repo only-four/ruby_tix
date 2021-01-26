@@ -1,5 +1,4 @@
 document.addEventListener("turbolinks:load", function(){
-  console.log('!!2')
   const avator = document.querySelector('.js-user-avator')
   // debugger
   window.avator = avator;
