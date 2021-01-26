@@ -1,5 +1,5 @@
 class CartItem
-  attr_reader :ticket_type_id, :quantity
+  attr_accessor :ticket_type_id, :quantity
 
   def initialize(ticket_type_id, quantity = 1)
     @ticket_type_id = ticket_type_id

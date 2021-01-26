@@ -7,6 +7,7 @@ class ChatroomsController < ApplicationController
   end
 
   def show
+    @chatrooms = Chatroom.all
     @chatroom_user = current_user.chatroom_users.find_by(chatroom: @chatroom)
     @last_read_at = @chatroom_user&.last_read_at || @chatroom.created_at
     @chatroom_user&.touch(:last_read_at)
@@ -23,6 +24,7 @@ class ChatroomsController < ApplicationController
     @chatroom = Chatroom.new(chatroom_params)
     respond_to do |format|
       if @chatroom.save
+        @chatroom.chatroom_users.where(user: current_user).first_or_create!
         format.html { redirect_to @chatroom, notice: '聊天室成功創立' }
         format.json { render :show, status: :created, location: @chatroom }
       else

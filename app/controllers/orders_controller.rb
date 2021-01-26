@@ -61,7 +61,7 @@ class OrdersController < ApplicationController
   def cancel
     @order = current_user.orders.find(params[:id])
 
-    if @order.paid?
+    if @order.已付款?
       response = Faraday.post("https://sandbox-api-pay.line.me/v2/payments/#{@order[:transaction_id]}/refund") do |req|
         request_header(req)
       end
@@ -90,7 +90,7 @@ class OrdersController < ApplicationController
         productImageUrl: "https://www.flaticon.com/svg/static/icons/svg/2850/2850737.svg",
         amount: @order[:price],
         currency: "TWD",
-        confirmUrl: "http://#{root_url}/orders/#{@order.id}/pay_confirm",
+        confirmUrl: "#{root_url}/orders/#{@order.id}/pay_confirm",
         orderId: @order.num
       }.to_json
     end

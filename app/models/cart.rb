@@ -1,18 +1,21 @@
-class Cart
+class Cart < CartsController
   SessionKey = :cart7749
-  attr_reader :items
+  attr_accessor :items, :cart_quantity
   
   def initialize(items = [])
     @items = items
   end
 
-  def add_item(ticket_type_id)
+  def add_item(ticket_type_id, cart_quantity)
     found_item = items.find { |item| item.ticket_type_id == ticket_type_id }
-
-    if found_item
-      found_item.increment
-    else
-      @items << CartItem.new(ticket_type_id)
+    if cart_quantity > 0
+      if found_item
+        found_item.increment(cart_quantity)
+      else
+        @items << CartItem.new(ticket_type_id)
+        found_item = items.find { |item| item.ticket_type_id == ticket_type_id }
+        found_item.increment(cart_quantity-1)
+      end
     end
   end
 

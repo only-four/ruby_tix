@@ -1,38 +1,33 @@
-<p id="notice"><%= notice %></p>
-
-<h1>Chatrooms</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @chatrooms.each do |chatroom| %>
-      <tr>
-        <td><%= chatroom.name %></td>
-        <td><%= link_to 'Show', chatroom %></td>
-        <td><%= link_to 'Edit', edit_chatroom_path(chatroom) %></td>
-        <td><%= link_to 'Destroy', chatroom, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-        <td><%= link_to 'join', chatroom_chatroom_users_path(chatroom), method: 'post' %></td>
-        <td><%= link_to 'leave', chatroom_chatroom_users_path(chatroom), method: 'delete' %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<div>
-<% if current_user %>
-  <h5>聊天室777</h5>
-    <ul><% current_user.chatrooms.each do |chatroom| %>
-      <li><%= link_to chatroom.name, chatroom %></li>
-    <% end %>
-    </ul>
-<% end %>
+<div class="container mt-20">
+  <div class="items-center justify-center px-2 sm:px-6 lg:px-8">
+    <div class="flex flex-col mb-10">
+      <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
+        <div class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
+          <div class="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
+            <div class="min-w-full divide-y divide-gray-200 flex justify-center">
+              <table>
+                <thead>
+                  <tr>
+                    <th class="text-center"><%= link_to '創建聊天室', new_chatroom_path, class: "text-2xl" %></th>
+                    <th class="text-center text-4xl"><i class="fas fa-hand-point-left"></i>
+                    </th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <% @chatrooms.each do |chatroom| %>
+                    <tr>
+                      <div>
+                      <td><%= chatroom.name %></td>
+                      <td><%= link_to '加入', chatroom_chatroom_users_path(chatroom), method: :post , class: "bg-red-600 hover:bg-red-700 text-white text-xl font-bold px-4 rounded-full"%></td>
+                      </div>
+                    </tr>
+                  <% end %>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
-
-<br>
-<%= link_to 'New Chatroom', new_chatroom_path %>
