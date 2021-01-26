@@ -94,8 +94,8 @@
           <div class="text-left text-4xl font-extrabold text-red-800 pl-2">地圖</div>
           <div class="overflow-hidden border-b-2 border-blue-200 sm:rounded-lg mb-5 p-10">
             <div class="justify-left items-center">  
-                    <%= "這裡放地圖" %>
-                    <%# <div class="whitespace-pre-wrap"><%= @activity.map %></div> %>
+                    <%#= "這裡放地圖" %>
+                    <%# <div class="whitespace-pre-wrap"><%= @activity.map %></div> 
                   
             </div>
           </div> 
@@ -133,16 +133,16 @@
       <div class="overflow-hidden border-b border-gray-200 sm:rounded-lg mb-5 p-10">
         <div class="items-center justify-center w-1/6">
 
-          <div class="t-copy-area border-8 border-transparent h-10">
+          <%# <div class="t-copy-area border-8 border-transparent h-10">
             <div id="copythis" class="t-copy-input rounded-lg"> https://rubytix.fun </div>
             <div class="t-copy-btn js-copy-btn rounded-lg">
               <a href="javascript:void(0)" onclick="CopyTextToClipboard('copythis')" class="t-copy-text"><i class="far fa-copy t-copy-text"></i>分享複製連結</a>
             </div>
-          </div>
+          </div> %>
 
           <div class="justify-between my-2">
             <div class="">
-              <%= link_to '參加活動', activity_choose_path(@activity.id) , method:"get", class: "t-create-button flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-gray-100  hover:border-red-600 hover:bg-gray-100 hover:text-red-600 hover:no-underline h-10" %>
+              <%= link_to '參加活動', activity_choose_path(@activity.id) , method:"get", class: "t-create-button flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-gray-500  hover:border-red-600 hover:bg-gray-100 hover:text-red-600 hover:no-underline h-10" %>
             </div>
             <div class="flex items-center justfy-between">
               <a href="phoneto:to_s(@activity.phone)" class="t-back-button flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium h-10">
