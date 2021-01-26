@@ -7,7 +7,6 @@ document.addEventListener("turbolinks:load", function () {
   codeReader
     .decodeFromInputVideoDevice(undefined, 'video')
     .then((result) => {
-      document.getElementById('result').textContent = "此票券無效"
       let qrDataFromReader = result.text;
       let formData = new FormData();
       let qrCodeParams = {
@@ -22,6 +21,7 @@ document.addEventListener("turbolinks:load", function () {
       });
     })
     .catch(error => {
+      document.getElementById('result').textContent = "此票券無效"
       console.error(error);
     });
   })    
