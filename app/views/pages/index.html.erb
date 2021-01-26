@@ -1,15 +1,16 @@
 <div class="swiper-container js-swiper">
   <div class="swiper-wrapper">
     <div class="swiper-slide t-slide-img">
-      <a href="">
-        <img src="/images/rubytix_concert.png">
-      </a>    
+      <%= link_to root_path do%>
+            <%= image_tag '/images/rubytix_concert.png', class:"" %>
+      <% end %>   
     </div>
     <div class="swiper-slide">
       <a href="">
         <img src="/images/Astro_Call_back.png">
       </a> 
     </div>
+
       <%# <%= link_to activity_path(3) do %>
         <%#= image_tag "/images/slide_yoga.png" %>
       <%# end %>
@@ -104,6 +105,7 @@
           
             <div class="t-item-detail">
               <p class="t-truncate"><%= activity.brief %></p>
+              <%# byebug %>
             </div>    
         </div>
       <% end %>     
