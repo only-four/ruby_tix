@@ -26,8 +26,10 @@
           <div class="flex items-center mt-2">
             <i class="fas fa-map-marker-alt fa-lg text-red-800"></i>
             <p class="text-left text-xl font-extrabold text-red-800 pl-2">活動地點</p>
-            <p class="text-left text-xl pl-2"><%= @activity.location %>
-            <p class="text-left text-xl pl-2"><%= @activity.location_guide %>
+            <p class="text-left text-xl pl-2"><a href="http://google.com.tw/maps/search/<%= @activity.location %>" target="_blank"><%= @activity.location %></a>(點擊在新分頁開啟地圖)</p> 
+          </div>
+          <div>
+            <p class="text-left text-xl pl-2"><%= @activity.location_guide %></p>
           </div>
 
           <div class="flex items-center mt-2">
