@@ -11,4 +11,3 @@ import "./seats";
 import "./qr_code";
 import "./user";
 import "tailwindcss/utilities";
-import "./mapstyle.scss";
