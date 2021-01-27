@@ -26,21 +26,6 @@ html {
   padding: 0 50px;
 }
 
-.t-float-btn {
-  position: fixed;
-  right: 50px;
-  bottom: 50px;
-  z-index: 100;
-  color: #750000;
-}
-.t-float-icon {
-  border: none;
-}
-
-.t-float-icon:hover {
-  color: #000;
-}
-
 .t-grid {
   display: grid;
   grid-gap: 45px;
@@ -69,6 +54,7 @@ html {
   flex-direction: column;
   justify-content: flex-end;
   box-sizing: border-box;
+  height: 100%;
 
   background-color: #48463e;
   // padding: 10px;
@@ -128,17 +114,19 @@ html {
   right: 0;
   left: 0;
   margin: auto;
-  width: 280px;
-  height: 280px;
+  // width: 300px;
+  // height: 280px;
+  height: 100%;
   padding: 10px;
   justify-content: center;
   background-color: #48463e;
-
+  overflow: hidden;
   // border-radius: 20px;
 }
 .t-item-img img {
   width: 100%;
   height: 100%;
+  object-fit: cover;
 }
 .t-hp-category {
   background-color: #fa0;
