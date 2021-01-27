@@ -43,24 +43,15 @@
         </div>
       </div>
     </div>
-
+    <div class="my-4"></div>
     <div class="mb-2 justify-between flex">
       <%= link_to '繼續選購', activities_path, class: "lg:text-lg text-3xl actions group relative w-full flex justify-center py-2 px-4 border  text-sm font-medium rounded-md  text-gray-900 bg-gray-100 border-red-600 hover:border-red-600 hover:bg-gray-100 hover:text-red-600 hover:no-underline hover:shadow-lg" %>
       <%= link_to '結帳', checkout_cart_path , class: "lg:text-lg text-3xl actions group relative w-full flex justify-center py-2 px-4 border border-transparent rounded-md text-gray-100 bg-red-600 hover:border-red-600 hover:bg-gray-100 hover:text-red-600 hover:no-underline	hover:shadow-lg hover:border-transparent" %>
-      <%= link_to '繼續選購', activities_path, class: "actions group relative w-full flex justify-center py-2 px-4 border text-sm font-medium rounded-md  text-gray-900 bg-gray-100 border-red-600 hover:border-red-600 hover:bg-gray-100 hover:text-red-600 hover:no-underline hover:shadow-lg my-2" %>
-      <%# ========== TODO: ===========  %>
-      <div class="actions group relative w-full flex justify-center py-2 px-4 border-0 border-transparent rounded-md bg-transparent" ></div>
-      <%#= link_to '', '#', class: "t-check-button actions group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-transparent bg-transparent" %>
-      <%= link_to '結帳', checkout_cart_path, class: "t-check-button actions group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-gray-100 bg-red-600 hover:border-red-600 hover:bg-gray-100 hover:text-red-600 hover:no-underline	hover:shadow-lg hover:border-transparent my-2" %>
     </div>
-    <div class="justify-between flex">
-      <div class="actions group relative flex justify-center py-2 px-4 border-0 border-transparent rounded-md" ></div>
-      <div class="actions group relative flex justify-center py-2 px-4 border-0 border-transparent rounded-md" ></div>
-      <%= button_to "清空購物車", cart_path, method: :'delete', class: "t-delete-button actions group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md bg-gray-100 text-red-700 border-red-700" %>
+    <div class="">
+      <%= button_to "清空購物車", cart_path, method: :'delete', class: "lg:text-lg text-3xl text-gray-900 bg-gray-100 actions group relative w-full flex justify-center py-2 px-4 border border-transparent font-medium rounded-md bg-gray-100 hover:border-red-600 bg-gray-100 hover:text-red-600 no-underline shadow-lg" %>
     </div>
     <%# ========== TODO: ===========  %>
-      <%= button_to "清空購物車", cart_path, method: :'delete', class: "lg:text-lg text-3xl text-gray-900 bg-gray-100 actions group relative w-full flex justify-center py-2 px-4 border border-transparent font-medium rounded-md bg-gray-100 hover:border-red-600 bg-gray-100 hover:text-red-600 no-underline shadow-lg" %>
   </div>
 </div>
-<div class="my-10">
-</div>
+<div class="my-20"></div>
