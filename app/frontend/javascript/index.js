@@ -14,4 +14,3 @@ import "./seat";
 import "./checkbox";
 import "./rubytix";
 import "./float";
-import "./map";
