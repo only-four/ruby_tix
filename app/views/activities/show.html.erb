@@ -47,7 +47,7 @@
           <div class="flex items-center mt-2">
             <i class="fas fa-filter fa-lg text-red-800"></i>     
             <p class="text-left text-xl font-extrabold text-red-800 pl-2">活動分類</p> 
-            <p class="text-left text-xl pl-2"><%= @activity.category %></p>
+            <p class="text-left text-xl pl-2"><%= @activity.category.name %></p>
           </div>            
           <div class="flex items-center mt-2">
             <i class="fas fa-tag fa-lg text-red-800"></i>
@@ -63,9 +63,9 @@
         <hr class="border-8 border-blue-800 mt-2"> 
         <div class="justify-left items-center mt-4 pl-8">  
 
-            <div class="whitespace-pre-wrap bg-gray-300 border-1 border-gray-300 rounded-lg  text-xl w-3/4 mx-auto my-4 p-4"><%= @activity.brief %>
+            <div class="whitespace-normal bg-gray-300 border-1 border-gray-300 rounded-lg  text-xl w-3/4 mx-auto my-4 p-4"><%= @activity.brief %>
             </div>
-            <div class="whitespace-pre-wrap text-lg w-3/4 mx-auto"><%= @activity.content %>
+            <div class="whitespace-normal text-lg w-3/4 mx-auto"><%= @activity.content %>
             </div>
 
           </div>

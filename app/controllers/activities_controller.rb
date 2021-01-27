@@ -17,10 +17,10 @@ class ActivitiesController < ApplicationController
     @activity = current_user.own_activities.new(activity_params)
     if @activity.save
       redirect_to activity_path(@activity.id), notice: "新增活動成功！ 請繼續新增活動票種"
+      @notice = current_user.notices.create(notices:flash[:notice])
     else
       render :new
     end
-    @notice = current_user.notices.create(notices:flash[:notice])
   end
   
   def join

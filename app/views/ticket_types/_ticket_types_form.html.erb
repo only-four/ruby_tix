@@ -12,8 +12,8 @@
           <%# =============== %>
           <div class="ticket_price flex my-2">
             <div>
-              <%= form.label :quantity, '票券數量'%>
-              <%= form.number_field :quantity, min: 0, max: 10000, class: "appearance-none rounded-none relative border border-gray-300 placeholder-gray-500 text-gray-900 rounded-md bg-gray-100 focus:bg-white focus:z-10 sm:text-sm px-3 py-2 mx-3 w-2.5" %>
+              <%= form.label :quantity, '票券數量'%><span class="text-transparent">*</span>
+              <%= form.number_field :quantity, min: 0, max: 10000, class: "appearance-none rounded-none relative border border-gray-300 placeholder-gray-500 text-gray-900 rounded-md bg-gray-100 focus:bg-white focus:z-10 sm:text-sm px-3 py-2 mx-4 w-2.5" %>
             </div>
             <div>
               <%= form.label :price, '票券單價'%>
