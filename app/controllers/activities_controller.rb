@@ -45,6 +45,7 @@ class ActivitiesController < ApplicationController
   def show
     @comment = @activity.comments.new
     @comments = @activity.comments.order(updated_at: :desc).includes(:user)
+    @activities = Activity.where(user_id: current_user.id)
   end
 
   def destroy

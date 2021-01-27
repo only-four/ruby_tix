@@ -1,4 +1,4 @@
-<div class="container relative">
+<div class="container">
 
   <%= simple_form_for @activity do |f|%>
     <div class="">
@@ -134,14 +134,6 @@
 
       <div class="overflow-hidden border-b border-gray-200 sm:rounded-lg mb-5 p-10">
         <div class="items-center justify-center w-1/6">
-
-          <%# <div class="t-copy-area border-8 border-transparent h-10">
-            <div id="copythis" class="t-copy-input rounded-lg"> https://rubytix.fun </div>
-            <div class="t-copy-btn js-copy-btn rounded-lg">
-              <a href="javascript:void(0)" onclick="CopyTextToClipboard('copythis')" class="t-copy-text"><i class="far fa-copy t-copy-text"></i>分享複製連結</a>
-            </div>
-          </div> %>
-
           <div class="justify-between my-2">
             <div class="">
               <%= link_to '參加活動', activity_choose_path(@activity.id) , method:"get", class: "t-create-button flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-gray-100  hover:border-red-600 hover:bg-gray-100 hover:text-red-600 hover:no-underline h-10" %>
@@ -172,63 +164,57 @@
               <% end %>
             </h2>
 
-    <div class="t-add-ac-area mt-40 shadow overflow-hidden ">
-
-      <h1 class="text-center text-2xl text-gray-900 mb-2">
-        <%= @activity.title %>
-      </h1>
-
-      <div class="border-gray-500">
-        <div class="flex items-center justfy-around">
-          <h2 data-controller="favorite" data-favorite-id="<%= @activity.id %>" class="t-back-button flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium h-10">
-          <% if user_signed_in? %>
-            <%= link_to '#', data: { action: 'favorite#add' } do %>
-              <% if current_user.favorite?(@activity) %>
-                <i class="fas fa-heart" data-favorite-target="icon"></i>
-              <% else %>
-                <i class="far fa-heart" data-favorite-target="icon"></i>
-              <% end %>
-            <% end %>
-          <% else %>
-            <%= link_to new_session_path(:user), notice: '請先登入，即可收藏至個人清單' %>
-          <% end %>
-          </h2>
-          <a href="phoneto:to_s(@activity.phone)" class="t-back-button flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium h-10">
-            <i class="fas fa-phone-volume fa-lg ml-1"></i>
-          </a>
-          <a href="mailto:[to_s.@activity.email]"  class="t-back-button flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium h-10"><i class="far fa-envelope fa-lg"></i></a>
-          
-        </div>
-
-        <div class="flex flex-wrap">
-          <div id="copythis" class="hidden js-https t-copy-input rounded-lg"></div>
-          <div class="t-back-button js-copy-btn  w-full  flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium h-10">
-            <a href="javascript:void(0)" onclick="CopyTextToClipboard('copythis')" class="hover:border-red-600 flex items-center ">
-            <i class="far fa-copy"></i>
-            <p class="hover:border-red-600">複製分享連結</p>
-            </a>
-          </div>
-        </div>
-      </div>
-
-      <div>
-        <%= link_to '參加活動', activity_choose_path(@activity.id) , method:"get", class: "t-ac-add-btn flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium   hover:border-red-600 hover:bg-gray-100 hover:text-red-600 hover:no-underline h-10" %>
-      </div>
-    </div>
-
-
-
-
-
-
-
-
 
           </div>
         </div> 
       </div>
-      <div class="overflow-hidden border-b border-gray-200 sm:rounded-lg mb-5 p-10">
+
+      <div class="t-add-ac-area mt-40 shadow overflow-hidden ">
+
+        <h1 class="text-center text-2xl text-gray-900 mb-2">
+          <%= @activity.title %>
+        </h1>
+
+        <div class="border-gray-500">
+          <div class="flex items-center justfy-around">
+            <h2 data-controller="favorite" data-favorite-id="<%= @activity.id %>" class="t-back-button flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium h-10">
+            <% if user_signed_in? %>
+              <%= link_to '#', data: { action: 'favorite#add' } do %>
+                <% if current_user.favorite?(@activity) %>
+                  <i class="fas fa-heart" data-favorite-target="icon"></i>
+                <% else %>
+                  <i class="far fa-heart" data-favorite-target="icon"></i>
+                <% end %>
+              <% end %>
+            <% else %>
+              <%= link_to new_session_path(:user), notice: '請先登入，即可收藏至個人清單' %>
+            <% end %>
+            </h2>
+            <a href="phoneto:to_s(@activity.phone)" class="t-back-button flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium h-10">
+              <i class="fas fa-phone-volume fa-lg ml-1"></i>
+            </a>
+            <a href="mailto:[to_s.@activity.email]"  class="t-back-button flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium h-10"><i class="far fa-envelope fa-lg"></i></a>
+            
+          </div>
+
+          <div class="flex flex-wrap">
+            <div id="copythis" class="hidden js-https t-copy-input rounded-lg"></div>
+            <div class="t-back-button js-copy-btn  w-full  flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium h-10">
+              <a href="javascript:void(0)" onclick="CopyTextToClipboard('copythis')" class="hover:border-red-600 flex items-center">
+              <i class="far fa-copy"></i>
+              <p class="hover:border-red-600">複製分享連結</p>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <%= link_to '參加活動', activity_choose_path(@activity.id) , method:"get", class: "t-ac-add-btn flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium   hover:border-red-600 hover:bg-gray-100 hover:text-red-600 hover:no-underline h-10" %>
+        </div>
+      </div>
+      <%# <div class="overflow-hidden border-b border-gray-200 sm:rounded-lg mb-5 p-10"> %>
   <% end %>
+</div>
 
 <div class="my-8"> 
   <section class="section-comments"></section>
@@ -238,6 +224,57 @@
       <%= render 'comments/show_comments', comments: @comments %>
     </div>
   </section>
+</div>
+
+<div class="container mb-20 swiper-container activity-show-swiper-area">
+    <div class="swiper-wrapper">
+    <% @activities.each do |activity| %>
+      <div class="swiper-slide">
+              <%= link_to activity_path(activity.id) do %>
+        <div class="t-item">
+            <div class="t-item-img ">
+              <% if activity.image_url.present? %>
+                <%= image_tag activity.image_url if activity.image_url.present? %> 
+              <% else %>
+                <img src="/images/rubytix003.png" alt="rubytix.fun" class="t-replace-img">
+              <% end %>
+            </div>
+
+            <div class="tag">
+              <div class="arrow"></div>
+              <% if activity.category %>
+                <%= activity.category.name %>
+              <% else %>
+                近期活動
+              <% end %>
+            </div>
+
+            <div class="flex justify-between t-item-detail">
+              <div class="item__details">
+                <h5>【<%= activity.title %>】</h5>
+              </div>
+              <div class="t-item-date">
+                <div class="t-date-icon"><i class="far fa-calendar-alt"></i></div>
+                <div><%= activity.begin_datetime&.strftime("%Y/%m/%d") %></div>
+              </div>
+            </div>
+          
+            <div class="t-item-detail">
+              <p class="t-truncate"><%= activity.brief %></p>
+            </div>    
+        </div>
+      <% end %>
+      
+      
+      
+      </div>
+      
+  <% end %>
+    </div>
+
+  <!-- Add Arrows -->
+  <div class="swiper-button-next activity-show-swiper-button"></div>
+  <div class="swiper-button-prev activity-show-swiper-button"></div>
 </div>
 <%# ＝＝＝＝＝＝＝＝＝＝＝＝分隔線＝＝＝＝＝＝＝＝＝＝＝＝ %>  
 <script>
@@ -261,5 +298,27 @@ function CopyTextToClipboard(id) {
        timer: 2000
      })  
    })
+
+   var swiper = new Swiper('.swiper-container', {
+      slidesPerView: 3,
+      spaceBetween: 30,
+      slidesPerGroup: 3,
+      loop: true,
+      loopFillGroupWithBlank: true,
+      autoplay: {
+        delay: 2500,
+        disableOnInteraction: false,
+      },
+      pagination: {
+        el: '.swiper-pagination',
+        clickable: true,
+      },
+      
+      navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
+      },
+    });
+
   })
 </script>

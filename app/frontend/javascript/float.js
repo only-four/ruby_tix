@@ -1,7 +1,7 @@
 document.addEventListener("turbolinks:load", function(){
   //Get the button:
   topbutton = document.getElementById("topBtn");
-  // addActivityArea = document.getElementById("js-add-ac-area");
+
 
 
   // When the user scrolls down 20px from the top of the document, show the button
@@ -10,10 +10,8 @@ document.addEventListener("turbolinks:load", function(){
   function scrollFunction() {
     if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
       topbutton.style.display = "block";
-      addActivityArea.style.display = "block";
     } else {
       topbutton.style.display = "none";
-      addActivityArea.style.display = "none";
     }
   }
 
