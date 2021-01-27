@@ -27,6 +27,9 @@
 .t-nav-btn {
   color: #750000;
 }
+.t-nav-option {
+  z-index: 20;
+}
 
 .t-user-btn {
   @apply flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-gray-100 h-10;
