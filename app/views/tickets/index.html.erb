@@ -1,5 +1,4 @@
 <div class="container my-40">
-
 <h1>請選擇票券</h1>
 
   <% @ticket_types.each do |ticket| %>  
@@ -9,10 +8,8 @@
         <h6 class="card-subtitle mb-2 text-muted">NT$<%= ticket.price %></h6>
 
         <a class="card-link" data-toggle="collapse" href="#" role="button" aria-expanded="false" data-target="#e" aria-controls="collapseExample">更多資訊</a>
-
         <%= link_to do %><i class="fas fa-plus-circle"></i><% end %>
         <%= link_to do %><i class="fas fa-minus-circle"></i><% end %>
-               
       </div>
 
       <div class="collapse" id="e">
