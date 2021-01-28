@@ -1,4 +1,4 @@
-<div class="attand-list container text-center mt-32 mb-4">
+<div class="attand-list container text-center mb-4 mt-20">
   <h3 class="xl:text-3xl text-5xl" >活動名稱：<%= Activity.find(@attand_list_activity_id).title %></h3>
   <span class="xl:text-3xl text-5xl">目前報到人數：<%= @qr_codes.count if @qr_codes.count !=[] %>/ <%= Ticket.where(event: @attand_list_activity_id).count if Ticket.where(event: @attand_list_activity_id).count !=[] %> </span>
 </div>
@@ -9,7 +9,7 @@
         <thead class="bg-gray-400">
           <tr>
             <th class="xl:text-base text-3xl py-4 px-6 bg-grey font-bold uppercase text-sm border-b border-grey-light">參加者名單</th>
-            <th class="xl:text-base text-3xl py-4 px-6 bg-grey font-bold uppercase text-sm border-b border-grey-light">票券號碼</th>
+            <th class="xl:text-base text-3xl py-4 px-6 bg-grey font-bold uppercase text-sm border-b border-grey-light">票號</th>
             <th class="xl:text-base text-3xl py-4 px-6 bg-grey font-bold uppercase text-sm border-b border-grey-light">狀態</th>
             <th class="xl:text-base text-3xl py-4 px-6 bg-grey font-bold uppercase text-sm border-b border-grey-light"></th>
           </tr>
@@ -21,12 +21,16 @@
             <td class="py-4 px-6 border-b border-grey-light"><%= "#{index} " %>.<%= ticket.order.user.name%></td>
             <td class="py-4 px-6 border-b border-grey-light"><%= link_to ticket.ticket_number%>/<%= ticket.event %></td>
             <td class="py-4 px-6 border-b border-grey-light">
-              <% if QrCode.find_by(data: ticket.ticket_number) != nil %>
+              <% if  QrCode.find_by(data: ticket.ticket_number) != nil %>
                 <span class="bg-gray-400 text-white p-2 rounded-lg">已報到</span>
               <% else %>  
-                <span class="bg-red-300 text-white p-2 rounded-lg">未報到</span>
+              <span class="bg-red-300 text-white p-2 rounded-lg">未報到</span>
               </td>
-              <td><a class="js-unattand bg-blue-300 text-white p-2 rounded-lg cursor-pointer " data-id="<%= ticket.ticket_number %>">手動報到</a></td>
+              <td>
+                <a class="js-unattand bg-blue-300 text-white p-2 rounded-lg cursor-pointer focus:outline-none" data-id="<%= ticket.ticket_number %>">
+                  <button class="focus:outline-none">手動報到</button>
+                </a>
+              </td>
             <% end %>
           </tr>
         <% end %>  
@@ -35,4 +39,3 @@
     </div>
     <div class="xl:m-8 text-center xl:text-base text-5xl m-20"><%= link_to '繼續掃描qr-code', scan_activity_qr_codes_path(@attand_list_activity_id), class: 'bg-blue-500 p-2 text-white rounded-lg' %></div>
   </div>    
-<div class="container my-20"></div>
