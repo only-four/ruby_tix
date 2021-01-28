@@ -2,7 +2,7 @@
   <div class="swiper-wrapper">
     <div class="swiper-slide t-slide-img">
       <%= link_to root_path do%>
-        <%= image_tag '/images/rubytix_concert.png', class:"" %>
+        <%= image_tag '/images/rubytix_concert.png' %>
       <% end %>   
     </div>
     <%# ======[ubayeats]===== %>
@@ -41,7 +41,7 @@
     <%# ======[sociview]===== %>
     <div class="swiper-slide">
       <a href="https://sociview.tw/" target="_blank">
-        <img src="/images/Astro_SociView_3.png">
+        <img src="/images/sociview.png">
       </a> 
     </div>
     <div class="swiper-slide">
@@ -91,7 +91,7 @@
 
             <div class="flex justify-between t-item-detail">
               <div class="item__details">
-                <h5>【<%= activity.title %>】</h5>
+                <h5><%= activity.title %></h5>
               </div>
               <div class="t-item-date">
                 <div class="t-date-icon"><i class="far fa-calendar-alt"></i></div>
