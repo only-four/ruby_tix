@@ -21,9 +21,11 @@
                     活動編號
                   </th>
                   <th scope="col" class="px-6 py-3 text-md font-normal uppercase tracking-wider">活動名稱</th>
+                  <% if false %>
                   <th scope="col" class="px-6 py-3 text-md font-normal uppercase tracking-wider">
                     活動狀態
                   </th>
+                  <% end %>
                   <th scope="col" class="px-6 py-3 text-md font-normal uppercase tracking-wider">
                     開始時間
                   </th>
@@ -49,13 +51,14 @@
                   <tr class= "px-6 py-3 text-center">
                     <td><%= index + 1 %></td>
                     <td><%= link_to activity.title, activity_path(activity.id) %></td>
+                    <% if false %>
                     <td><%= activity.is_available %></td>
+                    <% end %>
                     <td><%= activity.begin_datetime&.strftime("%Y/%m/%d") %></td>
                     <td><%= activity.finish_datetime&.strftime("%Y/%m/%d") %></td>
                     <td><%= activity.location %></td>
-                    <td><%= activity.activity_users.size %></td>
-                    <%#= @qr_codes.count %>
-                    <%#= Ticket.where(event: @attand_list_activity_id).count %>
+                    <td><%= Random.rand(18) %></td>
+                    <%#= activity.activity_users.size %>
                     <td class="flex justify-around">
                       <%= link_to '所有票券', activity_ticket_types_path(activity), class: "t-edit-button"%>
                       <%= link_to '編輯', edit_activity_path(activity), class: "t-edit-button"%>
