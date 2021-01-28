@@ -1,3 +1,31 @@
+<div class="swiper-container js-swiper">
+  <div class="swiper-wrapper">
+    <div class="swiper-slide t-slide-img">
+      <img src="/images/O.png">
+    </div>
+    <div class="swiper-slide">
+      <img src="/images/M1.png">
+    </div>
+    <div class="swiper-slide">
+      <img src="/images/K.png">
+    </div>
+    <div class="swiper-slide">
+      <img src="/images/M2.png">
+    </div>
+    <div class="swiper-slide">
+      <img src="/images/L.png">
+    </div>
+    <div class="swiper-slide">
+      <img src="/images/M4.png">
+    </div>
+    <div class="swiper-slide">
+      <img src="/images/I.png">
+    </div>
+  </div>
+  <div class="swiper-button swiper-button-next"></div>
+  <div class="swiper-button swiper-button-prev"></div>
+</div>
+
 <div class="t-category-area">
   <% @categories.each do |category| %>
     <%= link_to root_path do%>
@@ -9,13 +37,12 @@
 </div>
 
 
-<div class="w-full z-20">
+<div class="w-full z-20 container">
 
   <div class="t-grid t-activity-area">
     <% @activities.each do |activity| %>
       <%= link_to activity_path(activity.id) do %>
         <div class="t-item">
-
             <div class="t-item-img">
               <% if activity.image_url.present? %>
                 <%= image_tag activity.image_url if activity.image_url.present? %> 
@@ -36,8 +63,7 @@
           
             <div class="t-item-detail">
               <p class="t-truncate"><%= activity.brief %></p>
-            </div>
-
+            </div>    
         </div>
       <% end %>     
     <% end %>
@@ -51,5 +77,20 @@
 </div>
 
 <script>
-
+  var swiper = new Swiper('.swiper-container', {
+    spaceBetween: 30,
+    centeredSlides: true,
+    autoplay: {
+      delay: 2500,
+      disableOnInteraction: false,
+    },
+    pagination: {
+      el: '.swiper-pagination',
+      clickable: true,
+    },
+    navigation: {
+      nextEl: '.swiper-button-next',
+      prevEl: '.swiper-button-prev',
+    },
+  });
 </script>

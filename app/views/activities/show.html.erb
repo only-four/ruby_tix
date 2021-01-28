@@ -54,13 +54,23 @@
 <%# ＝＝＝＝＝＝＝＝＝＝＝＝分隔線＝＝＝＝＝＝＝＝＝＝＝＝ %>
         <div class="divide-y-4 divide-red-800 divide-solid"> 
           <div class="text-left text-4xl font-extrabold text-red-800 pl-2">活動內容</div>
-              <div class="overflow-hidden border-b-2 border-blue-200 sm:rounded-lg mb-5 p-10">
-                <div class="justify-left items-center">  
+            <div class="overflow-hidden border-b-2 border-blue-200 sm:rounded-lg mb-5 p-10">
+              <div class="justify-left items-center">  
 
-                  <div class="whitespace-pre-wrap"><%= @activity.brief %></div>
-                  <div class="whitespace-pre-wrap"><%= @activity.content %></div>
+                
 
-           </div>
+                <ul>
+                  <li class="flex items-center ">
+                    <i class="far fa-clock fa-lg text-red-800"></i>
+                    <p class="text-left text-xl font-extrabold text-red-800 pl-2">開始與結束時間</p>
+                    <p class="text-left text-xl pl-2"><%= @activity.begin_datetime&.strftime("%Y/%m/%d/%H:%M") %>～<%= @activity.finish_datetime&.strftime("%Y/%m/%d/%H:%M") %></p>
+                  </li>
+                </ul>
+
+                <div class="whitespace-pre-wrap"><%= @activity.brief %></div>
+                <div class="whitespace-pre-wrap"><%= @activity.content %></div>
+              </div>
+            </div>
           </div> 
         </div>
 <%# ＝＝＝＝＝＝＝＝＝＝＝＝分隔線＝＝＝＝＝＝＝＝＝＝＝＝ %>
@@ -133,12 +143,28 @@
               <a href="phoneto:to_s(@activity.phone)" class="t-back-button flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium h-10"><i class="fas fa-phone-square-alt fa-lg"></i></a>
               <a href="mailto:[to_s.@activity.email]"  class="t-back-button flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium h-10"><i class="far fa-envelope fa-lg"></i></a>
             </div>
-             <div class="t-copy-area border-8 border-transparent h-10">
+            <div class="t-copy-area border-8 border-transparent h-10">
               <div id="copythis" class="js-https t-copy-input rounded-lg"></div>
               <div class="t-copy-btn js-copy-btn rounded-lg">
                 <a href="javascript:void(0)" onclick="CopyTextToClipboard('copythis')" class="t-copy-text"><i class="far fa-copy t-copy-text"></i> 分享複製連結</a>
               </div>
             </div>
+
+          <h2 data-controller="favorite" data-favorite-id="<%= @activity.id %>">
+            <% if user_signed_in? %>
+              <%= link_to '#', data: { action: 'favorite#add' } do %>
+                <% if current_user.favorite?(@activity) %>
+                  <i class="fas fa-heart" data-favorite-target="icon"></i>
+                <% else %>
+                  <i class="far fa-heart" data-favorite-target="icon"></i>
+                <% end %>
+              <% end %>
+            <% else %>
+              <%= link_to new_session_path(:user), notice: '請先登入，即可收藏至個人清單' %>
+            <% end %>
+          </h2>
+
+
         </div>
       </div> 
 
