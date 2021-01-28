@@ -1,6 +1,6 @@
 <div class="container mt-20">
   <div class="items-center justify-center px-2 sm:px-6 lg:px-8">
-    <h2 class="mt-6 text-center text-4xl font-extrabold text-gray-900 mb-5 extrabold">訂單管理</h2>
+    <h2 class="mt-6 text-center text-4xl font-extrabold text-gray-900 mb-3 extrabold ">訂單管理</h2>
 
     <div class="flex flex-col">
       <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
@@ -9,22 +9,22 @@
             <table class="min-w-full divide-y divide-gray-200">
               <thead class="t-thead text-center">
                 <tr>
-                  <th scope="col" class="px-6 py-3  text-md font-normal text-gray-100 uppercase tracking-wider">
+                  <th scope="col" class="px-5 py-3 lg:text-lg text-3xl font-normal text-gray-100 uppercase tracking-wider">
                     訂單編號
                   </th>
-                  <th scope="col" class="px-6 py-3  text-md font-normal text-gray-100 uppercase tracking-wider">
+                  <th scope="col" class="px-6 py-3 lg:text-lg text-3xl font-normal text-gray-100 uppercase tracking-wider">
                     建立日期
                   </th>
-                  <th scope="col" class="px-6 py-3  text-md font-normal text-gray-100 uppercase tracking-wider">
+                  <th scope="col" class="px-2 py-3 lg:text-lg text-3xl font-normal text-gray-100 uppercase tracking-wider">
                     總金額
                   </th>
-                  <th scope="col" class="px-6 py-3  text-md font-normal text-gray-100 uppercase tracking-wider">
+                  <th scope="col" class="px-6 py-3 lg:text-lg text-3xl font-normal text-gray-100 uppercase tracking-wider">
                     狀態
                   </th>
-                  <th scope="col" class="px-6 py-3  text-md font-normal text-gray-100 uppercase tracking-wider">
+                  <th scope="col" class="px-6 py-3 lg:text-lg text-3xl font-normal text-gray-100 uppercase tracking-wider">
                     訂單付款
                   </th>
-                  <th scope="col" class="px-6 py-3  text-md font-normal text-gray-100 uppercase tracking-wider">
+                  <th scope="col" class="px-6 py-3 lg:text-lg text-3xl font-normal text-gray-100 uppercase tracking-wider">
                     訂單取消
                   </th>
                 </tr>
@@ -33,14 +33,23 @@
               <tbody>
                 <% @orders.each do |order| %>
                   <tr class= "px-6 py-3 text-center">
-                    <td><%= link_to order.num, tickets_my_path %></td>
-                    <td><%= order.created_at&.strftime("%Y/%m/%d") %></td>
-                    <td><%= order.price %></td>
-                    <td><%= order.state %></td>
-                    <td><%= link_to '付款', pay_order_path(order), method:'POST', data: {confirm:'確定付款？'} if order.may_pay? %></td>
-                    <td><%= link_to '退款', cancel_order_path(order), method:'delete', data: {confirm:'是否取消訂單？'} if order.may_refund? %></td>
-                  </tr>   
-                <% end %>
+                    <td class="lg:text-lg text-2xl px-6 py-3 font-normal uppercase tracking-wider" ><%= link_to order.num, tickets_my_path %></td>
+                    <td class="lg:text-lg text-xl" ><%= order.created_at&.strftime("%Y/%m/%d") %></td>
+                    <td class="lg:text-lg text-xl" ><%= order.price %></td>
+                    <td class="lg:text-lg text-xl" ><%= order.state %></td>
+                      <% if order.may_pay? %>
+                        <td class="lg:text-lg text-xl" ><%= link_to '付款', pay_order_path(order), method:'POST', data: {confirm:'確定付款？'}%></td>
+                      <% else %>
+                        <td>－</td>
+                      <% end %>
+
+                      <% if order.may_refund? %>
+                        <td class="lg:text-lg text-xl" ><%= link_to '退款', cancel_order_path(order), method:'delete', data: {confirm:'是否取消訂單？'} %></td>
+                      <% else %>
+                        <td>－</td>
+                      <% end %>
+                  </tr>
+                <%end %>
               </tbody>
             </table>
           </div>

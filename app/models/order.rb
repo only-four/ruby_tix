@@ -5,13 +5,13 @@ class Order < ApplicationRecord
   has_many :order_items
   has_many :tickets
   validates :participant, :address, presence: true
-
+  
   aasm column: :state do
-    state :pending, initial: true
-    state :paid, :refunded, :completed
+    state :未付款, initial: true
+    state :已付款, :已退款, :已完成
 
     event :pay do
-      transitions from: :pending, to: :paid
+      transitions from: :未付款, to: :已付款
       before do |args|
         self.transaction_id = args[:transaction_id]
         self.paid_at = Time.now
@@ -19,11 +19,11 @@ class Order < ApplicationRecord
     end
 
     event :refund do
-      transitions from: :paid, to: :refunded
+      transitions from: :已付款, to: :已退款
     end
 
     event :compelte do
-      transitions from: :paid, to: :completed
+      transitions from: :已付款, to: :已完成
     end
   end
   

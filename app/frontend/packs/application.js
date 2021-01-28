@@ -8,7 +8,6 @@ require("@rails/actiontext")
 // import "stimulus"
 import "controllers"
 import 'bootstrap'
-import 'bootstrap/dist/css/bootstrap.css'
 import 'jquery'
 import $ from 'jquery';
 window.$ = $

@@ -1,5 +1,31 @@
-<h1>New Chatroom</h1>
-
-<%= render 'form', chatroom: @chatroom %>
-
-<%= link_to 'Back', chatrooms_path %>
+<div class="container mt-20">
+  <div class="items-center justify-center px-2 sm:px-6 lg:px-8">
+    <div class="flex flex-col mb-10">
+      <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
+        <div class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
+          <div class="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
+            <div class="min-w-full divide-y divide-gray-200 flex justify-center">
+              <table>
+                <thead>
+                <%= form_for(@chatroom) do |f| %>
+                
+                  <div class="form-inputs">
+                    <%= f.label :輸入名稱：, class:"leading-10 text-4xl md:text-xl" %>
+                    <%= f.text_field :name, class:"leading-10 rounded-3xl" %>
+                  </div>
+                
+                  <div class="form-actions">
+                    <%= f.submit "創建", class:"bg-red-600 hover:bg-red-700 text-white text-2xl font-bold px-4 rounded-full" %>
+                  </div>
+                <% end %>
+                </thead>
+                <tbody>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

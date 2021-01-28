@@ -4,6 +4,7 @@ class TicketsController < ApplicationController
   def my_tickets
     @my_orders= Order.where(user_id: current_user.id)
     @tickets= Ticket.where(order_id: @my_orders.ids).includes(:ticket_type)
+    # render json: @tickets
   end
 
   def attend_event
