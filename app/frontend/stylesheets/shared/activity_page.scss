@@ -1,13 +1,13 @@
 .t-add-ac-area {
   @apply shadow;
   position: fixed;
-  top: 100px;
-  right: 100px;
+  bottom: 50px;
+  right: 120px;
   border: 2px solid #750000;
   background-color: #fff;
   border-radius: 10px;
   padding: 10px 20px;
-  z-index: 100;
+  z-index: 10;
 }
 .t-ac-add-btn {
   background-color: #750000;

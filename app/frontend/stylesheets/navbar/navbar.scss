@@ -28,7 +28,20 @@
   color: #750000;
 }
 .t-nav-option {
-  z-index: 20;
+  position: fixed;
+  z-index: 25;
+  top: 65px;
+  right: 100px;
+}
+.t-nav-option-category {
+  background-color: #750000;
+  color: #fff;
+  letter-spacing: 2px;
+}
+.t-nav-option-category .item {
+  background-color: #ddd;
+  color: #444;
+  border-bottom: 1px solid #444;
 }
 
 .t-user-btn {
