@@ -128,6 +128,11 @@ html {
   height: 100%;
   object-fit: cover;
 }
+.activity-show-swiper-area img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
 .t-hp-category {
   background-color: #fa0;
   color: #fff;
@@ -277,5 +282,8 @@ html {
   color: #ddd;
 }
 .t-footer-item li a:hover {
+  color: #750000;
+}
+.t-favorite-content a:hover {
   color: #750000;
 }

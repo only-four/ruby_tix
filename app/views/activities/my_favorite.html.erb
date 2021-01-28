@@ -11,16 +11,28 @@
                   <th scope="col" class="px-6 py-3 text-center text-md font-normal uppercase tracking-wider">
                     活動編號
                   </th>
-                  <th scope="col" class="px-6 py-3 text-center text-md font-normal uppercase tracking-wider">
+                  <th scope="col" class="px-6 py-3 text-center  text-md font-normal uppercase tracking-wider">
                     活動名稱
+                  </th>
+                  <th scope="col" class="px-6 py-3 text-center text-md font-normal uppercase tracking-wider">
+                    開始時間
+                  </th>
+                  <th scope="col" class="px-6 py-3 text-center text-md font-normal uppercase tracking-wider">
+                    結束時間
+                  </th>
+                  <th scope="col" class="px-6 py-3 text-center text-md font-normal uppercase tracking-wider">
+                    活動地點
                   </th>
                 </tr>
               </thead>
               <tbody>
                 <% @favorite_activities.each_with_index do |activity, index| %>
-                  <tr class= "px-6 py-3 text-center">
+                  <tr class= "t-favorite-content text-center px-6 py-3">
                     <td><%= index + 1 %></td>
                     <td><%= link_to activity.title, activity_path(activity.id) %></td>
+                    <td><%= activity.begin_datetime&.strftime("%Y/%m/%d") %></td>
+                    <td><%= activity.finish_datetime&.strftime("%Y/%m/%d") %></td>
+                    <td><%= activity.location %></td>
                   </tr>
                 <% end %>
               </tbody>
