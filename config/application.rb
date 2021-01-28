@@ -15,10 +15,11 @@ module RubyTix
     config.hosts << "damp-cove-37711.herokuapp.com"
     config.hosts << "rubytix.fun"
     config.hosts << "www.rubytix.fun"
+    config.hosts << "damp-crag-35739.herokuapp.com"
     config.hosts << "rubytix.com"
     config.hosts << "www.rubytix.com"
     config.hosts << "infinite-scrubland-08013.herokuapp.com"
-    config.hosts << "b8fcb5b3c787.ngrok.io"
+    # config.hosts << "3e65b8a5297f.ngrok.io"
     config.time_zone = "Taipei"
     config.i18n.default_locale = "zh-TW"
     config.assets.initialize_on_precompile = false

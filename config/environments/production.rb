@@ -1,6 +1,7 @@
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
-
+  config.hosts << "damp-crag-35739.herokuapp.com"
+  config.hosts << "rubytix.com"
   # Code is not reloaded between requests.
   config.cache_classes = true
 

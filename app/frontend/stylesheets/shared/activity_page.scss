@@ -1,0 +1,29 @@
+.t-add-ac-area {
+  @apply shadow;
+  position: fixed;
+  bottom: 50px;
+  right: 120px;
+  border: 2px solid #750000;
+  background-color: #fff;
+  border-radius: 10px;
+  padding: 10px 20px;
+  z-index: 10;
+}
+.t-ac-add-btn {
+  background-color: #750000;
+  color: #fff;
+}
+.t-float-btn {
+  position: fixed;
+  right: 50px;
+  bottom: 50px;
+  z-index: 50;
+  color: #750000;
+}
+.t-float-icon {
+  border: none;
+}
+
+.t-float-icon:hover {
+  color: #000;
+}

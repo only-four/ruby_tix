@@ -101,14 +101,16 @@
   padding: auto; //15px 30px;
   font-size: 14px;
   color: #000;
+  width: 100%;
 }
 
 .t-copy-btn {
   @apply flex;
-  background-color: #750000;
-  color: #fff;
+  color: #750000;
+  background-color: #fff;
   padding: 15px 10px;
   font-size: 14px;
+  width: 100%;
 }
 
 .t-copy-btn:hover {
@@ -117,7 +119,7 @@
 
 .t-copy-text:hover {
   text-decoration: none;
-  color: #fff;
+  color: #444;
 }
 
 .t-nav-category-btn {
