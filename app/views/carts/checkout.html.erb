@@ -1,4 +1,4 @@
-<div class="container mt-20">
+<div class="container mt-32">
   <h2 class="mt-6 text-center text-4xl font-extrabold text-gray-900 mb-5 extrabold">結帳</h2>
   <%= render "cart"%>
     <%= if @order.errors.full_messages do |message| %>
@@ -7,12 +7,11 @@
   <% end %>
 </div>
 
-<div class="container xl:w-7/12 lg:w-4/5 sm:w-min">
-  <div class="items-center justify-center px-2 sm:px-6 lg:px-8">
+<div class="container">
+  <div class="items-center justify-center px-6 sm:px-6 lg:px-6 pt-6">
     <div class="flex flex-col mb-10">
       <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
         <div class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
-
           <div class="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
             <div class="min-w-full divide-y divide-gray-200">
 
@@ -49,12 +48,12 @@
                 </div>
 
               <% end %>
-              </div>
-              </div>
             </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
+</div>
+</div>
+</div>
 </div>
