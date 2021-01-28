@@ -6,7 +6,7 @@
     <div class="items-center justify-center px-2 sm:px-6 lg:px-8 border-2">
       <div class="act_banner my-2 ">
         <%= f.label :活動顯示圖片 ,class: "border-2 " %><br />
-        <%= "此圖片會顯示於活動頁面，和主頁以供瀏覽（建議大小：1200x760px ??? ）" %><br />
+        <%= "此圖片會顯示於活動頁面和主頁以供瀏覽" %><br />
         <%= f.file_field :image, id: :activity_image %>
         <%= image_tag activity.image_url if @activity.image_url.present? %>
       </div>

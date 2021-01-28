@@ -1,7 +1,7 @@
 <div class="w-full">
-  <section class="t-footer">
-    <div class="py-8 flex justify-between text-center">
-      <div class="flex-wrap justify-center text-left">
+  <section class="t-footer-container">
+    <div class="t-footer-container py-8 flex justify-between text-center">
+      <div class="t-footer-item flex-wrap justify-center text-left">
         <li class="list-none justify-center">
           <%= link_to root_path do%>
             <%= image_tag '/images/newlogo.png', class:"h-20" %>
@@ -20,9 +20,9 @@
             <p class="ml-1">加入LINE好友</p>
           </a>
         </li>
-
       </div>
-      <div class="flex-wrap justify-center py-3">
+
+      <div class="t-footer-item flex-wrap justify-center py-3">
         <li class="list-none text-xl font-bold t-footer-title">會員服務</li>
         <li class="list-none justify-center mt-2">
           <%= link_to '加入會員', member_pages_path, class:"hover:no-underline" %>
@@ -31,7 +31,8 @@
           <%= link_to '新手上路', guide_pages_path, class:"hover:no-underline" %>
         </li>
       </div>
-      <div class="flex-wrap justify-center py-3">
+
+      <div class="t-footer-item flex-wrap justify-center py-3">
         <li class="list-none text-xl font-bold t-footer-title">客服中心</li>
         <li class="list-none justify-center mt-2">
           <%= link_to '常見問題', faq_pages_path, class:"hover:no-underline" %>
@@ -43,7 +44,8 @@
           <%= link_to '舉辦活動', hold_pages_path, class: "hover:no-underline" %>
         </li>
       </div>
-      <div class="flex-wrap justify-center py-3">
+
+      <div class="t-footer-item flex-wrap justify-center py-3">
         <li class="list-none text-xl font-bold t-footer-title">關於我們</li>
         <li class="list-none justify-center mt-2">
           <%= link_to '關於我們', about_us_pages_path, class:"hover:no-underline" %>
@@ -55,7 +57,8 @@
           <%= link_to '隱私權', privacy_pages_path, class:"hover:no-underline" %>
         </li>
       </div>
-      <div class="flex-wrap justify-center py-3">
+
+      <div class="t-footer-item flex-wrap justify-center py-3">
         <li class="list-none text-xl font-bold"></li>
         <li class="list-none justify-center mt-2">
         </li>
