@@ -48,7 +48,7 @@ gem 'faraday', '~> 1.3'
 gem 'omniauth-rails_csrf_protection', '~> 0.1.2'
 gem "nokogiri", ">= 1.11.0.rc4"
 gem 'simple_form', '~> 5.0', '>= 5.0.3'
-gem 'will_paginate', '~> 3.1'
+gem 'kaminari', '~> 1.2', '>= 1.2.1'
 # font awesome
 gem 'font-awesome-rails', '~> 4.6', '>= 4.6.3.1'
 gem 'omniauth', '~> 1.9', '>= 1.9.1'
