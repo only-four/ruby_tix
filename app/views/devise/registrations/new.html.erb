@@ -1,47 +1,51 @@
-<div class="flex items-center justify-center px-4 sm:px-6 lg:px-8 my-20">
+<div class="flex items-center justify-center px-4 sm:px-6 lg:px-8 my-32">
 
   <div class="max-w-lg w-full space-y-8">
     <h2 class="mt-6 text-center text-4xl font-extrabold text-gray-900 mb-5 extrabold ">註冊新會員</h2>
 
-  <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-    <%= render "devise/shared/error_messages", resource: resource %>
-
-    <div class="field mb-2">
-      <%= f.label :信箱 %>
-      <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "信箱", class: "appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-md bg-gray-200 focus:bg-white focus:z-10 sm:text-sm" %>
-    </div>
-
-    <div class="field mb-2">
-      <%= f.label :密碼%>
-      <%= f.password_field :password, autocomplete: "new-password", placeholder: "請輸入至少6個英文字母或數字", class: "appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-md bg-gray-200 focus:bg-white0 focus:z-10 sm:text-sm" %>
-    </div>
-
-    <div class="field mb-2">
-      <%= f.label :確認密碼 %>
-      <%= f.password_field :password_confirmation, autocomplete: "new-password", placeholder: "請再輸入一次您的密碼", class: "appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-md bg-gray-200 focus:bg-white focus:z-10 sm:text-sm" %>
-    </div>
-
-    <div class="field mb-2">
-      <%= f.label :姓名 %>
-      <%= f.text_field :name, placeholder: "真實姓名（註冊後將無法修改）", class: "appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-md bg-gray-200 focus:bg-white focus:z-10 sm:text-sm" %>
-    </div>
-
-    <div class="field mb-2">
-      <%= f.label :帳戶名稱 %> 
-      <%= f.text_field :account_name, placeholder: "暱稱", class: "appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-md bg-gray-200 focus:bg-white focus:z-10 sm:text-sm" %>
-    </div>
-
-    <div class="mb-2 justify-between  grid gap-4 grid-cols-2">
-      <%- if controller_name != 'sessions' %>
-        <div>
-          <%= link_to "已有帳號？至登入頁", new_session_path(resource_name), class: "actions group relative w-full flex justify-center py-2 px-4 border  text-sm font-medium rounded-md  text-gray-900 bg-gray-100 border-red-600 hover:border-red-600 hover:bg-gray-100 hover:text-red-600 hover:no-underline hover:shadow-lg" %>
-        </div>
-      <% end %>
-
-      <div class="actions">
-        <%= f.submit "註冊", class: "actions group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-gray-100 bg-red-600 hover:border-red-600 hover:bg-gray-100 hover:text-red-600 hover:no-underline	hover:shadow-lg hover:border-transparent" %>
+    <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+      <%= render "devise/shared/error_messages", resource: resource %>
+      <div class="field mb-2">
+        <%= f.label :信箱 %>
+        <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "信箱", class: "appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-md bg-gray-200 focus:bg-white focus:z-10 sm:text-sm" %>
+      </div>
+      <div class="field mb-2">
+        <%= f.label :密碼%>
+        <%= f.password_field :password, autocomplete: "new-password", placeholder: "請輸入至少6個英文字母或數字", class: "appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-md bg-gray-200 focus:bg-white0 focus:z-10 sm:text-sm" %>
+      </div>
+      <div class="field mb-2">
+        <%= f.label :確認密碼 %>
+        <%= f.password_field :password_confirmation, autocomplete: "new-password", placeholder: "請再輸入一次您的密碼", class: "appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-md bg-gray-200 focus:bg-white focus:z-10 sm:text-sm" %>
+      </div>
+      <div class="field mb-2">
+        <%= f.label :姓名 %>
+        <%= f.text_field :name, placeholder: "真實姓名（註冊後將無法修改）", class: "appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-md bg-gray-200 focus:bg-white focus:z-10 sm:text-sm" %>
+      </div>
+      <div class="field mb-2">
+        <%= f.label :帳戶名稱 %> 
+        <%= f.text_field :account_name, placeholder: "暱稱", class: "appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-md bg-gray-200 focus:bg-white focus:z-10 sm:text-sm" %>
       </div>
 
-    </div>
-  <% end %>
+      <div class="my-6 justify-between grid gap-4 grid-cols-2">
+        <%- if controller_name != 'sessions' %>
+          <div>
+            <%= link_to "已有帳號？前至登入頁面", new_session_path(resource_name), class: "actions group relative w-full flex justify-center py-2 px-4 border  text-sm font-medium rounded-md  text-gray-900 bg-gray-100 border-red-600 hover:border-red-600 hover:bg-gray-100 hover:text-red-600 hover:no-underline hover:shadow-lg" %>
+          </div>
+        <% end %>
+        <div class="actions">
+          <%= f.submit "註冊", class: "actions group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-gray-100 bg-red-600 hover:border-red-600 hover:bg-gray-100 hover:text-red-600 hover:no-underline	hover:shadow-lg hover:border-transparent" %>
+        </div>
+      </div>
+      <div class="my-6"></div>
+      <div class="">
+        <div>
+          <%= link_to "以 facebook 帳號註冊", omniauth_authorize_path(resource_name, :facebook), method: :post , class: "actions group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-gray-100 bg-blue-800 hover:text-blue-800 hover:border-8-blue-600 hover:border-8	hover:bg-gray-100 hover:no-underline hover:shadow-lg"%>
+        </div>
+        <div>
+          <%= link_to "以 google 帳號註冊", omniauth_authorize_path(resource_name, :google_oauth2), method: :post , class: "actions group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-gray-100 bg-blue-600 hover:text-blue-600 hover:border-8-blue-600 hover:border-8 hover:bg-gray-100   hover:no-underline hover:shadow-lg"%>
+        </div>
+      </div>
+    <% end %>
+
+  </div>
 </div>

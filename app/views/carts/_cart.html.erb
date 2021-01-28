@@ -24,8 +24,8 @@
                     <td class="lg:text-lg text-3xl"><%= item.ticket_type.activity.title %></td>
                     <td class="lg:text-lg text-3xl"><%= item.ticket_type.title %></td>
                     <td class="lg:text-lg text-2xl"><%= item.quantity %></td>
-                    <td class="lg:text-lg text-2xl"><%= item.ticket_type.price %></td>
-                    <td class="lg:text-lg text-2xl"><%= item.price %></td>
+                    <td class="lg:text-lg text-2xl">$<%= item.ticket_type.price %></td>
+                    <td class="lg:text-lg text-2xl">$<%= item.price %></td>
                   </tr>
                 <% end %>
                   <tr class= "px-6 py-3 text-center">
@@ -34,7 +34,7 @@
                     <td></td>
                     <td class="lg:text-lg text-2xl"><%= current_cart.total_quantity %></td>
                     <td></td>
-                    <td class="lg:text-lg text-2xl"><%= current_cart.total_price %></td>
+                    <td class="lg:text-lg text-2xl">$<%= current_cart.total_price %></td>
                   </tr>
               </tbody>
             </table>

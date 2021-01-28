@@ -1,4 +1,4 @@
-<h2 class="mt-6 text-center text-4xl font-extrabold text-gray-900 mb-5 extrabold mt-20">請選擇票券</h2>
+<h2 class="text-center text-4xl font-extrabold text-gray-900 extrabold my-32 mb-5">請選擇票券</h2>
 
 <div class="container">
   <div class="items-center justify-center px-2 sm:px-6 lg:px-8">
@@ -22,7 +22,7 @@
             </div>
 
             <div>
-              <%= link_to '加入購物車', add_cart_path(ticket.id), method: "post", data: { 'shoppingcart-target': 'link', action: 'click->shoppingcart#addcart'}, class: "js-cardLink flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-gray-100 bg-red-600 hover:border-red-600 hover:bg-gray-100 hover:text-red-600 hover:no-underline h-10" %>
+              <%= link_to '加入購物車', add_cart_path(ticket.id), method: "post", data: { 'shoppingcart-target': 'link', action: 'click->shoppingcart#addcart'}, class: "js-cardLink flex items-center justify-center border border-transparent rounded-md shadow-sm text-base font-medium text-gray-100 bg-red-600 hover:border-red-600 hover:bg-gray-100 hover:text-red-600 hover:no-underline px-4 py-2 h-10" %>
             </div>
           </div>
 

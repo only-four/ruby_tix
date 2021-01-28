@@ -26,7 +26,11 @@
               <% else %>  
               <span class="bg-red-300 text-white p-2 rounded-lg">未報到</span>
               </td>
-              <td><a class="js-unattand bg-blue-300 text-white p-2 rounded-lg cursor-pointer " data-id="<%= ticket.ticket_number %>">手動報到</a></td>
+              <td>
+                <a class="js-unattand bg-blue-300 text-white p-2 rounded-lg cursor-pointer focus:outline-none" data-id="<%= ticket.ticket_number %>">
+                  <button class="focus:outline-none">手動報到</button>
+                </a>
+              </td>
             <% end %>
           </tr>
         <% end %>  

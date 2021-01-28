@@ -1,5 +1,5 @@
-<div class="items-center justify-center px-2 sm:px-6 lg:px-8 mt-20">
-  <h2 class="mt-6 text-center text-4xl font-extrabold text-gray-900 mb-5 extrabold ">票券列表</h2>
+<div class="container items-center justify-center px-2 sm:px-6 lg:px-8 mx-20 my32">
+  <h2 class="mt-6 text-center text-4xl font-extrabold text-gray-900 mb-5 extrabold">票券列表</h2>
     <div class="flex mb-3">
       <%= link_to "新增票券", activity_ticket_types_path, class: "submit search-btn flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-gray-100 bg-red-600 hover:border-red-600 hover:bg-gray-100 hover:text-red-600 hover:no-underline h-10" %>
     </div>
@@ -48,7 +48,8 @@
         </div>
       </div>
     </div>
+  <div class="flex mx-2 my-10 w-3/6 sm:w-2/6">
+    <%= link_to '回到活動列表', activities_path, class: "t-back-button" %>
+  </div>
 </div>
-<div class="flex mx-2 my-10 w-3/6 sm:w-2/6">
-  <%= link_to '回到活動列表', activities_path, class: "t-back-button" %>
-</div>
+<div class="container my-20"></div>
