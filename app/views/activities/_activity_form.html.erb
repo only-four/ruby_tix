@@ -8,7 +8,7 @@
           <%= image_tag activity.image_url if @activity.image_url.present? %>      
         <% else %>
           <%= f.label :上傳活動圖片 ,class: "text-xl" %><br />
-          <%= "此圖片會顯示於活動頁面，和主頁以供瀏覽（建議大小：1200x760px）" %><br />
+          <%= "此圖片會顯示於首頁與活動頁面" %><br />
           <%= f.file_field :image, id: :activity_image %>
         <% end %>
         <div class="px-1"></div>
@@ -86,6 +86,7 @@
               <% end %>
             <% end %>
           </div>
+          <%# ＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝ %>
             <% if false %>
             <div class="act_tag my-2">
               <%= f.label :tag, "活動標籤" %>

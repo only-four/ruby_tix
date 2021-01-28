@@ -8,9 +8,8 @@
 
     <% if @activity %>
       <h1 class="text-left text-4xl font-black text-gray-900 mt-6 mb-4 border-8 border-transparent">
-        【 <%= @activity.title %> 】
-      </h1>
-    <%# ＝＝＝＝＝＝＝＝＝＝＝＝分隔線＝＝＝＝＝＝＝＝＝＝＝＝ %>
+        【 <%= @activity.title %> 】</h1>
+      <%# ＝＝＝＝＝＝＝＝＝＝＝＝分隔線＝＝＝＝＝＝＝＝＝＝＝＝ %>
       <div class="container mt-10"> 
         <div class="text-left text-4xl font-extrabold text-red-800 pl-2">活動資訊</div>
         <hr class="border-8 border-blue-800 mt-2"> 
@@ -28,16 +27,20 @@
           <div class="flex items-center mt-2">
             <i class="fas fa-map-marker-alt fa-lg text-red-800"></i>
             <p class="text-left text-xl font-extrabold text-red-800 pl-2">活動地點</p>
-            <p class="text-left text-xl pl-2"><a href="http://google.com.tw/maps/search/<%= @activity.location %>" target="_blank"><%= @activity.location %> <i class="fas fa-external-link-alt ml-1"></i></a></p> 
+            <p class="text-left text-xl pl-2"><a href="http://google.com.tw/maps/search/<%= @activity.location %>" target="_blank"><%= @activity.location %><i class="fas fa-external-link-alt ml-1"></i></a></p> 
           </div>
-          <div>
-            <p class="text-left text-xl pl-2"><%= @activity.location_guide %></p>
+          <div class="flex items-center">
+            <div class="whitespace-normal bg-gray-200 border-1 border-gray-300 rounded-lg text-xl w-full mx-auto my-2 pl-4 py-2">地點指引<i class="fas fa-angle-double-right"></i>  <%= @activity.location_guide %>
+            </div>
           </div>
-
           <div class="flex items-center mt-2">
             <i class="fas fa-link fa-lg text-red-800"></i>
             <p class="text-left text-xl font-extrabold text-red-800 pl-2">相關連結</p>
-            <p class="text-left text-xl pl-2"><%= link_to '[點擊查看相關連結]', @activity.link, :target => '_blank' %></p>
+            <p class="text-left text-xl pl-2">
+            <a href="<%= @activity.link %>" target="_blank">[點擊查看相關連結]<i class="fas fa-external-link-alt ml-1"></i> </a>
+            <%#= link_to '[點擊查看相關連結]', @activity.link, :target => '_blank' %>
+            <%#= link_to <i class="fas fa-external-link-alt ml-1"></i> , @activity.link, :target => '_blank'  %>
+            </p>
           </div>
           <div class="flex items-center mt-2">
             <i class="fas fa-clipboard fa-lg text-red-800"></i>     
@@ -48,29 +51,30 @@
             <i class="fas fa-filter fa-lg text-red-800"></i>     
             <p class="text-left text-xl font-extrabold text-red-800 pl-2">活動分類</p> 
             <p class="text-left text-xl pl-2"><%= @activity.category.name %></p>
-          </div>            
+          </div>     
+          <% if false %>       
           <div class="flex items-center mt-2">
             <i class="fas fa-tag fa-lg text-red-800"></i>
             <p class="text-left text-xl font-extrabold text-red-800 pl-2">活動標籤</p>
             <p class="text-left text-xl pl-2"><%= @activity.tag %>
           </div>
-                <%# 活動標籤考慮刪除 %>
+          <% end %><%# 活動標籤考慮刪除 %>
         </div>
       </div> 
-    <%# ＝＝＝＝＝＝＝＝＝＝＝＝分隔線＝＝＝＝＝＝＝＝＝＝＝＝ %>
+      <%# ＝＝＝＝＝＝＝＝＝＝＝＝分隔線＝＝＝＝＝＝＝＝＝＝＝＝ %>
       <div class="container mt-10"> 
         <div class="text-left text-4xl font-extrabold text-red-800 pl-2">活動內容</div>
         <hr class="border-8 border-blue-800 mt-2"> 
         <div class="justify-left items-center mt-4 pl-8">  
 
-            <div class="whitespace-normal bg-gray-300 border-1 border-gray-300 rounded-lg  text-xl w-3/4 mx-auto my-4 p-4"><%= @activity.brief %>
+            <div class="whitespace-normal bg-gray-200 border-1 border-gray-300 rounded-lg text-xl w-3/4 mx-auto my-4 p-4"><%= @activity.brief %>
             </div>
             <div class="whitespace-normal text-lg w-3/4 mx-auto"><%= @activity.content %>
             </div>
 
           </div>
       </div>
-    <%# ＝＝＝＝＝＝＝＝＝＝＝＝分隔線＝＝＝＝＝＝＝＝＝＝＝＝ %>
+      <%# ＝＝＝＝＝＝＝＝＝＝＝＝分隔線＝＝＝＝＝＝＝＝＝＝＝＝ %>
       <div class="container mt-10"> 
         <div class="text-left text-4xl font-extrabold text-red-800 pl-2">其他資訊</div>
         <hr class="border-8 border-blue-800 mt-2"> 
@@ -84,43 +88,43 @@
             <div class="flex items-center mt-2">
               <i class="fas fa-exclamation-triangle fa-lg text-red-800"></i>
               <p class="text-left text-xl font-extrabold text-red-800 pl-2">注意事項</p>
-              <p class="text-left text-xl pl-2"><%= @activity.notice %></p>
+              <p class="items-center text-left text-xl pl-2"><%= @activity.notice %></p>
             </div>
 
         </div>
       </div>
-    <%# ＝＝＝＝＝＝＝＝＝＝＝＝分隔線＝＝＝＝＝＝＝＝＝＝＝＝ %>
+      <%# ＝＝＝＝＝＝＝＝＝＝＝＝分隔線＝＝＝＝＝＝＝＝＝＝＝＝ %>
       <% if false %>
-            <div class="container mt-10"> 
-              <div class="text-left text-4xl font-extrabold text-red-800 pl-2">地圖</div>
-              <hr class="border-8 border-blue-800 mt-2"> 
-              <div class="justify-left items-center mt-4 pl-8">  
-                      <%= "這裡放地圖" %>
-                                  <%# =================== %>
-                <%# TODO: 待處理 %>
-                <%# if false%>
-                <div class="wrapper">
-                  <div class="center">
-                    <div class="card">
-                      <div class="card-harder bg-white">
-                        <input type="text" id="mapsearch"><i class="fas fa-search m-2" id="btn"></i>
-                      </div>
-                      <div class="card-body m-n3">
-                        <div id="map-canvas"></div>
-                      </div>
-                    </div>
+        <div class="container mt-10"> 
+          <div class="text-left text-4xl font-extrabold text-red-800 pl-2">地圖</div>
+          <hr class="border-8 border-blue-800 mt-2"> 
+          <div class="justify-left items-center mt-4 pl-8">  
+                  <%= "這裡放地圖" %>
+                              <%# =================== %>
+            <%# TODO: 待處理 %>
+            <%# if false%>
+            <div class="wrapper">
+              <div class="center">
+                <div class="card">
+                  <div class="card-harder bg-white">
+                    <input type="text" id="mapsearch"><i class="fas fa-search m-2" id="btn"></i>
+                  </div>
+                  <div class="card-body m-n3">
+                    <div id="map-canvas"></div>
                   </div>
                 </div>
-
-                  <script src="map.js"></script>
-                  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAoTpNAl2WYuw5kigYMeWJO0ppiECjCrnE&libraries=places&callback=initMap">
-                  </script>
-                  <%# end %>
-
-                </div>
+              </div>
             </div>
+
+              <script src="map.js"></script>
+              <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAoTpNAl2WYuw5kigYMeWJO0ppiECjCrnE&libraries=places&callback=initMap">
+              </script>
+              <%# end %>
+
+            </div>
+        </div>
       <% end %>
-    <%# ＝＝＝＝＝＝＝＝＝＝＝＝分隔線＝＝＝＝＝＝＝＝＝＝＝＝ %>
+      <%# ＝＝＝＝＝＝＝＝＝＝＝＝分隔線＝＝＝＝＝＝＝＝＝＝＝＝ %>
       <div class="container mt-10"> 
         <div class="text-left text-4xl font-extrabold text-red-800 pl-2">聯絡方式</div>
         <hr class="border-8 border-blue-800 mt-2"> 
@@ -142,69 +146,78 @@
           </div>
         </div>
       </div>
-    <%# ＝＝＝＝＝＝＝＝＝＝＝＝分隔線＝＝＝＝＝＝＝＝＝＝＝＝ %>          
+      <%# ＝＝＝＝＝＝＝＝＝＝＝＝分隔線＝＝＝＝＝＝＝＝＝＝＝＝ %>          
     <% else %>
       <h1>找不到活動喔！請確定你的連結是否正確！</h1>
     <% end %>
-    <%# ＝＝＝＝＝＝＝＝＝＝＝＝分隔線＝＝＝＝＝＝＝＝＝＝＝＝ %>    
-      <div class="container mt-20"> 
-        <div class="overflow-hidden border-0 border-transparent mb-5 w-1/2 p-auto">
-          <div class="items-center justify-center">
+      <%# ＝＝＝＝＝＝＝＝＝＝＝＝分隔線＝＝＝＝＝＝＝＝＝＝＝＝ %>    
+    <div class="container mt-20"> 
+      <div class="overflow-hidden border-0 border-transparent mb-5 w-1/2 p-auto">
+        <div class="items-center justify-center">
 
-              <div class="flex items-center justify-center">
-                <div class="">
-                  <%= link_to '參加活動', activity_choose_path(@activity.id) , method:"get", class: "t-create-button flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-gray-100 hover:border-red-600 hover:bg-red-600 hover:text-white hover:no-underline h-10 w-32" %>
-                </div>
-                <div class="t-back-button flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium h-10">
-                  <h2 data-controller="favorite" data-favorite-id="<%= @activity.id %>">
-                  <% if user_signed_in? %>
-                    <%= link_to '#', data: { action: 'favorite#add' } do %>
-                      <% if current_user.favorite?(@activity) %>
-                        <i class="fas fa-heart" data-favorite-target="icon"></i>
-                      <% else %>
-                        <i class="far fa-heart" data-favorite-target="icon"></i>
-                      <% end %>
-                    <% end %>
+          <div class="flex items-center justify-center">
+            <div class="">
+              <%= link_to '參加活動', activity_choose_path(@activity.id) , method:"get", class: "t-create-button flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-gray-100 hover:border-red-600 hover:bg-red-600 hover:text-white hover:no-underline h-10 w-32" %>
+            </div>
+            <div class="t-back-button flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium h-10">
+              <h2 data-controller="favorite" data-favorite-id="<%= @activity.id %>">
+              <% if user_signed_in? %>
+                <%= link_to '#', data: { action: 'favorite#add' } do %>
+                  <% if current_user.favorite?(@activity) %>
+                    <i class="fas fa-heart" data-favorite-target="icon"></i>
                   <% else %>
-                    <%= link_to new_session_path(:user), notice: '請先登入，即可收藏至個人清單' %>
+                    <i class="far fa-heart" data-favorite-target="icon"></i>
                   <% end %>
-                </h2>
-              </div>  
-              <a href="tel:<%= @activity.phone %>" class="t-back-button flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium h-10"><i class="fas fa-phone-volume fa-lg ml-1"></i>
-              </a>
-              <a href="mailto:<%= @activity.email %>" class="t-back-button flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium h-10"><i class="far fa-envelope fa-lg"></i></a>
-            </div>
+                <% end %>
+              <% else %>
+                <%= link_to new_session_path(:user), notice: '請先登入，即可收藏至個人清單' %>
+              <% end %>
+              </h2>
+            </div>  
+            <a href="tel:<%= @activity.phone %>" class="t-back-button flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium h-10"><i class="fas fa-phone-volume fa-lg ml-1"></i>
+            </a>
+            <a href="mailto:<%= @activity.email %>" class="t-back-button flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium h-10"><i class="far fa-envelope fa-lg"></i></a>
+          </div>
 
-            <div class="flex justify-center">
-              <div id="copythis" class="js-https t-copy-input rounded-lg w-1/2"></div>
-              <div class="t-copy-btn js-copy-btn rounded-lg min-w-max">
-                <a href="javascript:void(0)" onclick="CopyTextToClipboard('copythis')" class="t-copy-text"><i class="far fa-copy t-copy-text"></i> 分享複製連結</a>
-              </div>
+          <div class="flex justify-center">
+            <div id="copythis" class="js-https t-copy-input rounded-lg w-1/2 pt-3"></div>
+            <div class="t-copy-btn js-copy-btn rounded-lg min-w-max">
+              <a href="javascript:void(0)" onclick="CopyTextToClipboard('copythis')" class="t-copy-text"><i class="far fa-copy t-copy-text"></i> 分享複製連結</a>
             </div>
+          </div>
 
-          </div> 
-        </div>
+        </div> 
       </div>
-    <%# ＝＝＝＝＝＝＝＝＝＝＝＝分隔線＝＝＝＝＝＝＝＝＝＝＝＝ %>  
+    </div>
   <% end %>
 
-
-  <hr class="border-1 border-gray-300 mt-20 mb-4">  
-  <div class="m-8"> 
-    <section class="section-comments"></section>
-      <div class="container">
-        <h2 class="ml-4"><strong><%= @activity.comments.count %> </strong>Comment</h2>
-        <%= render 'comments/comments', activity: @activity, comment: @comment %>
-        <%= render 'comments/show_comments', comments: @comments %>
+  <%# ＝＝＝＝＝＝＝＝＝＝＝＝分隔線＝＝＝＝＝＝＝＝＝＝＝＝ %>  
+  <div class="container my-40"> 
+    <div class="flex items-center">
+      <div class="text-left text-4xl font-extrabold text-red-800 pl-2">相關留言</div><div class="ml-4 pt-4"><strong><%= @activity.comments.count %> </strong> 則留言</div>
+    </div>
+    <hr class="border-8 border-blue-800 mt-2"> 
+    <div class="justify-left items-center mt-4 pl-8">  
+      <div class="m-8"> 
+        <section class="section-comments"></section>
+          <div class="container">
+            <%= render 'comments/comments', activity: @activity, comment: @comment %>
+            <%= render 'comments/show_comments', comments: @comments %>
+          </div>
+        </section>
       </div>
-    </section>
+    </div> 
   </div>
+
+    <%# ＝＝＝＝＝＝＝＝＝＝＝＝分隔線＝＝＝＝＝＝＝＝＝＝＝＝ %>    
+  <hr class="border-1 border-gray-300 mt-20 mb-4">  
 
   <%# ＝＝＝＝＝＝＝＝＝＝＝＝分隔線＝＝＝＝＝＝＝＝＝＝＝＝ %>  
   <div class="justify-center my-10 container xl:w-7/12 lg:w-3/4 sm:w-screen">
-    <%= link_to '查看更多活動', activities_path, class: "t-back-button flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium h-10" %>
+    <%= link_to '查看更多活動', root_path, class: "t-back-button flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium h-10" %>
     <%= link_to "沒有喜歡的嗎？自己創一個吧！", new_activity_path, class: "t-create-button motion-reduce:transform-none" %>
   </div>
+
 </div>
 <%# ＝＝＝＝＝＝＝＝＝＝＝＝分隔線＝＝＝＝＝＝＝＝＝＝＝＝ %>  
 <script>

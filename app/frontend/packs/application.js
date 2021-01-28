@@ -6,6 +6,15 @@ require("stylesheets");
 require("trix");
 require("@rails/actiontext");
 // import "stimulus"
+// window.Swiper = require('swiper');
+window.Swiper = require("swiper/swiper-bundle");
+// import Swiper styles
+import "swiper/swiper-bundle.css";
+// core version + navigation, pagination modules:
+import Swiper, { Navigation, Pagination } from "swiper";
+
+// configure Swiper to use modules
+Swiper.use([Navigation, Pagination]);
 import "controllers";
 import "bootstrap";
 import "jquery";
