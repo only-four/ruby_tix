@@ -35,18 +35,19 @@
                       <div scope="col" class="w-1/2 px-1 text-right text-lg font-normal text-gray-900 uppercase tracking-wider">
                         <%= form.label:電子信箱：, class:"mb-0 lg:text-lg text-3xl" %>
                       </div>
-                      <div scope="col"><%= form.text_field  :address, value: current_user.email, class: "lg:text-lg text-3xl appearance-none rounded-none relative block border border-gray-300 placeholder-gray-500 text-gray-900 rounded-md bg-gray-100 focus:bg-white focus:z-10 lg:text-lg" %>
+                      <div scope="col"><%= form.text_field :address, value: current_user.email, class: "lg:text-lg text-3xl appearance-none rounded-none relative block border border-gray-300 placeholder-gray-500 text-gray-900 rounded-md bg-gray-100 focus:bg-white focus:z-10 lg:text-lg" %>
                       </div>
-                    </div>
                       <div class="flex justify-center mb-3">
                         <div scope="col" class="px-1 w-1/2 mr-5 text-center text-lg font-normal text-gray-900 uppercase tracking-wider">
                           <%= form.submit '確認結帳', class: "bg-red-600 hover:bg-red-700 text-white text-3xl lg:text-xl font-bold py-2 px-4 rounded-full" %>
                         </div>
                       </div>
                     </div>
+
                   </div>
                 <% end %>
               </div>
+              
             </div>
           </div>
         </div>
