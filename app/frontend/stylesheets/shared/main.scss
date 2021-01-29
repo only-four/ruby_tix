@@ -1,8 +1,10 @@
 @import url("https://fonts.googleapis.com/css?family=Arvo");
+
 * {
   box-sizing: border-box;
   font-family: "Arvo", monospace;
 }
+
 a:hover {
   text-decoration: initial;
 }
@@ -34,6 +36,7 @@ html {
   grid-auto-flow: row dense;
   @apply my-20;
 }
+
 .t-activity-area :first-child {
   grid-column-end: auto;
   box-sizing: content-box;
@@ -107,6 +110,7 @@ html {
     }
   }
 }
+
 .t-item-img {
   align-items: center;
   top: 0;
@@ -123,16 +127,19 @@ html {
   overflow: hidden;
   // border-radius: 20px;
 }
+
 .t-item-img img {
   width: 100%;
   height: 100%;
   object-fit: cover;
 }
+
 .activity-show-swiper-area img {
   width: 100%;
   height: 100%;
   object-fit: cover;
 }
+
 .t-hp-category {
   background-color: #fa0;
   color: #fff;
@@ -142,6 +149,7 @@ html {
   z-index: 10;
   padding: 1px 5px;
 }
+
 .t-hp-cgp {
   width: 0px;
   height: 0px;
@@ -154,6 +162,7 @@ html {
   /* 也可以寫成下面這樣 */
   /* top: 100%; */
 }
+
 .tag {
   background-color: #fa0;
   color: #fff;
@@ -174,10 +183,12 @@ html {
   /* 也可以寫成下面這樣 */
   /* top: 100%; */
 }
+
 .t-item-detail {
   padding: 5px 10px;
   background-color: #ffffff;
 }
+
 .t-item-detail h5 {
   color: #000;
   letter-spacing: 3px;
@@ -191,9 +202,11 @@ html {
   color: #444;
   font-size: 16px;
 }
+
 .t-item-date :first-child {
   margin-right: 3px;
 }
+
 .t-truncate {
   color: #48463e;
   padding: 0 6px;
@@ -202,6 +215,7 @@ html {
 .t-truncate:hover {
   color: #ddd;
 }
+
 .t-float-icon {
   z-index: 20;
 }
@@ -209,9 +223,11 @@ html {
 .t-footer-banner {
   height: 300px;
 }
+
 .t-footer-section {
   position: relative;
 }
+
 .t-footer-section .t-footer-container {
   @apply px-10;
   background-color: #ddd;
@@ -221,9 +237,11 @@ html {
   position: relative;
   z-index: 2;
 }
+
 .t-footer-section .t-footer-item {
   margin: 0 85px;
 }
+
 .t-footer-section::after {
   content: "";
   display: block;
@@ -242,13 +260,15 @@ html {
     100px 0px 0 56px rgba(#750000, 0.5), 298px 10px 0 56px rgba(#750000, 0.5),
     540px -40px 0 50px rgba(#750000, 0.5), 740px -30px 0 30px rgba(#750000, 0.5),
     880px -100px 0 80px rgba(#750000, 0.5), 1000px 0px 0 80px rgba(#750000, 0.5),
-    /*...*/ -60px 0px 0 56px rgba(#750000, 0.5),
+    /*...*/
+    -60px 0px 0 56px rgba(#750000, 0.5),
     -298px 10px 0 56px rgba(#750000, 0.5),
     -540px -40px 0 50px rgba(#750000, 0.5),
     -740px -30px 0 30px rgba(#750000, 0.5),
     -780px -70px 0 80px rgba(#750000, 0.5),
     -1200px 0px 0 80px rgba(#750000, 0.5);
 }
+
 .t-footer-section::before {
   content: "";
   position: absolute;
@@ -259,9 +279,12 @@ html {
   top: 0;
   left: 0;
 }
+
 .t-footer-title {
   color: #750000;
+  font-size: 16px;
 }
+
 .t-footer-copyright {
   background-color: #444;
   color: #ddd;
@@ -281,9 +304,11 @@ html {
   background-color: #750000;
   color: #ddd;
 }
+
 .t-footer-item li a:hover {
   color: #750000;
 }
+
 .t-favorite-content a:hover {
   color: #750000;
 }

@@ -20,6 +20,7 @@
     <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
       <div class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
         <div class="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
+
           <table class="min-w-full divide-y divide-gray-200">
             <thead class="t-thead h-10">
             <%= fields_for :tickets do |tickets_fields| %>
@@ -110,6 +111,8 @@
           <div class="overflow-hidden border-b border-gray-200 sm:rounded-lg mb-5 p-10">
             <div class="items-center flex justify-left">
               <div class="act_contact m-auto">
+
+              <div class="text-gray-300 bg-gray-700 rounded-lg pl-4">有*符號者為必填欄位</div>
                 <div class="act_phone my-2">
                   <%= f.label :phone, "電話*" %>
                   <%= f.phone_field :phone, class: "appearance-none rounded-none relative border border-gray-300 placeholder-gray-500 text-gray-900 rounded-md bg-gray-100 focus:bg-white focus:z-10 sm:text-sm mx-4 px-3 py-2 w-2.5" %>
@@ -155,7 +158,6 @@
       </div>
     </div>
   </div>
-
 
   <div class="nested-container container w-5/6">
     <div data-controller="ticket-types-form" class="nested-form">

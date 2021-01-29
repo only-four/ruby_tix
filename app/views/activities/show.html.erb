@@ -92,7 +92,6 @@
         </div>
       </div>
       <%# ＝＝＝＝＝＝＝＝＝＝＝＝分隔線＝＝＝＝＝＝＝＝＝＝＝＝ %>
-
       <div class="container mt-10 mb-10"> 
         <div class="text-left text-4xl font-extrabold text-red-800 pl-2">聯絡方式</div>
         <hr class="border-8 border-blue-800 mt-2"> 
@@ -118,54 +117,47 @@
     <% else %>
       <h1>找不到活動喔！請確定你的連結是否正確！</h1>
     <% end %>
-<%# ＝＝＝＝＝＝＝＝＝＝＝＝浮動參加匡＝＝＝＝＝＝＝＝＝＝＝＝ %>  
-  <div class="t-add-ac-area mt-40 shadow overflow-hidden ">
-    <h1 class="text-center text-2xl text-gray-900 mb-2">
-      <%= @activity.title %>
-    </h1>
+  <%# ＝＝＝＝＝＝＝＝＝＝＝＝浮動參加框＝＝＝＝＝＝＝＝＝＝＝＝ %>  
+    <div class="t-add-ac-area mt-40 shadow overflow-hidden ">
+      <h1 class="text-center text-2xl text-gray-900 mb-2">
+        <%= @activity.title %>
+      </h1>
 
-    <div class="border-gray-500">
-      <div class="flex items-center justfy-around">
-        <h2 data-controller="favorite" data-favorite-id="<%= @activity.id %>" class="t-back-button flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium h-10">
-        <% if user_signed_in? %>
-          <%= link_to '#', data: { action: 'favorite#add' } do %>
-            <% if current_user.favorite?(@activity) %>
-              <i class="fas fa-heart" data-favorite-target="icon"></i>
-            <% else %>
-              <i class="far fa-heart" data-favorite-target="icon"></i>
+      <div class="border-gray-500">
+        <div class="flex items-center justfy-around">
+          <h2 data-controller="favorite" data-favorite-id="<%= @activity.id %>" class="t-back-button flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium h-10">
+          <% if user_signed_in? %>
+            <%= link_to '#', data: { action: 'favorite#add' } do %>
+              <% if current_user.favorite?(@activity) %>
+                <i class="fas fa-heart" data-favorite-target="icon"></i>
+              <% else %>
+                <i class="far fa-heart" data-favorite-target="icon"></i>
+              <% end %>
             <% end %>
+          <% else %>
+            <%= link_to new_session_path(:user), notice: '請先登入，即可收藏至個人清單' %>
           <% end %>
-        <% else %>
-          <%= link_to new_session_path(:user), notice: '請先登入，即可收藏至個人清單' %>
-        <% end %>
-        </h2>
-        <a href="phoneto:to_s(@activity.phone)" class="t-back-button flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium h-10">
-          <i class="fas fa-phone-volume fa-lg ml-1"></i>
-        </a>
-        <a href="mailto:[to_s.@activity.email]"  class="t-back-button flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium h-10"><i class="far fa-envelope fa-lg"></i></a>
-      </div>
-
-      <div class="flex flex-wrap">
-        <div id="copythis" class="js-https t-copy-input rounded-lg"></div>
-        <div class="t-back-button js-copy-btn w-full flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium h-10">
-          <a href="javascript:void(0)" onclick="CopyTextToClipboard('copythis')" class="hover:border-red-600 flex items-center">
-          <i class="far fa-copy"></i>
-          <p class="hover:border-red-600">複製分享連結</p>
-          </a>
+          </h2>
+          <a href="phoneto:to_s(@activity.phone)" class="t-back-button flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium h-10"><i class="fas fa-phone-volume fa-lg ml-1"></i></a>
+          <a href="mailto:[to_s.@activity.email]"  class="t-back-button flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium h-10"><i class="far fa-envelope fa-lg"></i></a>
+        </div>
+        <%# ＝＝＝＝＝以上：收藏 電話 信箱，以下：複製連結＝＝＝＝＝ %>
+        <div class="flex flex-wrap">
+          <div id="copythis" class="hidden js-https t-copy-input rounded-lg"></div>
+          <div class="t-back-button js-copy-btn  w-full  flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium h-10">
+            <a href="javascript:void(0)" onclick="CopyTextToClipboard('copythis')" class="hover:border-red-600 flex items-center">
+            <i class="far fa-copy"></i>
+            <p class="hover:border-red-600">複製分享連結</p>
+            </a>
+          </div>
         </div>
       </div>
-      <%# <div class="overflow-hidden border-b border-gray-200 sm:rounded-lg mb-5 p-10"> %>
-
+      <div>
+        <%= link_to '參加活動', activity_choose_path(@activity.id) , method:"get", class: "t-ac-add-btn flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium   hover:border-red-600 hover:bg-gray-100 hover:text-red-600 hover:no-underline h-10" %>
+      </div>
     </div>
-
-    <div>
-      <%= link_to '參加活動', activity_choose_path(@activity.id) , method:"get", class: "t-ac-add-btn flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium   hover:border-red-600 hover:bg-gray-100 hover:text-red-600 hover:no-underline h-10" %>
-    </div>
-  </div>
 
   <% end %>
-
-
   <%# ＝＝＝＝＝＝＝＝＝＝＝＝分隔線＝＝＝＝＝＝＝＝＝＝＝＝ %>  
   <div class="container my-200"> 
     <div class="flex items-center">
@@ -184,10 +176,9 @@
       </div>
     </div> 
   </div>
-</div>
     <%# ＝＝＝＝＝＝＝＝＝＝＝＝分隔線＝＝＝＝＝＝＝＝＝＝＝＝ %>    
+</div>
 <hr class="border-1 border-gray-300 mt-20 mb-4">  
-
   <%# ＝＝＝＝＝＝＝＝＝＝＝＝分隔線＝＝＝＝＝＝＝＝＝＝＝＝ %>  
 <div class="justify-center my-10 container xl:w-7/12 lg:w-3/4 sm:w-screen">
   <%= link_to '查看更多活動', root_path, class: "t-back-button flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium h-10" %>
@@ -239,7 +230,6 @@
     <div class="swiper-button-next activity-show-swiper-button"></div>
     <div class="swiper-button-prev activity-show-swiper-button"></div>
   </div>
-
 <%# ＝＝＝＝＝＝＝＝＝＝＝＝分隔線＝＝＝＝＝＝＝＝＝＝＝＝ %>  
 <script>
 function CopyTextToClipboard(id) {
@@ -251,38 +241,36 @@ function CopyTextToClipboard(id) {
   document.execCommand("copy");
 }
 
- document.addEventListener("turbolinks:load", function(){
-   document.querySelector(".js-copy-btn").addEventListener('click', function(evt){
-     evt.preventDefault();
-     Swal.fire({
-       position: 'center',
-       icon: 'success',
-       title: '複製成功',
-       showConfirmButton: false,
-       timer: 2000
-     })
-   })
+document.addEventListener("turbolinks:load", function(){
+  document.querySelector(".js-copy-btn").addEventListener('click', function(evt){
+    evt.preventDefault();
+    Swal.fire({
+      position: 'center',
+      icon: 'success',
+      title: '複製成功',
+      showConfirmButton: false,
+      timer: 2000
+    })
+  })
 
-   var swiper = new Swiper('.swiper-container', {
-      slidesPerView: 3,
-      spaceBetween: 30,
-      slidesPerGroup: 3,
-      loop: true,
-      loopFillGroupWithBlank: true,
-      autoplay: {
-        delay: 2500,
-        disableOnInteraction: false,
+  var swiper = new Swiper('.swiper-container', {
+    slidesPerView: 3,
+    spaceBetween: 30,
+    slidesPerGroup: 3,
+    loop: true,
+    loopFillGroupWithBlank: true,
+    autoplay: {
+      delay: 2500,
+      disableOnInteraction: false,
       },
       pagination: {
         el: '.swiper-pagination',
         clickable: true,
       },
-
       navigation: {
         nextEl: '.swiper-button-next',
         prevEl: '.swiper-button-prev',
       },
     });
-
   })
 </script>

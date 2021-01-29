@@ -10,7 +10,7 @@ class ActivitiesController < ApplicationController
   def new
     @activity = current_user.own_activities.new
     @categories = Category.all
-    2.times { @activity.ticket_types.build }
+    @activity.ticket_types.build 
   end 
   
   def create
