@@ -146,14 +146,16 @@
       </div>
 
       <div class="flex flex-wrap">
-        <div id="copythis" class="hidden js-https t-copy-input rounded-lg"></div>
-        <div class="t-back-button js-copy-btn  w-full  flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium h-10">
+        <div id="copythis" class="js-https t-copy-input rounded-lg"></div>
+        <div class="t-back-button js-copy-btn w-full flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium h-10">
           <a href="javascript:void(0)" onclick="CopyTextToClipboard('copythis')" class="hover:border-red-600 flex items-center">
           <i class="far fa-copy"></i>
           <p class="hover:border-red-600">複製分享連結</p>
           </a>
         </div>
       </div>
+      <%# <div class="overflow-hidden border-b border-gray-200 sm:rounded-lg mb-5 p-10"> %>
+
     </div>
 
     <div>
@@ -198,7 +200,7 @@
         <div class="swiper-slide">
           <%= link_to activity_path(activity.id) do %>
             <div class="t-item">
-              <div class="t-item-img ">
+              <div class="t-item-img">
                 <% if activity.image_url.present? %>
                   <%= image_tag activity.image_url if activity.image_url.present? %> 
                 <% else %>
@@ -230,27 +232,24 @@
               </div>    
             </div>
           <% end %>    
-        </div>    
+        </div>
       <% end %>
     </div>
+    <!-- Add Arrows -->
+    <div class="swiper-button-next activity-show-swiper-button"></div>
+    <div class="swiper-button-prev activity-show-swiper-button"></div>
   </div>
-
-<!-- Add Arrows -->
-  <div class="swiper-button-next activity-show-swiper-button"></div>
-  <div class="swiper-button-prev activity-show-swiper-button"></div>
-
-
 
 <%# ＝＝＝＝＝＝＝＝＝＝＝＝分隔線＝＝＝＝＝＝＝＝＝＝＝＝ %>  
 <script>
 function CopyTextToClipboard(id) {
-    var TextRange = document.createRange();
-    TextRange.selectNode(document.getElementById(id));
-    sel = window.getSelection();
-        sel.removeAllRanges();
-        sel.addRange(TextRange);
-    document.execCommand("copy");
-  }
+  var TextRange = document.createRange();
+  TextRange.selectNode(document.getElementById(id));
+  sel = window.getSelection();
+      sel.removeAllRanges();
+      sel.addRange(TextRange);
+  document.execCommand("copy");
+}
 
  document.addEventListener("turbolinks:load", function(){
    document.querySelector(".js-copy-btn").addEventListener('click', function(evt){

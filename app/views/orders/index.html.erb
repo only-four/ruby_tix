@@ -44,7 +44,9 @@
                       <% end %>
 
                       <% if order.may_refund? %>
-                        <td class="lg:text-lg text-xl" ><%= link_to '退款', cancel_order_path(order), method:'delete', data: {confirm:'是否取消訂單？'} %></td>
+                        <td class="lg:text-lg text-xl" >
+                          <%= link_to '退款', cancel_order_path(order), method:'delete', data: {confirm:'是否取消訂單？'}, class: "t-cancel-button" %>
+                        </td>
                       <% else %>
                         <td>－</td>
                       <% end %>

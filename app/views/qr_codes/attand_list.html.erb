@@ -1,4 +1,4 @@
-<div class="attand-list container text-center mb-4 mt-20">
+<div class="attand-list container text-center mb-4 my-32">
   <h3 class="xl:text-3xl text-5xl" >活動名稱：<%= Activity.find(@attand_list_activity_id).title %></h3>
   <span class="xl:text-3xl text-5xl">目前報到人數：<%= @qr_codes.count if @qr_codes.count !=[] %>/ <%= Ticket.where(event: @attand_list_activity_id).count if Ticket.where(event: @attand_list_activity_id).count !=[] %> </span>
 </div>
@@ -21,7 +21,7 @@
             <td class="py-4 px-6 border-b border-grey-light"><%= "#{index} " %>.<%= ticket.order.user.name%></td>
             <td class="py-4 px-6 border-b border-grey-light"><%= link_to ticket.ticket_number%>/<%= ticket.event %></td>
             <td class="py-4 px-6 border-b border-grey-light">
-              <% if  QrCode.find_by(data: ticket.ticket_number) != nil %>
+              <% if QrCode.find_by(data: ticket.ticket_number) != nil %>
                 <span class="bg-gray-400 text-white p-2 rounded-lg">已報到</span>
               <% else %>  
               <span class="bg-red-300 text-white p-2 rounded-lg">未報到</span>
