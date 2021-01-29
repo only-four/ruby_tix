@@ -34,9 +34,7 @@
     <%# =========第三方登入========== %>
     <div>
       <%- if devise_mapping.omniauthable? %>
-        <div>
-          <%= link_to "以 facebook 帳號登入", omniauth_authorize_path(resource_name, :facebook), method: :post , class:"actions group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-gray-100 bg-blue-800 hover:text-blue-800 hover:border-8-blue-600 hover:border-8 hover:bg-gray-100   hover:no-underline hover:shadow-lg"%>
-        </div>
+
         <div>
           <%= link_to "以 google 帳號登入", omniauth_authorize_path(resource_name, :google_oauth2), method: :post , class: "actions group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-gray-100 bg-blue-600 hover:text-blue-600 hover:border-8-blue-600 hover:border-8 hover:bg-gray-100   hover:no-underline hover:shadow-lg"%>
         </div>
