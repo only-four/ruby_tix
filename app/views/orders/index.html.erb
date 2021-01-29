@@ -38,7 +38,7 @@
                     <td class="lg:text-lg text-xl" ><%= order.price %></td>
                     <td class="lg:text-lg text-xl" ><%= order.state %></td>
                       <% if order.may_pay? %>
-                        <td class="lg:text-lg text-xl" ><%= link_to '付款', pay_order_path(order), method:'POST', data: {confirm:'確定付款？'}%></td>
+                        <td class="lg:text-lg text-xl" ><%= link_to '付款', pay_order_path(order), method:'POST', data: {confirm:'確定付款？'}, class: "t-cancel-button" %></td>
                       <% else %>
                         <td>－</td>
                       <% end %>
