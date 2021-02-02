@@ -5,6 +5,11 @@ orbs:
   # Declare a dependency on the welcome-orb
   welcome: circleci/welcome-orb@0.4.1
 # Orchestrate or schedule a set of jobs
+machine: # 虛擬機的環境
+  node:
+    version: 14.15.3 #把剛剛得到的node version填到這裡
+  test:
+    - npm test #每一個deploy到github上的commit都會執行npm test
 workflows:
   # Name the workflow "welcome"
   welcome:
