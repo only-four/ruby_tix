@@ -56,6 +56,8 @@ gem 'rails-i18n', '~> 6.0'
 # container
 gem 'bankai', '~> 0.8.1'
 gem 'bankai-docker', '~> 0.2.0'
+gem 'sitemap_generator', '~> 6.1', '>= 6.1.2'
+gem 'google-cloud-storage', '~> 1.30'
 
 
 group :development, :test do
