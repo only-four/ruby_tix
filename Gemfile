@@ -28,7 +28,7 @@ gem 'bootsnap', '>= 1.4.2', require: false
 gem 'jquery-rails', '~> 4.4'
 gem 'jquery-ui-rails', '~> 6.0', '>= 6.0.1'
 # user/devise
-gem 'devise', github: 'heartcombo/devise', branch: 'ca-omniauth-2'
+gem 'devise', '~> 4.7', '>= 4.7.3', github: 'heartcombo/devise', branch: 'ca-omniauth-2'
 gem 'rolify', '~> 5.3'
 gem 'cancancan', '~> 3.2', '>= 3.2.1'
 # figaro -> for secret manage
@@ -40,7 +40,7 @@ gem 'omniauth-google-oauth2', '~> 0.8.0'
 # order/aasm
 gem 'aasm', '~> 5.1', '>= 5.1.1'
 # carrierwave/for image-upload
-gem 'carrierwave', '~> 2.1'
+gem 'carrierwave', '~> 2.1', '>= 2.1.1'
 gem 'fog-aws', '~> 3.8'
 # cart/checkout for linepay
 gem 'faraday', '~> 1.3'
@@ -51,7 +51,7 @@ gem 'simple_form', '~> 5.0', '>= 5.0.3'
 gem 'will_paginate', '~> 3.1'
 # font awesome
 gem 'font-awesome-rails', '~> 4.6', '>= 4.6.3.1'
-gem 'omniauth', '~> 2.0'
+gem 'omniauth', '~> 2.0', '>= 2.0.2'
 gem 'rails-i18n', '~> 6.0'
 # container
 gem 'bankai', '~> 0.8.1'
