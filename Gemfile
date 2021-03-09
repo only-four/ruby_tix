@@ -24,7 +24,7 @@ gem 'redis', '~> 4.0'
 # Use Active Storage variant
 gem 'image_processing', '~> 1.2'
 # Reduces boot times through caching; required in config/boot.rb
-gem 'bootsnap', '>= 1.4.2', require: false
+gem 'bootsnap', '~> 1.7', '>= 1.7.2', require: false
 gem 'jquery-rails', '~> 4.4'
 gem 'jquery-ui-rails', '~> 6.0', '>= 6.0.1'
 # user/devise
@@ -58,7 +58,8 @@ gem 'bankai', '~> 0.8.1'
 gem 'bankai-docker', '~> 0.2.0'
 gem 'sitemap_generator', '~> 6.1', '>= 6.1.2'
 gem 'google-cloud-storage', '~> 1.30'
-
+gem "activerecord", ">= 6.0.3.5"
+gem "actionpack", ">= 6.0.3.5"
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
