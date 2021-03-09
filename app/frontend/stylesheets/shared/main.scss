@@ -1,8 +1,10 @@
 @import url("https://fonts.googleapis.com/css?family=Arvo");
+
 * {
   box-sizing: border-box;
   font-family: "Arvo", monospace;
 }
+
 a:hover {
   text-decoration: initial;
 }
@@ -26,21 +28,6 @@ html {
   padding: 0 50px;
 }
 
-.t-float-btn {
-  position: fixed;
-  right: 50px;
-  bottom: 50px;
-  z-index: 100;
-  color: #750000;
-}
-.t-float-icon {
-  border: none;
-}
-
-.t-float-icon:hover {
-  color: #000;
-}
-
 .t-grid {
   display: grid;
   grid-gap: 45px;
@@ -49,6 +36,7 @@ html {
   grid-auto-flow: row dense;
   @apply my-20;
 }
+
 .t-activity-area :first-child {
   grid-column-end: auto;
   box-sizing: content-box;
@@ -69,6 +57,7 @@ html {
   flex-direction: column;
   justify-content: flex-end;
   box-sizing: border-box;
+  height: 100%;
 
   background-color: #48463e;
   // padding: 10px;
@@ -121,6 +110,7 @@ html {
     }
   }
 }
+
 .t-item-img {
   align-items: center;
   top: 0;
@@ -128,18 +118,28 @@ html {
   right: 0;
   left: 0;
   margin: auto;
-  width: 280px;
-  height: 280px;
+  // width: 300px;
+  // height: 280px;
+  height: 100%;
   padding: 10px;
   justify-content: center;
   background-color: #48463e;
-
+  overflow: hidden;
   // border-radius: 20px;
 }
+
 .t-item-img img {
   width: 100%;
   height: 100%;
+  object-fit: cover;
 }
+
+.activity-show-swiper-area img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
 .t-hp-category {
   background-color: #fa0;
   color: #fff;
@@ -149,6 +149,7 @@ html {
   z-index: 10;
   padding: 1px 5px;
 }
+
 .t-hp-cgp {
   width: 0px;
   height: 0px;
@@ -161,6 +162,7 @@ html {
   /* 也可以寫成下面這樣 */
   /* top: 100%; */
 }
+
 .tag {
   background-color: #fa0;
   color: #fff;
@@ -181,10 +183,12 @@ html {
   /* 也可以寫成下面這樣 */
   /* top: 100%; */
 }
+
 .t-item-detail {
   padding: 5px 10px;
   background-color: #ffffff;
 }
+
 .t-item-detail h5 {
   color: #000;
   letter-spacing: 3px;
@@ -198,9 +202,11 @@ html {
   color: #444;
   font-size: 16px;
 }
+
 .t-item-date :first-child {
   margin-right: 3px;
 }
+
 .t-truncate {
   color: #48463e;
   padding: 0 6px;
@@ -209,16 +215,76 @@ html {
 .t-truncate:hover {
   color: #ddd;
 }
+
 .t-float-icon {
   z-index: 20;
 }
-.t-footer {
+
+.t-footer-banner {
+  height: 300px;
+}
+
+.t-footer-section {
+  position: relative;
+}
+
+.t-footer-section .t-footer-container {
   @apply px-10;
   background-color: #ddd;
+  margin: auto;
+  display: flex;
+  padding: 20px 0;
+  position: relative;
+  z-index: 2;
 }
+
+.t-footer-section .t-footer-item {
+  margin: 0 85px;
+}
+
+.t-footer-section::after {
+  content: "";
+  display: block;
+  position: absolute;
+  width: 180px;
+  height: 180px;
+  background-color: #ddd;
+  top: 0;
+  left: 50%;
+  transform: translateX(-30%) translateY(-50%);
+  border-radius: 50%;
+  box-shadow: 178px 0 0 30px #ddd, 327px 34px 0 20px #ddd, 480px 9px 0 60px #ddd,
+    690px 71px 0 60px #ddd, 880px 0 0 89px #ddd, -178px 0 0 30px #ddd,
+    -327px 34px 0 20px #ddd, -480px 9px 0 60px #ddd, -690px 71px 0 60px #ddd,
+    -880px 0 0 89px #ddd, -1100px 50px 0 89px #ddd,
+    100px 0px 0 56px rgba(#750000, 0.5), 298px 10px 0 56px rgba(#750000, 0.5),
+    540px -40px 0 50px rgba(#750000, 0.5), 740px -30px 0 30px rgba(#750000, 0.5),
+    880px -100px 0 80px rgba(#750000, 0.5), 1000px 0px 0 80px rgba(#750000, 0.5),
+    /*...*/
+    -60px 0px 0 56px rgba(#750000, 0.5),
+    -298px 10px 0 56px rgba(#750000, 0.5),
+    -540px -40px 0 50px rgba(#750000, 0.5),
+    -740px -30px 0 30px rgba(#750000, 0.5),
+    -780px -70px 0 80px rgba(#750000, 0.5),
+    -1200px 0px 0 80px rgba(#750000, 0.5);
+}
+
+.t-footer-section::before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100px;
+  background-color: #fff;
+  z-index: 1;
+  top: 0;
+  left: 0;
+}
+
 .t-footer-title {
   color: #750000;
+  font-size: 16px;
 }
+
 .t-footer-copyright {
   background-color: #444;
   color: #ddd;
@@ -237,4 +303,12 @@ html {
 .t-category-items:hover {
   background-color: #750000;
   color: #ddd;
+}
+
+.t-footer-item li a:hover {
+  color: #750000;
+}
+
+.t-favorite-content a:hover {
+  color: #750000;
 }

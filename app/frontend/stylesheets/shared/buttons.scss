@@ -12,7 +12,7 @@
 
 .t-create-button-text:hover {
   @apply no-underline;
-  color: #ffffff;
+  color: #750000;
 }
 
 .t-edit-button {
@@ -20,6 +20,14 @@
 }
 
 .t-edit-button:hover {
+  @apply border-red-600 bg-gray-100 text-red-600 no-underline shadow-lg;
+}
+
+.t-cancel-button {
+  @apply relative flex justify-center py-2 mx-10 border text-sm font-medium rounded-md text-gray-900 bg-gray-100;
+}
+
+.t-cancel-button:hover {
   @apply border-red-600 bg-gray-100 text-red-600 no-underline shadow-lg;
 }
 
@@ -57,13 +65,13 @@
 }
 
 .t-back-button {
-  @apply flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium bg-gray-100 text-gray-800 h-10;
+  @apply flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium bg-gray-100 text-gray-800 h-10;
 }
 
 .t-back-button:hover {
-  @apply border-4 border-red-600 bg-gray-100 text-red-600 no-underline shadow-lg;
-  color: #bbbbbb;
-  border: 4px solid #750000;
+  @apply border-4 border-red-600 bg-gray-100 no-underline shadow-lg;
+  border: 1px solid #750000;
+  color: #750000;
 }
 
 .t-form-create-btn {
@@ -86,10 +94,12 @@
 
 .t-form-create-btn {
   color: #fff;
-  background-image: linear-gradient(to right,
-      #750000 0%,
-      #fda085 51%,
-      #f6d365 100%);
+  background-image: linear-gradient(
+    to right,
+    #750000 0%,
+    #fda085 51%,
+    #f6d365 100%
+  );
 }
 
 .t-copy-area {
@@ -101,14 +111,17 @@
   padding: auto; //15px 30px;
   font-size: 14px;
   color: #000;
+  width: 100%;
+  display: none;
 }
 
 .t-copy-btn {
   @apply flex;
-  background-color: #750000;
-  color: #fff;
+  color: #750000;
+  background-color: #fff;
   padding: 15px 10px;
   font-size: 14px;
+  width: 100%;
 }
 
 .t-copy-btn:hover {
@@ -117,7 +130,7 @@
 
 .t-copy-text:hover {
   text-decoration: none;
-  color: #fff;
+  color: #444;
 }
 
 .t-nav-category-btn {
@@ -126,4 +139,13 @@
   margin: 0 2px;
   padding: 10px;
   border-radius: 5px;
+}
+.t-checkout-btn {
+  background-color: #750000;
+}
+
+.t-checkout-btn:hover {
+  @apply border-4 bg-gray-100 no-underline shadow-lg;
+  border: 1px solid #750000;
+  color: #750000;
 }

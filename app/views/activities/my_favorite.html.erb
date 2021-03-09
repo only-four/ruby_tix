@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container my-32">
   <div class="items-center justify-center px-2 sm:px-6 lg:px-8">
     <h2 class="mt-6 text-center text-4xl font-extrabold text-gray-900 mb-5 extrabold ">收藏活動列表</h2>
     <div class="flex flex-col">
@@ -11,25 +11,36 @@
                   <th scope="col" class="px-6 py-3 text-center text-md font-normal uppercase tracking-wider">
                     活動編號
                   </th>
-                  <th scope="col" class="px-6 py-3 text-center text-md font-normal uppercase tracking-wider">
+                  <th scope="col" class="px-6 py-3 text-center  text-md font-normal uppercase tracking-wider">
                     活動名稱
+                  </th>
+                  <th scope="col" class="px-6 py-3 text-center text-md font-normal uppercase tracking-wider">
+                    開始時間
+                  </th>
+                  <th scope="col" class="px-6 py-3 text-center text-md font-normal uppercase tracking-wider">
+                    結束時間
+                  </th>
+                  <th scope="col" class="px-6 py-3 text-center text-md font-normal uppercase tracking-wider">
+                    活動地點
                   </th>
                 </tr>
               </thead>
               <tbody>
                 <% @favorite_activities.each_with_index do |activity, index| %>
-                  <tr class= "px-6 py-3 text-center">
+                  <tr class= "t-favorite-content text-center px-6 py-3">
                     <td><%= index + 1 %></td>
                     <td><%= link_to activity.title, activity_path(activity.id) %></td>
+                    <td><%= activity.begin_datetime&.strftime("%Y/%m/%d") %></td>
+                    <td><%= activity.finish_datetime&.strftime("%Y/%m/%d") %></td>
+                    <td><%= activity.location %></td>
                   </tr>
                 <% end %>
               </tbody>
-
             </table>
           </div>
         </div>
       </div>
     </div>
 
-</div>
+  </div>
 </div>

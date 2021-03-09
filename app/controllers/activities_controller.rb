@@ -10,17 +10,17 @@ class ActivitiesController < ApplicationController
   def new
     @activity = current_user.own_activities.new
     @categories = Category.all
-    2.times { @activity.ticket_types.build }
+    @activity.ticket_types.build 
   end 
   
   def create
     @activity = current_user.own_activities.new(activity_params)
     if @activity.save
       redirect_to activity_path(@activity.id), notice: "新增活動成功！ 請繼續新增活動票種"
+      @notice = current_user.notices.create(notices:flash[:notice])
     else
       render :new
     end
-    @notice = current_user.notices.create(notices:flash[:notice])
   end
   
   def join
@@ -45,6 +45,8 @@ class ActivitiesController < ApplicationController
   def show
     @comment = @activity.comments.new
     @comments = @activity.comments.order(updated_at: :desc).includes(:user)
+    # @activities = Activity.where(user_id: current_user.id)
+    @activities = Activity.all
   end
 
   def destroy
@@ -59,7 +61,6 @@ class ActivitiesController < ApplicationController
       render json: { status: 'removed' }
     else
       # 加到我最愛
-      # current_user.favorite_activities
       current_user.favorite_activities << @activity
       render json: { status: 'added' }
     end

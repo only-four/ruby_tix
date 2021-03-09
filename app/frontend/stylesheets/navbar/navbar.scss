@@ -26,6 +26,27 @@
 
 .t-nav-btn {
   color: #750000;
+  cursor: pointer;
+}
+
+.t-nav-option {
+  position: fixed;
+  z-index: 25;
+  top: 65px;
+  right: 100px;
+  cursor: pointer;
+}
+
+.t-nav-option-category {
+  background-color: #750000;
+  color: #fff;
+  letter-spacing: 2px;
+}
+
+.t-nav-option-category .item {
+  background-color: #ddd;
+  color: #444;
+  border-bottom: 1px solid #444;
 }
 
 .t-user-btn {
@@ -73,6 +94,7 @@
   text-align: center;
   line-height: 5.5;
 }
+
 .t-category-option {
   @apply border border-gray-900 bg-gray-100 px-3 py-2;
   margin-top: 20px;
@@ -80,4 +102,8 @@
 
 .t-category-option:hover {
   @apply font-semibold;
+}
+
+.t-search-btn:focus {
+  @apply outline-none;
 }

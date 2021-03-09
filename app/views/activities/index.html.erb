@@ -1,4 +1,4 @@
-<div class="container mt-40 mb-20">
+<div class="container my32 mb-20">
   <div class="items-center justify-center px-2 sm:px-6 lg:px-8">
     <h2 class="mt-6 text-center text-4xl font-extrabold text-gray-900 mb-5">活動列表</h2>
     <div class="flex mb-3 justify-between">
@@ -21,9 +21,11 @@
                     活動編號
                   </th>
                   <th scope="col" class="px-6 py-3 text-md font-normal uppercase tracking-wider">活動名稱</th>
+                  <% if false %>
                   <th scope="col" class="px-6 py-3 text-md font-normal uppercase tracking-wider">
                     活動狀態
                   </th>
+                  <% end %>
                   <th scope="col" class="px-6 py-3 text-md font-normal uppercase tracking-wider">
                     開始時間
                   </th>
@@ -49,23 +51,27 @@
                   <tr class= "px-6 py-3 text-center">
                     <td><%= index + 1 %></td>
                     <td><%= link_to activity.title, activity_path(activity.id) %></td>
+                    <% if false %>
                     <td><%= activity.is_available %></td>
+                    <% end %>
                     <td><%= activity.begin_datetime&.strftime("%Y/%m/%d") %></td>
                     <td><%= activity.finish_datetime&.strftime("%Y/%m/%d") %></td>
                     <td><%= activity.location %></td>
-                    <td><%= activity.activity_users.size %></td>
-                    <%#= @qr_codes.count %>
-                    <%#= Ticket.where(event: @attand_list_activity_id).count %>
+                    <td><%= Ticket.where(event: @attand_list_activity_id).count %></td>
+                    <%#= Random.rand(18) %>
+                    <%#= activity.activity_users.size %>
                     <td class="flex justify-around">
                       <%= link_to '所有票券', activity_ticket_types_path(activity), class: "t-edit-button"%>
-                      <%= link_to '編輯', edit_activity_path(activity), class: "t-edit-button"%>
+                      <%= link_to '編輯', edit_activity_path(activity), class: "t-edit-button" %>
                       <%= link_to '刪除', activity_path(activity), method: "delete", data: { confirm: "確認刪除" }, class: "t-delete-button"%>
                     </td>
                     <td>
-                      <div class="flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-gray-900 hover:border-gray-600 hover:bg-gray-100 hover:text-gray-900 hover:no-underline h-10">
-                      <%= link_to '驗票', scan_activity_qr_codes_path(activity) , class: "mr-2"%>
-                      <img src="/images/ticket002.png" alt="check-ticket" class="h-5">
-                      </div>
+                      <%= link_to scan_activity_qr_codes_path(activity) do %>
+                        <div class="t-edit-button">
+                          <p>驗票</p>
+                          <img src="/images/ticket002.png" alt="check-ticket" class="h-5">
+                        </div>
+                      <% end%> 
                     </td>
                   </tr>
                 <% end %>

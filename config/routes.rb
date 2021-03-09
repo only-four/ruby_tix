@@ -99,4 +99,6 @@ Rails.application.routes.draw do
     resources :messages
   end
 
+  get '/sitemap.xml.gz', to: redirect("https://storage.googleapis.com/rubytix/sitemap.xml.gz", status: 301)
+
 end

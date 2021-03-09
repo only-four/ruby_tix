@@ -2,7 +2,7 @@
   <div class="swiper-wrapper">
     <div class="swiper-slide t-slide-img">
       <%= link_to root_path do%>
-        <%= image_tag '/images/rubytix_concert.png', class:"" %>
+        <%= image_tag '/images/rubytix_concert.png' %>
       <% end %>   
     </div>
     <%# ======[ubayeats]===== %>
@@ -41,7 +41,7 @@
     <%# ======[sociview]===== %>
     <div class="swiper-slide">
       <a href="https://sociview.tw/" target="_blank">
-        <img src="/images/Astro_SociView_3.png">
+        <img src="/images/sociview.png">
       </a> 
     </div>
     <div class="swiper-slide">
@@ -85,13 +85,13 @@
               <% if activity.category %>
                 <%= activity.category.name %>
               <% else %>
-                5xRuby
+                近期活動
               <% end %>
             </div>
 
             <div class="flex justify-between t-item-detail">
               <div class="item__details">
-                <h5>【<%= activity.title %>】</h5>
+                <h5><%= activity.title %></h5>
               </div>
               <div class="t-item-date">
                 <div class="t-date-icon"><i class="far fa-calendar-alt"></i></div>
@@ -107,11 +107,6 @@
     <% end %>
   </div>
 
-</div>
-
-<div class="flex justify-between mt-10 px-10">
-  <%= link_to '回到活動列表', activities_path, class: "t-back-button flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium h-10" %>
-  <%= link_to "新增活動", new_activity_path, class: "t-create-button-text" %>
 </div>
 
 <script>

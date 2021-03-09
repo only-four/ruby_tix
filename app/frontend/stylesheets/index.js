@@ -1,3 +1,4 @@
+import "bootstrap/dist/css/bootstrap.css";
 import "tailwindcss/base";
 import "tailwindcss/components";
 import "./actiontext.scss";
@@ -10,4 +11,3 @@ import "./seats";
 import "./qr_code";
 import "./user";
 import "tailwindcss/utilities";
-import "./mapstyle.scss";

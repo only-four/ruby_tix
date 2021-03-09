@@ -1,7 +1,7 @@
-<div class=" xl:w-3/4 px-4 py-2 text-gray-800">
+<div class="t-my-ticket-item xl:w-3/4 px-4 py-2 text-gray-800">
   <div class="hidden xl:flex flex-row justify-between shadow-md border rounded-md">
     <div class="flex flex-col items-center justify-between w-1/4 px-4 py-2 bg-white border-r-2 border-gray-500 border-dashed rounded-l-md">
-    <div class = "qr-codesss">
+    <div class="qr-codesss">
       <canvas class="qr-canvas" data-id="<%= ticket.ticket_number %>"></canvas>
     </div>     
       <div class="text-left">
@@ -14,7 +14,7 @@
       <div class="absolute p-1 bottom-24">
         <div class="flex flex-row px-4 py-2 text-xs font-bold text-red-800 bg-white rounded-md">
           <span class="mr-2 font-normal text-gray-500">主辦單位</span>
-          <p class="font-semibold text-red-800"><%= ticket.ticket_type.activity.title %></p>
+          <p class="font-semibold text-red-800"><%= ticket.ticket_type.activity.hostname %></p>
         </div>
       </div>
       <div class="absolute self-end mr-1 mt-1">
