@@ -58,6 +58,36 @@
                   <%= f.label :location, "活動地點", class:"mr-1" %>
                   <%= f.text_field :location, class: "appearance-none rounded-none relative border border-gray-300 placeholder-gray-500 text-gray-900 rounded-md bg-gray-100 focus:bg-white focus:z-10 sm:text-sm ml-4 px-3 py-2" %>
                 </div>
+<%# ======================= %>
+            <div id="app">
+
+              <!-- 搜尋框 -->
+              <div>
+                <input type="text" ref="site" v-model="site">
+              </div>
+
+              <!-- 放google map的div -->
+              <div>
+                <div id="map"></div>
+              </div>
+
+              <!-- 放評論摘要的div -->
+              <div>
+                <ul>
+                  <li>
+                    <img :src="p.profile_photo_url">
+                    <div>
+                      <h5><a target="_blank" :href="p.author_url">{{ p.author_name }}</a></h5>
+                      <p>{{ p.text }}</p>
+                      <h6>{{ p.relative_time_description }}</h6>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+
+            </div>
+<%# ======================= %>
+
                 <div class="act_location my-2">
                   <%= f.label :location_guide, "活動地點指引", class:"block" %>
                   <%= f.text_field :location_guide, placeholder: "請說明如何到達該活動地點，如：西門捷運站5號出口，出站後直走約五分鐘，於214巷右轉即可見到「OOO」招牌", class: "appearance-none rounded-none relative border border-gray-300 placeholder-gray-500 text-gray-900 rounded-md bg-gray-100 focus:bg-white focus:z-10 sm:text-sm px-3 py-2 w-full h-300" %>
@@ -184,3 +214,66 @@
     <%= f.submit '送出-建立活動與票券' , class: "t-create-button my-6" %>
   </div>
 <% end %>
+<script src="https://maps.googleapis.com/maps/api/js?key=google_maps_api&libraries=places"></script>
+<script>
+const googleMap = new Vue({
+  el: '#app',
+  data: {
+    map: null,
+    autocomplete: null, // google map Autocomplete method
+    site: '', // place API要綁定的搜尋框
+    place: null // 存place確定後回傳的資料
+  },
+  methods: {
+    // init google map
+    initMap() {
+      let location = {
+        lat: 25.0425006,
+        lng: 121.5135837
+      };
+      this.map = new google.maps.Map(document.getElementById('map'), {
+        center: location,
+        zoom: 16
+      });
+    },
+    // 地址自動完成 + 地圖的中心移到輸入結果的地址上
+    siteAuto() {
+      let options = {
+        componentRestrictions: { country: 'tw' } // 限制在台灣範圍
+      };
+      this.autocomplete = new google.maps.places.Autocomplete(this.$refs.site, options);
+      
+      // 地址的輸入框，值有變動時執行
+      this.autocomplete.addListener('place_changed', () => {
+        this.place = this.autocomplete.getPlace(); // 地點資料存進place
+        
+        // 確認回來的資料有經緯度
+        if(this.place.geometry) {         
+          // 改變map的中心點
+          let searchCenter = this.place.geometry.location;
+          // panTo是平滑移動、setCenter是直接改變地圖中心
+          this.map.panTo(searchCenter);
+          // 在搜尋結果的地點上放置標記
+          let marker = new google.maps.Marker({
+            position: searchCenter,
+            map: this.map
+          });
+
+          // info window
+          let infowindow = new google.maps.InfoWindow({
+            content: this.place.formatted_address
+          });
+          infowindow.open(this.map, marker);
+        }
+        
+      });
+    }
+  },
+  mounted() {
+    window.addEventListener('load', () => {
+      this.initMap();
+      this.siteAuto();
+    });
+  }
+})
+</script>  

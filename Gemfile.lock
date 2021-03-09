@@ -82,7 +82,7 @@ GEM
       bankai
     bcrypt (3.1.16)
     bindex (0.8.1)
-    bootsnap (1.7.1)
+    bootsnap (1.7.2)
       msgpack (~> 1.0)
     builder (3.2.4)
     byebug (11.1.3)
@@ -148,6 +148,7 @@ GEM
       railties (>= 3.2, < 6.2)
     foreman (0.87.2)
     formatador (0.2.5)
+    geocoder (1.6.6)
     globalid (0.4.2)
       activesupport (>= 4.2.0)
     google-apis-core (0.2.1)
@@ -411,9 +412,11 @@ PLATFORMS
 
 DEPENDENCIES
   aasm (~> 5.1, >= 5.1.1)
+  actionpack (>= 6.0.3.5)
+  activerecord (>= 6.0.3.5)
   bankai (~> 0.8.1)
   bankai-docker (~> 0.2.0)
-  bootsnap (>= 1.4.2)
+  bootsnap (~> 1.7, >= 1.7.2)
   byebug
   cancancan (~> 3.2, >= 3.2.1)
   capybara (>= 2.15)
@@ -426,6 +429,7 @@ DEPENDENCIES
   fog-aws (~> 3.8)
   font-awesome-rails (~> 4.6, >= 4.6.3.1)
   foreman (~> 0.87.2)
+  geocoder (~> 1.6, >= 1.6.4)
   google-cloud-storage (~> 1.30)
   hirb (~> 0.7.3)
   image_processing (~> 1.2)
