@@ -1,0 +1,14 @@
+.my-ticket {
+  color: #750001;
+  font-weight: 600;
+}
+.mobile-canvas {
+  align-items: center;
+}
+.qr-canvas {
+  height: 200px;
+  width: 200px;
+}
+.t-my-ticket-item {
+  margin: auto;
+}

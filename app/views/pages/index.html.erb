@@ -1,0 +1,129 @@
+<div class="swiper-container js-swiper">
+  <div class="swiper-wrapper">
+    <div class="swiper-slide t-slide-img">
+      <%= link_to root_path do%>
+        <%= image_tag '/images/rubytix_concert.png' %>
+      <% end %>   
+    </div>
+    <%# ======[ubayeats]===== %>
+    <div class="swiper-slide">
+      <a href="https://ubayeats.shop/" target="_blank">
+        <img src="/images/Astro_Ubayeats.png">
+      </a> 
+    </div>
+    <div class="swiper-slide">
+      <a href="">
+        <img src="/images/slide_coffee.png">
+      </a> 
+    </div>
+    <%# ======[callback]===== %>
+    <div class="swiper-slide">
+      <a href="https://callback.money/" target="_blank">
+        <img src="/images/Astro_Call_back.png">
+      </a> 
+    </div>
+    <div class="swiper-slide">
+      <a href="">
+        <img src="/images/slide_yoga.png">
+      </a>
+    </div>
+     <%# ======[shoppinggo]===== %>
+    <div class="swiper-slide">
+      <a href="https://shoppinggo.site/" target="_blank">
+        <img src="/images/Astro_Shoppinggo.png">
+      </a> 
+    </div>
+    <div class="swiper-slide">
+      <a href="">
+        <img src="/images/slide_picnic.png">
+      </a> 
+    </div>
+    <%# ======[sociview]===== %>
+    <div class="swiper-slide">
+      <a href="https://sociview.tw/" target="_blank">
+        <img src="/images/sociview.png">
+      </a> 
+    </div>
+    <div class="swiper-slide">
+      <a href="activity_path.id">
+        <img src="/images/slide_celebration.png">
+      </a> 
+    </div>
+  </div>
+  <div class="swiper-button swiper-button-next"></div>
+  <div class="swiper-button swiper-button-prev"></div>
+</div>
+<%# ============== %>
+<% if false %>
+<div class="t-category-area">
+  <% @categories.each do |category| %>
+    <%= link_to root_path do%>
+      <p class="t-category-items">
+        <%= category.name %>
+      </p>
+    <% end %>
+  <% end %>
+</div>
+<% end %>
+<%# ============== %>
+<div class="w-full z-20 container">
+
+  <div class="t-grid t-activity-area">
+    <% @activities.each do |activity| %>
+      <%= link_to activity_path(activity.id) do %>
+        <div class="t-item">
+            <div class="t-item-img ">
+              <% if activity.image_url.present? %>
+                <%= image_tag activity.image_url if activity.image_url.present? %> 
+              <% else %>
+                <img src="/images/rubytix003.png" alt="rubytix.fun" class="t-replace-img">
+              <% end %>
+            </div>
+
+            <div class="tag">
+              <div class="arrow"></div>
+              <% if activity.category %>
+                <%= activity.category.name %>
+              <% else %>
+                近期活動
+              <% end %>
+            </div>
+
+            <div class="flex justify-between t-item-detail">
+              <div class="item__details">
+                <h5><%= activity.title %></h5>
+              </div>
+              <div class="t-item-date">
+                <div class="t-date-icon"><i class="far fa-calendar-alt"></i></div>
+                <div><%= activity.begin_datetime&.strftime("%Y/%m/%d") %></div>
+              </div>
+            </div>
+          
+            <div class="t-item-detail">
+              <p class="t-truncate"><%= activity.brief %></p>
+            </div>    
+        </div>
+      <% end %>     
+    <% end %>
+  </div>
+
+</div>
+
+<script>
+  var swiper = new Swiper('.swiper-container', {
+    spaceBetween: 30,
+    centeredSlides: true,
+    autoplay: {
+      delay: 2500,
+      disableOnInteraction: false,
+    },
+    pagination: {
+      el: '.swiper-pagination',
+      clickable: true,
+    },
+    navigation: {
+      nextEl: '.swiper-button-next',
+      prevEl: '.swiper-button-prev',
+    },
+  });
+</script>

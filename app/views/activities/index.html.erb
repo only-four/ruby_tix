@@ -1,0 +1,86 @@
+<div class="container my32 mb-20">
+  <div class="items-center justify-center px-2 sm:px-6 lg:px-8">
+    <h2 class="mt-6 text-center text-4xl font-extrabold text-gray-900 mb-5">活動列表</h2>
+    <div class="flex mb-3 justify-between">
+      <div>
+        <%= link_to '返回首頁', root_path, class: "t-back-button" %>
+      </div>
+      <div class="t-create-button">
+        <%= link_to "新增活動", new_activity_path, class:"t-create-button-text" %>
+        <i class="fas fa-angle-double-right"></i>
+      </div>
+    </div>
+    <div class="flex flex-col">
+      <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
+        <div class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
+          <div class="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
+            <table class="min-w-full divide-y divide-gray-200">
+              <thead class="t-thead text-center">
+                <tr>
+                  <th scope="col" class="px-6 py-3 text-md font-normal uppercase tracking-wider">
+                    活動編號
+                  </th>
+                  <th scope="col" class="px-6 py-3 text-md font-normal uppercase tracking-wider">活動名稱</th>
+                  <% if false %>
+                  <th scope="col" class="px-6 py-3 text-md font-normal uppercase tracking-wider">
+                    活動狀態
+                  </th>
+                  <% end %>
+                  <th scope="col" class="px-6 py-3 text-md font-normal uppercase tracking-wider">
+                    開始時間
+                  </th>
+                  <th scope="col" class="px-6 py-3 text-md font-normal uppercase tracking-wider">
+                    結束時間
+                  </th>
+                  <th scope="col" class="px-6 py-3 text-md font-normal uppercase tracking-wider">
+                    活動地點
+                  </th>
+                  <th scope="col" class="px-6 py-3 text-md font-normal uppercase tracking-wider">
+                    參加人數
+                  </th>
+                  <th scope="col" class="px-6 py-3 text-md font-normal uppercase tracking-wider">
+                    活動與票券管理
+                  </th>
+                  <th scope="col" class="px-6 py-3 text-md font-normal uppercase tracking-wider">
+                    驗票
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                <% @activities.each_with_index do |activity, index| %>
+                  <tr class= "px-6 py-3 text-center">
+                    <td><%= index + 1 %></td>
+                    <td><%= link_to activity.title, activity_path(activity.id) %></td>
+                    <% if false %>
+                    <td><%= activity.is_available %></td>
+                    <% end %>
+                    <td><%= activity.begin_datetime&.strftime("%Y/%m/%d") %></td>
+                    <td><%= activity.finish_datetime&.strftime("%Y/%m/%d") %></td>
+                    <td><%= activity.location %></td>
+                    <td><%= Ticket.where(event: @attand_list_activity_id).count %></td>
+                    <%#= Random.rand(18) %>
+                    <%#= activity.activity_users.size %>
+                    <td class="flex justify-around">
+                      <%= link_to '所有票券', activity_ticket_types_path(activity), class: "t-edit-button"%>
+                      <%= link_to '編輯', edit_activity_path(activity), class: "t-edit-button" %>
+                      <%= link_to '刪除', activity_path(activity), method: "delete", data: { confirm: "確認刪除" }, class: "t-delete-button"%>
+                    </td>
+                    <td>
+                      <%= link_to scan_activity_qr_codes_path(activity) do %>
+                        <div class="t-edit-button">
+                          <p>驗票</p>
+                          <img src="/images/ticket002.png" alt="check-ticket" class="h-5">
+                        </div>
+                      <% end%> 
+                    </td>
+                  </tr>
+                <% end %>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="my-20"></div>

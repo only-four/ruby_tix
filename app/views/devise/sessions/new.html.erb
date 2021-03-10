@@ -1,0 +1,44 @@
+<div class="flex items-center justify-center px-4 sm:px-6 lg:px-8 my-32">
+
+  <div class="max-w-lg w-full space-y-8">
+    <h2 class="mt-6 text-center text-4xl font-extrabold text-gray-900 mb-5 extrabold">會員登入</h2>
+
+    <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+      <div class="field mb-2">
+        <%= f.label :信箱 %>
+        <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "信箱", class: "appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-md bg-gray-200 focus:bg-white focus:z-10 sm:text-sm" %>
+      </div>
+      <div class="field mb-2">
+        <%= f.label :密碼 %>
+        <%= f.password_field :password, autocomplete: "current-password",placeholder: "請輸入至少6個英文字母或數字", class: " appearance-none rounded-none relative w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-md bg-gray-200 focus:bg-white focus:z-10 sm:text-sm" %>
+      </div>
+      <div class="flex mb-2 justify-between items-center">
+        <% if devise_mapping.rememberable? %>
+          <div class="flex items-center justify-center">         
+            <%= f.check_box :remember_me, class: "h-4 w-4 text-indigo-600 focus:ring-indigo-500 border-gray-300 rounded inline-block mb-2" %>
+            <%= f.label :記住我的帳號, class: "ml-2 block text-sm text-gray-900 " %>
+          </div>
+        <% end %>
+      </div>
+    <%# =================================================== %>
+      <div class="my-4 justify-between grid gap-4 grid-cols-2">
+        <div>
+          <%= link_to "還沒有帳號？前至註冊頁面", new_registration_path(resource_name), class:"actions group relative w-full flex justify-center py-2 px-4 border text-sm font-medium rounded-md  text-gray-900 bg-gray-100 border-red-600 hover:border-red-600 hover:bg-gray-100 hover:text-red-600 hover:no-underline hover:shadow-lg" %>
+        </div>
+        <div>
+          <%= f.submit "登入", class:"actions group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-gray-100 bg-red-600 hover:border-red-600 hover:bg-gray-100 hover:text-red-600 hover:no-underline hover:shadow-lg" %>
+        </div>
+      </div>
+
+    <% end %>
+    <%# =========第三方登入========== %>
+    <div>
+      <%- if devise_mapping.omniauthable? %>
+
+        <div>
+          <%= link_to "以 google 帳號登入", omniauth_authorize_path(resource_name, :google_oauth2), method: :post , class: "actions group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-gray-100 bg-blue-600 hover:text-blue-600 hover:border-8-blue-600 hover:border-8 hover:bg-gray-100   hover:no-underline hover:shadow-lg"%>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,19 @@
+<div class="qr-code-participated p-6 xl:text-center xl:text-base text-6xl my-32">
+  <p>報到者：<%= current_user.name %></p>
+  <p>票號：<%= @qr_code.data %></p>
+  <p class="mb-3">掃描時間: <%= @qr_code.created_at.strftime('%Y/%m/%d - %T') %></p>
+  <%= link_to '手動報到', attand_list_activity_qr_codes_path(@attand_list_activity_id), class: 'bg-gray-500 p-2 text-white rounded-lg' %>
+  <%= link_to '繼續掃qr-code', scan_activity_qr_codes_path(@attand_list_activity_id), class: 'bg-blue-500 p-2 text-white rounded-lg' %>
+</div>  
+
+<script>
+$(document).ready(function() {
+  Swal.fire({
+    position: 'center',
+    icon: 'success',
+    title: '<%= current_user.name %>','參加成功',
+    showConfirmButton: false,
+    timer: 2000
+  })    
+})
+</script>

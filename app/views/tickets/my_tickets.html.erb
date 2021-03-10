@@ -1,0 +1,34 @@
+<div class="container items-center font-extrabold justify-center px-2 sm:px-6 lg:px-8 mx-20 my-32">
+  <h2 class="my-ticket text-6xl xl:text-xl mb-4">票券列表</h2>
+  <ul class="nav nav-tabs mt-3 mb-3" id="myTab" role="tablist">
+    <li class="nav-item xl:text-base text-6xl">
+      <a class="nav-link active show bg-gray-200" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">可使用</a>
+    </li>
+    <li class="nav-item xl:text-base text-6xl">
+      <a class="nav-link bg-gray-200 hover:text-red-900" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">處理中</a>
+    </li>
+    <li class="nav-item xl:text-base text-6xl">
+      <a class="nav-link bg-gray-200 hover:text-red-900" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">已過期</a>
+    </li>
+  </ul>
+  
+  <div class="tab-content" id="myTabContent">
+    <div class="tab-pane fade show active xl:-ml-5 m-auto" id="home" role="tabpanel" aria-labelledby="home-tab">
+      <% @tickets.each do |ticket| %>              
+        <%= render 'ticket', ticket: ticket if ticket.activated? %>
+      <% end %>    
+    </div>
+
+    <div class="tab-pane fade xl:-ml-5" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+      <% @tickets.each do |ticket| %> 
+        <%= render 'ticket', ticket: ticket if ticket.pending? %>
+      <% end %>
+    </div>
+
+    <div class="tab-pane fade xl:-ml-5 align-center" id="contact" role="tabpanel" aria-labelledby="contact-tab">
+      <% @tickets.each do |ticket| %> 
+        <%= render 'ticket', ticket: ticket if ticket.used? %>
+      <% end %>     
+    </div>
+  </div>   
+</div>

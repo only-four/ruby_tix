@@ -1,15 +1,54 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>RubyTix</title>
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
+  <%# <!-- Global site tag (gtag.js) - Google Analytics --> %>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-186837034-1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
 
-    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload',defer: true %>
+    gtag('config', 'UA-186837034-1');
+  </script>
+  <title>RubyTix</title>
+  <%# <!-- Google Analytics --> %>
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
+  <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+  <link href=’https://fonts.googleapis.com/css?family=Raleway' rel=’stylesheet’ type=’text/css’>
+  <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+  <%# <!-- Google Tag Manager --> %>
+  <script>
+    (function(w,d,s,l,i){
+      w[l]=w[l]||[];
+      w[l].push({'gtm.start': new Date().getTime(),event:'gtm.js'});
+      var f=d.getElementsByTagName(s)[0], j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';
+      j.async=true;
+      j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-KLBFCRB');
+  </script>
+  <%# <!-- End Google Tag Manager --> %>
+  <%# <!-- AdSense --> %>
+  <script data-ad-client="ca-pub-4528787852171293" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script><%# <!-- rubytix.fun --> %>
+  <script data-ad-client="ca-pub-4528787852171293" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script><%# <!-- rubytix.space --> %>
   </head>
-
   <body>
-    <%= yield %>
+    <%# <!-- Google Tag Manager (noscript) --> %>
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KLBFCRB" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <%# <!-- End Google Tag Manager (noscript) --> %>
+    <div>
+      <%= render 'shared/navbar'%>
+      <%= render 'shared/notice' if notice %>
+    </div>
+    <div class="js-main-area">
+      <%= yield %>
+    </div>
+      <div>
+        <%= render 'shared/float' %>
+      </div>
+    <div class="m-auto bottom-0">
+      <%= render 'shared/footer' %>
+    </div>
   </body>
 </html>

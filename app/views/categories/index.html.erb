@@ -1,0 +1,46 @@
+<div class="container my-32">
+  <div class="items-center justify-center px-12 sm:px-6 lg:px-10">
+
+    <h2 class="mt-6 text-center text-4xl font-extrabold text-gray-900 mb-5 extrabold ">活動分類列表</h2>
+
+    <div class="flex mb-3 justify-between">
+      <div>
+        <%= link_to '返回首頁', root_path , class: "t-back-button" %>
+      </div>
+      <div class= "t-create-button">
+        <%= link_to '新增活動分類', new_category_path, class: "t-create-button-text" %>
+        <i class="fas fa-angle-double-right"></i>
+      </div>
+    </div>
+
+    <div class="flex flex-col">
+      <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
+        <div class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
+          <div class="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
+            <table class="min-w-full divide-y divide-gray-200">
+              <thead class="t-thead">
+                <th>id</th>
+                <th>分類名稱</th>
+                <th>編輯與刪除</th>    
+
+              </thead>
+
+              <tbody>
+                <% @categories.each do |category| %>
+                  <tr class= "px-6 py-3 text-center">
+                    <td><%= category.id %></td>
+                    <td><%= category.name %></td>       
+                    <td class="flex justify-around">
+                      <%= link_to '編輯', edit_category_path(category), class: "t-edit-button" %>
+                      <%= link_to '刪除', category_path(category), method: 'delete', data: { confirm: "確認刪除" }, class: "t-delete-button" %>  
+                    </td>    
+                  </tr>
+                <% end %>   
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

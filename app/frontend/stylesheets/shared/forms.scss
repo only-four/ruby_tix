@@ -1,0 +1,62 @@
+.t-thead {
+  background-color: #750000;
+  color: #fff;
+  text-align: center;
+}
+
+@media (min-width: 768px) {
+  .u-pl-8--desktop {
+    padding-left: 8px !important;
+  }
+
+  .u-pr-8--desktop {
+    padding-right: 8px !important;
+  }
+}
+
+/* Heading & Text */
+
+.t-step {
+  font-size: 24px;
+  color: #750000;
+  font-weight: 700;
+}
+
+.t-notice {
+  font-size: 20px;
+  color: #666;
+}
+
+/* Components */
+.t-card {
+  padding: 48px;
+  background-color: #fff;
+  border-radius: 20px;
+  box-shadow: 0px 3px 20px rgba(0, 0, 0, 0.2);
+}
+
+@media (max-width: 768px) {
+  .card {
+    padding: 48px 16px;
+  }
+}
+
+.form-content-area {
+  @apply mb-5;
+}
+
+.t-form-input {
+  @apply appearance-none rounded-none relative block py-2 border border-gray-300 text-gray-900 rounded-md bg-gray-100;
+}
+
+.t-form-input:active,
+.t-form-input:focus {
+  outline: none;
+}
+
+.t-form-input:focus {
+  @apply outline-none;
+}
+.t-checkout-input:focus {
+  outline: none;
+}

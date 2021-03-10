@@ -1,0 +1,47 @@
+<div class="container my-32">
+  <div class="items-center justify-center px-2 sm:px-6 lg:px-8 pt-50">
+<div class="row" data-controller="channel" data-channel-id="<%= @chatroom.id %>">
+  <div class="col-sm-2">
+    <div class="d-flex justify-content-between">
+      <h6>創建聊天室</h6>
+      <%= link_to new_chatroom_path do %>
+        <i class="fas fa-plus"></i>
+      <% end %>
+    </div>
+
+    <% @chatrooms.each do |chatroom| %>
+      <div class="d-flex justify-content-between">
+        <%= link_to chatroom.name, chatroom_chatroom_users_path(chatroom), method: :post %>
+        <% if current_user.chatrooms.include?(chatroom) %>
+          <%= link_to "離開", chatroom_chatroom_users_path(chatroom), method: 'delete'%>
+        <% end %>
+      </div>
+    <% end %>
+
+    <hr></hr>
+
+    <div class="d-flex justify-content-between">
+      <h6>聊天室成員</h6>
+    </div>
+    <% @chatroom.users.each do |user| %>
+      <div>
+        <%= user.name %>
+      </div>
+    <% end %>
+  </div>
+
+  <div class="col-sm-10">
+    <% if current_user.chatrooms.include?(@chatroom) %>
+      <div data-target="channel.messages">
+        <%= render @chatroom.messages %>
+      </div>
+      <%= form_with model: [@chatroom, Message.new], data: { action: "ajax:success->channel#clearMessage" } do |form| %>
+        <%= form.text_field :body, placeholder: "輸入聊天內容...", class: "form-control", data: { target: "channel.newMessage" } %>
+      <% end %>
+    <% else %>
+
+    <% end %>
+  </div>
+</div>
+</div>
+</div>

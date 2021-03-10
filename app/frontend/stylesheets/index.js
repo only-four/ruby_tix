@@ -1,0 +1,13 @@
+import "bootstrap/dist/css/bootstrap.css";
+import "tailwindcss/base";
+import "tailwindcss/components";
+import "./actiontext.scss";
+import "trix/dist/trix";
+import "trix/dist/trix.css";
+import "./navbar";
+import "./shared";
+import "./tickets";
+import "./seats";
+import "./qr_code";
+import "./user";
+import "tailwindcss/utilities";

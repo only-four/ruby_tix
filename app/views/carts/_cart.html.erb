@@ -1,0 +1,52 @@
+<div class="container">
+  <div class="items-center justify-center px-2 sm:px-6 lg:px-8">
+
+    <div class="flex flex-col">
+      <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
+        <div class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
+          <div class="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
+            <table class="min-w-full divide-y divide-gray-200">
+              <thead class="t-thead text-center">
+                <tr>
+                  <td  scope="col" class="px-6 py-3 lg:text-lg text-3xl font-normal text-gray-100 uppercase tracking-wider text-center">編號</td>
+                  <td  scope="col" class="px-6 py-3 lg:text-lg text-3xl font-normal text-gray-100 uppercase tracking-wider text-center">活動名稱</td>
+                  <td  scope="col" class="px-6 py-3 lg:text-lg text-3xl font-normal text-gray-100 uppercase tracking-wider text-center">票券名稱</td>
+                  <td  scope="col" class="px-6 py-3 lg:text-lg text-3xl font-normal text-gray-100 uppercase tracking-wider text-center">數量</td>
+                  <td  scope="col" class="px-6 py-3 lg:text-lg text-3xl font-normal text-gray-100 uppercase tracking-wider text-center">單價</td>
+                  <td  scope="col" class="px-6 py-3 lg:text-lg text-3xl font-normal text-gray-100 uppercase tracking-wider text-center">小計</td>
+                </tr>
+              </thead>
+
+              <tbody>
+                <% current_cart.items.each_with_index do |item, index| %>
+                  <tr class= "px-6 py-3 text-center">
+                  <td class="lg:text-lg text-3xl"><%= index + 1 %></td>
+                    <td class="lg:text-lg text-3xl"><%= item.ticket_type.activity.title %></td>
+                    <td class="lg:text-lg text-3xl"><%= item.ticket_type.title %></td>
+                    <td class="lg:text-lg text-2xl"><%= item.quantity %></td>
+                    <td class="lg:text-lg text-2xl">$<%= item.ticket_type.price %></td>
+                    <td class="lg:text-lg text-2xl">$<%= item.price %></td>
+                  </tr>
+                <% end %>
+                  <tr class= "px-6 py-3 text-center">
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td class="lg:text-lg text-2xl"><%= current_cart.total_quantity %></td>
+                    <td></td>
+                    <td class="lg:text-lg text-2xl">$<%= current_cart.total_price %></td>
+                  </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="mb-2 justify-between flex my-4">
+      <%= link_to '繼續選購', activities_path, class: "lg:text-lg text-3xl actions group relative w-full flex justify-center py-2 px-4 border  text-sm font-medium rounded-md  text-gray-900 bg-gray-100 border-red-600 hover:border-red-600 hover:bg-gray-100 hover:text-red-600 hover:no-underline hover:shadow-lg" %>
+      <%= link_to '結帳', checkout_cart_path , class: "t-checkout-btn lg:text-lg text-3xl actions group relative w-full flex justify-center py-2 px-4 border border-transparent rounded-md text-gray-100 	hover:shadow-lg" %>
+    </div>
+      <%= button_to "清空購物車", cart_path, method: :'delete', class: "lg:text-lg text-3xl text-gray-900 bg-gray-100 actions group relative w-full flex justify-center py-2 px-4 border border-transparent font-medium rounded-md bg-gray-100 hover:border-red-600 bg-gray-100 hover:text-red-600 no-underline shadow-lg" %>
+  </div>
+</div>
