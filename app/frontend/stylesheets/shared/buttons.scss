@@ -6,13 +6,14 @@
 
 .t-create-button:hover {
   @apply no-underline shadow-lg;
-  color: #750000;
-  border: 1px solid #750000;
+  color: #ffffff;
+  background-color: #750000;
+  border: 1px solid #ffffff;
 }
 
 .t-create-button-text:hover {
   @apply no-underline;
-  color: #750000;
+  color: #ffffff;
 }
 
 .t-edit-button {
@@ -70,8 +71,9 @@
 
 .t-back-button:hover {
   @apply border-4 border-red-600 bg-gray-100 no-underline shadow-lg;
-  border: 1px solid #750000;
-  color: #750000;
+  border: 1px solid #ffffff;
+  background-color: #750000;
+  color: #ffffff;
 }
 
 .t-form-create-btn {
@@ -94,12 +96,10 @@
 
 .t-form-create-btn {
   color: #fff;
-  background-image: linear-gradient(
-    to right,
-    #750000 0%,
-    #fda085 51%,
-    #f6d365 100%
-  );
+  background-image: linear-gradient(to right,
+      #750000 0%,
+      #fda085 51%,
+      #f6d365 100%);
 }
 
 .t-copy-area {
@@ -140,6 +140,7 @@
   padding: 10px;
   border-radius: 5px;
 }
+
 .t-checkout-btn {
   background-color: #750000;
 }

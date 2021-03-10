@@ -69,6 +69,7 @@ group :development, :test do
   gem 'factory_bot_rails', '~> 6.1'
   gem 'faker', '~> 2.15', '>= 2.15.1'
   gem 'hirb', '~> 0.7.3'
+  gem 'msgpack', '~> 1.4', '>= 1.4.2'
 end
 
 group :development do
