@@ -61,6 +61,7 @@ gem 'google-cloud-storage', '~> 1.30'
 gem "activerecord", ">= 6.0.3.5"
 gem "actionpack", ">= 6.0.3.5"
 gem 'geocoder', '~> 1.6', '>= 1.6.4'
+gem 'bundler', '~> 2.2', '>= 2.2.14'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
