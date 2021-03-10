@@ -1,0 +1,13 @@
+fb_api: "831457167637371"
+fb_secret: 4471374399d4c561d1767e70c1fc4136
+
+google_api: "66852298911-206fos50r08ltsdkkk3p9iv7qe0keomb.apps.googleusercontent.com"
+google_secret: MgLC99dh41Tvz1dne1rifDXH
+google_maps_api: "AIzaSyAoTpNAl2WYuw5kigYMeWJO0ppiECjCrnE"
+
+aws_access_key_id: "AKIAJ5WJPNYNL3HHPNSA"
+aws_secret_access_key: "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"
+fog_directory: "rubytix-fun"
+
+line_pay_channel_id: "1655423053"
+line_pay_channel_secret: "85852ff615ac559df286663802382d07"
