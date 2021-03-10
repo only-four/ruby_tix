@@ -1,0 +1,120 @@
+default:
+  image: ruby:<%= RUBY_VERSION %>
+
+stages:
+  - lint
+  - test
+  - deploy
+
+variables:
+  RAILS_ENV: test
+  NODE_VERSION: 12.13.1
+  BUNDLER_VERSION: 2.1.4
+<%- if pg? -%>
+  POSTGRES_DB: <%= app_name %>
+  POSTGRES_PASSWORD: postgres
+  DATABASE_URL: "postgresql://postgres:${POSTGRES_PASSWORD}@postgres:5432/$POSTGRES_DB"
+<%- end -%>
+<%- if mysql? -%>
+  MYSQL_DATABASE: <%= app_name %>
+  MYSQL_USER: <%= app_name %>
+  MYSQL_PASSWORD: <%= app_name %>
+  MYSQL_RANDOM_ROOT_PASSWORD: "true"
+  DATABASE_URL: "mysql2://$MYSQL_USER:$MYSQL_PASSWORD@mysql:3306/$MYSQL_DATABASE"
+<%- end -%>
+
+.install_ruby_gems: &install_ruby_gems
+  - gem install bundler -v ${BUNDLER_VERSION}
+  - bundle install --path vendor
+
+.install_nodejs: &install_nodejs
+  - curl -SLO https://nodejs.org/dist/v$NODE_VERSION/node-v${NODE_VERSION}-linux-x64.tar.xz && tar -xJf node-v${NODE_VERSION}-linux-x64.tar.xz -C /usr/local --strip-components=1;
+  - curl -o- -L https://yarnpkg.com/install.sh | bash
+  - export PATH=$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH
+
+.common:
+  before_script:
+    - export LANG=C.UTF-8
+    - export LC_ALL=C.UTF-8
+    - *install_ruby_gems
+  cache:
+    paths:
+      - vendor/ruby
+      - node_modules
+
+rubocop:
+  extends: .common
+  stage: lint
+  script:
+    - bundle exec rubocop
+  except:
+    - schedules
+
+brakeman:
+  extends: .common
+  stage: lint
+  script:
+    - bundle exec brakeman
+  except:
+    - schedules
+
+bundler-audit:
+  extends: .common
+  stage: lint
+  script:
+    - gem install bundler-audit
+    - bundle audit --update
+    - bundle audit
+  only:
+    changes:
+      - Gemfile
+      - Gemfile.lock
+  allow_failure: true
+
+bundler-leak:
+  extends: .common
+  stage: lint
+  script:
+    - gem install bundler-leak
+    - bundle leak check --update
+    - bundle leak
+  only:
+    changes:
+      - Gemfile
+      - Gemfile.lock
+  allow_failure: true
+
+yarn-audit:
+  extends: .common
+  stage: lint
+  before_script:
+    - *install_nodejs
+  script:
+    - yarn audit
+  only:
+    changes:
+      - package.json
+      - package-lock.json
+      - yarn.lock
+  allow_failure: true
+
+rspec:
+  extends: .common
+  stage: test
+  before_script:
+    - *install_nodejs
+    - *install_ruby_gems
+    - yarn install
+  services:
+<%- if pg? -%>
+    - postgres:12-alpine
+<%- end -%>
+<%- if mysql? -%>
+    - name: mysql:5.7
+      command: ['mysqld', '--character-set-server=utf8', '--collation-server=utf8_unicode_ci']
+<%- end -%>
+  script:
+    - bundle exec rake db:migrate
+    - bundle exec rspec
+  except:
+    - schedules

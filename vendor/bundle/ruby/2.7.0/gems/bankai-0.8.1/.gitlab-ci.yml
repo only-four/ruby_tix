@@ -1,0 +1,73 @@
+image: ruby:2.6.6
+
+stages:
+  - lint
+  - test
+  - analysis
+
+cache:
+  paths:
+    - vendor/ruby
+
+.install_ruby_gems: &install_ruby_gems
+  - gem install bundler -v 2.1.4
+  - bundle install --path vendor
+
+before_script:
+  - *install_ruby_gems
+
+rubocop:
+  stage: lint
+  script:
+    - bundle exec rubocop --format progress --format json --out rubocop.json
+  artifacts:
+    paths:
+      - rubocop.json
+  except:
+    - schedules
+
+bundler-audit:
+  stage: lint
+  before_script:
+    - *install_ruby_gems
+    - gem install bundler-audit
+    - bundle audit --update
+  script:
+    - bundle audit
+  allow_failure: true
+
+rspec:
+  stage: test
+  script:
+    - bundle exec rspec --format progress --format RspecJunitFormatter --out rspec.xml
+  artifacts:
+    paths:
+      - rspec.xml
+      - coverage
+    reports:
+      junit: rspec.xml
+  except:
+    - schedules
+
+sonarqube:
+  stage: analysis
+  image:
+    name: sonarsource/sonar-scanner-cli
+    entrypoint: [""]
+  variables:
+    GIT_DEPTH: 0
+  before_script: []
+  script:
+    - sonar-scanner
+      -Dsonar.projectKey=Bankai
+      -Dsonar.sourceEncoding=UTF-8
+      -Dsonar.qualitygate.wait=true
+      -Dsonar.ruby.rubocop.reportPaths=rubocop.json
+      -Dsonar.ruby.coverage.reportPaths=coverage/.resultset.json
+      -Dsonar.exclusions=vendor/ruby/**/*
+      -Dsonar.coverage.exclusions=spec/**/*
+      -Dsonar.projectVersion=$CI_COMMIT_SHORT_SHA
+      -Dsonar.sources=.
+  allow_failure: true
+  only:
+    - master

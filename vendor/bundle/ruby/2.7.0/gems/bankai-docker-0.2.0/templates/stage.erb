@@ -1,0 +1,9 @@
+FROM <%= @from %><%= main? ? '' : " AS #{@name}" %>
+<% @arguments.each do |name, value| %>
+ARG <%= name %><%= value.nil? ? '' : "=#{value}" %>
+<% end -%>
+<%= package_command %>
+<%= copies %>
+<% @commands.each do |command| -%>
+<%= command %>
+<% end -%>

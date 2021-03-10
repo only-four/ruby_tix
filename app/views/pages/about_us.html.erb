@@ -1,4 +1,4 @@
-<div class="container my-32">
+<div class="container mt-32 mb-10">
   <h1 class="text-4xl my-4">關於我們</h1>
   <div class="w-3/4 text-xl">
     <h2 class="text-4xl my-4 mx-2">RubyTix  -  Buy Your Tickets!</h2>
@@ -15,8 +15,8 @@
   </div>
 </div>
   <%# ================== %>
-<div class="member container flex justify-around my-6 px-auto">
-  <div class="py-2 mx-2 w-1/4">
+<div class="member container flex my-6 px-auto">
+  <div class="py-4 mx-2 w-1/4">
     <h2 class="text-3xl font-black place-self-auto">林彥伶</h2>
     <img src="/images/lin.webp" width=200px height=200px class="rounded-lg p-3">
     <div class="flex">
@@ -24,10 +24,10 @@
       <a href="mailto:annielin28815@gmail.com" target="_blank" class="m-1"><i class="fas fa-envelope"></i></a>
       <a href="https://github.com/annielin28815" target="_blank" class="m-1"><i class="fab fa-github"></i></a>
     </div>
-    <p>
-      <h3 class="font-sans text-lg h-10 my-10"><q>拿什麼牌是命中註定，但如何出牌，卻操之在己。</q></h3>
-    </p>
-    <p class="py-2 mx-2">
+    <div>
+      <h3 class="font-sans text-lg h-10 my-4"><q>拿什麼牌是命中註定，但如何出牌，卻操之在己。</q></h3>
+    </div>
+    <div class="py-2 mx-2">
       <h3>負責內容：</h3>
         <ul class="list-disc list-inside ml-2">
           <li>會員系統與第三方登入</li>
@@ -35,9 +35,9 @@
           <li>搜尋與收藏功能</li>
           <li>網站切版</li>
         </ul>
-    </p>
+    </div>
   </div>
-  <div class="py-2 mx-2 w-1/4">
+  <div class="py-4 mx-2 w-1/4">
     <h2 class="text-3xl font-black">劉聖元</h2>
     <img src="/images/liu.webp" width=200px height=200px class="rounded-lg p-3">
     <div class="flex">
@@ -46,7 +46,7 @@
       <a href="https://github.com/samliuforwork" target="_blank" class="m-1"><i class="fab fa-github"></i></a>
     </div>
     <p>
-      <h3 class="font-sans text-lg h-10 my-10"><q>時間會證明一切</q></h3>
+      <h3 class="font-sans text-lg h-10 my-4"><q>時間會證明一切</q></h3>
     </p>
     <p class="py-2 mx-2">
       <h3>負責內容：</h3>
@@ -57,7 +57,7 @@
         </ul>
     </p>
   </div>
-  <div class="py-2 mx-2 w-1/4">
+  <div class="py-4 mx-2 w-1/4">
     <h2 class="text-3xl font-black">吳偉真</h2>
     <img src="/images/wu.webp" width=200px height=200px class="rounded-lg p-3">
     <div class="flex">
@@ -66,7 +66,7 @@
       <a href="https://github.com/xx4673" target="_blank" class="m-1"><i class="fab fa-github"></i></a>
     </div>
     <p>
-      <h3 class="font-sans text-lg h-10 my-10"><q>The fool didn't know it was impossible. So she did it.</q></h3>
+      <h3 class="font-sans text-lg h-10 my-4"><q>The fool didn't know it was impossible. So she did it.</q></h3>
     </p>
     <p class="py-2 mx-2">
       <h3>負責內容：</h3>
@@ -77,7 +77,7 @@
         </ul>
     </p>
   </div>
-  <div class="py-2 mx-2 w-1/4">
+  <div class="py-4 mx-2 w-1/4">
     <h2 class="text-3xl font-black">尤俊翔</h2>
     <img src="/images/yu.webp" width=200px height=200px class="rounded-lg p-3">
     <div class="flex">
@@ -85,10 +85,10 @@
       <a href="mailto:kihifung@gmail.com" target="_blank" class="m-1"><i class="fas fa-envelope"></i></a>
       <a href="https://github.com/kihifung" target="_blank" class="m-1"><i class="fab fa-github"></i></a>
     </div>
-    <p>
-      <h3 class="font-sans text-lg h-10 my-10"><q>球速雖然不快，但準度還不錯，加上變化角度大的曲球和變速球，大部分的局面都能從容應對。</q></h3>
-    </p>
-    <p class="py-2 mx-2">
+    <div class="">
+      <h3 class="font-sans text-lg h-10 my-4"><q>球速雖然不快，但準度還不錯，加上變化角度大的曲球和變速球，大部分的局面都能從容應對。</q></h3>
+    </div>
+    <div class="py-2 mx-2">
       <h3>負責內容：</h3>
         <ul class="list-disc list-inside ml-2">
           <li>網站部署</li>
@@ -96,10 +96,11 @@
           <li>網站切版</li>
           <li>GTM/GA</li>
         </ul>
-    </p>
+    </div>
   </div>
 </div>
-<div class="container technology w-4/6 py-4 my-10 mx-2 bg-green-500">
+<%# ================== %>
+<div class="container technology w-4/6 py-4 mt-4 mb-10 mx-10">
   <h4 class="text-lg">使用到的技術與框架：</h4>
   <div>
     <ul class="md:list-disc md:list-inside p-2">
@@ -108,6 +109,7 @@
       <li>部署：Heroku</li>
       <li>版本控制：Git、GitHub</li>
       <li>其他技術：Devise第三方登入(Google與Facebook)、LinePay API金流串接、AWS S3檔案上傳</li>
+      <li>數據：GTM/GA</li>
     </ul>
   </div>
 </div>
