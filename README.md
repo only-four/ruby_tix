@@ -3,8 +3,13 @@
 RubyTix 由第六屆 ASTRO Camp X 五倍紅寶石的四名成員所打造完成。<br>
 RubyTix 是一家線上活動票券平台，讓您輕鬆辦理所喜愛的活動。
 <br>
-專案網站：[Rubytix.fun](https://rubytix.fun/)
-鏡像網站：[Rubytix.space](https://rubytix.space/)
+
+原始網站：[Rubytix.fun](https://rubytix.fun/)
+專案網站：[Rubytix.space](https://rubytix.space/)
+
+## 使用環境：
+- ruby 2.6.6
+
 
 ## Information 網站簡介
 
