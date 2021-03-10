@@ -412,6 +412,7 @@ DEPENDENCIES
   bankai (~> 0.8.1)
   bankai-docker (~> 0.2.0)
   bootsnap (~> 1.7, >= 1.7.2)
+  bundler (~> 2.2, >= 2.2.11)
   byebug
   cancancan (~> 3.2, >= 3.2.1)
   capybara (>= 2.15)
