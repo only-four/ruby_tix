@@ -58,11 +58,10 @@ gem 'bankai', '~> 0.8.1'
 gem 'bankai-docker', '~> 0.2.0'
 gem 'sitemap_generator', '~> 6.1', '>= 6.1.2'
 gem 'google-cloud-storage', '~> 1.30'
-gem "activerecord", ">= 6.0.3.5"
-gem "actionpack", ">= 6.0.3.5"
 gem 'geocoder', '~> 1.6', '>= 1.6.4'
 gem 'bundler', '~> 2.2', '>= 2.2.11'
-
+gem "actionpack", ">= 6.1.3.0"
+gem "activerecord", ">= 6.1.2.1"
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
