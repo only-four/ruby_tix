@@ -872,14 +872,14 @@
   resolved "https://registry.yarnpkg.com/@rails/actioncable/-/actioncable-6.1.0.tgz#f336f25450b1bc43b99bc60557a70b6e6bb1d3d2"
   integrity sha512-eDgy+vcKN9RIzxmMBfSAe77rTj2cp6kJALiVQyKrW2O9EK2MdostOmP+99At/Dit3ur5+77NVnruxD7y14ZYFA==
 
-"@rails/actiontext@^6.0.3-4":
-  version "6.1.0"
-  resolved "https://registry.yarnpkg.com/@rails/actiontext/-/actiontext-6.1.0.tgz#3b68327e670b2b9b6c0f6efc94cbe121b8c1e70d"
-  integrity sha512-AmVRWEeuElBdnzE2QL1uBM6hEyqAJtSPjp5ngN3/xrSsSX7STU6EHBmaE5xeMJpuN/AFDdTjbkEgWAAcOw6x+Q==
+"@rails/actiontext@^6.1.4":
+  version "6.1.4"
+  resolved "https://registry.yarnpkg.com/@rails/actiontext/-/actiontext-6.1.4.tgz#ed8c7d2b68d66205301f4538ce65d04c48031f6b"
+  integrity sha512-KG+VCofmfZAhW1x1xFxMC2sZtvwbx+XX0Y+dzeBFjKU1jZMM0RNytJf5EiuHtD9fL71zz6/nMT7FjwOFenSA7Q==
   dependencies:
-    "@rails/activestorage" "^6.0.0-alpha"
+    "@rails/activestorage" "^6.0.0"
 
-"@rails/activestorage@^6.0.0", "@rails/activestorage@^6.0.0-alpha":
+"@rails/activestorage@^6.0.0":
   version "6.1.0"
   resolved "https://registry.yarnpkg.com/@rails/activestorage/-/activestorage-6.1.0.tgz#e8d42c4e275f6b0cef2a888728b47300a87a1047"
   integrity sha512-47VbzNQ/45cjpcckP1eUkzh/V26kb+Qc6U8pEGbAhmNjF2/yfTzSefdHfubkz4NUSaapELqael0J3jhG8BWHsA==
