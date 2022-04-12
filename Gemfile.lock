@@ -82,8 +82,8 @@ GEM
       bankai
     bcrypt (3.1.16)
     bindex (0.8.1)
-    bootsnap (1.7.1)
-      msgpack (~> 1.0)
+    bootsnap (1.11.1)
+      msgpack (~> 1.2)
     builder (3.2.4)
     byebug (11.1.3)
     cancancan (3.2.1)
@@ -225,7 +225,7 @@ GEM
     mini_mime (1.0.2)
     mini_portile2 (2.5.1)
     minitest (5.14.4)
-    msgpack (1.4.2)
+    msgpack (1.5.1)
     multi_json (1.15.0)
     multi_xml (0.6.0)
     multipart-post (2.1.1)
@@ -415,7 +415,7 @@ DEPENDENCIES
   aasm (~> 5.1, >= 5.1.1)
   bankai (~> 0.8.1)
   bankai-docker (~> 0.2.0)
-  bootsnap (>= 1.4.2)
+  bootsnap (~> 1.11, >= 1.11.1)
   byebug
   cancancan (~> 3.2, >= 3.2.1)
   capybara (>= 2.15)
@@ -461,7 +461,7 @@ DEPENDENCIES
   will_paginate (~> 3.1)
 
 RUBY VERSION
-   ruby 2.7.0p0
+   ruby 3.0.3p157
 
 BUNDLED WITH
-   2.2.6
+   2.2.32

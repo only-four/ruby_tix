@@ -1,0 +1,12 @@
+fb_api: ""
+fb_secret: 
+
+google_api: ""
+google_secret: 
+
+aws_access_key_id: ""
+aws_secret_access_key: ""
+fog_directory: ""
+
+line_pay_channel_id: ""
+line_pay_channel_secret: ""
